@@ -1,5 +1,7 @@
 package bughunters;
 
+import java.util.List;
+
 public class Tekton {
     private List<Tekton> szomszedok;
     private List<Gombafonal> gombafonalak;
