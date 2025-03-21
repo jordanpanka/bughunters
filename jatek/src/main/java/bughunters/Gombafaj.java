@@ -78,7 +78,7 @@ public class Gombafaj implements FonalKezeles{
     }
     
     private void haldoklas(){
-        
+
     }
     public void  fonalNov(Tekton hova, Tekton honnan){
         System.out.println("Meghívódott a Gombafaj fonalNov metódusa.");
@@ -134,11 +134,11 @@ public class Gombafaj implements FonalKezeles{
     }
     public void lastChance(){
         for(int i=0; i<gombafonalhalozat.size(); i++){
-            if(gombafonalhalozat.get(i).getAllapot()==Haldoklo)
+            if(gombafonalhalozat.get(i).getFonalAllapot()==Haldoklo)
             {
 
             }
-            else if(gombafonalhalozat.get(i).getAllapot()==UtolsoEsely){
+            else if(gombafonalhalozat.get(i).getFonalAllapot()==UtolsoEsely){
 
             }
             else{
