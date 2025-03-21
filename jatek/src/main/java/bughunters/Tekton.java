@@ -3,7 +3,7 @@ package bughunters;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tekton {
+public class Tekton implements FonalKezeles {
     private List<Tekton> szomszedok; //melyik tektonok a szomszédjai
     private List<Gombafaj> gombafajok; //megtalálható gombafajok listája
     private List<Spora> sporak; //megtalálható spórák listája
