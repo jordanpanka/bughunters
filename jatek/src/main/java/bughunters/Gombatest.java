@@ -6,6 +6,12 @@ public class Gombatest {
     private Tekton tekton;
 
     public Gombatest(){}
+    public Gombatest(int sporaRaktar, int kor, Gombafaj gombafaj, Tekton tekton) {
+        this.sporaRaktar = sporaRaktar;
+        this.kor = kor;
+        this.gombafaj = gombafaj;
+        this.tekton = tekton;
+    }
 
     public Tekton getTekton() {
         return tekton;
@@ -35,10 +41,6 @@ public class Gombatest {
     }
     public Gombafaj getGombafaj() {
         return gombafaj;
-    }
-    
-    public void setGombafaj(Gombafaj gombafaj) {
-        this.gombafaj = gombafaj;
     }
     
     public void sporaGyujtes(){
