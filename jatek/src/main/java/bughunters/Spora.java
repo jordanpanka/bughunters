@@ -11,6 +11,7 @@ package bughunters;
 abstract class Spora {
     private int tapertek;
     private int mennyiseg;
+    private Gombafaj gombafaj;
 
     /**
      * Absztrakt metódus, amely meghatározza, hogy a spóra milyen hatást gyakorol a rovarra.
