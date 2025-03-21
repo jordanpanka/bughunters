@@ -7,12 +7,16 @@ public class Jatekter {
     private List<Tekton> tektonok;
 
     public List<Tekton> getTektonok(){
+        System.out.println("Meghívódik a Jatekter getTektonok metodusa.");
         return tektonok;
     }
 
-    public Jatekter(){}
+    public Jatekter(){
+        System.out.println("Meghívódik a Jatekter paraméter nélküli konstruktora.");
+    }
 
     public Jatekter(ArrayList<Tekton> t){
+        System.out.println("Meghívódik a Jatekter paraméteres konstruktora.");
         tektonok = t;
     }
 
