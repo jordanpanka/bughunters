@@ -14,6 +14,12 @@ public class Tekton implements FonalKezeles {
         sporak = new ArrayList<>();
     }
 
+    public Tekton(List<Tekton> szomszed, List<Gombafonal> gombafonal, List<Spora> spora){
+        szomszedok = szomszed;
+        gombafonalak = gombafonal;
+        sporak = spora;
+    }
+
     /***
      * @brief Gombafonalat ad hozzá a Tektonhoz
      * @param gf Gombafaj:
