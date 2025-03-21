@@ -21,6 +21,16 @@ abstract class Spora {
      */
     public abstract void hatas(Rovar r);
 
+     /**
+     * Spora abasztrakt osztály konstruktora
+     */
+    public Spora(int t, int m, Gombafaj g)
+    {
+        tapertek =t;
+        mennyiseg=m;
+        gombafaj=g;
+    }
+
     /**
      * Csökkenti a spóra mennyiségét a megadott mennyiséggel, amennyiben az elegendő.
      * Ha a spóra mennyisége nem elegendő a művelet végrehajtásához, kivételt dob.
@@ -29,6 +39,8 @@ abstract class Spora {
      * @throws Exception ha nincs elegendő spóra
      */
     public void fogyaszt(int mennyit) throws Exception {
+
+        System.out.println("Meghívódik a Spora osztaly fogyaszt metodusa.");
         if (mennyiseg - mennyit >= 0) {
             mennyiseg -= mennyit;
         } else {
@@ -45,11 +57,44 @@ abstract class Spora {
      * @throws Exception ha nincs elegendő spóra
      */
     public void fogyaszt(int mennyit, Rovar r) throws Exception {
+        System.out.println("Meghívódik a Spora osztaly fogyaszt metodusa.");
         if (mennyiseg - mennyit >= 0) {
             mennyiseg -= mennyit;
             hatas(r);
         } else {
             throw new Exception("Nincs elég spóra az akció végrehajtására");
         }
+    }
+
+     /**
+     * tapertek attribútum gettere
+     */
+    public int getTapertek()
+    {
+        return tapertek;
+    }
+
+     /**
+     * gombafaj attribútum gettere
+     */
+    public Gombafaj getGombafaj()
+    {
+        return gombafaj;
+    }
+
+    /**
+     * mennyiseg attribútum gettere
+     */
+    public int getMennyiseg()
+    {
+        return mennyiseg;
+    }
+
+     /**
+     * mennyiseg attribútum settere
+     */
+    public void setMennyiseg(int db)
+    {
+        mennyiseg=db;
     }
 }

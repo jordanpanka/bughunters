@@ -16,7 +16,7 @@ enum fonalAllapot {
 public class Gombafonal {
 
     /** A fonal aktuális állapota. Kezdetben ép. */
-    private fonalAllapot allapot = fonalAllapot.Ep;
+    private fonalAllapot allapot;
 
     /** Az időtartam, mióta a fonal létezik. */
     private int miota;
@@ -30,17 +30,28 @@ public class Gombafonal {
     /** A fonal másik végpontja. */
     private Tekton vegpont2;
 
+    public Gombafonal(Gombafaj gf, Tekton veg1, Tekton veg2)
+    {
+        allapot=fonalAllapot.Ep;
+        miota=0;
+        vegpont1=veg1;
+        vegpont2=veg2;
+    }
+
     /**
      * Megváltoztatja a fonal állapotát.
      * - Ha az állapot "Ép", akkor "Haldokló" lesz.
      * - Ha az állapot "Haldokló", akkor "UtolsóEsély" lesz.
      */
     public void allapotvalt() {
+        System.out.println("Meghívódik a gombafonal osztaly allapotvalt() metodusa.");
         if (allapot == fonalAllapot.Haldoklo) {
             allapot = fonalAllapot.UtolsoEsely;
         } else if (allapot == fonalAllapot.Ep) {
             allapot = fonalAllapot.Haldoklo;
         }
+
+        
     }
 
     /**
@@ -49,6 +60,7 @@ public class Gombafonal {
      */
     public void tartozkodasNov() {
         miota += 1;
+        System.out.println("Meghívódik a gombafonal osztaly tartozkodasNov() metodusa.");
     }
 
     /**
@@ -56,8 +68,74 @@ public class Gombafonal {
      * A gombafaj és a két végpont értesül a fonal megszűnéséről.
      */
     public void vegpontTorles() {
+        System.out.println("Meghívódik a gombafonal osztaly vegpontTorles() metodusa.");
         gombafaj.fonalSzakad(this);
         vegpont1.fonalSzakad(this);
         vegpont2.fonalSzakad(this);
+        
+    }
+
+     /**
+     * Visszaadja, hogy mióta él a gombafonal
+     */
+    public int getMiota()
+    {
+            return miota;
+    }
+
+     /**
+     * Visszaadja a gombafonal aktuális állapotát
+     */
+    public fonalAllapot getAllapot()
+    {
+        return allapot;
+    }
+
+    /**
+     *  allapot attribútum settere
+     */
+    public void setAllapot(fonalAllapot uj)
+    {
+        allapot=uj;
+    }
+
+    /**
+     *  gombafaj attribútum gettere
+     */
+    public Gombafaj getGombafaj()
+    {
+        return gombafaj;
+    }
+
+    /**
+     *  vegpont1 attribútum gettere
+     */
+    public Tekton getVeg1()
+    {
+        return vegpont1;
+    }
+
+    /**
+     *  vegpont1 attribútum settere
+     */
+    public void setVeg1(Tekton t)
+    {
+        vegpont1=t;
+    }
+
+     /**
+     *  vegpont2 attribútum gettere
+     */
+    public Tekton getVeg2()
+    {
+        return vegpont2;
+    }
+
+    /**
+     *  vegpont2 attribútum settere
+     */
+    public void setVeg2(Tekton t)
+    {
+        vegpont2=t;
     }
 }

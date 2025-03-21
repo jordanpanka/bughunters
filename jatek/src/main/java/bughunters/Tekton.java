@@ -34,7 +34,7 @@ public class Tekton implements FonalKezeles {
         if(skeleton.getTestCase().equals("Gombafonal novesztese")){
             boolean valasz = skeleton.Kerdes("szomszedos t2 es t3-as tekton? jelen van a g1es gombafaj a gombafonala a t2es tektonon?");
             if(valasz){
-                Gombafonal gf2 = new Gombafonal();
+                Gombafonal gf2 = new Gombafonal(gf,this,honnan);
                 addFonal(gf2);
                 return gf2;
             } else {
@@ -44,7 +44,7 @@ public class Tekton implements FonalKezeles {
         else if(skeleton.getTestCase().equals("Gombafonal novesztése Tektonra Gombatestbol")){
             boolean valasz = skeleton.Kerdes("van gombatest a g1 gombafajbol a t1 tektonon?");
             if(valasz){
-                Gombafonal gf1 = new Gombafonal();
+                Gombafonal gf1 = new Gombafonal(gf,this,honnan);
                 addFonal(gf1);
                 return gf1;
             } else {
@@ -63,13 +63,12 @@ public class Tekton implements FonalKezeles {
     public Gombatest gombatestNov(Gombafaj gf) throws Exception{
         System.out.println("Meghívódott a Tekton gombatestNov metódusa.");
         Skeleton skeleton = new Skeleton();
-        Gyorsito s1 = new Gyorsito();
 
         if(skeleton.getTestCase().equals("Gombatest növesztése Tektonra")){
             boolean valasz = skeleton.Kerdes("alkalmas a tekton testnövesztésre?");
             if(valasz){
                 try{
-                    s1.fogyaszt(3,gf);
+                    sporak.get(0).fogyaszt(3);
                     Gombatest gt1 = new Gombatest();
                     return gt1;
                 }
@@ -89,7 +88,7 @@ public class Tekton implements FonalKezeles {
      * @param r
      */
     public void eszik(Spora sp, Rovar r){
-        
+
     }
 
     /***

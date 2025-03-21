@@ -7,12 +7,22 @@ package bughunters;
 public class Benito extends Spora {
 
     /**
+     * Benito osztály konstuktora
+     */
+    public Benito(int t, int m, Gombafaj g)
+    {
+       super(t, m, g);
+    }
+
+    /**
      * A spóra hatást fejt ki a megadott rovarra, és lebénítja azt.
      *
      * @param r a rovar, amelyre a spóra hatással lesz
      */
     @Override
     public void hatas(Rovar r) {
+        System.out.println("Meghívódik a Benito osztaly hatas metodusa.");
         r.benit();
+        
     }
 }
