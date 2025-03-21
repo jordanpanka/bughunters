@@ -7,6 +7,14 @@ package bughunters;
  */
 public class VagasKeptelenito extends Spora {
 
+
+    /**
+     * VagasKeptelenito osztály konstuktora
+     */
+    public VagasKeptelenito(int t, int m, Gombafaj g)
+    {
+       super(t, m, g);
+    }
     /**
      * A spóra hatást fejt ki a megadott rovarra, és nem engedi, hogy fonalat vágjon az adott rovar.
      *
@@ -15,6 +23,7 @@ public class VagasKeptelenito extends Spora {
     @Override
     public void hatas(Rovar r)
     {
+        System.out.println("Meghívódik a VagasKeptelenito osztaly hatas metodusa.");
         r.vagaskeptelen();
     }
 }
