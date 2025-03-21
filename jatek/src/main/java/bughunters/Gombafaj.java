@@ -78,7 +78,7 @@ public class Gombafaj implements FonalKezeles{
     }
     
     private void haldoklas(){
-
+        
     }
     public void  fonalNov(Tekton hova, Tekton honnan){
         System.out.println("Meghívódott a Gombafaj fonalNov metódusa.");
@@ -122,7 +122,7 @@ public class Gombafaj implements FonalKezeles{
         gombaTestek.add(gt);
     }
     public void sporaSzoras(Tekton t, Gombatest g){
-        System.out.println("Meghívódik a gombafaj sporaszoras metodusa.");
+        System.out.println("Meghívódik a Gombafaj sporaSzoras metodusa.");
         try
         {
             g.urit();
@@ -133,7 +133,19 @@ public class Gombafaj implements FonalKezeles{
         
     }
     public void lastChance(){
-        
+        for(int i=0; i<gombafonalhalozat.size(); i++){
+            if(gombafonalhalozat.get(i).getAllapot()==Haldoklo)
+            {
+
+            }
+            else if(gombafonalhalozat.get(i).getAllapot()==UtolsoEsely){
+
+            }
+            else{
+
+            }
+            
+        }
     }
     public void toresHaldoklas(){
         System.out.println("Meghívódik a gombafaj toresHaldoklas metodusa.");
