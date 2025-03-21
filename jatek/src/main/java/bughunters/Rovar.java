@@ -45,7 +45,6 @@ public class Rovar {
 
     public void maszik(Tekton hova) throws Exception {
         System.out.println("Meghívódott a Rovar maszik metódusa.");
-
         if(tartozkodas.vanUt(hova)){
             setTartozkodas(hova);
         }else{
