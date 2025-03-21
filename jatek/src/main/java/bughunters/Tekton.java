@@ -20,6 +20,27 @@ public class Tekton implements FonalKezeles {
         sporak = spora;
     }
 
+    public List<Tekton> getSzomszedok(){
+        return szomszedok;
+    }
+    public List<Gombafonal> getFonalak(){
+        return gombafonalak;
+    }
+    public List<Spora> getSporak(){
+        return sporak;
+    }
+
+    public void setSzomszedok(List<Tekton> ujszomszedok){
+        szomszedok = ujszomszedok;
+    }
+    public void setFonalak(List<Gombafonal> ujfonalak){
+        gombafonalak = ujfonalak;
+    }
+    public void setSporak(List<Spora> ujsporak){
+        sporak = ujsporak;
+    }
+
+
     /***
      * @brief Gombafonalat ad hozzá a Tektonhoz
      * @param gf Gombafaj: Aktuális gombafaj
