@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Tekton implements FonalKezeles {
     private List<Tekton> szomszedok; //melyik tektonok a szomszédjai
-    private List<Gombafonal> gombafonalak; //megtalálható gombafajok listája
+    private List<Gombafonal> gombafonalak; //megtalálható gombafonalak listája
     private List<Spora> sporak; //megtalálható spórák listája
 
     public Tekton() {
@@ -117,7 +117,7 @@ public class Tekton implements FonalKezeles {
             if(valasz){
                 boolean valasz1 = skeleton.Kerdes("maradni fog-e meg spora?");
                 sporak.get(0).fogyaszt(3);
-                if(!valasz){
+                if(!valasz1){
                     sporak.remove(0);
                 }
             } else {
@@ -132,7 +132,35 @@ public class Tekton implements FonalKezeles {
      * @param gf Gombafaj: Ehhez a fajhoz tartozik a spóra
      */
     public void sporaSzor(Gombafaj gf){
-        
+        System.out.println("Meghívódott a Tekton sporaSzor metódusa.");
+        Skeleton skeleton = new Skeleton();
+
+        if(skeleton.getTestCase().equals("Spóra szórása már létező Spórával")){
+            Benito b2 = new Benito(30, 2, gf);
+
+            for (Tekton tekton : szomszedok) {
+                tekton.addSpora(b2);
+                //hogyan hívjam b1-re???
+            } 
+        }
+        if(skeleton.getTestCase().equals("Spóra szórása még nem létező Spórával")){
+            Benito b1 = new Benito(30, 1, gf);
+
+            for (Tekton tekton : szomszedok) {
+                tekton.addSpora(b1);
+            }
+        }
+        if(skeleton.getTestCase().equals("Spóra szórása fejlett gombatest által")){
+            Benito b1 = new Benito(30, 1, gf);
+            Benito b2 = new Benito(30,2,gf);
+
+            for (Tekton tekton : szomszedok) {
+                tekton.addSpora(b1);
+                for (Tekton tektonszomszed : tekton.getSzomszedok()) {
+                    tekton.addSpora(b2);
+                }
+            }
+        }
     }
 
     /***
@@ -142,9 +170,16 @@ public class Tekton implements FonalKezeles {
     public void addSpora(Spora sp){}
 
     /***
-     * @brief
+     * @brief A törés során érintett tektonok új szomszédait állítja be
      */
-    public void szomszedAllitas(){}
+    public void szomszedAllitas(){
+        System.out.println("Meghívódott a Tekton szomszedAllitas metódusa.");
+        
+        Tekton ujTekton = new Tekton();
+        szomszedok.add(ujTekton);
+
+        //mi alapján mondom meg melyik a szomszédja amit törölni kell?
+    }
 
     /***
      * @brief
@@ -169,9 +204,31 @@ public class Tekton implements FonalKezeles {
     }
 
     /***
-     * @brief
-     * @param gf
+     * @brief Elszakítja a paraméterben kapott gombafonalat, azáltal hogy kiveszi a gombafonal listából
+     * @param gf Gombafonal: elszakítani kívánt gombafonal
      */
     @Override
-    public void fonalSzakad(Gombafonal gf){}
+    public void fonalSzakad(Gombafonal gf){
+
+        ///csak annyi hogy kiszedem a gombafonalak listából vagy kell állítgassak végpontokat is?
+
+        System.out.println("Meghívódott a Tekton fonalSzakad metódusa.");
+        Skeleton skeleton = new Skeleton();
+
+        if(skeleton.getTestCase().equals("Fonal vágás")){
+            gombafonalak.remove(gf);
+            for (Tekton tekton : szomszedok) {
+                if(tekton == gf.getVegpont2()){
+
+                    //melyik vegpontot nézzük?
+
+                    for (Gombafonal gombafonal : tekton.getFonalak()) {
+                        if(gombafonal == gf){
+                            tekton.getFonalak().remove(gf);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
