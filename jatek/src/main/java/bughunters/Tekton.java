@@ -1,5 +1,6 @@
 package bughunters;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Tekton {
@@ -8,9 +9,9 @@ public class Tekton {
     private List<Spora> sporak; //megtalálható spórák listája
 
     public Tekton() {
-        szomszedok = new ArrayList<Tekton>();
-        gombafonalak = new ArrayList<Gombafonal>();
-        sporak = new ArrayList<Spora>();
+        szomszedok = new ArrayList<>();
+        gombafajok = new ArrayList<>();
+        sporak = new ArrayList<>();
     }
 
     /***
@@ -18,13 +19,14 @@ public class Tekton {
      * @param gf Gombafaj:
      * @param honnan Tekton:
      */
-    public abstract void gombafonalAdd(Gombafaj gf, Tekton honnan);
+    public void gombafonalAdd(Gombafaj gf, Tekton honnan);
 
     /***
      * @brief A paraméterben kapott gombafaj gombatestet növesszen rajta
      * @param gf Gombafaj
+     * @return 
      */
-    public abstract void gombatestNov(Gombafaj gf);
+    public Gombatest gombatestNov(Gombafaj gf);
 
     /***
      * @brief
