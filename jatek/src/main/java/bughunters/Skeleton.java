@@ -22,14 +22,22 @@ public class Skeleton {
     public boolean Kerdes(String kerdes) {
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
         System.out.println(kerdes);
-        String valasz = r.readLine();
-
-        valasz.toLowerCase();
-        if (valasz.equals("igen")) {
-            return true;
-        } else if (valasz.equals("nem")) {
-            return false;
+        String valasz;
+        try {
+            valasz = r.readLine();
+            valasz.toLowerCase();
+            while (valasz.equals("igen") || valasz.equals("nem")) {
+                if (valasz.equals("igen")) {
+                    return true;
+                } else if (valasz.equals("nem")) {
+                    return false;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        return false;
     }
 }
 
