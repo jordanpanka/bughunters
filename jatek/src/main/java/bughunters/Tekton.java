@@ -3,9 +3,9 @@ package bughunters;
 import java.util.List;
 
 public class Tekton {
-    private List<Tekton> szomszedok;
-    private List<Gombafonal> gombafonalak;
-    private List<Spora> sporak;
+    private List<Tekton> szomszedok; //melyik tektonok a szomszédjai
+    private List<Gombafaj> gombafajok; //megtalálható gombafajok listája
+    private List<Spora> sporak; //megtalálható spórák listája
 
     public Tekton() {
         szomszedok = new ArrayList<Tekton>();
@@ -14,15 +14,15 @@ public class Tekton {
     }
 
     /***
-     * @brief
-     * @param gf
-     * @param honnan
+     * @brief Gombafonalat ad hozzá a Tektonhoz
+     * @param gf Gombafaj:
+     * @param honnan Tekton:
      */
     public abstract void gombafonalAdd(Gombafaj gf, Tekton honnan);
 
     /***
-     * @brief
-     * @param gf
+     * @brief A paraméterben kapott gombafaj gombatestet növesszen rajta
+     * @param gf Gombafaj
      */
     public abstract void gombatestNov(Gombafaj gf);
 
