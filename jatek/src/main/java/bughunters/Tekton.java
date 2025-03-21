@@ -157,7 +157,28 @@ public class Tekton implements FonalKezeles {
      * @param a
      * @return
      */
-    public boolean vanUt(Tekton a){return true;}
+    public boolean vanUt(Tekton a){
+        Set<Tekton> latogatott = new HashSet<>();
+        Queue<Tekton> sor = new LinkedList<>();
+        
+        sor.add(this);
+        latogatott.add(this);
+
+        while (!sor.isEmpty()) {
+            Tekton jelenlegi = sor.poll();
+            if (jelenlegi == a) return true;
+
+            for (Gombafonal gf : jelenlegi.getGombafonalhalozat()) {
+                Tekton szomszed = (gf.getVegpont1() == jelenlegi) ? gf.getVegpont2() : gf.getVegpont1();
+                if (!latogatott.contains(szomszed)) {
+                    latogatott.add(szomszed);
+                    sor.add(szomszed);
+                }
+            }
+        }
+        return false;
+        
+    }
 
     /***
      * @brief Gombafonalat hozzáadja a gombafonalak listához
