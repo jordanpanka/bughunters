@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Tekton implements FonalKezeles {
     private List<Tekton> szomszedok; //melyik tektonok a szomszédjai
-    private List<Gombafaj> gombafajok; //megtalálható gombafajok listája
+    private List<Gombafonal> gombafonalak; //megtalálható gombafajok listája
     private List<Spora> sporak; //megtalálható spórák listája
 
     public Tekton() {
         szomszedok = new ArrayList<>();
-        gombafajok = new ArrayList<>();
+        gombafonalak = new ArrayList<>();
         sporak = new ArrayList<>();
     }
 
