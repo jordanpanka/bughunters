@@ -6,6 +6,14 @@ package bughunters;
  */
 public class Gyorsito extends Spora {
     
+
+    /**
+     * Gyorsito osztály konstuktora
+     */
+    public Gyorsito(int t, int m, Gombafaj g)
+    {
+       super(t, m, g);
+    }
      /**
      * A spóra hatást fejt ki a megadott rovarra, és gyorsítja  azt.
      *
@@ -14,6 +22,7 @@ public class Gyorsito extends Spora {
     @Override
     public void hatas(Rovar r)
     {
+        System.out.println("Meghívódik a Gyorsito osztaly hatas metodusa.");
         r.gyorsito();
     }
 }
