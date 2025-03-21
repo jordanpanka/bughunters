@@ -22,17 +22,44 @@ public class Tekton implements FonalKezeles {
 
     /***
      * @brief Gombafonalat ad hozzá a Tektonhoz
-     * @param gf Gombafaj:
-     * @param honnan Tekton:
+     * @param gf Gombafaj: Aktuális gombafaj
+     * @param honnan Tekton: Vizsgáljuk hogy erről a tektonról vezet e fonal az aktuálisra
      */
-    public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan){}
+    public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan){
+        System.out.println("Meghívódott a Tekton gombafonalAdd metódusa.");
+
+        Skeleton skeleton = new Skeleton();
+        if(skeleton.getTestCase().equals("Gombafonal novesztese")){
+            boolean valasz = skeleton.Kerdes("szomszedos t2 es t3-as tekton? jelen van a g1es gombafaj a gombafonala a t2es tektonon?");
+            if(valasz){
+                Gombafonal gf2 = new Gombafonal();
+                addFonal(gf2);
+                return gf2;
+            } else {
+                throw new IllegalStateException("A gombafonal nem növeszthető ebben az állapotban.");
+            }
+        } 
+        else if(skeleton.getTestCase().equals("Gombafonal novesztése Tektonra Gombatestbol")){
+            boolean valasz = skeleton.Kerdes("van gombatest a g1 gombafajbol a t1 tektonon?");
+            if(valasz){
+                Gombafonal gf1 = new Gombafonal();
+                addFonal(gf1);
+                return gf1;
+            } else {
+                throw new IllegalStateException("A gombafonal nem növeszthető ebben az állapotban.");
+            }
+        }
+        throw new IllegalStateException("Nem megfelelő feladat.");
+    }
 
     /***
-     * @brief A paraméterben kapott gombafaj gombatestet növesszen rajta
-     * @param gf Gombafaj
-     * @return 
+     * @brief A paraméterben kapott gombafaj gombatestet növeszt a tektonon
+     * @param gf Gombafaj: 
+     * @return Ha tud: növesztett gombatestet adja vissza, Ha nem tud: exception-t dob
      */
-    public Gombatest gombatestNov(Gombafaj gf){}
+    public Gombatest gombatestNov(Gombafaj gf){
+        
+    }
 
     /***
      * @brief
