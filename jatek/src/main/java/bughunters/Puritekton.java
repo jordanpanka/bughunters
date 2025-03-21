@@ -1,7 +1,5 @@
 package bughunters;
 
-import java.io.EOFException;
-
 public class Puritekton extends Tekton {
 
     /***
