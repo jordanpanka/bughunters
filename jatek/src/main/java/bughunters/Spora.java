@@ -38,11 +38,12 @@ abstract class Spora {
      * @param mennyit a fogyasztandó spóra mennyisége
      * @throws Exception ha nincs elegendő spóra
      */
-    public void fogyaszt(int mennyit) throws Exception {
+    public Gombatest fogyaszt(int mennyit) throws Exception {
 
         System.out.println("Meghívódik a Spora osztaly fogyaszt metodusa.");
         if (mennyiseg - mennyit >= 0) {
             mennyiseg -= mennyit;
+            return new Gombatest();
         } else {
             throw new Exception("Nincs elég spóra az akció végrehajtására");
         }
