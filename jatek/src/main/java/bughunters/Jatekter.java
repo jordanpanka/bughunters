@@ -11,6 +11,7 @@ public class Jatekter {
     }
 
     public void tores(int darab){
+        System.out.println("Meghívódik a Jatekter tores metodusa.");
         tektonok.get(1).szomszedAllitas();
 
         Tekton t4 = new Tekton();
@@ -32,6 +33,7 @@ public class Jatekter {
         }
     }
     public void tektonAdd(Tekton t){
+        System.out.println("Meghívódik a Jatekter tektonAdd metodusa.");
         tektonok.add(t);
     }
 }
