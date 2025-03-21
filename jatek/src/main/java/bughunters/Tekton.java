@@ -59,7 +59,7 @@ public class Tekton implements FonalKezeles {
      * @return növesztett gombafonalat adja vissza
      * @throws Exception ha nem tud gombafonalat növeszteni vagy rossz feladatnál lett hívva
      */
-    public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan) throws Exception{
+    public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan) throws Exception {
         System.out.println("Meghívódott a Tekton gombafonalAdd metódusa.");
 
         if(Skeleton.getInstance().getTestCase().equals("Gombafonal novesztese")){
@@ -147,7 +147,13 @@ public class Tekton implements FonalKezeles {
 
             for (Tekton tekton : szomszedok) {
                 tekton.addSpora(b2);
-                //hogyan hívjam b1-re???
+                Benito b1 = null;
+                for (Spora spora : sporak) {
+                    if(b2.getGombafaj() == spora.getGombafaj()){
+                        b1 = (Benito)spora;
+                    }
+                }
+                b1.szorasTortent();
             } 
         }
         if(Skeleton.getInstance().getTestCase().equals("Spóra szórása még nem létező Spórával")){
@@ -171,7 +177,7 @@ public class Tekton implements FonalKezeles {
     }
 
     /***
-     * @brief
+     * @brief 
      * @param sp
      */
     public void addSpora(Spora sp){}
@@ -210,7 +216,7 @@ public class Tekton implements FonalKezeles {
             Tekton jelenlegi = sor.poll();
             if (jelenlegi == a) return true;
 
-            for (Gombafonal gf : jelenlegi.getGombafonalhalozat()) {
+            for (Gombafonal gf : jelenlegi.getFonalak()) {
                 Tekton szomszed = (gf.getVegpont1() == jelenlegi) ? gf.getVegpont2() : gf.getVegpont1();
                 if (!latogatott.contains(szomszed)) {
                     latogatott.add(szomszed);
@@ -237,9 +243,6 @@ public class Tekton implements FonalKezeles {
      */
     @Override
     public void fonalSzakad(Gombafonal gf){
-
-        ///csak annyi hogy kiszedem a gombafonalak listából vagy kell állítgassak végpontokat is?
-
         System.out.println("Meghívódott a Tekton fonalSzakad metódusa.");
 
         if(Skeleton.getInstance().getTestCase().equals("Fonal vágás")){

@@ -85,7 +85,7 @@ public class Gombafaj implements FonalKezeles{
         for(Gombafonal gf:gombafonalhalozat){
             boolean van=false;
             for(Tekton t:gombatestesTektonok){
-                if(t.vanUt(gf.getVeg1())){
+                if(t.vanUt(gf.getVegpont1())){
                     van=true;
                     break;
                 }
