@@ -14,7 +14,7 @@ public class Monotekton extends Tekton {
         Skeleton skeleton = new Skeleton();
         boolean valasz = skeleton.Kerdes("van szabad hely m1-en?");
         if(valasz){
-            Gombafonal gf2 = new Gombafonal();
+            Gombafonal gf2 = new Gombafonal(gf,this,honnan);
             addFonal(gf2);
             return gf2;
         } else {

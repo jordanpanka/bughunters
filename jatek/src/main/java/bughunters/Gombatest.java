@@ -3,11 +3,26 @@ public class Gombatest {
     private int sporaRaktar;
     private int kor;
     private Gombafaj gombafaj;
+    private Tekton tekton;
+
+    public Gombatest(){}
+    public Gombatest(int sporaRaktar, int kor, Gombafaj gombafaj, Tekton tekton) {
+        this.sporaRaktar = sporaRaktar;
+        this.kor = kor;
+        this.gombafaj = gombafaj;
+        this.tekton = tekton;
+    }
+
+    public Tekton getTekton() {
+        return tekton;
+    }
+    
+    public void setTekton(Tekton tekton) {
+        this.tekton = tekton;
+    }
+    
     public int getSporaRaktar() {
         return sporaRaktar;
-    }
-    public Gombatest(){
-
     }
     
     public void setSporaRaktar(int sporaRaktar) {
@@ -26,10 +41,6 @@ public class Gombatest {
     }
     public Gombafaj getGombafaj() {
         return gombafaj;
-    }
-    
-    public void setGombafaj(Gombafaj gombafaj) {
-        this.gombafaj = gombafaj;
     }
     
     public void sporaGyujtes(){

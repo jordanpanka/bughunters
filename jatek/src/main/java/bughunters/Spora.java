@@ -43,6 +43,7 @@ abstract class Spora {
         System.out.println("Meghívódik a Spora osztaly fogyaszt metodusa.");
         if (mennyiseg - mennyit >= 0) {
             mennyiseg -= mennyit;
+            
         } else {
             throw new Exception("Nincs elég spóra az akció végrehajtására");
         }
