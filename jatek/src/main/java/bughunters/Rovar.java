@@ -23,34 +23,50 @@ public class Rovar {
     public void setTartozkodas(Tekton t){ this.tartozkodas = t; }
 
     public void alapAllapot(){
-        System.out.println("A rovar alap állapotba állt");
+        System.out.println("Meghívódott a Rovar alapAllapot metódusa.");
     }
     public void lassito(){
-        System.out.println("A rovar lassított állapotba állt");
+        System.out.println("Meghívódott a Rovar lassito metódusa.");
     }
     public void gyorsito(){
-        System.out.println("A rovar gyorsított állapotba állt");
+        System.out.println("Meghívódott a Rovar gyorsito metódusa.");
     }
     public void benit(){
-        System.out.println("A rovar bénított állapotba állt");
+        System.out.println("Meghívódott a Rovar benit metódusa.");
     }
     public void vagaskeptelen(){
-        System.out.println("A rovar vágásképtelen állapotba állt");
+        System.out.println("Meghívódott a Rovar vagaskeptelen metódusa.");
     }
 
     public void vag(Gombafonal g){
         g.vegpontTorles();
-        System.out.println("A fonál elvágódott");
+        System.out.println("Meghívódott a Rovar vag metódusa.");
     }
-    public void maszik(Tekton hova){
 
-        if(tartozkodas.vanUt(hova);){
+    public void maszik(Tekton hova) throws Exception {
+        System.out.println("Meghívódott a Rovar maszik metódusa.");
+
+        if(tartozkodas.vanUt(hova)){
             setTartozkodas(hova);
         }else{
-
+            try {
+                throw new Exception("Nincs ut ket tekton kozott.");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                throw e;
+            }
         }
     }
+
     public void eszik(Spora s){
+        System.out.println("Meghívódott a Rovar eszik metódusa.");
+        try {
+            tartozkodas.eszik(s, this);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw e;
+        }
 
     }
 
