@@ -13,12 +13,22 @@ public class Jatekter {
     public void tores(int darab){
         tektonok.get(1).szomszedAllitas();
 
+        Tekton t4 = new Tekton();
+        // szomszedok beállítása!!!!!!!!!
+
         List<Gombafonal> ujszomszed = tektonok.get(1).gombafonalIgazitas();
 
-        Tekton t4 = new Tekton(ujszomszed);
+        for (Gombafonal gombafonal : ujszomszed) {
+            if(gombafonal.getVegpont1() == tektonok.get(1)){
+                gombafonal.setVegpont1(t4);
+            }
+            else{
+                gombafonal.setVegpont2(t4);
+            }
+        }
 
-        for (List<Tekton> szomszed : t4.getSzomszedok) {
-            szomszed.gombafonalAdd()
+        for (Gombafonal fonal : ujszomszed) {
+            t4.addFonal(fonal);
         }
     }
     public void tektonAdd(Tekton t){}
