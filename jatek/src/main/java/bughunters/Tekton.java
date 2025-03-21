@@ -19,14 +19,14 @@ public class Tekton implements FonalKezeles {
      * @param gf Gombafaj:
      * @param honnan Tekton:
      */
-    public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan);
+    public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan){}
 
     /***
      * @brief A paraméterben kapott gombafaj gombatestet növesszen rajta
      * @param gf Gombafaj
      * @return 
      */
-    public Gombatest gombatestNov(Gombafaj gf);
+    public Gombatest gombatestNov(Gombafaj gf){}
 
     /***
      * @brief
@@ -63,5 +63,19 @@ public class Tekton implements FonalKezeles {
      * @param a
      * @return
      */
-    public boolean vanUt(Tekton a){}
+    public boolean vanUt(Tekton a){return true;}
+
+    /***
+     * @brief
+     * @param gf
+     */
+    @Override
+    public void addFonal(Gombafonal gf){}
+
+    /***
+     * @brief
+     * @param gf
+     */
+    @Override
+    public void fonalSzakad(Gombafonal gf){}
 }

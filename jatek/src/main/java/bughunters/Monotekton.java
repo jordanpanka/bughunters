@@ -8,7 +8,7 @@ public class Monotekton extends Tekton {
      * @return
      */
     @Override
-    public Gombafonal gombafonalAdd(Gombafaj gf){
+    public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan){
         return new Gombafonal();
     }
 
