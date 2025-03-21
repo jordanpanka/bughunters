@@ -104,19 +104,36 @@ public class Tekton implements FonalKezeles {
     }
 
     /***
-     * @brief
-     * @param sp
-     * @param r
+     * @brief A rovar evését segítő függvény
+     * @param sp Spora: amit a rovar meg akar enni
+     * @param r Rovar: akutális rovar ami eszik
      */
-    public void eszik(Spora sp, Rovar r){
+    public void eszik(Spora sp, Rovar r) throws Exception {
+        System.out.println("Meghívódott a Tekton eszik metódusa.");
+        Skeleton skeleton = new Skeleton();
 
+        if(skeleton.getTestCase().equals("Bénító spóra evése")){
+            boolean valasz = skeleton.Kerdes("van-e meg spora, amit meg tud enni?");
+            if(valasz){
+                boolean valasz1 = skeleton.Kerdes("maradni fog-e meg spora?");
+                sporak.get(0).fogyaszt(3);
+                if(!valasz){
+                    sporak.remove(0);
+                }
+            } else {
+                throw new Exception("Nincs eleg spora.");
+            }
+        }
+        throw new Exception("Nem megfelelő feladat");
     }
 
     /***
-     * @brief
-     * @param gf
+     * @brief A spóraszórást valósítja meg azáltal, hogy a szomszedok listájában szereplő tektonokra spórát rak
+     * @param gf Gombafaj: Ehhez a fajhoz tartozik a spóra
      */
-    public void sporaSzor(Gombafaj gf){}
+    public void sporaSzor(Gombafaj gf){
+        
+    }
 
     /***
      * @brief
@@ -143,11 +160,13 @@ public class Tekton implements FonalKezeles {
     public boolean vanUt(Tekton a){return true;}
 
     /***
-     * @brief
-     * @param gf
+     * @brief Gombafonalat hozzáadja a gombafonalak listához
+     * @param gf Gombafonal: a listához hozzáadandó fonal
      */
     @Override
-    public void addFonal(Gombafonal gf){}
+    public void addFonal(Gombafonal gf){
+        gombafonalak.add(gf);
+    }
 
     /***
      * @brief

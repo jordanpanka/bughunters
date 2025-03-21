@@ -116,7 +116,6 @@ public class Gombafaj implements FonalKezeles{
     public void  fonalSzakad(Gombafonal gf){
         System.out.println("Meghivódik a gombafaj fonalSzakad metódusa.");
        haldoklas();
-
     }
     public void testNovesztes(Tekton t){
         System.out.println("Meghívódik a gombafaj testNovesztes metodusa.");
@@ -149,11 +148,11 @@ public class Gombafaj implements FonalKezeles{
     }
     public void lastChance(){
         for(int i=0; i<gombafonalhalozat.size(); i++){
-            if(gombafonalhalozat.get(i).getFonalAllapot()==Haldoklo)
+            if(gombafonalhalozat.get(i).getAllapot().equals("Haldoklo"))
             {
                 gombafonalhalozat.get(i).allapotvalt();
             }
-            else if(gombafonalhalozat.get(i).getFonalAllapot()==UtolsoEsely){
+            else if(gombafonalhalozat.get(i).getAllapot().equals("UtolsoEsely")){
 
             }
             else{
