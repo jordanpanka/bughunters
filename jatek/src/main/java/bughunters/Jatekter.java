@@ -31,5 +31,7 @@ public class Jatekter {
             t4.addFonal(fonal);
         }
     }
-    public void tektonAdd(Tekton t){}
+    public void tektonAdd(Tekton t){
+        tektonok.add(t);
+    }
 }
