@@ -24,41 +24,62 @@ public class Tekton implements FonalKezeles {
      * @brief Gombafonalat ad hozzá a Tektonhoz
      * @param gf Gombafaj: Aktuális gombafaj
      * @param honnan Tekton: Vizsgáljuk hogy erről a tektonról vezet e fonal az aktuálisra
+     * @return növesztett gombafonalat adja vissza
+     * @throws Exception ha nem tud gombafonalat növeszteni vagy rossz feladatnál lett hívva
      */
-    public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan){
+    public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan) throws Exception{
         System.out.println("Meghívódott a Tekton gombafonalAdd metódusa.");
 
         Skeleton skeleton = new Skeleton();
         if(skeleton.getTestCase().equals("Gombafonal novesztese")){
             boolean valasz = skeleton.Kerdes("szomszedos t2 es t3-as tekton? jelen van a g1es gombafaj a gombafonala a t2es tektonon?");
             if(valasz){
-                Gombafonal gf2 = new Gombafonal();
+                Gombafonal gf2 = new Gombafonal(gf,this,honnan);
                 addFonal(gf2);
                 return gf2;
             } else {
-                throw new IllegalStateException("A gombafonal nem növeszthető ebben az állapotban.");
+                throw new Exception("A gombafonal nem növeszthető ebben az állapotban.");
             }
         } 
         else if(skeleton.getTestCase().equals("Gombafonal novesztése Tektonra Gombatestbol")){
             boolean valasz = skeleton.Kerdes("van gombatest a g1 gombafajbol a t1 tektonon?");
             if(valasz){
-                Gombafonal gf1 = new Gombafonal();
+                Gombafonal gf1 = new Gombafonal(gf,this,honnan);
                 addFonal(gf1);
                 return gf1;
             } else {
-                throw new IllegalStateException("A gombafonal nem növeszthető ebben az állapotban.");
+                throw new Exception("A gombafonal nem növeszthető ebben az állapotban.");
             }
         }
-        throw new IllegalStateException("Nem megfelelő feladat.");
+        throw new Exception("Nem megfelelő feladat.");
     }
 
     /***
-     * @brief A paraméterben kapott gombafaj gombatestet növeszt a tektonon
-     * @param gf Gombafaj: 
-     * @return Ha tud: növesztett gombatestet adja vissza, Ha nem tud: exception-t dob
+     * @brief Gombatestet növeszt a tektonon
+     * @param gf Gombafaj: Az a gombafaj, ami gombatestet akar növeszteni
+     * @return Ha tud növeszteni gombatestet, akkor azt adja vissza
+     * @throws Exception ha nem tud gombatestet növeszteni vagy nem megfelelő feladatnál lett hívva
      */
-    public Gombatest gombatestNov(Gombafaj gf){
-        
+    public Gombatest gombatestNov(Gombafaj gf) throws Exception{
+        System.out.println("Meghívódott a Tekton gombatestNov metódusa.");
+        Skeleton skeleton = new Skeleton();
+
+        if(skeleton.getTestCase().equals("Gombatest növesztése Tektonra")){
+            boolean valasz = skeleton.Kerdes("alkalmas a tekton testnövesztésre?");
+            if(valasz){
+                try{
+                    sporak.get(0).fogyaszt(3);
+                    Gombatest gt1 = new Gombatest();
+                    return gt1;
+                }
+                catch(Exception e){
+                    throw e;
+                }
+            } else {
+                throw new Exception("Gombatest nem növeszthető ebben az állapotban.");
+            }
+        }
+        throw new Exception("Nem megfelelő feladat.");
     }
 
     /***
@@ -66,7 +87,9 @@ public class Tekton implements FonalKezeles {
      * @param sp
      * @param r
      */
-    public void eszik(Spora sp, Rovar r){}
+    public void eszik(Spora sp, Rovar r){
+
+    }
 
     /***
      * @brief
