@@ -14,7 +14,7 @@ public class Rovar {
         this.tartozkodas = tartozkodas;
     }
 
-    public String getSzin() {}
+    public String getSzin() { return szin; }
     public void setSzin(String szin) { this.szin = szin; }
 
     public Tekton getTartozkodas() {
