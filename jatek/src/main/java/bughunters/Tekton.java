@@ -19,7 +19,7 @@ public class Tekton {
      * @param gf Gombafaj:
      * @param honnan Tekton:
      */
-    public void gombafonalAdd(Gombafaj gf, Tekton honnan);
+    public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan);
 
     /***
      * @brief A paraméterben kapott gombafaj gombatestet növesszen rajta
