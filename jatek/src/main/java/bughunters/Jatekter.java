@@ -37,11 +37,11 @@ public class Jatekter {
         List<Gombafonal> ujszomszed = tektonok.get(1).gombafonalIgazitas();
 
         for (Gombafonal gombafonal : ujszomszed) {
-            if(gombafonal.getVeg1() == tektonok.get(1)){
-                gombafonal.setVeg1(t4);
+            if(gombafonal.getVegpont1() == tektonok.get(1)){
+                gombafonal.setVegpont1(t4);
             }
             else{
-                gombafonal.setVeg2(t4);
+                gombafonal.setVegpont2(t4);
             }
         }
 
