@@ -1,11 +1,13 @@
 package bughunters;
 
-public class Puritekton : Tekton {
+public class Puritekton extends Tekton {
 
     /***
-     * @brief Meghívása során exception-t dob, mivel ezen a tekton típuson nem nőhet gombatest.
-     * @param gf Gombafaj:
-     * @return Mindig exception, mert nem növeszthet gombatestet
+     * @brief
+     * @param gf
+     * @return
      */
-    public Gombatest gombatestNov(Gombafaj gf){}
+    public Gombatest gombatestNov(Gombafaj gf){
+        return new Gombatest();
+    }
 }

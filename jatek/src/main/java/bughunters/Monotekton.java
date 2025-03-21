@@ -1,19 +1,22 @@
 package bughunters;
 
-public class Monotekton : Tekton {
+public class Monotekton extends Tekton {
 
     /***
-     * @brief Létrehoz egy gombafonalat, amit hozzáad a gombafajhoz, ha a tektonra tehető gombafonal
-     * @param gf Gombafaj: ehhez adja hozzá a gombafonalat
-     * @return Létrehozott gombafonal
+     * @brief
+     * @param gf
+     * @return
      */
-    public Gombafonal gombafonalAdd(Gombafaj gf){}
+    public Gombafonal gombafonalAdd(Gombafaj gf){
+        return new Gombafonal();
+    }
 
     /***
-     * @brief Gombatestet növeszt saját magán a paraméterből kapott Gombafaj típusának megfelelően
-     * @param gf Gombafaj: melyik gombafaj gombatestét növeszti
-     * @param honnan Tekton: ??????
-     * @return Növesztett gombatest
+     * @brief
+     * @param gf
+     * @return
      */
-    public Gombatest gombatestNov(Gombafaj gf, Tekton honnan){}
+    public Gombatest gombatestNov(Gombafaj gf){
+        return new Gombatest();
+    }
 }
