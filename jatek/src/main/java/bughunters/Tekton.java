@@ -3,7 +3,7 @@ package bughunters;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tekton {
+public class Tekton implements FonalKezeles {
     private List<Tekton> szomszedok; //melyik tektonok a szomszédjai
     private List<Gombafaj> gombafajok; //megtalálható gombafajok listája
     private List<Spora> sporak; //megtalálható spórák listája
@@ -19,14 +19,14 @@ public class Tekton {
      * @param gf Gombafaj:
      * @param honnan Tekton:
      */
-    public void gombafonalAdd(Gombafaj gf, Tekton honnan);
+    public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan){}
 
     /***
      * @brief A paraméterben kapott gombafaj gombatestet növesszen rajta
      * @param gf Gombafaj
      * @return 
      */
-    public Gombatest gombatestNov(Gombafaj gf);
+    public Gombatest gombatestNov(Gombafaj gf){}
 
     /***
      * @brief
@@ -63,5 +63,19 @@ public class Tekton {
      * @param a
      * @return
      */
-    public boolean vanUt(Tekton a){}
+    public boolean vanUt(Tekton a){return true;}
+
+    /***
+     * @brief
+     * @param gf
+     */
+    @Override
+    public void addFonal(Gombafonal gf){}
+
+    /***
+     * @brief
+     * @param gf
+     */
+    @Override
+    public void fonalSzakad(Gombafonal gf){}
 }
