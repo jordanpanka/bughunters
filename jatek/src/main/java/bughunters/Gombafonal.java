@@ -110,7 +110,7 @@ public class Gombafonal {
     /**
      *  vegpont1 attribútum gettere
      */
-    public Tekton getVeg1()
+    public Tekton getVegpont1()
     {
         return vegpont1;
     }
@@ -118,7 +118,7 @@ public class Gombafonal {
     /**
      *  vegpont1 attribútum settere
      */
-    public void setVeg1(Tekton t)
+    public void setVegpont1(Tekton t)
     {
         vegpont1=t;
     }
@@ -126,7 +126,7 @@ public class Gombafonal {
      /**
      *  vegpont2 attribútum gettere
      */
-    public Tekton getVeg2()
+    public Tekton getVegpont2()
     {
         return vegpont2;
     }
@@ -134,7 +134,7 @@ public class Gombafonal {
     /**
      *  vegpont2 attribútum settere
      */
-    public void setVeg2(Tekton t)
+    public void setVegpont2(Tekton t)
     {
         vegpont2=t;
     }

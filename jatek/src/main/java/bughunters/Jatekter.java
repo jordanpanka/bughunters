@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Jatekter {
-    private ArrayList<Tekton> tektonok;
+    private List<Tekton> tektonok;
+
+    public List<Tekton> getTektonok(){
+        return tektonok;
+    }
 
     public Jatekter(ArrayList<Tekton> t){
         tektonok = t;
