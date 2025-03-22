@@ -394,7 +394,7 @@ public class Skeleton {
     }
 
     public void teszt15(){
-        Tekton d1 = new Disszolator();
+        Disszolator d1 = new Disszolator();
         Tekton t1 = new Tekton();
         Gombafonal gf1 = new Gombafonal();
         Gombafaj g1 = new Gombafaj();
@@ -409,7 +409,7 @@ public class Skeleton {
         t1.addFonal(gf1);
 
         try {
-            d1.gombafonalFelszivasa();
+            d1.gombafonalFelszivas();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
