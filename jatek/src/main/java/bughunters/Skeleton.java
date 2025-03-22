@@ -1,6 +1,5 @@
 package bughunters;
 
-import java.awt.PaintContext;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -49,7 +48,11 @@ public class Skeleton {
         return false;
     }
 
-    public void teszt1_setup(){
+    //Konkrét tesztesetekké írni őket.
+    //Test-case diagrammok alapján kibővíteni a tesztelést és a KOMM. DIAGRAMMOKAT IS
+
+
+    public void teszt1(){
         Tekton t1= new Tekton();
         Tekton t2= new Tekton();
         Tekton t3 = new Tekton();
@@ -74,7 +77,7 @@ public class Skeleton {
         gf1.setVegpont2(t2);
     }
 
-    public void teszt2_setup(){
+    public void teszt2(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         Gombafaj g1 = new Gombafaj();
@@ -86,7 +89,7 @@ public class Skeleton {
         gt1.setTekton(t1);
     }
 
-    public void teszt3_setup(){
+    public void teszt3(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         Tekton m1 = new Monotekton();
@@ -113,7 +116,7 @@ public class Skeleton {
 
     }
 
-    public void teszt4_setup(){
+    public void teszt4(){
         Gombafaj g1 = new Gombafaj();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -141,7 +144,7 @@ public class Skeleton {
        gf1.setGombafaj(g1);
     }
 
-    public void teszt5_setup(){
+    public void teszt5(){
         Tekton t1 = new Tekton();
         Tekton p1 = new Puritekton();
         Gombafaj g1 = new Gombafaj();
@@ -163,7 +166,7 @@ public class Skeleton {
        b1.setGombafaj(g1);
     }
 
-    public void teszt6_setup(){
+    public void teszt6(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         Gombafaj g1 = new Gombafaj();
@@ -182,7 +185,7 @@ public class Skeleton {
         b1.setGombafaj(g1);
     }
 
-    public void teszt7_setup(){
+    public void teszt7(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         Gombafaj g1 = new Gombafaj();
@@ -197,7 +200,7 @@ public class Skeleton {
         gt1.setTekton(t1);
     }
 
-    public void teszt8_setup(){
+    public void teszt8(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         Tekton t3 = new Tekton();
@@ -216,7 +219,7 @@ public class Skeleton {
         gt1.setTekton(t1);
     }
 
-    public void teszt9_setup(){
+    public void teszt9(){
         //ROVAR MÁSZIK FONAL NINCS-->KOMM.DIAGRAM
         Tekton t1 = new Tekton();
         Tekton t2= new Tekton();
@@ -227,7 +230,7 @@ public class Skeleton {
         r1.setTartozkodas(t1);
     }
 
-    public void teszt10_setup(){
+    public void teszt10(){
         Tekton d1 = new Disszolator();
         Tekton t1 = new Tekton();
         Gombafonal gf1 = new Gombafonal();
@@ -243,7 +246,7 @@ public class Skeleton {
         t1.addFonal(gf1);
     }
 
-    public void teszt11_setup(){
+    public void teszt11(){
         Jatekter jt = new Jatekter();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -285,7 +288,7 @@ public class Skeleton {
 
     }
 
-    public void teszt12_setup(){
+    public void teszt12(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         Tekton t3 = new Tekton();
@@ -327,7 +330,7 @@ public class Skeleton {
 
     }
 
-    public void teszt13_setup(){
+    public void teszt13(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         Tekton t3 = new Tekton();
@@ -357,7 +360,7 @@ public class Skeleton {
 
     }
 
-    public void teszt14_setup(){
+    public void teszt14(){
         Rovar r1 = new Rovar();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();

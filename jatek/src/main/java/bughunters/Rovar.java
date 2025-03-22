@@ -9,6 +9,8 @@ public class Rovar {
      * Default constructor for Rovar.
      */
     public Rovar() {
+        System.out.println("Létrejött egy új Rovar.");
+
         //this.szin = "";
         this.tartozkodas = null;
     }
@@ -18,6 +20,8 @@ public class Rovar {
      * @param tartozkodas The Tekton where the Rovar is located.
      */
     public Rovar(/*String szin,*/ Tekton tartozkodas) {
+        System.out.println("Létrejött egy új Rovar.");
+
         //this.szin = szin;
         this.tartozkodas = tartozkodas;
     }
@@ -40,8 +44,6 @@ public class Rovar {
      * @return The current Tekton.
     */
     public Tekton getTartozkodas() {
-        System.out.println("Meghívódott a Rovar getTartozkodas metódusa.");
-
         return tartozkodas;
     }
 
@@ -50,8 +52,6 @@ public class Rovar {
      * @param t The new Tekton.
      */
     public void setTartozkodas(Tekton t){ 
-        System.out.println("Meghívódott a Rovar setTartozkodas metódusa.");
-
         this.tartozkodas = t; 
     }
 
