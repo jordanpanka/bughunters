@@ -455,7 +455,7 @@ public class Skeleton {
     }
 
     public void teszt15(){
-        Disszolator d1 = new Disszolator();
+        Tekton d1 = new Disszolator();
         Tekton t1 = new Tekton();
         Gombafonal gf1 = new Gombafonal();
         Gombafaj g1 = new Gombafaj();
