@@ -13,6 +13,7 @@ public class Gombatest {
         this.kor = kor;*/
         this.gombafaj = gombafaj;
         this.tekton = tekton;
+        System.out.println("Létrejött egy új Gombatest.");
     }
 
     public Tekton getTekton() {

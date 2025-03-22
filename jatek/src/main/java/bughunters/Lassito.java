@@ -18,7 +18,7 @@ public class Lassito extends Spora {
 
     public Lassito()
     {
-        System.out.println("Létrejött egy új Bénító spóra:" );
+        System.out.println("Létrejött egy új Lassito spóra:" );
     }
 
     /**

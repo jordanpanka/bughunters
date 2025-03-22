@@ -22,7 +22,8 @@ public class Jatekter {
      * @brief Alapértelmezett konstruktor, amely létrehozza a Jatekter objektumot.
      */
     public Jatekter() {
-        System.out.println("Meghívódik a Jatekter paraméter nélküli konstruktora.");
+       
+        System.out.println("Létrejött egy új Játéktér");
     }
 
     /**
@@ -30,7 +31,7 @@ public class Jatekter {
      * @param t A Tekton objektumokat tartalmazó lista.
      */
     public Jatekter(ArrayList<Tekton> t) {
-        System.out.println("Meghívódik a Jatekter paraméteres konstruktora.");
+        System.out.println("Létrejött egy új Játéktér");
         tektonok = t;
     }
 

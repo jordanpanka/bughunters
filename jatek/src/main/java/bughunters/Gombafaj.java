@@ -16,7 +16,7 @@ public class Gombafaj implements FonalKezeles{
     /**
      * Alapértelmezett konstruktor a Gombafaj létrehozására.
      */
-    public Gombafaj(){}
+    public Gombafaj(){System.out.println("Létrejött egy új Gombafaj.");}
 
     /**
      * Paraméterezett konstruktor, amely létrehozza a gombafajt és inicializálja a listákat.
@@ -35,7 +35,7 @@ public class Gombafaj implements FonalKezeles{
         gombatestEletSzama=gtesz;*/
         gombaTestek=new ArrayList<Gombatest>();
         gombafonalhalozat=new ArrayList<Gombafonal>();
-        System.out.println("Létrejött egy új gombafaj:" );
+        System.out.println("Létrejött egy új Gombafaj:" );
     }
     /*public String getNev() {
         return nev;
