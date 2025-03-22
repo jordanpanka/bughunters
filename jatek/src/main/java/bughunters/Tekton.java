@@ -105,6 +105,11 @@ public class Tekton implements FonalKezeles {
                     throw e;
                 }
     }
+    
+    /***
+     * @brief Törli a spórát a sporak listából
+     * @param spora Spora: törlendő spóra
+     */
     public void torlesSpora(Spora spora){
         sporak.remove(spora);
     }
