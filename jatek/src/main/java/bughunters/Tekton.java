@@ -169,10 +169,13 @@ public class Tekton implements FonalKezeles {
     }
 
     /***
-     * @brief 
-     * @param sp
+     * @brief A Tekton sporak listájához hozzáadja a paraméterben kapott spórát
+     * @param sp Spora: amit hozzáadunk a listához
      */
-    public void addSpora(Spora sp){}
+    public void addSpora(Spora sp){
+        System.out.println("Meghívódott a Tekton addSpora metódusa.");
+        sporak.add(sp);
+    }
 
     /***
      * @brief A törés során érintett tektonok új szomszédait állítja be
