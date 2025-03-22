@@ -281,4 +281,6 @@ public class Tekton implements FonalKezeles {
             }
         } 
     }
+
+    public void gombafonalFelszivas(){}
 }
