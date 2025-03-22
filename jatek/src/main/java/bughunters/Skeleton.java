@@ -339,6 +339,7 @@ public class Skeleton {
     }
 
     //Spóra szórása még nem létező Spórával
+    //Fejlett Spora Szoras
     public void teszt12(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -358,6 +359,183 @@ public class Skeleton {
         gt1.setTekton(t1);
     }
 
+    //Rovar mászik lehet
+    public void teszt9(){
+        //ROVAR MÁSZIK FONAL NINCS-->KOMM.DIAGRAM
+        Tekton t1 = new Tekton();
+        Tekton t2= new Tekton();
+        Rovar r1 = new Rovar();
+
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        r1.setTartozkodas(t1);
+    }
+
+    //Gombafonal felszívódása Disszolátoron
+    public void teszt10(){
+        Tekton d1 = new Disszolator();
+        Tekton t1 = new Tekton();
+        Gombafonal gf1 = new Gombafonal();
+        Gombafaj g1 = new Gombafaj();
+
+        d1.addSzomszed(t1);
+        t1.addSzomszed(d1);
+        d1.addFonal(gf1);
+        g1.addFonal(gf1);
+        gf1.setVegpont1(d1);
+        gf1.setVegpont2(t1);
+        gf1.setGombafaj(g1);
+        t1.addFonal(gf1);
+    }
+
+    //Tekton törés
+    public void teszt11(){
+        Jatekter jt = new Jatekter();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        Tekton t3 = new Tekton();
+
+        Gombafaj g1 = new Gombafaj();
+        Gombafonal gf1 = new Gombafonal();
+        Gombafonal gf2 = new Gombafonal();
+        Gombatest gt1 = new Gombatest();
+
+        jt.tektonAdd(t1);
+        jt.tektonAdd(t2);
+        jt.tektonAdd(t3);
+
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        t2.addSzomszed(t3);
+        t3.addSzomszed(t2);
+
+        t1.addFonal(gf1);
+        t2.addFonal(gf1);
+        t2.addFonal(gf2);
+        t3.addFonal(gf2);
+
+        g1.addFonal(gf1);
+        g1.addFonal(gf2);
+
+        gf1.setVegpont1(t1);
+        gf1.setVegpont2(t2);
+
+        gf2.setVegpont1(t2);
+        gf2.setVegpont2(t3);
+
+        g1.addTest(gt1);
+
+        gt1.setTekton(t2);
+
+        gf1.setGombafaj(g1);
+
+    }
+
+    //Fonal vágás
+    public void teszt12(){
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        Tekton t3 = new Tekton();
+        Gombatest gt1 = new Gombatest();
+        Gombafaj g1 = new Gombafaj();
+        Gombafonal gf1_1 = new Gombafonal();
+        Gombafonal gf1_2 = new Gombafonal();
+        Rovar r1 = new Rovar();
+
+       t1.addSzomszed(t2);
+       t1.addFonal(gf1_1);
+
+       t2.addSzomszed(t1);
+       t2.addSzomszed(t3);
+
+       t3.addSzomszed(t2);
+       
+       t2.addFonal(gf1_1);
+       t2.addFonal(gf1_2);
+
+       t3.addFonal(gf1_2);
+
+       gt1.setTekton(t1);
+
+       g1.addTest(gt1);
+
+       gf1_1.setVegpont1(t1);
+       gf1_1.setVegpont2(t2);
+       gf1_2.setVegpont1(t2);
+       gf1_2.setVegpont2(t3);
+
+       gf1_1.setGombafaj(g1);
+       gf1_2.setGombafaj(g1);
+
+       r1.setTartozkodas(t2);
+
+       g1.addFonal(gf1_1);
+       g1.addFonal(gf1_2);
+
+    }
+
+    //Fonal lastChance
+    public void teszt13(){
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        Tekton t3 = new Tekton();
+        Gombatest gt1 = new Gombatest();
+        Gombafaj g1 = new Gombafaj();
+        Gombafonal gf1 = new Gombafonal();
+
+        t1.addSzomszed(t2);
+
+        t2.addSzomszed(t1);
+        t2.addSzomszed(t3);
+
+        t3.addSzomszed(t2);
+
+        t2.addFonal(gf1);
+        t3.addFonal(gf1);
+
+        gt1.setTekton(t1);
+
+        g1.addTest(gt1);
+
+        gf1.setVegpont1(t2);
+        gf1.setVegpont2(t3);
+        gf1.setGombafaj(g1);
+
+        g1.addFonal(gf1);
+
+    }
+
+    //Bénító spóra evés
+    public void teszt14(){
+        Rovar r1 = new Rovar();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        Spora bs1 = new Benito();
+        Gombafaj g1 = new Gombafaj();
+        Gombafonal gf1 = new Gombafonal();
+        Gombatest gt1 = new Gombatest();
+    
+        g1.addTest(gt1);
+        g1.addFonal(gf1);
+
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        t1.addFonal(gf1);
+        t2.addFonal(gf1);
+
+        gf1.setVegpont1(t1);
+        gf1.setVegpont2(t2);
+
+        bs1.setGombafaj(g1);
+
+        gt1.setTekton(t1);
+
+        t2.addSpora(bs1);
+
+        r1.setTartozkodas(t2);
+
+        gf1.setGombafaj(g1);
+    }
 }
 
 
