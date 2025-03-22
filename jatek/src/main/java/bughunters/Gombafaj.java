@@ -138,7 +138,7 @@ public class Gombafaj implements FonalKezeles{
      * @param honnan  A kiindulási Tekton.
      * @throws Exception Ha nem lehetséges a fonal növesztése.
      */
-    public void  fonalNov(Tekton hova, Tekton honnan)throws Exception{
+    public void  fonalNov(Tekton honnan, Tekton hova)throws Exception{
         System.out.println("Meghívódott a Gombafaj fonalNov metódusa.");
         try{
             Gombafonal uj= hova.gombafonalAdd(this,honnan);
@@ -151,7 +151,7 @@ public class Gombafaj implements FonalKezeles{
     }
      /**
      * Hozzáad egy új gombafonalat a hálózathoz.
-     *
+     *0
      * @param gf A hozzáadandó gombafonal.
      */
     public void addFonal(Gombafonal gf){
