@@ -185,11 +185,15 @@ public class Tekton implements FonalKezeles {
     /***
      * @brief A törés során érintett tektonok új szomszédait állítja be
      */
-    public void szomszedAllitas(){
+    public void szomszedAllitas(Tekton t){
         System.out.println("Meghívódott a Tekton szomszedAllitas metódusa.");
         
-        Tekton ujTekton = new Tekton();
-        szomszedok.add(ujTekton);
+        szomszedok.add(t);
+
+        t.addSzomszed(this);
+        t.addSzomszed(szomszedok.get(1));
+
+        szomszedok.remove(1);
 
         //mi alapján mondom meg melyik a szomszédja amit törölni kell?
     }
