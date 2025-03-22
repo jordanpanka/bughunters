@@ -3,28 +3,28 @@ package bughunters;
 import java.util.ArrayList;
 
 public class Gombafaj implements FonalKezeles{
-    private String nev;
+   /*private String nev;
     private int termelesIdeje;
     private int eddigNovesztettTestekSzama;
     private int gombatestFejlettsegIdo;
-    private int gombatestEletSzama;
+    private int gombatestEletSzama;*/
     private ArrayList<Gombatest> gombaTestek;
     private ArrayList<Gombafonal> gombafonalhalozat;
 
     public Gombafaj(){
-        
+
     }
     public Gombafaj(String n, int tI, int ents, int gtfi,int gtesz){
-        nev=n;
+        /*nev=n;
         termelesIdeje=tI;
         eddigNovesztettTestekSzama=ents;
         gombatestFejlettsegIdo=gtfi;
-        gombatestEletSzama=gtesz;
+        gombatestEletSzama=gtesz;*/
         gombaTestek=new ArrayList();
         gombafonalhalozat=new ArrayList();
         System.out.println("Létrejött egy új gombafaj:" );
     }
-    public String getNev() {
+    /*public String getNev() {
         return nev;
     }
     
@@ -62,7 +62,7 @@ public class Gombafaj implements FonalKezeles{
     
     public void setGombatestEletSzama(int gombatestEletSzama) {
         this.gombatestEletSzama = gombatestEletSzama;
-    }
+    }*/
     
     public ArrayList<Gombatest> getGombaTestek() {
         return gombaTestek;
@@ -118,7 +118,7 @@ public class Gombafaj implements FonalKezeles{
     }
     public void  fonalSzakad(Gombafonal gf){
         System.out.println("Meghivódik a gombafaj fonalSzakad metódusa.");
-       haldoklas();
+        haldoklas();
     }
     public void testNovesztes(Tekton t){
         System.out.println("Meghívódik a gombafaj testNovesztes metodusa.");
