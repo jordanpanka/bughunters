@@ -12,6 +12,12 @@ public class Benito extends Spora {
     public Benito(int t, int m, Gombafaj g)
     {
        super(t, m, g);
+       System.out.println("Létrejött egy új Bénító spóra:" );
+    }
+
+    public Benito()
+    {
+        System.out.println("Létrejött egy új Bénító spóra:" );
     }
 
     /**
