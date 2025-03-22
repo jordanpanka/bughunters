@@ -81,6 +81,7 @@ public class Gombafaj implements FonalKezeles{
     }
     
     private void haldoklas(){
+        System.out.println("Meghívódott a Gombafaj haldoklas metódusa.");
         ArrayList<Tekton> gombatestesTektonok=new ArrayList<>();
         for(Gombatest gt: gombaTestek){
             gombatestesTektonok.add(gt.getTekton());
@@ -110,18 +111,19 @@ public class Gombafaj implements FonalKezeles{
         } 
     }
     public void addFonal(Gombafonal gf){
-        System.out.println("Meghívódik a gombafaj addFonal metódusa.");
+        System.out.println("Meghívódik a Gombafaj addFonal metódusa.");
         if (gombafonalhalozat == null) {
             gombafonalhalozat = new ArrayList<>();
         }
         gombafonalhalozat.add(gf);
     }
     public void  fonalSzakad(Gombafonal gf){
-        System.out.println("Meghivódik a gombafaj fonalSzakad metódusa.");
+        System.out.println("Meghivódik a Gombafaj fonalSzakad metódusa.");
+
         haldoklas();
     }
     public void testNovesztes(Tekton t){
-        System.out.println("Meghívódik a gombafaj testNovesztes metodusa.");
+        System.out.println("Meghívódik a Gombafaj testNovesztes metodusa.");
         try{
             Gombatest uj=t.gombatestNov(this);
             addTest(uj);
@@ -150,18 +152,17 @@ public class Gombafaj implements FonalKezeles{
         
     }
     public void lastChance(){
+        System.out.println("Meghívódik a Gombafaj lastChance metodusa.");
         for(int i=0; i<gombafonalhalozat.size(); i++){
             if(gombafonalhalozat.get(i).getAllapot().equals("Haldoklo"))
             {
                 gombafonalhalozat.get(i).allapotvalt();
             }
             else if(gombafonalhalozat.get(i).getAllapot().equals("UtolsoEsely")){
-
+                //
+                gombafonalhalozat.get(i).vegpontTorles();
             }
-            else{
-
-            }
-            
+        
         }
     }
     public void toresHaldoklas(){
