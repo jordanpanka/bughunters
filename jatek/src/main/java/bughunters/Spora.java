@@ -33,7 +33,7 @@ abstract class Spora {
     }
     public Spora()
     {
-
+        
     }
 
     /**
@@ -45,13 +45,26 @@ abstract class Spora {
      */
     public void fogyaszt(int mennyit) throws Exception {
 
+        Skeleton s = Skeleton.getInstance();
         System.out.println("Meghívódik a Spora osztaly fogyaszt metodusa.");
+        boolean valasz= s.Kerdes("Van elég spóra?");
+
+        if(valasz)
+        {
+            //Itt most írnom kell bármit, ha igen??
+        }
+        else
+        {
+            throw new Exception("Nincs elég spóra az akció végrehajtására");
+        }
+        /* 
         if (mennyiseg - mennyit >= 0) {
             mennyiseg -= mennyit;
             
         } else {
             throw new Exception("Nincs elég spóra az akció végrehajtására");
         }
+            */
     }
 
     /**
@@ -64,12 +77,24 @@ abstract class Spora {
      */
     public void fogyaszt(int mennyit, Rovar r) throws Exception {
         System.out.println("Meghívódik a Spora osztaly fogyaszt metodusa.");
+      
+
+        if(mennyiseg>0)
+        {
+            hatas(r);
+        }
+        else
+        {
+            throw new Exception("Nincs elég spóra az akció végrehajtására");
+        }
+        /* 
         if (mennyiseg - mennyit >= 0) {
             mennyiseg -= mennyit;
             hatas(r);
         } else {
             throw new Exception("Nincs elég spóra az akció végrehajtására");
         }
+            */
     }
 
     public void szorasTortent()
