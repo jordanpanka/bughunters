@@ -73,26 +73,32 @@ public class Tekton implements FonalKezeles {
     public Gombafonal gombafonalAdd(Gombafaj g, Tekton honnan) throws Exception {
         System.out.println("Meghívódott a Tekton gombafonalAdd metódusa.");
         //ellenőrizni hogy létezik e már ilyen gombafonal
-        List<Tekton> gombatestekHelye=new ArrayList<Tekton>();
-        if (g.getGombaTestek() != null) {
-            for (Gombatest gt : g.getGombaTestek()) {
-                gombatestekHelye.add(gt.getTekton());
+        if(getSzomszedok().contains(honnan)){
+                List<Tekton> gombatestekHelye=new ArrayList<Tekton>();
+            if (g.getGombaTestek() != null) {
+                for (Gombatest gt : g.getGombaTestek()) {
+                    gombatestekHelye.add(gt.getTekton());
+                }
             }
+            
+            for(Gombafonal gfonal : honnan.getFonalak())
+            {
+                gombatestekHelye.add(gfonal.getVegpont1());
+                gombatestekHelye.add(gfonal.getVegpont2());
+            }
+            //debuggolás
+            if(gombatestekHelye.contains(honnan)){ 
+                //System.out.println("Van odavezető fonal.");  
+                Gombafonal gf2 = new Gombafonal(g,this,honnan);
+                addFonal(gf2);
+                return gf2;
+            }
+            throw new Exception("Nem lehet fonalat növeszteni.");
         }
-        
-        for(Gombafonal gfonal : honnan.getFonalak())
-        {
-            gombatestekHelye.add(gfonal.getVegpont1());
-            gombatestekHelye.add(gfonal.getVegpont2());
+        else{
+            throw new Exception("Nem lehet fonalat növeszteni.");
         }
-        //debuggolás
-        if(gombatestekHelye.contains(honnan)){ 
-            //System.out.println("Van odavezető fonal.");  
-            Gombafonal gf2 = new Gombafonal(g,this,honnan);
-            addFonal(gf2);
-            return gf2;
-        }
-        throw new Exception("Nem lehet fonalat növeszteni.");
+       
     }
 
     /***
