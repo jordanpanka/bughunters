@@ -61,7 +61,7 @@ public class Tekton implements FonalKezeles {
      */
     public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan) throws Exception {
         System.out.println("Meghívódott a Tekton gombafonalAdd metódusa.");
-
+        //van-e már ilyen gombafonal és milyen állapotban van, mert ha van és haldokló vagy utolsó esély akkor csak azt kell átállítani
         if(Skeleton.getInstance().getTestCase().equals("Gombafonal novesztese")){
             boolean valasz = Skeleton.getInstance().Kerdes("szomszedos t2 es t3-as tekton? jelen van a g1es gombafaj a gombafonala a t2es tektonon?");
             if(valasz){
