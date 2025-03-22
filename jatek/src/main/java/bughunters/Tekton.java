@@ -74,7 +74,7 @@ public class Tekton implements FonalKezeles {
                 gombatestekHelye.add(gfonal.getVegpont2());
             }
             if(gombatestekHelye.contains(honnan))
-             {   Gombafonal gf2 = new Gombafonal(gf,this,honnan);
+             {   Gombafonal gf2 = new Gombafonal(g,this,honnan);
                 addFonal(gf2);
                 return gf2;
              }
@@ -117,12 +117,21 @@ public class Tekton implements FonalKezeles {
             boolean valasz = Skeleton.getInstance().Kerdes("van-e meg spora, amit meg tud enni?");
             if(valasz){
                 boolean valasz1 = Skeleton.getInstance().Kerdes("maradni fog-e meg spora?");
-                sporak.get(0).fogyaszt(3);
+                for (Spora spora : sporak) {
+                    if(spora == sp) {
+                        sp.fogyaszt(3, r);
+                    }
+                }
+
                 if(!valasz1){
-                    sporak.remove(0);
+                    for (Spora spora : sporak) {
+                        if(spora == sp) {
+                            sporak.remove(sp);
+                        }
+                    }
                 }
             } else {
-                throw new Exception("Nincs eleg spora.");
+                throw new Exception("Nincs spora.");
             }
     }
 
