@@ -5,7 +5,9 @@ public class Gombatest {
     private Gombafaj gombafaj;
     private Tekton tekton;
 
-    public Gombatest(){}
+    public Gombatest(){
+        System.out.println("Létrejött egy Gombatest.");
+    }
     public Gombatest(int sporaRaktar, int kor, Gombafaj gombafaj, Tekton tekton) {
         /*this.sporaRaktar = sporaRaktar;
         this.kor = kor;*/
