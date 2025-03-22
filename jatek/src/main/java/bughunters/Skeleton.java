@@ -56,22 +56,29 @@ public class Skeleton {
     public void teszt1(){
         Tekton t1= new Tekton();
         Tekton t2= new Tekton();
-        Rovar r1 = new Rovar();
+        Tekton t3 = new Tekton();
         Gombafaj g1 = new Gombafaj();
         Gombafonal gf1 = new Gombafonal();
 
         t1.addSzomszed(t2);
-        t2.addSzomszed(t1);
-        r1.setTartozkodas(t1);
+        t1.addSzomszed(t3);
         t1.addFonal(gf1);
+
+        t2.addSzomszed(t1);
+        t2.addSzomszed(t3);
         t2.addFonal(gf1);
+
+        t3.addSzomszed(t1);
+        t3.addSzomszed(t2);
+
         g1.addFonal(gf1);
+
+        gf1.setGombafaj(g1);
         gf1.setVegpont1(t1);
         gf1.setVegpont2(t2);
-        gf1.setGombafaj(g1);
 
         try {
-            r1.maszik(t2);
+            g1.fonalNov(t2, t3);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
