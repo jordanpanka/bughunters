@@ -123,18 +123,20 @@ public class Tekton implements FonalKezeles {
         System.out.println("Meghívódott a Tekton eszik metódusa.");
 
             boolean valasz = Skeleton.getInstance().Kerdes("van-e meg spora, amit meg tud enni?");
-            if(valasz){
-                boolean valasz1 = Skeleton.getInstance().Kerdes("maradni fog-e meg spora?");
+            boolean valasz1 = Skeleton.getInstance().Kerdes("es nincs Benitott allapotban a rovar?");
+            if(valasz && valasz1){
+                boolean valasz2 = Skeleton.getInstance().Kerdes("maradni fog-e meg spora?");
                 for (Spora spora : sporak) {
                     if(spora == sp) {
                         sp.fogyaszt(3, r);
                     }
                 }
 
-                if(!valasz1){
+                if(!valasz2){
                     for (Spora spora : sporak) {
                         if(spora == sp) {
                             sporak.remove(sp);
+                            break;
                         }
                     }
                 }
@@ -185,13 +187,15 @@ public class Tekton implements FonalKezeles {
     /***
      * @brief A törés során érintett tektonok új szomszédait állítja be
      */
-    public void szomszedAllitas(){
+    public void szomszedAllitas(Tekton t){
         System.out.println("Meghívódott a Tekton szomszedAllitas metódusa.");
         
-        Tekton ujTekton = new Tekton();
-        szomszedok.add(ujTekton);
+        szomszedok.add(t);
 
-        //mi alapján mondom meg melyik a szomszédja amit törölni kell?
+        t.addSzomszed(this);
+        t.addSzomszed(szomszedok.get(1));
+
+        szomszedok.remove(1);
     }
 
     /***
