@@ -211,6 +211,10 @@ public class Gombafaj implements FonalKezeles{
         {
             g.urit();
             t.sporaSzor(this);
+            boolean valasz=Skeleton.getInstance().Kerdes("Elhal a gombatest?");
+            if(valasz){
+                torolGombatest(g);
+            }
         }catch(Exception e){
             throw new Exception("Nem tud a gombatest spórát szórni.");
         }
@@ -257,4 +261,5 @@ public class Gombafaj implements FonalKezeles{
         System.out.println("Meghívódik a Gombafaj toresHaldoklas metodusa.");
         haldoklas();
     }
+    
 }
