@@ -13,7 +13,13 @@ public class Gyorsito extends Spora {
     public Gyorsito(int t, int m, Gombafaj g)
     {
        super(t, m, g);
+       System.out.println("Létrejött egy új Gyorsító spóra:" );
     }
+    public Gyorsito()
+    {
+        System.out.println("Létrejött egy Gyorsító spóra:" );
+    }
+
      /**
      * A spóra hatást fejt ki a megadott rovarra, és gyorsítja  azt.
      *

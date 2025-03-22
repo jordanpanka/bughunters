@@ -30,12 +30,19 @@ public class Gombafonal {
     /** A fonal másik végpontja. */
     private Tekton vegpont2;
 
-    public Gombafonal(Gombafaj gf, Tekton veg1, Tekton veg2)
+    public Gombafonal(Gombafaj g, Tekton veg1, Tekton veg2)
     {
         allapot=fonalAllapot.Ep;
         miota=0;
         vegpont1=veg1;
         vegpont2=veg2;
+        gombafaj=g;
+        System.out.println("Létrejött egy új Gombafonal:" );
+        
+    }
+    public Gombafonal()
+    {
+        System.out.println("Létrejött egy új Gombafonal:" );
     }
 
     /**
@@ -83,6 +90,13 @@ public class Gombafonal {
             return miota;
     }
 
+    /**
+     * miota attribútum settere
+     */
+    public void setMiota(int m)
+    {
+        miota =m;
+    }
      /**
      * Visszaadja a gombafonal aktuális állapotát
      */
@@ -105,6 +119,14 @@ public class Gombafonal {
     public Gombafaj getGombafaj()
     {
         return gombafaj;
+    }
+
+    /**
+     *  gombafaj attribútum settere
+     */
+    public void setGombafaj(Gombafaj g)
+    {
+        gombafaj=g;
     }
 
     /**

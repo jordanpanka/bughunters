@@ -29,6 +29,11 @@ abstract class Spora {
         tapertek =t;
         mennyiseg=m;
         gombafaj=g;
+       
+    }
+    public Spora()
+    {
+
     }
 
     /**
@@ -67,6 +72,11 @@ abstract class Spora {
         }
     }
 
+    public void szorasTortent()
+    {
+        mennyiseg += gombafaj.getGombatestSzortSpora();
+    }
+
      /**
      * tapertek attribútum gettere
      */
@@ -76,11 +86,27 @@ abstract class Spora {
     }
 
      /**
+     * tapertek attribútum settere
+     */
+    public void setTapertek(int t)
+    {
+        tapertek= t;
+    }
+
+     /**
      * gombafaj attribútum gettere
      */
     public Gombafaj getGombafaj()
     {
         return gombafaj;
+    }
+
+    /**
+     * gombafaj attribútum settere
+     */
+    public void setGombafaj(Gombafaj g)
+    {
+        gombafaj=g;
     }
 
     /**

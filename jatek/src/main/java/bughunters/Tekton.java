@@ -1,11 +1,15 @@
 package bughunters;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+import java.util.Set;
 
 public class Tekton implements FonalKezeles {
     private List<Tekton> szomszedok; //melyik tektonok a szomszédjai
-    private List<Gombafonal> gombafonalak; //megtalálható gombafajok listája
+    private List<Gombafonal> gombafonalak; //megtalálható gombafonalak listája
     private List<Spora> sporak; //megtalálható spórák listája
 
     public Tekton() {
@@ -40,6 +44,13 @@ public class Tekton implements FonalKezeles {
         sporak = ujsporak;
     }
 
+    /***
+     * @brief Új szomszédot ad hozzá az aktuális tektonhoz
+     * @param ujszomszed
+     */
+    public void addSzomszed(Tekton ujszomszed){
+        szomszedok.add(ujszomszed);
+    }
 
     /***
      * @brief Gombafonalat ad hozzá a Tektonhoz
@@ -48,12 +59,11 @@ public class Tekton implements FonalKezeles {
      * @return növesztett gombafonalat adja vissza
      * @throws Exception ha nem tud gombafonalat növeszteni vagy rossz feladatnál lett hívva
      */
-    public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan) throws Exception{
+    public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan) throws Exception {
         System.out.println("Meghívódott a Tekton gombafonalAdd metódusa.");
 
-        Skeleton skeleton = new Skeleton();
-        if(skeleton.getTestCase().equals("Gombafonal novesztese")){
-            boolean valasz = skeleton.Kerdes("szomszedos t2 es t3-as tekton? jelen van a g1es gombafaj a gombafonala a t2es tektonon?");
+        if(Skeleton.getInstance().getTestCase().equals("Gombafonal novesztese")){
+            boolean valasz = Skeleton.getInstance().Kerdes("szomszedos t2 es t3-as tekton? jelen van a g1es gombafaj a gombafonala a t2es tektonon?");
             if(valasz){
                 Gombafonal gf2 = new Gombafonal(gf,this,honnan);
                 addFonal(gf2);
@@ -62,8 +72,8 @@ public class Tekton implements FonalKezeles {
                 throw new Exception("A gombafonal nem növeszthető ebben az állapotban.");
             }
         } 
-        else if(skeleton.getTestCase().equals("Gombafonal novesztése Tektonra Gombatestbol")){
-            boolean valasz = skeleton.Kerdes("van gombatest a g1 gombafajbol a t1 tektonon?");
+        else if(Skeleton.getInstance().getTestCase().equals("Gombafonal novesztése Tektonra Gombatestbol")){
+            boolean valasz = Skeleton.getInstance().Kerdes("van gombatest a g1 gombafajbol a t1 tektonon?");
             if(valasz){
                 Gombafonal gf1 = new Gombafonal(gf,this,honnan);
                 addFonal(gf1);
@@ -83,10 +93,9 @@ public class Tekton implements FonalKezeles {
      */
     public Gombatest gombatestNov(Gombafaj gf) throws Exception{
         System.out.println("Meghívódott a Tekton gombatestNov metódusa.");
-        Skeleton skeleton = new Skeleton();
 
-        if(skeleton.getTestCase().equals("Gombatest növesztése Tektonra")){
-            boolean valasz = skeleton.Kerdes("alkalmas a tekton testnövesztésre?");
+        if(Skeleton.getInstance().getTestCase().equals("Gombatest növesztése Tektonra")){
+            boolean valasz = Skeleton.getInstance().Kerdes("alkalmas a tekton testnövesztésre?");
             if(valasz){
                 try{
                     sporak.get(0).fogyaszt(3);
@@ -110,14 +119,13 @@ public class Tekton implements FonalKezeles {
      */
     public void eszik(Spora sp, Rovar r) throws Exception {
         System.out.println("Meghívódott a Tekton eszik metódusa.");
-        Skeleton skeleton = new Skeleton();
 
-        if(skeleton.getTestCase().equals("Bénító spóra evése")){
-            boolean valasz = skeleton.Kerdes("van-e meg spora, amit meg tud enni?");
+        if(Skeleton.getInstance().getTestCase().equals("Bénító spóra evése")){
+            boolean valasz = Skeleton.getInstance().Kerdes("van-e meg spora, amit meg tud enni?");
             if(valasz){
-                boolean valasz1 = skeleton.Kerdes("maradni fog-e meg spora?");
+                boolean valasz1 = Skeleton.getInstance().Kerdes("maradni fog-e meg spora?");
                 sporak.get(0).fogyaszt(3);
-                if(!valasz){
+                if(!valasz1){
                     sporak.remove(0);
                 }
             } else {
@@ -132,19 +140,59 @@ public class Tekton implements FonalKezeles {
      * @param gf Gombafaj: Ehhez a fajhoz tartozik a spóra
      */
     public void sporaSzor(Gombafaj gf){
+        System.out.println("Meghívódott a Tekton sporaSzor metódusa.");
         
+        if(Skeleton.getInstance().getTestCase().equals("Spóra szórása már létező Spórával")){
+            Benito b2 = new Benito(30, 2, gf);
+
+            for (Tekton tekton : szomszedok) {
+                tekton.addSpora(b2);
+                Benito b1 = null;
+                for (Spora spora : sporak) {
+                    if(b2.getGombafaj() == spora.getGombafaj()){
+                        b1 = (Benito)spora;
+                    }
+                }
+                b1.szorasTortent();
+            } 
+        }
+        if(Skeleton.getInstance().getTestCase().equals("Spóra szórása még nem létező Spórával")){
+            Benito b1 = new Benito(30, 1, gf);
+
+            for (Tekton tekton : szomszedok) {
+                tekton.addSpora(b1);
+            }
+        }
+        if(Skeleton.getInstance().getTestCase().equals("Spóra szórása fejlett gombatest által")){
+            Benito b1 = new Benito(30, 1, gf);
+            Benito b2 = new Benito(30,2,gf);
+
+            for (Tekton tekton : szomszedok) {
+                tekton.addSpora(b1);
+                for (Tekton tektonszomszed : tekton.getSzomszedok()) {
+                    tekton.addSpora(b2);
+                }
+            }
+        }
     }
 
     /***
-     * @brief
+     * @brief 
      * @param sp
      */
     public void addSpora(Spora sp){}
 
     /***
-     * @brief
+     * @brief A törés során érintett tektonok új szomszédait állítja be
      */
-    public void szomszedAllitas(){}
+    public void szomszedAllitas(){
+        System.out.println("Meghívódott a Tekton szomszedAllitas metódusa.");
+        
+        Tekton ujTekton = new Tekton();
+        szomszedok.add(ujTekton);
+
+        //mi alapján mondom meg melyik a szomszédja amit törölni kell?
+    }
 
     /***
      * @brief
@@ -153,9 +201,9 @@ public class Tekton implements FonalKezeles {
     public List<Gombafonal> gombafonalIgazitas(){}
 
     /***
-     * @brief
-     * @param a
-     * @return
+     * @brief Megadja hogy két tekton között van e út (össze vannak kötve)
+     * @param a Tekton: 
+     * @return true: van út, false: nincs út
      */
     public boolean vanUt(Tekton a){
         Set<Tekton> latogatott = new HashSet<>();
@@ -168,7 +216,7 @@ public class Tekton implements FonalKezeles {
             Tekton jelenlegi = sor.poll();
             if (jelenlegi == a) return true;
 
-            for (Gombafonal gf : jelenlegi.getGombafonalhalozat()) {
+            for (Gombafonal gf : jelenlegi.getFonalak()) {
                 Tekton szomszed = (gf.getVegpont1() == jelenlegi) ? gf.getVegpont2() : gf.getVegpont1();
                 if (!latogatott.contains(szomszed)) {
                     latogatott.add(szomszed);
@@ -190,9 +238,24 @@ public class Tekton implements FonalKezeles {
     }
 
     /***
-     * @brief
-     * @param gf
+     * @brief Elszakítja a paraméterben kapott gombafonalat, azáltal hogy kiveszi a gombafonal listából
+     * @param gf Gombafonal: elszakítani kívánt gombafonal
      */
     @Override
-    public void fonalSzakad(Gombafonal gf){}
+    public void fonalSzakad(Gombafonal gf){
+        System.out.println("Meghívódott a Tekton fonalSzakad metódusa.");
+
+        if(Skeleton.getInstance().getTestCase().equals("Fonal vágás")){
+            gombafonalak.remove(gf);
+            for (Tekton tekton : szomszedok) {
+                if(tekton == gf.getVegpont2() || tekton == gf.getVegpont1()){
+                    for (Gombafonal gombafonal : tekton.getFonalak()) {
+                        if(gombafonal == gf){
+                            tekton.getFonalak().remove(gf);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

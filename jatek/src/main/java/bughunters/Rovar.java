@@ -14,13 +14,27 @@ public class Rovar {
         this.tartozkodas = tartozkodas;
     }
 
-    public String getSzin() { return szin; }
-    public void setSzin(String szin) { this.szin = szin; }
+    public String getSzin() { 
+        System.out.println("Meghívódott a Rovar GetSzin metódusa.");
+
+        return szin; 
+    }
+    public void setSzin(String szin) { 
+        System.out.println("Meghívódott a Rovar setSzin metódusa.");
+
+        this.szin = szin; 
+    }
 
     public Tekton getTartozkodas() {
+        System.out.println("Meghívódott a Rovar getTartozkodas metódusa.");
+
         return tartozkodas;
     }
-    public void setTartozkodas(Tekton t){ this.tartozkodas = t; }
+    public void setTartozkodas(Tekton t){ 
+        System.out.println("Meghívódott a Rovar setTartozkodas metódusa.");
+
+        this.tartozkodas = t; 
+    }
 
     public void alapAllapot(){
         System.out.println("Meghívódott a Rovar alapAllapot metódusa.");
@@ -45,7 +59,6 @@ public class Rovar {
 
     public void maszik(Tekton hova) throws Exception {
         System.out.println("Meghívódott a Rovar maszik metódusa.");
-
         if(tartozkodas.vanUt(hova)){
             setTartozkodas(hova);
         }else{
@@ -58,7 +71,7 @@ public class Rovar {
         }
     }
 
-    public void eszik(Spora s){
+    public void eszik(Spora s) throws Exception {
         System.out.println("Meghívódott a Rovar eszik metódusa.");
         try {
             tartozkodas.eszik(s, this);

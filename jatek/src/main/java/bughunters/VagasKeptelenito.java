@@ -14,6 +14,12 @@ public class VagasKeptelenito extends Spora {
     public VagasKeptelenito(int t, int m, Gombafaj g)
     {
        super(t, m, g);
+       System.out.println("Létrejött egy új VagasKeptleníto spóra:" );
+    }
+
+    public VagasKeptelenito()
+    {
+        System.out.println("Létrejött egy új VagasKeptleníto spóra:" );
     }
     /**
      * A spóra hatást fejt ki a megadott rovarra, és nem engedi, hogy fonalat vágjon az adott rovar.

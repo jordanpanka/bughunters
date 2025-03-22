@@ -13,6 +13,12 @@ public class Lassito extends Spora {
     public Lassito(int t, int m, Gombafaj g)
     {
        super(t, m, g);
+       System.out.println("Létrejött egy új Lassító spóra:" );
+    }
+
+    public Lassito()
+    {
+        System.out.println("Létrejött egy új Bénító spóra:" );
     }
 
     /**
