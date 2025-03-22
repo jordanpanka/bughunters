@@ -170,7 +170,7 @@ public class Tekton implements FonalKezeles {
             for (Tekton tekton : szomszedok) {
                 tekton.addSpora(b1);
                 for (Tekton tektonszomszed : tekton.getSzomszedok()) {
-                    tekton.addSpora(b2);
+                    tektonszomszed.addSpora(b2);
                 }
             }
         }
@@ -194,8 +194,6 @@ public class Tekton implements FonalKezeles {
         t.addSzomszed(szomszedok.get(1));
 
         szomszedok.remove(1);
-
-        //mi alapján mondom meg melyik a szomszédja amit törölni kell?
     }
 
     /***

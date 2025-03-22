@@ -53,10 +53,5 @@ public class Gombatest {
         System.out.println("Meghívódik a Gombatest sporaGyujtes metodusa.");
 
     }
-    public void szorasTortent(){
-        System.out.println("Meghívódik a Gombatest szorasTortent metodusa.");
-    }
     
-
-
 }
