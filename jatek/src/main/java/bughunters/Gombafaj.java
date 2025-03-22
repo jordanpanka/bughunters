@@ -226,11 +226,11 @@ public class Gombafaj implements FonalKezeles{
            gombatestesTektonok.add(gt.getTekton());
         }
         for(int i=0; i<gombafonalhalozat.size(); i++){
-            if(gombafonalhalozat.get(i).getAllapot().equals("Haldoklo"))
+            if(Skeleton.getInstance().Kerdes("Haldoklo állapotban van a fonal?"))
             {
                 gombafonalhalozat.get(i).allapotvalt();
             }
-            else if(gombafonalhalozat.get(i).getAllapot().equals("UtolsoEsely")){
+            else if(Skeleton.getInstance().Kerdes("UtolsoEsely állapotban van a fonal?")){
                 //elér e testhez az adott fonal
                     boolean van=false;
                     for(Tekton t:gombatestesTektonok){
