@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
+/***
+ * @brief A feladata a Tekton megvalósítása, valamint a további tektontípusok közös 
+ * tulajdonságainak/függvényeinek meghatározása
+ */
 public class Tekton implements FonalKezeles {
     private List<Tekton> szomszedok; //melyik tektonok a szomszédjai
     private List<Gombafonal> gombafonalak; //megtalálható gombafonalak listája
@@ -18,6 +22,12 @@ public class Tekton implements FonalKezeles {
         sporak = new ArrayList<>();
     }
 
+    /***
+     * 
+     * @param szomszed List<Tekton>
+     * @param gombafonal List<Gombafonal>
+     * @param spora List<Spora>
+     */
     public Tekton(List<Tekton> szomszed, List<Gombafonal> gombafonal, List<Spora> spora){
         szomszedok = szomszed;
         gombafonalak = gombafonal;
@@ -46,9 +56,10 @@ public class Tekton implements FonalKezeles {
 
     /***
      * @brief Új szomszédot ad hozzá az aktuális tektonhoz
-     * @param ujszomszed
+     * @param ujszomszed Tekton: új szomszéd
      */
     public void addSzomszed(Tekton ujszomszed){
+        System.out.println("Meghívódott a Tekton addSzomszed metódusa.");
         szomszedok.add(ujszomszed);
     }
 
@@ -62,23 +73,22 @@ public class Tekton implements FonalKezeles {
     public Gombafonal gombafonalAdd(Gombafaj g, Tekton honnan) throws Exception {
         System.out.println("Meghívódott a Tekton gombafonalAdd metódusa.");
 
-        //van-e már ilyen gombafonal és milyen állapotban van, mert ha van és haldokló vagy utolsó esély akkor csak azt kell átállítani
-            List<Tekton> gombatestekHelye=new ArrayList<>();
-            for(Gombatest  gt: g.getGombaTestek())
-            {
-                gombatestekHelye.add(gt.getTekton());
-            }
-            for(Gombafonal gfonal : honnan.getFonalak())
-            {
-                gombatestekHelye.add(gfonal.getVegpont1());
-                gombatestekHelye.add(gfonal.getVegpont2());
-            }
-            if(gombatestekHelye.contains(honnan))
-             {   Gombafonal gf2 = new Gombafonal(g,this,honnan);
-                addFonal(gf2);
-                return gf2;
-             }
-             throw new Exception("Nem lehet fonalat növeszteni.");
+        List<Tekton> gombatestekHelye=new ArrayList<>();
+        for(Gombatest  gt: g.getGombaTestek())
+        {
+            gombatestekHelye.add(gt.getTekton());
+        }
+        for(Gombafonal gfonal : honnan.getFonalak())
+        {
+            gombatestekHelye.add(gfonal.getVegpont1());
+            gombatestekHelye.add(gfonal.getVegpont2());
+        }
+        if(gombatestekHelye.contains(honnan)){   
+            Gombafonal gf2 = new Gombafonal(g,this,honnan);
+            addFonal(gf2);
+            return gf2;
+        }
+        throw new Exception("Nem lehet fonalat növeszteni.");
     }
 
     /***
@@ -111,6 +121,7 @@ public class Tekton implements FonalKezeles {
      * @param spora Spora: törlendő spóra
      */
     public void torlesSpora(Spora spora){
+        System.out.println("Meghívódott a Tekton torlesSpora metódusa.");
         sporak.remove(spora);
     }
 
@@ -201,21 +212,19 @@ public class Tekton implements FonalKezeles {
 
     /***
      * @brief Feladata beállítani a törés során érintett tektonok gombafonalait
-     * @return 
+     * @return Azt/Azokat a gombafonalat/akat adja vissza, amik majd az új tektonhoz lesznek kötve
      */
     public List<Gombafonal> gombafonalIgazitas(){
         System.out.println("Meghívódott a Tekton gombafonalIgazitas metódusa.");
 
-        List<Gombafonal> ujFonal = new ArrayList<>();
-
-        
-
+        List<Gombafonal> ujFonal = new ArrayList<Gombafonal>();
+        ujFonal.add(gombafonalak.get(1));
         return ujFonal;
     }
 
     /***
      * @brief Megadja hogy két tekton között van e út (össze vannak kötve)
-     * @param a Tekton: 
+     * @param a Tekton: A cél tekton, ahova vizsgáljuk hogy vezet e út
      * @return true: van út, false: nincs út
      */
     public boolean vanUt(Tekton a){
@@ -261,16 +270,15 @@ public class Tekton implements FonalKezeles {
     public void fonalSzakad(Gombafonal gf){
         System.out.println("Meghívódott a Tekton fonalSzakad metódusa.");
 
-         gombafonalak.remove(gf);
-            for (Tekton tekton : szomszedok) {
-                if(tekton == gf.getVegpont2() || tekton == gf.getVegpont1()){
-                    for (Gombafonal gombafonal : tekton.getFonalak()) {
-                        if(gombafonal == gf){
-                            tekton.getFonalak().remove(gf);
-                        }
+        gombafonalak.remove(gf);
+        for (Tekton tekton : szomszedok) {
+            if(tekton == gf.getVegpont2() || tekton == gf.getVegpont1()){
+                for (Gombafonal gombafonal : tekton.getFonalak()) {
+                    if(gombafonal == gf){
+                        tekton.getFonalak().remove(gf);
                     }
                 }
             }
-        
+        } 
     }
 }
