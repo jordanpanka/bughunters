@@ -23,6 +23,7 @@ public class Jatekter {
      */
     public Jatekter() {
         System.out.println("Meghívódik a Jatekter paraméter nélküli konstruktora.");
+        tektonok=new ArrayList<Tekton>();
     }
 
     /**

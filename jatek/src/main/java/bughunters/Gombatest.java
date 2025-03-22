@@ -44,7 +44,7 @@ public class Gombatest {
         }
         else
         {
-            throw new Exception("Nem tud gombatest nőni.");
+            throw new Exception("Nem tud spórát szórni.");
         }
     }
     public Gombafaj getGombafaj() {

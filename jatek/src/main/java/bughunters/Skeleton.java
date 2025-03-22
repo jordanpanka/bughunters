@@ -619,10 +619,12 @@ public class Skeleton {
         gt1.setTekton(t2);
 
         gf1.setGombafaj(g1);
+        gf2.setGombafaj(g1);
         System.out.println("Létrejött a teszt 18 pálya.");
 
         try {
             jt1.tores(1);
+            g1.toresHaldoklas();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

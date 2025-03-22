@@ -1,5 +1,8 @@
 package bughunters;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /***
  * Ez az a típus, ahol egy idő után felszívódik a lerakott gombafonal.
  */
@@ -14,9 +17,22 @@ public class Disszolator extends Tekton {
 
         boolean valasz = Skeleton.getInstance().Kerdes("gf1 gombafonal már öt kör óta rajta van a tektonon?");
         if(valasz){
-            for (Gombafonal gombafonal : getFonalak()) {
-                gombafonal.vegpontTorles();
-            }
+            List<Gombafonal> fonalak = getFonalak(); // Elkerüljük a többszöri metódushívást
+
+        if (fonalak != null) { 
+            for (Gombafonal gombafonal : new ArrayList<>(fonalak)) { 
+                        gombafonal.vegpontTorles();  
+                    } 
+                }
+                    
+            /*for (Gombafonal gombafonal : getFonalak()) {
+                gombafonal.vegpontTorles(); 
+                
+                if(getFonalak()==null)
+                
+            }*/
+            
         }
+        
     }
 }
