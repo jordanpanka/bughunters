@@ -186,6 +186,7 @@ public class Tekton implements FonalKezeles {
 
     /***
      * @brief A törés során érintett tektonok új szomszédait állítja be
+     * @param t Tekton: Törés után keletkezett új tekton
      */
     public void szomszedAllitas(Tekton t){
         System.out.println("Meghívódott a Tekton szomszedAllitas metódusa.");
@@ -193,16 +194,24 @@ public class Tekton implements FonalKezeles {
         szomszedok.add(t);
 
         t.addSzomszed(this);
-        t.addSzomszed(szomszedok.get(1));
+        t.addSzomszed(szomszedok.get(2));
 
-        szomszedok.remove(1);
+        szomszedok.remove(2);
     }
 
     /***
-     * @brief
-     * @return
+     * @brief Feladata beállítani a törés során érintett tektonok gombafonalait
+     * @return 
      */
-    public List<Gombafonal> gombafonalIgazitas(){}
+    public List<Gombafonal> gombafonalIgazitas(){
+        System.out.println("Meghívódott a Tekton gombafonalIgazitas metódusa.");
+
+        List<Gombafonal> ujFonal = new ArrayList<>();
+
+        
+
+        return ujFonal;
+    }
 
     /***
      * @brief Megadja hogy két tekton között van e út (össze vannak kötve)
@@ -210,6 +219,8 @@ public class Tekton implements FonalKezeles {
      * @return true: van út, false: nincs út
      */
     public boolean vanUt(Tekton a){
+        System.out.println("Meghívódott a Tekton vanUt metódusa.");
+
         Set<Tekton> latogatott = new HashSet<>();
         Queue<Tekton> sor = new LinkedList<>();
         
@@ -238,6 +249,7 @@ public class Tekton implements FonalKezeles {
      */
     @Override
     public void addFonal(Gombafonal gf){
+        System.out.println("Meghívódott a Tekton addFonal metódusa.");
         gombafonalak.add(gf);
     }
 
