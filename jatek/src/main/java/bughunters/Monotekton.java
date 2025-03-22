@@ -11,8 +11,7 @@ public class Monotekton extends Tekton {
     public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan){
         System.out.println("Meghívódott a Monotekton gombafonalAdd metódusa.");
         
-        Skeleton skeleton = new Skeleton();
-        boolean valasz = skeleton.Kerdes("van szabad hely m1-en?");
+        boolean valasz = Skeleton.getInstance().Kerdes("van szabad hely m1-en?");
         if(valasz){
             Gombafonal gf2 = new Gombafonal(gf,this,honnan);
             addFonal(gf2);
