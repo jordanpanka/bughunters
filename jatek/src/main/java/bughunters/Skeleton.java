@@ -83,7 +83,7 @@ public class Skeleton {
         }
     }
 
-    public void teszt2(){
+    public void teszt6(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         Gombafaj g1 = new Gombafaj();
@@ -93,6 +93,15 @@ public class Skeleton {
         t2.addSzomszed(t1);
         g1.addTest(gt1);
         gt1.setTekton(t1);
+    }
+
+    public void teszt7(){
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        Gombafaj g1 = new Gombafaj();
+
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
     }
 
     public void teszt3(){
