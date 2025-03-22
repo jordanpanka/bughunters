@@ -53,6 +53,7 @@ public class Rovar {
      */
     public void setTartozkodas(Tekton t){ 
         this.tartozkodas = t; 
+        System.out.println("Átmászott a rovar.");
     }
 
     /**
