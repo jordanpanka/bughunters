@@ -90,20 +90,23 @@ public class Tekton implements FonalKezeles {
     public Gombatest gombatestNov(Gombafaj gf) throws Exception{
         System.out.println("Meghívódott a Tekton gombatestNov metódusa.");
 
-            boolean valasz = Skeleton.getInstance().Kerdes("alkalmas a tekton testnövesztésre?");
-            if(valasz){
+           
                 try{
                     sporak.get(0).fogyaszt(3);
+
+                    boolean valasz=Skeleton.getInstance().Kerdes("Elfogyott a spóra a növesztés által?");
+                    if(valasz){
+                        torlesSpora(sporak.get(0));
+                    }
                     Gombatest gt1 = new Gombatest();
                     return gt1;
                 }
                 catch(Exception e){
                     throw e;
                 }
-            } else {
-                throw new Exception("Gombatest nem növeszthető ebben az állapotban.");
-            }
-        
+    }
+    public void torlesSpora(Spora spora){
+        sporak.remove(spora);
     }
 
     /***
