@@ -144,39 +144,28 @@ public class Tekton implements FonalKezeles {
      */
     public void sporaSzor(Gombafaj gf){
         System.out.println("Meghívódott a Tekton sporaSzor metódusa.");
-        
-        
-            Benito b2 = new Benito(30, 2, gf);
-
+        boolean valasz=Skeleton.getInstance().Kerdes("Fejlett a gombatest?");
+        if(valasz)
+        {
             for (Tekton tekton : szomszedok) {
-                tekton.addSpora(b2);
-                Benito b1 = null;
-                for (Spora spora : sporak) {
-                    if(b2.getGombafaj() == spora.getGombafaj()){
-                        b1 = (Benito)spora;
-                    }
-                }
-                b1.szorasTortent();
-            } 
-        
-       
-            Benito b1 = new Benito(30, 1, gf);
-
-            for (Tekton tekton : szomszedok) {
-                tekton.addSpora(b1);
-            }
-        
-        
-            Benito b1 = new Benito(30, 1, gf);
-            Benito b2 = new Benito(30,2,gf);
-
-            for (Tekton tekton : szomszedok) {
+                Benito b1=new Benito();
+                b1.setGombafaj(gf);
                 tekton.addSpora(b1);
                 for (Tekton tektonszomszed : tekton.getSzomszedok()) {
+                    Benito b2=new Benito();
+                    b2.setGombafaj(gf);
                     tekton.addSpora(b2);
                 }
             }
-        
+        }
+        else{
+            for (Tekton tekton : szomszedok) {
+                Benito b1=new Benito();
+                b1.setGombafaj(gf);
+                tekton.addSpora(b1);
+            }
+        }
+   
     }
 
     /***
