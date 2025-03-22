@@ -50,7 +50,9 @@ public class Skeleton {
     }
 
     public void teszt1_setup(){
-        Tekton t1, t2, t3 = new Tekton();
+        Tekton t1= new Tekton();
+        Tekton t2= new Tekton();
+        Tekton t3 = new Tekton();
         Gombafaj g1 = new Gombafaj();
         Gombafonal gf1 = new Gombafonal();
 
@@ -73,7 +75,8 @@ public class Skeleton {
     }
 
     public void teszt2_setup(){
-        Tekton t1, t2 = new Tekton();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
         Gombafaj g1 = new Gombafaj();
         Gombatest gt1 = new Gombatest();
 
@@ -84,7 +87,8 @@ public class Skeleton {
     }
 
     public void teszt3_setup(){
-        Tekton t1, t2 = new Tekton();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
         Tekton m1 = new Monotekton();
 
         Gombafaj g1 = new Gombafaj();
@@ -111,7 +115,8 @@ public class Skeleton {
 
     public void teszt4_setup(){
         Gombafaj g1 = new Gombafaj();
-        Tekton t1, t2 = new Tekton();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
         Spora s1 = new Gyorsito();
         Gombafonal gf1 = new Gombafonal();
         Gombatest gt1 = new Gombatest();
@@ -159,7 +164,8 @@ public class Skeleton {
     }
 
     public void teszt6_setup(){
-        Tekton t1,t2 = new Tekton();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
         Gombafaj g1 = new Gombafaj();
         Gombatest gt1 = new Gombatest();
         Spora b1 = new Benito();
@@ -177,7 +183,8 @@ public class Skeleton {
     }
 
     public void teszt7_setup(){
-        Tekton t1,t2 = new Tekton();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
         Gombafaj g1 = new Gombafaj();
         Gombatest gt1 = new Gombatest();
 
@@ -191,7 +198,9 @@ public class Skeleton {
     }
 
     public void teszt8_setup(){
-        Tekton t1,t2, t3 = new Tekton();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        Tekton t3 = new Tekton();
         Gombafaj g1 = new Gombafaj();
         Gombatest gt1 = new Gombatest();
 
@@ -209,7 +218,8 @@ public class Skeleton {
 
     public void teszt9_setup(){
         //ROVAR MÁSZIK FONAL NINCS-->KOMM.DIAGRAM
-        Tekton t1,t2= new Tekton();
+        Tekton t1 = new Tekton();
+        Tekton t2= new Tekton();
         Rovar r1 = new Rovar();
 
         t1.addSzomszed(t2);
@@ -235,9 +245,13 @@ public class Skeleton {
 
     public void teszt11_setup(){
         Jatekter jt = new Jatekter();
-        Tekton t1,t2,t3 = new Tekton();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        Tekton t3 = new Tekton();
+
         Gombafaj g1 = new Gombafaj();
-        Gombafonal gf1, gf2 = new Gombafonal();
+        Gombafonal gf1 = new Gombafonal();
+        Gombafonal gf2 = new Gombafonal();
         Gombatest gt1 = new Gombatest();
 
         jt.tektonAdd(t1);
@@ -272,10 +286,13 @@ public class Skeleton {
     }
 
     public void teszt12_setup(){
-        Tekton t1,t2,t3 = new Tekton();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        Tekton t3 = new Tekton();
         Gombatest gt1 = new Gombatest();
         Gombafaj g1 = new Gombafaj();
-        Gombafonal gf1_1, gf1_2 = new Gombafonal();
+        Gombafonal gf1_1 = new Gombafonal();
+        Gombafonal gf1_2 = new Gombafonal();
         Rovar r1 = new Rovar();
 
        t1.addSzomszed(t2);
@@ -311,7 +328,9 @@ public class Skeleton {
     }
 
     public void teszt13_setup(){
-        Tekton t1,t2,t3 = new Tekton();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        Tekton t3 = new Tekton();
         Gombatest gt1 = new Gombatest();
         Gombafaj g1 = new Gombafaj();
         Gombafonal gf1 = new Gombafonal();
@@ -340,7 +359,8 @@ public class Skeleton {
 
     public void teszt14_setup(){
         Rovar r1 = new Rovar();
-        Tekton t1,t2 = new Tekton();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
         Spora bs1 = new Benito();
         Gombafaj g1 = new Gombafaj();
         Gombafonal gf1 = new Gombafonal();

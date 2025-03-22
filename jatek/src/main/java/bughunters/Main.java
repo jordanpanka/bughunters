@@ -18,7 +18,7 @@ public class Main {
                     s.teszt1_setup();
                     break;
                 case 2:
-                    s.setTestCase("Gombafonal növesztése növesztése monotektonra gombafonalból / ALT");
+                    s.setTestCase("Gombafonal növesztése monotektonra gombafonalból / ALT");
                     s.teszt3_setup();
                     break;
                 case 3:
