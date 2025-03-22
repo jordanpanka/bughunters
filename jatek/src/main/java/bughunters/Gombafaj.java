@@ -11,6 +11,9 @@ public class Gombafaj implements FonalKezeles{
     private ArrayList<Gombatest> gombaTestek;
     private ArrayList<Gombafonal> gombafonalhalozat;
 
+    public Gombafaj(){
+        
+    }
     public Gombafaj(String n, int tI, int ents, int gtfi,int gtesz){
         nev=n;
         termelesIdeje=tI;
