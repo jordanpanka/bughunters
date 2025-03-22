@@ -8,6 +8,7 @@ public class Disszolator extends Tekton {
     /***
      * @brief a tektonon tartózkodó gombafonalat felszívja, ha már lejárt a gombafonal ideje
      */
+    @Override
     public void gombafonalFelszivas() {
         System.out.println("Meghívódott a Disszolator gombafonalFelszivas metódusa.");
 
