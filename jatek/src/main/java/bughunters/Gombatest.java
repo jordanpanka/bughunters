@@ -1,14 +1,14 @@
 package bughunters;
 public class Gombatest {
-    private int sporaRaktar;
-    private int kor;
+    /*private int sporaRaktar;
+    private int kor;*/
     private Gombafaj gombafaj;
     private Tekton tekton;
 
     public Gombatest(){}
     public Gombatest(int sporaRaktar, int kor, Gombafaj gombafaj, Tekton tekton) {
-        this.sporaRaktar = sporaRaktar;
-        this.kor = kor;
+        /*this.sporaRaktar = sporaRaktar;
+        this.kor = kor;*/
         this.gombafaj = gombafaj;
         this.tekton = tekton;
     }
@@ -20,7 +20,7 @@ public class Gombatest {
     public void setTekton(Tekton tekton) {
         this.tekton = tekton;
     }
-    
+    /* 
     public int getSporaRaktar() {
         return sporaRaktar;
     }
@@ -35,10 +35,10 @@ public class Gombatest {
     
     public void setKor(int kor) {
         this.kor = kor;
-    }
+    }*/
     public void urit() throws Exception{
         System.out.println("Meghívódik a Gombatest urit metodusa.");
-        if(Skeleton.getInstance().Kerdes("Van elég spóra a szóráshoz?") && Skeleton.getInstance().Kerdes("Fejlett-e a gombatest?") ){
+        if(Skeleton.getInstance().Kerdes("Van elég spóra a szóráshoz?") ){
         }
         else
         {
