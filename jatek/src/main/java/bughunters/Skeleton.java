@@ -33,7 +33,7 @@ public class Skeleton {
         String valasz;
         try {
             valasz = r.readLine();
-            valasz.toLowerCase();
+            valasz = valasz.toLowerCase();
             while (valasz.equals("igen") || valasz.equals("nem")) {
                 if (valasz.equals("igen")) {
                     return true;
