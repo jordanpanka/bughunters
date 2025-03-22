@@ -31,7 +31,7 @@ public class Jatekter {
      * @param t A Tekton objektumokat tartalmazó lista.
      */
     public Jatekter(ArrayList<Tekton> t) {
-        System.out.println("Meghívódik a Jatekter paraméteres konstruktora.");
+        System.out.println("Létrejött egy új Játéktér");
         tektonok = t;
     }
 

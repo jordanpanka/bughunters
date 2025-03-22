@@ -20,6 +20,7 @@ public class Tekton implements FonalKezeles {
         szomszedok = new ArrayList<>();
         gombafonalak = new ArrayList<>();
         sporak = new ArrayList<>();
+        System.out.println("Létrejött egy új Tekton");
     }
 
     /***
@@ -32,6 +33,7 @@ public class Tekton implements FonalKezeles {
         szomszedok = szomszed;
         gombafonalak = gombafonal;
         sporak = spora;
+        System.out.println("Létrejött egy új Tekton");
     }
 
     public List<Tekton> getSzomszedok(){
