@@ -10,10 +10,9 @@ public class Disszolator extends Tekton {
      */
     public void gombafonalFelszivas() {
         System.out.println("Meghívódott a Disszolator gombafonalFelszivas metódusa.");
-        Skeleton skeleton = new Skeleton();
 
-        if(skeleton.getTestCase().equals("Gombafonal felszívódása Disszolátoron")){
-            boolean valasz = skeleton.Kerdes("gf1 gombafonal már öt kör óta rajta van a tektonon?");
+        if(Skeleton.getInstance().getTestCase().equals("Gombafonal felszívódása Disszolátoron")){
+            boolean valasz = Skeleton.getInstance().Kerdes("gf1 gombafonal már öt kör óta rajta van a tektonon?");
 
             if(valasz){
                 for (Gombafonal gombafonal : getFonalak()) {
