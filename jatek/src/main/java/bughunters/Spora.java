@@ -1,7 +1,7 @@
 package bughunters; 
 
 /**
- * Az Spora osztály egy absztrakt ősosztály
+ *  @brief Az Spora osztály egy absztrakt ősosztály
  * A spóra rendelkezik tápértékkel és mennyiséggel, valamint hatással lehet rovarokra.
  * 
  * Az osztály kétféle fogyasztási metódust biztosít:
@@ -14,7 +14,7 @@ abstract class Spora {
     private Gombafaj gombafaj;
 
     /**
-     * Absztrakt metódus, amely meghatározza, hogy a spóra milyen hatást gyakorol a rovarra.
+     *  @brief Absztrakt metódus, amely meghatározza, hogy a spóra milyen hatást gyakorol a rovarra.
      * Az leszármazottaknak kell megvalósítaniuk ezt a metódust.
      *
      * @param r a rovar, amelyre a spóra hatással lesz
@@ -22,7 +22,7 @@ abstract class Spora {
     public abstract void hatas(Rovar r);
 
      /**
-     * Spora abasztrakt osztály konstruktora
+     *  @brief Spora abasztrakt osztály konstruktora
      */
     public Spora(int t, int m, Gombafaj g)
     {
@@ -31,13 +31,16 @@ abstract class Spora {
         gombafaj=g;
        
     }
+    /**
+     *  @brief A Spora osztály paraméter nélküli konstruktora
+     */
     public Spora()
     {
-        
+        mennyiseg=1;
     }
 
     /**
-     * Csökkenti a spóra mennyiségét a megadott mennyiséggel, amennyiben az elegendő.
+     *  @brief Csökkenti a spóra mennyiségét a megadott mennyiséggel, amennyiben az elegendő.
      * Ha a spóra mennyisége nem elegendő a művelet végrehajtásához, kivételt dob.
      *
      * @param mennyit a fogyasztandó spóra mennyisége
@@ -51,7 +54,7 @@ abstract class Spora {
 
         if(valasz)
         {
-            //Itt most írnom kell bármit, ha igen??
+            //Itt most írnom kell bármit, ha true?
         }
         else
         {
@@ -68,7 +71,7 @@ abstract class Spora {
     }
 
     /**
-     * Csökkenti a spóra mennyiségét a megadott mennyiséggel, és hatást gyakorol egy adott rovarra.
+     *  @brief Csökkenti a spóra mennyiségét a megadott mennyiséggel, és hatást gyakorol egy adott rovarra.
      * Ha a spóra mennyisége nem elegendő, kivételt dob.
      *
      * @param mennyit a fogyasztandó spóra mennyisége
@@ -97,13 +100,18 @@ abstract class Spora {
             */
     }
 
+    /**
+     *  @brief Akkor hívódik meg ha már egy létező spórából több kerül az adott tektonra. Lekérdezi, hogy
+     * az ő gombafajában mennyi spórát szórnak szét a gombatestek és azzal az értékkel növeli a mennyiseg attribútumát
+     */
     public void szorasTortent()
     {
-        mennyiseg += gombafaj.getGombatestSzortSpora();
+        System.out.println("Meghívódik a Spora osztaly szorasTortent metodusa.");
+       // mennyiseg += gombafaj.getGombatestSzortSpora();
     }
 
      /**
-     * tapertek attribútum gettere
+     *  @brief tapertek attribútum gettere
      */
     public int getTapertek()
     {
@@ -111,7 +119,7 @@ abstract class Spora {
     }
 
      /**
-     * tapertek attribútum settere
+     *  @brief tapertek attribútum settere
      */
     public void setTapertek(int t)
     {
@@ -119,7 +127,7 @@ abstract class Spora {
     }
 
      /**
-     * gombafaj attribútum gettere
+     *  @brief gombafaj attribútum gettere
      */
     public Gombafaj getGombafaj()
     {
@@ -127,7 +135,7 @@ abstract class Spora {
     }
 
     /**
-     * gombafaj attribútum settere
+     *  @brief  gombafaj attribútum settere
      */
     public void setGombafaj(Gombafaj g)
     {
@@ -135,7 +143,7 @@ abstract class Spora {
     }
 
     /**
-     * mennyiseg attribútum gettere
+     *  @brief mennyiseg attribútum gettere
      */
     public int getMennyiseg()
     {
@@ -143,7 +151,7 @@ abstract class Spora {
     }
 
      /**
-     * mennyiseg attribútum settere
+     *  @brief mennyiseg attribútum settere
      */
     public void setMennyiseg(int db)
     {
