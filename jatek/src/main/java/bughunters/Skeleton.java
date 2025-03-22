@@ -156,6 +156,12 @@ public class Skeleton {
         gf1.setVegpont2(t2);
         gf1.setGombafaj(g1);
 
+        try {
+            g1.fonalNov(t2, m1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     //Gombafonal növesztése Monotektonra Gombafonalból, SIKERTELEN: m1-el jelen van másik gombafaj fonala
@@ -191,6 +197,12 @@ public class Skeleton {
         gf2.setVegpont1(t2);
         gf2.setVegpont2(m1);
         gf2.setGombafaj(g2);
+
+        try {
+            g1.fonalNov(t2, m1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     //Gombafonal növesztése Tektonra Gombatestből, SIKERES
@@ -205,6 +217,12 @@ public class Skeleton {
         t2.addSzomszed(t1);
         g1.addTest(gt1);
         gt1.setTekton(t1);
+
+        try {
+            g1.fonalNov(t1, t2);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     //Gombafonal növesztése Tektonra Gombatestből, SIKERTELEN
@@ -216,6 +234,12 @@ public class Skeleton {
 
         t1.addSzomszed(t2);
         t2.addSzomszed(t1);
+
+        try {
+            g1.fonalNov(t1, t2);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     
@@ -245,6 +269,12 @@ public class Skeleton {
        t1.addSpora(s1);
 
        gf1.setGombafaj(g1);
+
+         try {
+            g1.testNovesztes(t1);
+         } catch (Exception e) {
+            System.out.println(e.getMessage());
+         }
     }
 
     //Gombatest növesztése Tektonra, SIKERTELEN: nincs g1 típusú spóra a test növesztésére
@@ -270,6 +300,11 @@ public class Skeleton {
 
        gf1.setGombafaj(g1);
 
+        try {
+            g1.testNovesztes(t1);
+         } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     //Gombatest növesztése Tektonra, SIKERTELEN: van már gombatest t1 tektonon
@@ -303,6 +338,12 @@ public class Skeleton {
 
         s1.setGombafaj(g1);
        t1.addSpora(s1);
+
+       try {
+            g1.testNovesztes(t1);
+         } catch (Exception e) {
+            System.out.println(e.getMessage());
+         }
     }
 
     //Gombatest növesztése Puritektonra
@@ -329,6 +370,12 @@ public class Skeleton {
        gf1_1.setGombafaj(g1);
 
        b1.setGombafaj(g1);
+        try {
+           g1.testNovesztes(p1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+       
     }
 
     //Spóra szórása még nem létező Spórával
@@ -340,6 +387,7 @@ public class Skeleton {
         Gombafaj g1 = new Gombafaj();
         Gombatest gt1 = new Gombatest();
 
+
         t1.addSzomszed(t2);
 
         t2.addSzomszed(t1);
@@ -350,6 +398,12 @@ public class Skeleton {
         g1.addTest(gt1);
 
         gt1.setTekton(t1);
+
+        try {
+            g1.sporaSzoras(t1, gt1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void teszt13(){
