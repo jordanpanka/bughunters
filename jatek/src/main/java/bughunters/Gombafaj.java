@@ -115,9 +115,13 @@ public class Gombafaj implements FonalKezeles{
     private void haldoklas(){
         System.out.println("Meghívódott a Gombafaj haldoklas metódusa.(privát metódus)");
         ArrayList<Tekton> gombatestesTektonok=new ArrayList<>();
-        for(Gombatest gt: gombaTestek){
-            gombatestesTektonok.add(gt.getTekton());
+
+        if (gombaTestek != null) { 
+            for (Gombatest gt : gombaTestek) { 
+                gombatestesTektonok.add(gt.getTekton()); 
+            } 
         }
+
         for(Gombafonal gf:gombafonalhalozat){
             boolean van=false;
             for(Tekton t:gombatestesTektonok){
