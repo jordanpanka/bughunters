@@ -78,8 +78,7 @@ public class Gombafonal {
         System.out.println("Meghívódik a gombafonal osztaly vegpontTorles() metodusa.");
         gombafaj.fonalSzakad(this);
         vegpont1.fonalSzakad(this);
-        vegpont2.fonalSzakad(this);
-        
+        vegpont2.fonalSzakad(this);  
     }
 
      /**
