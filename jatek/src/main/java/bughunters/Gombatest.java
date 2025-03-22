@@ -36,8 +36,14 @@ public class Gombatest {
     public void setKor(int kor) {
         this.kor = kor;
     }
-    public void urit(){
+    public void urit() throws Exception{
         System.out.println("Meghívódik a Gombatest urit metodusa.");
+        if(Skeleton.getInstance().Kerdes("Van elég spóra a szóráshoz?") && Skeleton.getInstance().Kerdes("Fejlett-e a gombatest?") ){
+        }
+        else
+        {
+            throw new Exception("Nem tud gombatest nőni.");
+        }
     }
     public Gombafaj getGombafaj() {
         return gombafaj;
