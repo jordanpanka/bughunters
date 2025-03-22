@@ -51,7 +51,7 @@ public class Skeleton {
     //Konkrét tesztesetekké írni őket.
     //Test-case diagrammok alapján kibővíteni a tesztelést és a KOMM. DIAGRAMMOKAT IS
 
-
+    //Gombafonal növesztése Gombafonalból
     public void teszt1(){
         Tekton t1= new Tekton();
         Tekton t2= new Tekton();
@@ -83,6 +83,7 @@ public class Skeleton {
         }
     }
 
+    //Gombafonal növesztése Gombatestből
     public void teszt6(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -104,6 +105,7 @@ public class Skeleton {
         t2.addSzomszed(t1);
     }
 
+    //Gombafonal növesztése Monotektonra Gombafonalból
     public void teszt3(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -131,6 +133,7 @@ public class Skeleton {
 
     }
 
+    //Gombatest növesztés Tektonra
     public void teszt4(){
         Gombafaj g1 = new Gombafaj();
         Tekton t1 = new Tekton();
@@ -159,6 +162,8 @@ public class Skeleton {
        gf1.setGombafaj(g1);
     }
 
+
+    //Gombatest növesztése Puritektonra
     public void teszt5(){
         Tekton t1 = new Tekton();
         Tekton p1 = new Puritekton();
