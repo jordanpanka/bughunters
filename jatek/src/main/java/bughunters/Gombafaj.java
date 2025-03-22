@@ -162,23 +162,21 @@ public class Gombafaj implements FonalKezeles{
             }
             else if(gombafonalhalozat.get(i).getAllapot().equals("UtolsoEsely")){
                 //elér e testhez az adott fonal
-                
-                for(Gombafonal gf:gombafonalhalozat){
                     boolean van=false;
                     for(Tekton t:gombatestesTektonok){
-                        if(t.vanUt(gf.getVegpont1())){
+                        if(t.vanUt(gombafonalhalozat.get(i).getVegpont1())){
                             van=true;
                             break;
                         }
                     }
-                    if(!van && gf.getAllapot().equals("Ep")){
-                        gf.allapotvalt();
-                    }
-                }
-                gombafonalhalozat.get(i).vegpontTorles();
-                
-            }
-        
+                    if(van){
+                        gombafonalhalozat.get(i).allapotvalt();
+                    }  
+                    else{
+                        gombafonalhalozat.get(i).vegpontTorles();
+
+                    }       
+            }      
         }
     }
     public void toresHaldoklas(){

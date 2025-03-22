@@ -21,8 +21,10 @@ public class Jatekter {
     }
 
     public void tores(int darab){
+        Tekton t4 = new Tekton();
+
         System.out.println("Meghívódik a Jatekter tores metodusa.");
-        tektonok.get(1).szomszedAllitas();
+        tektonok.get(1).szomszedAllitas(t4);
         /*
          * A szomszedAtallitas megkapja az újonnan létrehozott tektont,
          * és mindkettőn megcsinálja a szomszédok átállítását.
@@ -30,9 +32,6 @@ public class Jatekter {
          * 
          * szomszedAtallitas(Tekton t)
          */
-
-        Tekton t4 = new Tekton();
-        // szomszedok beállítása!!!!!!!!!
 
         List<Gombafonal> ujszomszed = tektonok.get(1).gombafonalIgazitas();
 
@@ -48,21 +47,6 @@ public class Jatekter {
         for (Gombafonal fonal : ujszomszed) {
             t4.addFonal(fonal);
         }
-
-
-        List<Tekton> t2szomszed = null;
-        t2szomszed.add(t4);
-        t2szomszed.add(tektonok.get(0));
-
-        tektonok.get(1).setSzomszedok(t2szomszed);
-
-
-        List<Tekton> t4szomszed = null;
-        t4szomszed.add(tektonok.get(1));
-        t4szomszed.add(tektonok.get(2));
-        
-        t4.setSzomszedok(t4szomszed);
-
 
         tektonAdd(t4);
     }
