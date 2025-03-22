@@ -215,6 +215,7 @@ public class Skeleton {
         gt1.setTekton(t1);
     }
 
+    //Fejlett Spora Szoras
     public void teszt8(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -234,6 +235,7 @@ public class Skeleton {
         gt1.setTekton(t1);
     }
 
+    //Rovar mászik lehet
     public void teszt9(){
         //ROVAR MÁSZIK FONAL NINCS-->KOMM.DIAGRAM
         Tekton t1 = new Tekton();
@@ -245,6 +247,7 @@ public class Skeleton {
         r1.setTartozkodas(t1);
     }
 
+    //Gombafonal felszívódása Disszolátoron
     public void teszt10(){
         Tekton d1 = new Disszolator();
         Tekton t1 = new Tekton();
@@ -261,6 +264,7 @@ public class Skeleton {
         t1.addFonal(gf1);
     }
 
+    //Tekton törés
     public void teszt11(){
         Jatekter jt = new Jatekter();
         Tekton t1 = new Tekton();
@@ -303,6 +307,7 @@ public class Skeleton {
 
     }
 
+    //Fonal vágás
     public void teszt12(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -345,6 +350,7 @@ public class Skeleton {
 
     }
 
+    //Fonal lastChance
     public void teszt13(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -375,6 +381,7 @@ public class Skeleton {
 
     }
 
+    //Bénító spóra evés
     public void teszt14(){
         Rovar r1 = new Rovar();
         Tekton t1 = new Tekton();
