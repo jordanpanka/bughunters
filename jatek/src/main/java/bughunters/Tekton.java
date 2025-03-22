@@ -72,8 +72,8 @@ public class Tekton implements FonalKezeles {
      */
     public Gombafonal gombafonalAdd(Gombafaj g, Tekton honnan) throws Exception {
         System.out.println("Meghívódott a Tekton gombafonalAdd metódusa.");
-
-        List<Tekton> gombatestekHelye=new ArrayList<>();
+        //ellenőrizni hogy létezik e már ilyen gombafonal
+        List<Tekton> gombatestekHelye=new ArrayList<Tekton>();
         for(Gombatest  gt: g.getGombaTestek())
         {
             gombatestekHelye.add(gt.getTekton());

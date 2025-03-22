@@ -33,8 +33,8 @@ public class Gombafaj implements FonalKezeles{
         eddigNovesztettTestekSzama=ents;
         gombatestFejlettsegIdo=gtfi;
         gombatestEletSzama=gtesz;*/
-        gombaTestek=new ArrayList();
-        gombafonalhalozat=new ArrayList();
+        gombaTestek=new ArrayList<Gombatest>();
+        gombafonalhalozat=new ArrayList<Gombafonal>();
         System.out.println("Létrejött egy új gombafaj:" );
     }
     /*public String getNev() {
