@@ -195,12 +195,15 @@ public class Skeleton {
         t2.addSzomszed(t1);
         t2.addSzomszed(m1);
         t2.addFonal(gf1);
+        t2.addFonal(gf2);
 
         m1.addSzomszed(t1);
         m1.addSzomszed(t2);
+        m1.addFonal(gf2);
 
         g1.addFonal(gf1);
         g2.addFonal(gf2);
+        
 
         gf1.setVegpont1(t1);
         gf1.setVegpont2(t2);
