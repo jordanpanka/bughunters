@@ -1,19 +1,20 @@
 package bughunters;
 
 public class Rovar {
-    private String szin;
+    //private String szin;
     private Tekton tartozkodas;
 
     public Rovar() {
-        this.szin = "";
+        //this.szin = "";
         this.tartozkodas = null;
     }
 
-    public Rovar(String szin, Tekton tartozkodas) {
-        this.szin = szin;
+    public Rovar(/*String szin,*/ Tekton tartozkodas) {
+        //this.szin = szin;
         this.tartozkodas = tartozkodas;
     }
 
+    /*
     public String getSzin() { 
         System.out.println("Meghívódott a Rovar GetSzin metódusa.");
 
@@ -24,7 +25,7 @@ public class Rovar {
 
         this.szin = szin; 
     }
-
+    */
     public Tekton getTartozkodas() {
         System.out.println("Meghívódott a Rovar getTartozkodas metódusa.");
 
@@ -52,22 +53,41 @@ public class Rovar {
         System.out.println("Meghívódott a Rovar vagaskeptelen metódusa.");
     }
 
-    public void vag(Gombafonal g){
-        g.vegpontTorles();
+    public void vag(Gombafonal g) throws Exception {
         System.out.println("Meghívódott a Rovar vag metódusa.");
+
+        boolean valasz = Skeleton.getInstance().Kerdes("Vágásképtelen vagy Bénított állapotban van a rovar?");
+        try {
+            if (valasz) {
+                throw new Exception("Vágásképtelen vagy Bénított állapotban van a rovar.");
+            }else{
+                g.vegpontTorles();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw e;
+        }
     }
 
     public void maszik(Tekton hova) throws Exception {
         System.out.println("Meghívódott a Rovar maszik metódusa.");
-        if(tartozkodas.vanUt(hova)){
-            setTartozkodas(hova);
-        }else{
-            try {
-                throw new Exception("Nincs ut ket tekton kozott.");
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                throw e;
+        boolean valasz = Skeleton.getInstance().Kerdes("Bénított állapotban van a rovar?");
+
+        try {
+            if (valasz) {
+            throw new Exception("Benitott allapotban van a rovar.");
+            }else{
+
+                if(tartozkodas.vanUt(hova)){
+                setTartozkodas(hova);
+                }else{
+                    throw new Exception("Nincs ut ket tekton kozott.");
+                }
+
             }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw e;
         }
     }
 
