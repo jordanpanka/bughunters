@@ -6,7 +6,7 @@ public class Rovar {
 
 
     /**
-     * Default constructor for Rovar.
+     * @brief Default constructor for Rovar.
      */
     public Rovar() {
         System.out.println("Létrejött egy új Rovar.");
@@ -16,7 +16,7 @@ public class Rovar {
     }
 
     /**
-     * Constructor for Rovar with a specified Tekton.
+     *  @brief Constructor for Rovar with a specified Tekton.
      * @param tartozkodas The Tekton where the Rovar is located.
      */
     public Rovar(/*String szin,*/ Tekton tartozkodas) {
@@ -40,7 +40,7 @@ public class Rovar {
     */
 
     /**
-     * Gets the Tekton where the Rovar is currently located.
+     *  @brief Gets the Tekton where the Rovar is currently located.
      * @return The current Tekton.
     */
     public Tekton getTartozkodas() {
@@ -48,7 +48,7 @@ public class Rovar {
     }
 
     /**
-     * Sets the Tekton where the Rovar is located.
+     *   @brief Sets the Tekton where the Rovar is located.
      * @param t The new Tekton.
      */
     public void setTartozkodas(Tekton t){ 
@@ -56,42 +56,42 @@ public class Rovar {
     }
 
     /**
-     * Resets the Rovar to its default state.
+     *  @brief Resets the Rovar to its default state.
      */
     public void alapAllapot(){
         System.out.println("Meghívódott a Rovar alapAllapot metódusa.");
     }
 
     /**
-     * Applies a slowing effect to the Rovar.
+     *  @brief Applies a slowing effect to the Rovar.
      */
     public void lassito(){
         System.out.println("Meghívódott a Rovar lassito metódusa.");
     }
 
     /**
-     * Applies a speeding effect to the Rovar.
+     *  @brief Applies a speeding effect to the Rovar.
      */
     public void gyorsito(){
         System.out.println("Meghívódott a Rovar gyorsito metódusa.");
     }
 
     /**
-     * Applies a paralyzing effect to the Rovar.
+     *  @brief Applies a paralyzing effect to the Rovar.
      */
     public void benit(){
         System.out.println("Meghívódott a Rovar benit metódusa.");
     }
 
     /**
-     * Makes the Rovar unable to cut.
+     *  @brief Makes the Rovar unable to cut.
      */
     public void vagaskeptelen(){
         System.out.println("Meghívódott a Rovar vagaskeptelen metódusa.");
     }
 
     /**
-     * Cuts a Gombafonal if the Rovar is not in a paralyzed or unable-to-cut state.
+     *  @brief Cuts a Gombafonal if the Rovar is not in a paralyzed or unable-to-cut state.
      * @param g The Gombafonal to be cut.
      * @throws Exception If the Rovar is in a paralyzed or unable-to-cut state.
      */
@@ -112,7 +112,7 @@ public class Rovar {
     }
 
     /**
-     * Moves the Rovar to a specified Tekton if there is a path and the Rovar is not paralyzed.
+     *  @brief Moves the Rovar to a specified Tekton if there is a path and the Rovar is not paralyzed.
      * @param hova The Tekton to move to.
      * @throws Exception If the Rovar is paralyzed or there is no path between the Tektons.
      */
@@ -139,7 +139,7 @@ public class Rovar {
     }
 
     /**
-     * Makes the Rovar eat a Spora.
+     *  @brief Makes the Rovar eat a Spora.
      * @param s The Spora to be eaten.
      * @throws Exception If an error occurs during the eating process.
      */
