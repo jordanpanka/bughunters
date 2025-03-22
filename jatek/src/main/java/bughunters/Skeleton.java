@@ -75,6 +75,12 @@ public class Skeleton {
         gf1.setGombafaj(g1);
         gf1.setVegpont1(t1);
         gf1.setVegpont2(t2);
+
+        try {
+            g1.fonalNov(t2, t3);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void teszt2(){
