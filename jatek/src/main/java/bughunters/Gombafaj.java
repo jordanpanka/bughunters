@@ -219,6 +219,7 @@ public class Gombafaj implements FonalKezeles{
     /**
      * Kezeli az utolsó esély állapotot a gombafonalhálózatban.
      */
+    //HashMap melyik fonalról van szó
     public void lastChance(){
         System.out.println("Meghívódik a Gombafaj lastChance metodusa.");
         ArrayList<Tekton> gombatestesTektonok=new ArrayList<>();
