@@ -1,7 +1,7 @@
 package bughunters;
 
 /**
- * A fonalAllapot enum a gombafonal állapotait reprezentálja.
+ * @brief A fonalAllapot enum a gombafonal állapotait reprezentálja.
  */
 enum fonalAllapot {
     Ep,           // Az egészséges állapot
@@ -10,7 +10,7 @@ enum fonalAllapot {
 }
 
 /**
- * A Gombafonal osztály egy gomba fonalát reprezentálja, amely két Tekton végpont között húzódik.
+ *   @brief A Gombafonal osztály egy gomba fonalát reprezentálja, amely két Tekton végpont között húzódik.
  * A fonal egy adott gombafajhoz tartozik, és különböző állapotokba kerülhet az idő múlásával.
  */
 public class Gombafonal {
@@ -30,6 +30,9 @@ public class Gombafonal {
     /** A fonal másik végpontja. */
     private Tekton vegpont2;
 
+    /**
+     *  @brief a gombafonal osztály konstruktora
+     */
     public Gombafonal(Gombafaj g, Tekton veg1, Tekton veg2)
     {
         allapot=fonalAllapot.Ep;
@@ -40,13 +43,16 @@ public class Gombafonal {
         System.out.println("Létrejött egy új Gombafonal:" );
         
     }
+    /**
+     *  @brief a Gombafonal osztály paraméter nélküli konstruktora
+     */
     public Gombafonal()
     {
         System.out.println("Létrejött egy új Gombafonal:" );
     }
 
     /**
-     * Megváltoztatja a fonal állapotát.
+     * @brief  Megváltoztatja a fonal állapotát.
      * - Ha az állapot "Ép", akkor "Haldokló" lesz.
      * - Ha az állapot "Haldokló", akkor "UtolsóEsély" lesz.
      */
@@ -62,16 +68,16 @@ public class Gombafonal {
     }
 
     /**
-     * Növeli az időtartamot, mióta a fonal létezik.
+     *  @brief Növeli az időtartamot, mióta a fonal létezik.
      * Ezt a metódust a control hívja.
      */
     public void tartozkodasNov() {
-        miota += 1;
+       // miota += 1;
         System.out.println("Meghívódik a gombafonal osztaly tartozkodasNov() metodusa.");
     }
 
     /**
-     * Törli a fonalat a gombafaj és a végpontok közül.
+     *  @brief Törli a fonalat a gombafaj és a végpontok közül.
      * A gombafaj és a két végpont értesül a fonal megszűnéséről.
      */
     public void vegpontTorles() {
@@ -82,7 +88,7 @@ public class Gombafonal {
     }
 
      /**
-     * Visszaadja, hogy mióta él a gombafonal
+     *  @brief Visszaadja, hogy mióta él a gombafonal
      */
     public int getMiota()
     {
@@ -90,14 +96,14 @@ public class Gombafonal {
     }
 
     /**
-     * miota attribútum settere
+     *  @brief miota attribútum settere
      */
     public void setMiota(int m)
     {
         miota =m;
     }
      /**
-     * Visszaadja a gombafonal aktuális állapotát
+     *  @brief Visszaadja a gombafonal aktuális állapotát
      */
     public fonalAllapot getAllapot()
     {
@@ -105,7 +111,7 @@ public class Gombafonal {
     }
 
     /**
-     *  allapot attribútum settere
+     *   @brief allapot attribútum settere
      */
     public void setAllapot(fonalAllapot uj)
     {
@@ -113,7 +119,7 @@ public class Gombafonal {
     }
 
     /**
-     *  gombafaj attribútum gettere
+     *   @brief gombafaj attribútum gettere
      */
     public Gombafaj getGombafaj()
     {
@@ -121,7 +127,7 @@ public class Gombafonal {
     }
 
     /**
-     *  gombafaj attribútum settere
+     *   @brief gombafaj attribútum settere
      */
     public void setGombafaj(Gombafaj g)
     {
@@ -129,7 +135,7 @@ public class Gombafonal {
     }
 
     /**
-     *  vegpont1 attribútum gettere
+     *  @brief  vegpont1 attribútum gettere
      */
     public Tekton getVegpont1()
     {
@@ -137,7 +143,7 @@ public class Gombafonal {
     }
 
     /**
-     *  vegpont1 attribútum settere
+     *  @brief  vegpont1 attribútum settere
      */
     public void setVegpont1(Tekton t)
     {
@@ -145,7 +151,7 @@ public class Gombafonal {
     }
 
      /**
-     *  vegpont2 attribútum gettere
+     *   @brief vegpont2 attribútum gettere
      */
     public Tekton getVegpont2()
     {
@@ -153,7 +159,7 @@ public class Gombafonal {
     }
 
     /**
-     *  vegpont2 attribútum settere
+     *   @brief vegpont2 attribútum settere
      */
     public void setVegpont2(Tekton t)
     {

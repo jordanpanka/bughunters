@@ -211,10 +211,17 @@ public class Gombafaj implements FonalKezeles{
         {
             g.urit();
             t.sporaSzor(this);
+            boolean valasz=Skeleton.getInstance().Kerdes("Elhal a gombatest?");
+            if(valasz){
+                torolGombatest(g);
+            }
         }catch(Exception e){
             throw new Exception("Nem tud a gombatest spórát szórni.");
         }
     
+    }
+    void torolGombatest(Gombatest gt){
+        gombafonalhalozat.remove(gt);
     }
     /**
      * Kezeli az utolsó esély állapotot a gombafonalhálózatban.
@@ -257,4 +264,5 @@ public class Gombafaj implements FonalKezeles{
         System.out.println("Meghívódik a Gombafaj toresHaldoklas metodusa.");
         haldoklas();
     }
+
 }

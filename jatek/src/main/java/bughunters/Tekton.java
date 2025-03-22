@@ -74,7 +74,7 @@ public class Tekton implements FonalKezeles {
                 gombatestekHelye.add(gfonal.getVegpont2());
             }
             if(gombatestekHelye.contains(honnan))
-             {   Gombafonal gf2 = new Gombafonal(gf,this,honnan);
+             {   Gombafonal gf2 = new Gombafonal(g,this,honnan);
                 addFonal(gf2);
                 return gf2;
              }
@@ -105,6 +105,11 @@ public class Tekton implements FonalKezeles {
                     throw e;
                 }
     }
+    
+    /***
+     * @brief Törli a spórát a sporak listából
+     * @param spora Spora: törlendő spóra
+     */
     public void torlesSpora(Spora spora){
         sporak.remove(spora);
     }
@@ -118,14 +123,25 @@ public class Tekton implements FonalKezeles {
         System.out.println("Meghívódott a Tekton eszik metódusa.");
 
             boolean valasz = Skeleton.getInstance().Kerdes("van-e meg spora, amit meg tud enni?");
-            if(valasz){
-                boolean valasz1 = Skeleton.getInstance().Kerdes("maradni fog-e meg spora?");
-                sporak.get(0).fogyaszt(3);
-                if(!valasz1){
-                    sporak.remove(0);
+            boolean valasz1 = Skeleton.getInstance().Kerdes("es nincs Benitott allapotban a rovar?");
+            if(valasz && valasz1){
+                boolean valasz2 = Skeleton.getInstance().Kerdes("maradni fog-e meg spora?");
+                for (Spora spora : sporak) {
+                    if(spora == sp) {
+                        sp.fogyaszt(3, r);
+                    }
+                }
+
+                if(!valasz2){
+                    for (Spora spora : sporak) {
+                        if(spora == sp) {
+                            sporak.remove(sp);
+                            break;
+                        }
+                    }
                 }
             } else {
-                throw new Exception("Nincs eleg spora.");
+                throw new Exception("Nincs spora.");
             }
     }
 
@@ -135,57 +151,51 @@ public class Tekton implements FonalKezeles {
      */
     public void sporaSzor(Gombafaj gf){
         System.out.println("Meghívódott a Tekton sporaSzor metódusa.");
-        
-        
-            Benito b2 = new Benito(30, 2, gf);
-
+        boolean valasz=Skeleton.getInstance().Kerdes("Fejlett a gombatest?");
+        if(valasz)
+        {
             for (Tekton tekton : szomszedok) {
-                tekton.addSpora(b2);
-                Benito b1 = null;
-                for (Spora spora : sporak) {
-                    if(b2.getGombafaj() == spora.getGombafaj()){
-                        b1 = (Benito)spora;
-                    }
-                }
-                b1.szorasTortent();
-            } 
-        
-       
-            Benito b1 = new Benito(30, 1, gf);
-
-            for (Tekton tekton : szomszedok) {
-                tekton.addSpora(b1);
-            }
-        
-        
-            Benito b1 = new Benito(30, 1, gf);
-            Benito b2 = new Benito(30,2,gf);
-
-            for (Tekton tekton : szomszedok) {
+                Benito b1=new Benito();
+                b1.setGombafaj(gf);
                 tekton.addSpora(b1);
                 for (Tekton tektonszomszed : tekton.getSzomszedok()) {
-                    tekton.addSpora(b2);
+                    Benito b2=new Benito();
+                    b2.setGombafaj(gf);
+                    tektonszomszed.addSpora(b2);
                 }
             }
-        
+        }
+        else{
+            for (Tekton tekton : szomszedok) {
+                Benito b1=new Benito();
+                b1.setGombafaj(gf);
+                tekton.addSpora(b1);
+            }
+        }
+   
     }
 
     /***
-     * @brief 
-     * @param sp
+     * @brief A Tekton sporak listájához hozzáadja a paraméterben kapott spórát
+     * @param sp Spora: amit hozzáadunk a listához
      */
-    public void addSpora(Spora sp){}
+    public void addSpora(Spora sp){
+        System.out.println("Meghívódott a Tekton addSpora metódusa.");
+        sporak.add(sp);
+    }
 
     /***
      * @brief A törés során érintett tektonok új szomszédait állítja be
      */
-    public void szomszedAllitas(){
+    public void szomszedAllitas(Tekton t){
         System.out.println("Meghívódott a Tekton szomszedAllitas metódusa.");
         
-        Tekton ujTekton = new Tekton();
-        szomszedok.add(ujTekton);
+        szomszedok.add(t);
 
-        //mi alapján mondom meg melyik a szomszédja amit törölni kell?
+        t.addSzomszed(this);
+        t.addSzomszed(szomszedok.get(1));
+
+        szomszedok.remove(1);
     }
 
     /***
