@@ -1,7 +1,7 @@
 package bughunters;
 
 /**
- * A Benito osztály a Spora osztály egyik utódja.
+ * @brief A Benito osztály a Spora osztály egyik utódja.
  * Ez a spóra képes bénító hatást gyakorolni a rovarokra.
  */
 public class Benito extends Spora {

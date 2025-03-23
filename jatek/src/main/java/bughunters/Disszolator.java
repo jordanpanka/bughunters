@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /***
- * Ez az a típus, ahol egy idő után felszívódik a lerakott gombafonal.
+ * @brief Ez az a típus, ahol egy idő után felszívódik a lerakott gombafonal.
  */
 public class Disszolator extends Tekton {
 

@@ -2,7 +2,7 @@ package bughunters;
 
 import java.util.ArrayList;
 /**
- * A Gombafaj osztály a gombafajokat reprezentálja, és kezeli azok növekedését,
+ * @brief A Gombafaj osztály a gombafajokat reprezentálja, és kezeli azok növekedését,
  * fonalhálózatát, valamint a spóraszórás és a haldoklás folyamatait.
  */
 public class Gombafaj implements FonalKezeles{
@@ -14,12 +14,12 @@ public class Gombafaj implements FonalKezeles{
     private ArrayList<Gombatest> gombaTestek;
     private ArrayList<Gombafonal> gombafonalhalozat;
     /**
-     * Alapértelmezett konstruktor a Gombafaj létrehozására.
+     * @brief Alapértelmezett konstruktor a Gombafaj létrehozására.
      */
     public Gombafaj(){System.out.println("Létrejött egy új Gombafaj.");}
 
     /**
-     * Paraméterezett konstruktor, amely létrehozza a gombafajt és inicializálja a listákat.
+     * @brief Paraméterezett konstruktor, amely létrehozza a gombafajt és inicializálja a listákat.
      *
      * @param n     A gomba neve.
      * @param tI    A termelési idő.
@@ -77,7 +77,7 @@ public class Gombafaj implements FonalKezeles{
         this.gombatestEletSzama = gombatestEletSzama;
     }*/
     /**
-     * Visszaadja a gomba testeit tartalmazó listát.
+     * @brief Visszaadja a gomba testeit tartalmazó listát.
      *
      * @return A gombatestek listája.
      */
@@ -85,7 +85,7 @@ public class Gombafaj implements FonalKezeles{
         return gombaTestek;
     }
     /**
-     * Beállítja a gomba testeit tartalmazó listát.
+     * @brief Beállítja a gomba testeit tartalmazó listát.
      *
      * @param gombaTestek Az új lista.
      */
@@ -93,7 +93,7 @@ public class Gombafaj implements FonalKezeles{
         this.gombaTestek = gombaTestek;
     }
     /**
-     * Visszaadja a gombafonalhálózatot tartalmazó listát.
+     * @brief Visszaadja a gombafonalhálózatot tartalmazó listát.
      *
      * @return A gombafonalhálózat listája.
      */
@@ -101,7 +101,7 @@ public class Gombafaj implements FonalKezeles{
         return gombafonalhalozat;
     }
     /**
-     * Beállítja a gombafonalhálózatot tartalmazó listát.
+     * @brief Beállítja a gombafonalhálózatot tartalmazó listát.
      *
      * @param gombafonalhalozat Az új lista.
      */
@@ -109,7 +109,7 @@ public class Gombafaj implements FonalKezeles{
         this.gombafonalhalozat = gombafonalhalozat;
     }
     /**
-     * A haldoklási folyamatot kezeli. Ellenőrzi, hogy a fonalak elérnek-e egy gombatesthez,
+     * @brief A haldoklási folyamatot kezeli. Ellenőrzi, hogy a fonalak elérnek-e egy gombatesthez,
      * és ha nem, akkor változtatja az állapotukat.
      */
     private void haldoklas(){
@@ -137,7 +137,7 @@ public class Gombafaj implements FonalKezeles{
         }
     }
      /**
-     * Új gombafonalat növeszt a megadott helyek között.
+     * @brief Új gombafonalat növeszt a megadott helyek között.
      *
      * @param hova    A cél Tekton.
      * @param honnan  A kiindulási Tekton.
@@ -155,8 +155,8 @@ public class Gombafaj implements FonalKezeles{
         } 
     }
      /**
-     * Hozzáad egy új gombafonalat a hálózathoz.
-     *0
+     * @brief Hozzáad egy új gombafonalat a hálózathoz.
+     *
      * @param gf A hozzáadandó gombafonal.
      */
     public void addFonal(Gombafonal gf){
@@ -167,7 +167,7 @@ public class Gombafaj implements FonalKezeles{
         gombafonalhalozat.add(gf);
     }
     /**
-     * Egy adott gombafonal megszakadását kezeli.
+     * @brief Egy adott gombafonal megszakadását kezeli.
      *
      * @param gf A megszakadt gombafonal.
      */
@@ -177,7 +177,7 @@ public class Gombafaj implements FonalKezeles{
         haldoklas();
     }
     /**
-     * Új gombatestet növeszt egy adott Tektonon.
+     * @brief Új gombatestet növeszt egy adott Tektonon.
      *
      * @param t A Tekton, amelyen a gombatest növekedni fog.
      */
@@ -193,7 +193,7 @@ public class Gombafaj implements FonalKezeles{
         }
     }
      /**
-     * Hozzáad egy új gombatestet a listához.
+     * @brief Hozzáad egy új gombatestet a listához.
      *
      * @param gt A hozzáadandó gombatest.
      */
@@ -205,7 +205,7 @@ public class Gombafaj implements FonalKezeles{
         gombaTestek.add(gt);
     }
     /**
-     * Spóraszórás folyamatát kezeli egy adott Tekton és Gombatest között.
+     * @brief Spóraszórás folyamatát kezeli egy adott Tekton és Gombatest között.
      *
      * @param t A cél Tekton.
      * @param g A gombatest, amely spórát szór.
@@ -230,7 +230,7 @@ public class Gombafaj implements FonalKezeles{
         gombaTestek.remove(gt);
     }
     /**
-     * Kezeli az utolsó esély állapotot a gombafonalhálózatban.
+     * @brief Kezeli az utolsó esély állapotot a gombafonalhálózatban.
      */
     //HashMap melyik fonalról van szó
     public void lastChance(){
@@ -274,7 +274,7 @@ public class Gombafaj implements FonalKezeles{
         }
     }
     /**
-     * A törés utáni haldoklási folyamatot kezeli.
+     * @brief A törés utáni haldoklási folyamatot kezeli.
      */
     public void toresHaldoklas(){
         System.out.println("Meghívódik a Gombafaj toresHaldoklas metodusa.");

@@ -2,13 +2,13 @@ package bughunters;
 
 
 /**
- * A Lassito osztály a Spora osztály egyik egyik utódja.
+ * @brief A Lassito osztály a Spora osztály egyik egyik utódja.
  * Ez a spóra képes lassító hatást gyakorolni a rovarokra.
  */
 public class Lassito extends Spora {
     
     /**
-     * Lassito osztály konstuktora
+     * @brief Lassito osztály konstuktora
      */
     public Lassito(int t, int m, Gombafaj g)
     {
@@ -22,7 +22,7 @@ public class Lassito extends Spora {
     }
 
     /**
-     * A spóra hatást fejt ki a megadott rovarra, és felgyorsítja azt.
+     * @brief A spóra hatást fejt ki a megadott rovarra, és felgyorsítja azt.
      *
      * @param r a rovar, amelyre a spóra hatással lesz
      */

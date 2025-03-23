@@ -117,6 +117,7 @@ public class Main {
     }
 
     private static void userConsoleDraw() {
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
         System.out.println("Programból való kilépés: 0");
         System.out.println("A következő teszt esetek léteznek, válassza ki amit le szeretne futtatni:");
         System.out.println("1. Gombafonal növesztése Tektonra Gombafonalból, SIKERES");
@@ -139,5 +140,7 @@ public class Main {
         System.out.println("18. T2 Tekton törés");
         System.out.println("19. Fonál lastChance újrakötött fonállal");
         System.out.println("20. Fonál lastChance nem újrakötött fonállal");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
+
     }
 }
