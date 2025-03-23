@@ -2,14 +2,14 @@ package bughunters;
 
 
 /**
- * A VagasKeptelenito osztály a Spora osztály egyik egyik utódja.
+ * @brief A VagasKeptelenito osztály a Spora osztály egyik egyik utódja.
  * Ez a spóra képes gyorsito hatást gyakorolni a rovarokra.
  */
 public class VagasKeptelenito extends Spora {
 
 
     /**
-     * VagasKeptelenito osztály konstuktora
+     * @brief VagasKeptelenito osztály konstuktora
      */
     public VagasKeptelenito(int t, int m, Gombafaj g)
     {
@@ -22,7 +22,7 @@ public class VagasKeptelenito extends Spora {
         System.out.println("Létrejött egy új VagasKeptleníto spóra:" );
     }
     /**
-     * A spóra hatást fejt ki a megadott rovarra, és nem engedi, hogy fonalat vágjon az adott rovar.
+     * @brief A spóra hatást fejt ki a megadott rovarra, és nem engedi, hogy fonalat vágjon az adott rovar.
      *
      * @param r a rovar, amelyre a spóra hatással lesz
      */

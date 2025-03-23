@@ -1,13 +1,13 @@
 package bughunters;
 
 /**
- * A Benito osztály a Spora osztály egyik utódja.
+ * @brief A Benito osztály a Spora osztály egyik utódja.
  * Ez a spóra képes bénító hatást gyakorolni a rovarokra.
  */
 public class Benito extends Spora {
 
     /**
-     * Benito osztály konstuktora
+     * @brief Benito osztály konstuktora
      */
     public Benito(int t, int m, Gombafaj g)
     {
@@ -21,7 +21,7 @@ public class Benito extends Spora {
     }
 
     /**
-     * A spóra hatást fejt ki a megadott rovarra, és lebénítja azt.
+     * @brief A spóra hatást fejt ki a megadott rovarra, és lebénítja azt.
      *
      * @param r a rovar, amelyre a spóra hatással lesz
      */

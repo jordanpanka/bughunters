@@ -49,7 +49,7 @@ abstract class Spora {
     public void fogyaszt(int mennyit) throws Exception {
 
         Skeleton s = Skeleton.getInstance();
-        System.out.println("Meghívódik a Spora osztaly fogyaszt metodusa.");
+        System.out.println("Meghívódik a "+this.getClass().getSimpleName()+" osztaly fogyaszt metodusa.");
         boolean valasz= s.Kerdes("Van elég spóra?");
 
         if(valasz)
@@ -79,7 +79,7 @@ abstract class Spora {
      * @throws Exception ha nincs elegendő spóra
      */
     public void fogyaszt(int mennyit, Rovar r) throws Exception {
-        System.out.println("Meghívódik a Spora osztaly fogyaszt metodusa.");
+        System.out.println("Meghívódik a "+this.getClass().getSimpleName()+" osztaly fogyaszt metodusa.");
       
 
         if(mennyiseg>0)
@@ -106,7 +106,7 @@ abstract class Spora {
      */
     public void szorasTortent()
     {
-        System.out.println("Meghívódik a Spora osztaly szorasTortent metodusa.");
+        System.out.println("Meghívódik a "+this.getClass().getSimpleName()+" osztaly szorasTortent metodusa.");
        // mennyiseg += gombafaj.getGombatestSzortSpora();
     }
 

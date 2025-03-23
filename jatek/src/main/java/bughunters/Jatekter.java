@@ -23,6 +23,7 @@ public class Jatekter {
      */
     public Jatekter() {
         System.out.println("Meghívódik a Jatekter paraméter nélküli konstruktora.");
+        tektonok=new ArrayList<Tekton>();
     }
 
     /**
@@ -30,7 +31,7 @@ public class Jatekter {
      * @param t A Tekton objektumokat tartalmazó lista.
      */
     public Jatekter(ArrayList<Tekton> t) {
-        System.out.println("Meghívódik a Jatekter paraméteres konstruktora.");
+        System.out.println("Létrejött egy új Játéktér");
         tektonok = t;
     }
 
@@ -40,9 +41,10 @@ public class Jatekter {
      * @param darab A törés során létrejövő új elemek száma (jelenleg nem használatos a metódusban).
      */
     public void tores(int darab) {
-        Tekton t4 = new Tekton();
-
         System.out.println("Meghívódik a Jatekter tores metodusa.");
+
+        Tekton t4 = new Tekton();
+        
         tektonok.get(1).szomszedAllitas(t4);
 
         List<Gombafonal> ujszomszed = tektonok.get(1).gombafonalIgazitas();

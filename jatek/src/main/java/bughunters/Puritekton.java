@@ -9,7 +9,7 @@ public class Puritekton extends Tekton {
      */
     @Override
     public Gombatest gombatestNov(Gombafaj gf) throws Exception{
-        System.out.println("Meghívódott a Puritekton gombatestNov metódusa.");
+        System.out.println("Meghívódik a Puritekton gombatestNov metódusa.");
         throw new Exception("Erre a tektonra nem lehet gombatestet növeszteni.");
     }
 }
