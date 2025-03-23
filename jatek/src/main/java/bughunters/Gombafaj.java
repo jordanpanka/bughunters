@@ -226,7 +226,8 @@ public class Gombafaj implements FonalKezeles{
     
     }
     void torolGombatest(Gombatest gt){
-        gombafonalhalozat.remove(gt);
+        System.out.println("Meghívódik a Gombafaj torolGombatest metódusa.");
+        gombaTestek.remove(gt);
     }
     /**
      * Kezeli az utolsó esély állapotot a gombafonalhálózatban.
