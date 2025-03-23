@@ -31,21 +31,24 @@ public class Skeleton {
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
         System.out.println(kerdes);
         String valasz;
+
         try {
             valasz = r.readLine();
             valasz = valasz.toLowerCase();
-            while (valasz.equals("igen") || valasz.equals("nem")) {
-                if (valasz.equals("igen")) {
+            while (!valasz.equals("igen") && !valasz.equals("nem")) {
+                valasz = r.readLine();
+                valasz = valasz.toLowerCase();
+            }
+            if (valasz.equals("igen")) {
                     return true;
-                } else if (valasz.equals("nem")) {
+            } else if (valasz.equals("nem")) {
                     return false;
-                }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return false;
+        
     }
 
     //Konkrét tesztesetekké írni őket.
