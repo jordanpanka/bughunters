@@ -432,7 +432,6 @@ public class Skeleton {
 
        t1.addSzomszed(p1);
        t1.addFonal(gf1_1);
-        t1.addSpora(b1);
 
        p1.addSzomszed(t1);
        p1.addFonal(gf1_1);
