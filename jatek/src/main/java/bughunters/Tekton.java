@@ -63,7 +63,7 @@ public class Tekton implements FonalKezeles {
      * @param ujszomszed Tekton: új szomszéd
      */
     public void addSzomszed(Tekton ujszomszed){
-        System.out.println("Meghívódott a Tekton addSzomszed metódusa.");
+        System.out.println("Meghívódik a Tekton addSzomszed metódusa.");
         szomszedok.add(ujszomszed);
     }
 
@@ -75,7 +75,7 @@ public class Tekton implements FonalKezeles {
      * @throws Exception ha nem tud gombafonalat növeszteni vagy rossz feladatnál lett hívva
      */
     public Gombafonal gombafonalAdd(Gombafaj g, Tekton honnan) throws Exception {
-        System.out.println("Meghívódott a Tekton gombafonalAdd metódusa.");
+        System.out.println("Meghívódik a Tekton gombafonalAdd metódusa.");
         //ellenőrizni hogy létezik e már ilyen gombafonal
         if(getSzomszedok().contains(honnan)){
                 List<Tekton> gombatestekHelye=new ArrayList<Tekton>();
@@ -112,7 +112,7 @@ public class Tekton implements FonalKezeles {
      * @throws Exception ha nem tud gombatestet növeszteni vagy nem megfelelő feladatnál lett hívva
      */
     public Gombatest gombatestNov(Gombafaj gf) throws Exception{
-        System.out.println("Meghívódott a Tekton gombatestNov metódusa.");
+        System.out.println("Meghívódik a Tekton gombatestNov metódusa.");
 
            
                 try{
@@ -144,7 +144,7 @@ public class Tekton implements FonalKezeles {
      * @param spora Spora: törlendő spóra
      */
     public void torlesSpora(Spora spora){
-        System.out.println("Meghívódott a Tekton torlesSpora metódusa.");
+        System.out.println("Meghívódik a Tekton torlesSpora metódusa.");
         sporak.remove(spora);
     }
 
@@ -154,7 +154,7 @@ public class Tekton implements FonalKezeles {
      * @param r Rovar: akutális rovar ami eszik
      */
     public void eszik(Spora sp, Rovar r) throws Exception {
-        System.out.println("Meghívódott a Tekton eszik metódusa.");
+        System.out.println("Meghívódik a Tekton eszik metódusa.");
 
             boolean valasz = Skeleton.getInstance().Kerdes("van-e meg spora, amit meg tud enni?");
             boolean valasz1 = Skeleton.getInstance().Kerdes("Igaz, hogy nem bénított állapotban van a rovar?");
@@ -184,7 +184,7 @@ public class Tekton implements FonalKezeles {
      * @param gf Gombafaj: Ehhez a fajhoz tartozik a spóra
      */
     public void sporaSzor(Gombafaj gf){
-        System.out.println("Meghívódott a Tekton sporaSzor metódusa.");
+        System.out.println("Meghívódik a Tekton sporaSzor metódusa.");
         boolean valasz=Skeleton.getInstance().Kerdes("Fejlett a gombatest?");
         if(valasz)
         {
@@ -217,7 +217,7 @@ public class Tekton implements FonalKezeles {
      * @param sp Spora: amit hozzáadunk a listához
      */
     public void addSpora(Spora sp){
-        System.out.println("Meghívódott a Tekton addSpora metódusa.");
+        System.out.println("Meghívódik a Tekton addSpora metódusa.");
         sporak.add(sp);
     }
 
@@ -226,7 +226,7 @@ public class Tekton implements FonalKezeles {
      * @param t Tekton: Törés után keletkezett új tekton
      */
     public void szomszedAllitas(Tekton t){
-        System.out.println("Meghívódott a Tekton szomszedAllitas metódusa.");
+        System.out.println("Meghívódik a Tekton szomszedAllitas metódusa.");
         
         szomszedok.add(t);
 
@@ -241,7 +241,7 @@ public class Tekton implements FonalKezeles {
      * @return Azt/Azokat a gombafonalat/akat adja vissza, amik majd az új tektonhoz lesznek kötve
      */
     public List<Gombafonal> gombafonalIgazitas(){
-        System.out.println("Meghívódott a Tekton gombafonalIgazitas metódusa.");
+        System.out.println("Meghívódik a Tekton gombafonalIgazitas metódusa.");
 
         List<Gombafonal> ujFonal = new ArrayList<Gombafonal>();
         ujFonal.add(gombafonalak.get(1));
@@ -255,7 +255,7 @@ public class Tekton implements FonalKezeles {
      * @return true: van út, false: nincs út
      */
     public boolean vanUt(Tekton a){
-        System.out.println("Meghívódott a Tekton vanUt metódusa.");
+        System.out.println("Meghívódik a Tekton vanUt metódusa.");
 
         Set<Tekton> latogatott = new HashSet<>();
         Queue<Tekton> sor = new LinkedList<>();
@@ -285,7 +285,7 @@ public class Tekton implements FonalKezeles {
      */
     @Override
     public void addFonal(Gombafonal gf){
-        System.out.println("Meghívódott a "+this.getClass().getSimpleName()+" addFonal metódusa.");
+        System.out.println("Meghívódik a "+this.getClass().getSimpleName()+" addFonal metódusa.");
         gombafonalak.add(gf);
     }
 
@@ -295,7 +295,7 @@ public class Tekton implements FonalKezeles {
      */
     @Override
     public void fonalSzakad(Gombafonal gf){
-        System.out.println("Meghívódott a "+this.getClass().getSimpleName()+" fonalSzakad metódusa.");
+        System.out.println("Meghívódik a "+this.getClass().getSimpleName()+" fonalSzakad metódusa.");
 
         gombafonalak.remove(gf);
         

@@ -11,7 +11,7 @@ public class Monotekton extends Tekton {
      */
     @Override
     public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan) throws Exception{
-        System.out.println("Meghívódott a Monotekton gombafonalAdd metódusa.");
+        System.out.println("Meghívódik a Monotekton gombafonalAdd metódusa.");
         
         if(getFonalak().isEmpty() || getFonalak().get(0).getGombafaj() == gf){
             Gombafonal gf2 = new Gombafonal(gf,this,honnan);
@@ -30,7 +30,7 @@ public class Monotekton extends Tekton {
      */
     @Override
     public Gombatest gombatestNov(Gombafaj gf) throws Exception{
-        System.out.println("Meghívódott a Monotekton gombatestNov metódusa.");
+        System.out.println("Meghívódik a Monotekton gombatestNov metódusa.");
 
         if(gf == getFonalak().get(0).getGombafaj()){
             getSporak().get(0).fogyaszt(3);

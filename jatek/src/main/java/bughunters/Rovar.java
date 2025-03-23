@@ -53,42 +53,42 @@ public class Rovar {
      */
     public void setTartozkodas(Tekton t){ 
         this.tartozkodas = t; 
-        System.out.println("Meghívódott a Rovar setTartozkodas() metodusa.");
+        System.out.println("Meghívódik a Rovar setTartozkodas() metodusa.");
     }
 
     /**
      *  @brief Resets the Rovar to its default state.
      */
     public void alapAllapot(){
-        System.out.println("Meghívódott a Rovar alapAllapot metódusa.");
+        System.out.println("Meghívódik a Rovar alapAllapot metódusa.");
     }
 
     /**
      *  @brief Applies a slowing effect to the Rovar.
      */
     public void lassito(){
-        System.out.println("Meghívódott a Rovar lassito metódusa.");
+        System.out.println("Meghívódik a Rovar lassito metódusa.");
     }
 
     /**
      *  @brief Applies a speeding effect to the Rovar.
      */
     public void gyorsito(){
-        System.out.println("Meghívódott a Rovar gyorsito metódusa.");
+        System.out.println("Meghívódik a Rovar gyorsito metódusa.");
     }
 
     /**
      *  @brief Applies a paralyzing effect to the Rovar.
      */
     public void benit(){
-        System.out.println("Meghívódott a Rovar benit metódusa.");
+        System.out.println("Meghívódik a Rovar benit metódusa.");
     }
 
     /**
      *  @brief Makes the Rovar unable to cut.
      */
     public void vagaskeptelen(){
-        System.out.println("Meghívódott a Rovar vagaskeptelen metódusa.");
+        System.out.println("Meghívódik a Rovar vagaskeptelen metódusa.");
     }
 
     /**
@@ -97,7 +97,7 @@ public class Rovar {
      * @throws Exception If the Rovar is in a paralyzed or unable-to-cut state.
      */
     public void vag(Gombafonal g) throws Exception {
-        System.out.println("Meghívódott a Rovar vag metódusa.");
+        System.out.println("Meghívódik a Rovar vag metódusa.");
 
         boolean valasz = Skeleton.getInstance().Kerdes("Vágásképtelen vagy Bénított állapotban van a rovar?");
         try {
@@ -117,7 +117,7 @@ public class Rovar {
      * @throws Exception If the Rovar is paralyzed or there is no path between the Tektons.
      */
     public void maszik(Tekton hova) throws Exception {
-        System.out.println("Meghívódott a Rovar maszik metódusa.");
+        System.out.println("Meghívódik a Rovar maszik metódusa.");
         boolean valasz = Skeleton.getInstance().Kerdes("Bénított állapotban van a rovar?");
 
         try {
@@ -143,7 +143,7 @@ public class Rovar {
      * @throws Exception If an error occurs during the eating process.
      */
     public void eszik(Spora s) throws Exception {
-        System.out.println("Meghívódott a Rovar eszik metódusa.");
+        System.out.println("Meghívódik a Rovar eszik metódusa.");
         try {
             tartozkodas.eszik(s, this);
 
