@@ -76,7 +76,7 @@ public class Skeleton {
         gf1.setGombafaj(g1);
         gf1.setVegpont1(t1);
         gf1.setVegpont2(t2);
-        System.out.println("Létrejött a teszt 1 pálya.");
+        System.out.println("Létrejött a teszt 1 pálya.\n");
         try {
             g1.fonalNov(t2, t3);
         } catch (Exception e) {
@@ -104,7 +104,7 @@ public class Skeleton {
         gf1.setGombafaj(g1);
         gf1.setVegpont1(t1);
         gf1.setVegpont2(t2);
-        System.out.println("Létrejött a teszt 2 pálya.");
+        System.out.println("Létrejött a teszt 2 pálya.\n");
 
         try {
             g1.fonalNov(t2, t3);
@@ -130,7 +130,7 @@ public class Skeleton {
         t3.addSzomszed(t1);
         t3.addSzomszed(t2);
 
-        System.out.println("Létrejött a teszt 3 pálya.");
+        System.out.println("Létrejött a teszt 3 pálya.\n");
 
         try {
             g1.fonalNov(t2, t3);
@@ -166,7 +166,7 @@ public class Skeleton {
         gf1.setVegpont2(t2);
         gf1.setGombafaj(g1);
 
-        System.out.println("Létrejött a teszt 4 pálya.");
+        System.out.println("Létrejött a teszt 4 pálya.\n");
 
         try {
             g1.fonalNov(t2, m1);
@@ -212,7 +212,7 @@ public class Skeleton {
         gf2.setVegpont1(t2);
         gf2.setVegpont2(m1);
         gf2.setGombafaj(g2);
-        System.out.println("Létrejött a teszt 5 pálya.");
+        System.out.println("Létrejött a teszt 5 pálya.\n");
 
         try {
             g1.fonalNov(t2, m1);
@@ -233,7 +233,7 @@ public class Skeleton {
         t2.addSzomszed(t1);
         g1.addTest(gt1);
         gt1.setTekton(t1);
-        System.out.println("Létrejött a teszt 6 pálya.");
+        System.out.println("Létrejött a teszt 6 pálya.\n");
 
         try {
             g1.fonalNov(t1, t2);
@@ -251,7 +251,7 @@ public class Skeleton {
 
         t1.addSzomszed(t2);
         t2.addSzomszed(t1);
-        System.out.println("Létrejött a teszt 7 pálya.");
+        System.out.println("Létrejött a teszt 7 pálya.\n");
 
         try {
             g1.fonalNov(t1, t2);
@@ -287,7 +287,7 @@ public class Skeleton {
        t1.addSpora(s1);
 
        gf1.setGombafaj(g1);
-        System.out.println("Létrejött a teszt 8 pálya.");
+        System.out.println("Létrejött a teszt 8 pálya.\n");
 
          try {
             g1.testNovesztes(t1);
@@ -318,7 +318,7 @@ public class Skeleton {
        gf1.setVegpont2(t2);
 
        gf1.setGombafaj(g1);
-        System.out.println("Létrejött a teszt 9 pálya.");
+        System.out.println("Létrejött a teszt 9 pálya.\n");
 
         try {
             g1.testNovesztes(t1);
@@ -357,7 +357,7 @@ public class Skeleton {
 
         s1.setGombafaj(g1);
        t1.addSpora(s1);
-        System.out.println("Létrejött a teszt 10 pálya.");
+        System.out.println("Létrejött a teszt 10 pálya.\n");
 
        try {
             g1.testNovesztes(t1);
@@ -390,7 +390,7 @@ public class Skeleton {
        gf1_1.setGombafaj(g1);
 
        b1.setGombafaj(g1);
-               System.out.println("Létrejött a teszt 11 pálya.");
+               System.out.println("Létrejött a teszt 11 pálya.\n");
 
         try {
            g1.testNovesztes(p1);
@@ -420,7 +420,7 @@ public class Skeleton {
         g1.addTest(gt1);
 
         gt1.setTekton(t1);
-        System.out.println("Létrejött a teszt 12 pálya.");
+        System.out.println("Létrejött a teszt 12 pálya.\n");
 
         try {
             g1.sporaSzoras(t1, gt1);
@@ -445,7 +445,7 @@ public class Skeleton {
         gf1.setVegpont1(t1);
         gf1.setVegpont2(t2);
         gf1.setGombafaj(g1);
-        System.out.println("Létrejött a teszt 13 pálya.");
+        System.out.println("Létrejött a teszt 13 pálya.\n");
 
         try {
             r1.maszik(t2);
@@ -463,7 +463,7 @@ public class Skeleton {
         t1.addSzomszed(t2);
         t2.addSzomszed(t1);
         r1.setTartozkodas(t1);
-        System.out.println("Létrejött a teszt 14 pálya.");
+        System.out.println("Létrejött a teszt 14 pálya.\n");
 
         try {
             r1.maszik(t2);
@@ -486,7 +486,7 @@ public class Skeleton {
         gf1.setVegpont2(t1);
         gf1.setGombafaj(g1);
         t1.addFonal(gf1);
-        System.out.println("Létrejött a teszt 15 pálya.");
+        System.out.println("Létrejött a teszt 15 pálya.\n");
 
         try {
             d1.gombafonalFelszivas();
@@ -531,7 +531,7 @@ public class Skeleton {
        gf1_2.setGombafaj(g1);
 
        r1.setTartozkodas(t2);
-        System.out.println("Létrejött a teszt 16 pálya.");
+        System.out.println("Létrejött a teszt 16 pálya.\n");
 
        try {
             r1.vag(gf1_1);
@@ -569,7 +569,7 @@ public class Skeleton {
         r1.setTartozkodas(t2);
 
         gf1.setGombafaj(g1);
-        System.out.println("Létrejött a teszt 17 pálya.");
+        System.out.println("Létrejött a teszt 17 pálya.\n");
 
         try {
             r1.eszik(bs1);
@@ -619,7 +619,7 @@ public class Skeleton {
 
         gf1.setGombafaj(g1);
         gf2.setGombafaj(g1);
-        System.out.println("Létrejött a teszt 18 pálya.");
+        System.out.println("Létrejött a teszt 18 pálya.\n");
 
         try {
             jt1.tores(1);
@@ -666,7 +666,7 @@ public class Skeleton {
         gf2.setGombafaj(g1);
 
         
-        System.out.println("Létrejött a teszt 19 pálya.");
+        System.out.println("Létrejött a teszt 19 pálya.\n");
 
         try {
             g1.lastChance();
@@ -702,7 +702,7 @@ public class Skeleton {
         gf1.setGombafaj(g1);
 
         g1.addFonal(gf1);
-        System.out.println("Létrejött a teszt 20 pálya.");
+        System.out.println("Létrejött a teszt 20 pálya.\n");
 
         try {
             g1.lastChance();
