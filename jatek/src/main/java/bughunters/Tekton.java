@@ -182,9 +182,12 @@ public class Tekton implements FonalKezeles {
                 b1.setGombafaj(gf);
                 tekton.addSpora(b1);
                 for (Tekton tektonszomszed : tekton.getSzomszedok()) {
+                    if(tektonszomszed != this)
+                    {
                     Benito b2=new Benito();
                     b2.setGombafaj(gf);
                     tektonszomszed.addSpora(b2);
+                    }
                 }
             }
         }

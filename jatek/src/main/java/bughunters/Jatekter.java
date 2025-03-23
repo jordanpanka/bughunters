@@ -41,9 +41,10 @@ public class Jatekter {
      * @param darab A törés során létrejövő új elemek száma (jelenleg nem használatos a metódusban).
      */
     public void tores(int darab) {
-        Tekton t4 = new Tekton();
-
         System.out.println("Meghívódik a Jatekter tores metodusa.");
+
+        Tekton t4 = new Tekton();
+        
         tektonok.get(1).szomszedAllitas(t4);
 
         List<Gombafonal> ujszomszed = tektonok.get(1).gombafonalIgazitas();
