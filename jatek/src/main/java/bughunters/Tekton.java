@@ -1,5 +1,7 @@
 package bughunters;
 
+import java.awt.font.GlyphVector;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -114,6 +116,15 @@ public class Tekton implements FonalKezeles {
 
            
                 try{
+                    if(gf.getGombaTestek()!=null){
+                        for (Gombatest gtest : gf.getGombaTestek()) {
+                            if (gtest.getTekton().equals(this)) {
+                                throw new Exception("Már van gombatest ezen a Tektonon.");
+                            }
+                        }
+                    }
+                   
+                    
                     sporak.get(0).fogyaszt(3);
 
                     boolean valasz=Skeleton.getInstance().Kerdes("Elfogyott a spóra a növesztés által?");
@@ -271,7 +282,7 @@ public class Tekton implements FonalKezeles {
      */
     @Override
     public void addFonal(Gombafonal gf){
-        System.out.println("Meghívódott a Tekton addFonal metódusa.");
+        System.out.println("Meghívódott a "+this.getClass().getSimpleName()+" addFonal metódusa.");
         gombafonalak.add(gf);
     }
 
@@ -281,7 +292,7 @@ public class Tekton implements FonalKezeles {
      */
     @Override
     public void fonalSzakad(Gombafonal gf){
-        System.out.println("Meghívódott a Tekton fonalSzakad metódusa.");
+        System.out.println("Meghívódott a "+this.getClass().getSimpleName()+" fonalSzakad metódusa.");
 
         gombafonalak.remove(gf);
         

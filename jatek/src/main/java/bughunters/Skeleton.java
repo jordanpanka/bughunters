@@ -331,11 +331,10 @@ public class Skeleton {
     //Gombatest növesztés Tektonra
     public void teszt10(){
         Gombafaj g1 = new Gombafaj();
-        Gombafaj g2 = new Gombafaj();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         Gombafonal gf1 = new Gombafonal();
-        Gombatest gt1 = new Gombatest();
+        Gombatest gt2 = new Gombatest();
 
         Spora s1 = new Gyorsito();
      
@@ -352,8 +351,8 @@ public class Skeleton {
        gf1.setVegpont1(t1);
        gf1.setVegpont2(t2);
 
-       gt1.setTekton(t1);
-       g2.addTest(gt1);
+       gt2.setTekton(t1);
+       g1.addTest(gt2);
        gf1.setGombafaj(g1);
 
         s1.setGombafaj(g1);
@@ -640,9 +639,11 @@ public class Skeleton {
         Gombafonal gf2 = new Gombafonal();
 
         t1.addSzomszed(t2);
+        t1.addFonal(gf2);
 
         t2.addSzomszed(t1);
         t2.addSzomszed(t3);
+        t2.addFonal(gf2);
 
         t3.addSzomszed(t2);
 
@@ -657,13 +658,14 @@ public class Skeleton {
         gf1.setVegpont2(t3);
         gf1.setGombafaj(g1);
 
+        g1.addFonal(gf2);
         g1.addFonal(gf1);
 
         gf2.setVegpont1(t1);
         gf2.setVegpont2(t2);
         gf2.setGombafaj(g1);
 
-        g1.addFonal(gf2);
+        
         System.out.println("Létrejött a teszt 19 pálya.");
 
         try {

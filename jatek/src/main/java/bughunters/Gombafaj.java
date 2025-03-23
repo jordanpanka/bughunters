@@ -125,6 +125,7 @@ public class Gombafaj implements FonalKezeles{
         for(Gombafonal gf:gombafonalhalozat){
             boolean van=false;
             for(Tekton t:gombatestesTektonok){
+                System.out.print("A privát függvényhívás részei: ");
                 if(t.vanUt(gf.getVegpont1())){
                     van=true;
                     break;
@@ -147,7 +148,7 @@ public class Gombafaj implements FonalKezeles{
         try{
             Gombafonal uj= hova.gombafonalAdd(this,honnan);
             addFonal(uj);
-            hova.addFonal(uj);
+            honnan.addFonal(uj);
         }catch(Exception e)
         {
             throw new Exception("Nem nőhet fonal.");
@@ -238,27 +239,37 @@ public class Gombafaj implements FonalKezeles{
            gombatestesTektonok.add(gt.getTekton());
         }
         for(int i=0; i<gombafonalhalozat.size(); i++){
-            if(Skeleton.getInstance().Kerdes("Haldoklo állapotban van a fonal?"))
-            {
-                gombafonalhalozat.get(i).allapotvalt();
+            boolean van=false;
+            for(Tekton t:gombatestesTektonok){
+                if(t.vanUt(gombafonalhalozat.get(i).getVegpont1())){
+                    van=true;
+                    break;
+                }
             }
-            else if(Skeleton.getInstance().Kerdes("UtolsoEsely állapotban van a fonal?")){
-                //elér e testhez az adott fonal
-                    boolean van=false;
-                    for(Tekton t:gombatestesTektonok){
-                        if(t.vanUt(gombafonalhalozat.get(i).getVegpont1())){
-                            van=true;
-                            break;
-                        }
-                    }
-                    if(van){
-                        gombafonalhalozat.get(i).allapotvalt();
-                    }  
-                    else{
-                        gombafonalhalozat.get(i).vegpontTorles();
 
-                    }       
-            }      
+            if (van && i!=0) {
+                    if(Skeleton.getInstance().Kerdes("Haldoklo állapotban van a fonal?") )
+                {
+                    gombafonalhalozat.get(i).allapotvalt();
+                    gombafonalhalozat.get(i).allapotvalt();
+                        
+                }
+                else if(Skeleton.getInstance().Kerdes("UtolsoEsely állapotban van a fonal?")){
+                    //elér e testhez az adott fonal
+                    gombafonalhalozat.get(i).allapotvalt();
+                }      
+            }else if(!van){
+                if(Skeleton.getInstance().Kerdes("Haldoklo állapotban van a fonal?") )
+                {
+                    gombafonalhalozat.get(i).allapotvalt();
+
+                }else if(Skeleton.getInstance().Kerdes("UtolsoEsely állapotban van a fonal?")){
+                    //elér e testhez az adott fonal
+                    gombafonalhalozat.get(i).vegpontTorles();     
+                }      
+            }
+
+            
         }
     }
     /**

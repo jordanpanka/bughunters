@@ -107,7 +107,6 @@ public class Rovar {
                 g.vegpontTorles();
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             throw e;
         }
     }
@@ -134,7 +133,6 @@ public class Rovar {
 
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             throw e;
         }
     }
@@ -150,7 +148,6 @@ public class Rovar {
             tartozkodas.eszik(s, this);
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             throw e;
         }
 
