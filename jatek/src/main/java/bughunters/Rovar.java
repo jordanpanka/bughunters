@@ -6,7 +6,7 @@ public class Rovar {
 
 
     /**
-     * @brief Default constructor for Rovar.
+     * @brief Paraméter nélküli konstruktor.
      */
     public Rovar() {
         System.out.println("Létrejött egy új Rovar.");
@@ -16,8 +16,8 @@ public class Rovar {
     }
 
     /**
-     *  @brief Constructor for Rovar with a specified Tekton.
-     * @param tartozkodas The Tekton where the Rovar is located.
+     *  @brief Paraméteres konstruktor.
+     * @param tartozkodas A Tekton ahol a Rovar tartózkodik.
      */
     public Rovar(/*String szin,*/ Tekton tartozkodas) {
         System.out.println("Létrejött egy új Rovar.");
@@ -40,16 +40,16 @@ public class Rovar {
     */
 
     /**
-     *  @brief Gets the Tekton where the Rovar is currently located.
-     * @return The current Tekton.
+     *  @brief Visszaadja a Rovar tartózkodását.
+     * @return A jelenlegi Tekton ahol a Rovar tartózkodik.
     */
     public Tekton getTartozkodas() {
         return tartozkodas;
     }
 
     /**
-     *   @brief Sets the Tekton where the Rovar is located.
-     * @param t The new Tekton.
+     *   @brief Beállítja a Rovar tartózkodását egy Tektonra.
+     * @param t Az új Tekton ahova beállítjuk a Rovar tartózkodását.
      */
     public void setTartozkodas(Tekton t){ 
         this.tartozkodas = t; 
@@ -57,44 +57,44 @@ public class Rovar {
     }
 
     /**
-     *  @brief Resets the Rovar to its default state.
+     *  @brief Alapállapotba állítja a Rovart.
      */
     public void alapAllapot(){
         System.out.println("Meghívódik a Rovar alapAllapot metódusa.");
     }
 
     /**
-     *  @brief Applies a slowing effect to the Rovar.
+     *  @brief Lassítja a Rovart.
      */
     public void lassito(){
         System.out.println("Meghívódik a Rovar lassito metódusa.");
     }
 
     /**
-     *  @brief Applies a speeding effect to the Rovar.
+     *  @brief Gyorsítja a Rovart.
      */
     public void gyorsito(){
         System.out.println("Meghívódik a Rovar gyorsito metódusa.");
     }
 
     /**
-     *  @brief Applies a paralyzing effect to the Rovar.
+     *  @brief Lebénítja a Rovart.
      */
     public void benit(){
         System.out.println("Meghívódik a Rovar benit metódusa.");
     }
 
     /**
-     *  @brief Makes the Rovar unable to cut.
+     *  @brief Vágásképtelenné teszi a Rovart.
      */
     public void vagaskeptelen(){
         System.out.println("Meghívódik a Rovar vagaskeptelen metódusa.");
     }
 
     /**
-     *  @brief Cuts a Gombafonal if the Rovar is not in a paralyzed or unable-to-cut state.
-     * @param g The Gombafonal to be cut.
-     * @throws Exception If the Rovar is in a paralyzed or unable-to-cut state.
+     *  @brief A Rovar elvágja a Gombafonalat, ha nincsen lebénítva vagy nem vágásképtelen.
+     * @param g A Gombafonal, amit el kell vágnia a Rovarnak.
+     * @throws Exception Hogyha a Rovar le van bénítva vagy vágásképtelen.
      */
     public void vag(Gombafonal g) throws Exception {
         System.out.println("Meghívódik a Rovar vag metódusa.");
@@ -112,9 +112,9 @@ public class Rovar {
     }
 
     /**
-     *  @brief Moves the Rovar to a specified Tekton if there is a path and the Rovar is not paralyzed.
-     * @param hova The Tekton to move to.
-     * @throws Exception If the Rovar is paralyzed or there is no path between the Tektons.
+     *  @brief A Rovar átmászik egy Tektonról egy másikra, ha van út és nincs lebénítva.
+     * @param hova A Tekton, ahova a Rovar átmászik.
+     * @throws Exception Ha a Rovar lebénítva van, vagy nincsen út a Tektonok között.
      */
     public void maszik(Tekton hova) throws Exception {
         System.out.println("Meghívódik a Rovar maszik metódusa.");
@@ -138,9 +138,9 @@ public class Rovar {
     }
 
     /**
-     *  @brief Makes the Rovar eat a Spora.
-     * @param s The Spora to be eaten.
-     * @throws Exception If an error occurs during the eating process.
+     *  @brief A Rovar eszik egy Sporaból
+     * @param s ÍMelyik Sporaból egyen
+     * @throws Exception Ha a Rovar nem tud enni.
      */
     public void eszik(Spora s) throws Exception {
         System.out.println("Meghívódik a Rovar eszik metódusa.");

@@ -4,7 +4,21 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+
+/**
+ * @brief A Main osztály a program belépési pontja.
+ * Egy konzolos menüt biztosít, amely lehetővé teszi a felhasználó számára,
+ * hogy különböző teszteseteket futtasson.
+ */
 public class Main {
+
+
+     /**
+     * @brief A program belépési pontja.
+     * A felhasználó egy menüből választhat, hogy melyik tesztesetet kívánja futtatni.
+     *
+     * @param args A parancssori argumentumok (nem használatos).
+     */
     public static void main(String[] args) {
         Skeleton s = Skeleton.getInstance();
         boolean fut = true;
@@ -104,6 +118,11 @@ public class Main {
         }
     }
 
+    /**
+     * @brief Bekéri a felhasználó választását, hogy melyik teszteset fusson, a konzolon keresztül.
+     * 
+     * @return A felhasználó által beírt szám, vagy -1, ha hiba történt.
+     */
     private static int userConsoleInput(){
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
         String valasz;
@@ -116,6 +135,9 @@ public class Main {
         return -1;
     }
 
+    /**
+     * @brief Kiírja a konzolra a menüt, a választható teszteseteket.
+     */
     private static void userConsoleDraw() {
         System.out.println("-----------------------------------------------------------------------------------------------------------------");
         System.out.println("Programból való kilépés: 0");

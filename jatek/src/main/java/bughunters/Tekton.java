@@ -26,7 +26,7 @@ public class Tekton implements FonalKezeles {
     }
 
     /***
-     * 
+     * @brief A Tekton osztály paraméteres konstruktora
      * @param szomszed List<Tekton>
      * @param gombafonal List<Gombafonal>
      * @param spora List<Spora>

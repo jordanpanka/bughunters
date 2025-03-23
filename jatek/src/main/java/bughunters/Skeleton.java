@@ -4,10 +4,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * @brief A test-case-ek teszteléshez szükséges metódusokat tartalmazza.
+ */
 public class Skeleton {
     private static Skeleton instance;
     private String testCase;
 
+    /**
+     * @brief Az osztály singleton példányának lekérdezése.
+     * @return Az osztály singleton példánya.
+     */
     public static Skeleton getInstance() {
         if (instance == null) {
             instance = new Skeleton();
@@ -15,18 +22,32 @@ public class Skeleton {
         return instance;
     }
 
+    /**
+     * @brief A teszt eset lekérdezése.
+     * @return A teszt eset.
+     */
     public String getTestCase() {
         return testCase;
     }
 
+    /**
+     * @brief A teszt eset beállítása.
+     * @param testCase A teszt eset.
+     */
     public void setTestCase(String testCase) {
         this.testCase = testCase;
     }
 
+    /**
+     * @brief Paraméter nélküli konstruktor.
+     */
     private Skeleton() {
         testCase = "";
     }
 
+    /**
+     * @brief A teszteléshez szükséges kérdéseket ezzel a függvénnyel tehetjük fel a tesztelőtől.
+     */
     public boolean Kerdes(String kerdes) {
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
         System.out.println(kerdes);
@@ -51,11 +72,12 @@ public class Skeleton {
         
     }
 
-    //Konkrét tesztesetekké írni őket.
-    //Test-case diagrammok alapján kibővíteni a tesztelést és a KOMM. DIAGRAMMOKAT IS
-
     //Gombafonal növesztése Gombafonalból
-    //Gombafonal növesztése Tektonra Gombafonalból, SIKERES
+
+    /**
+     * @brief A teszt 1-et előkészítő és lefuttató metódus.
+     * Gombafonal növesztése Tektonra Gombafonalból, SIKERES
+     */
     public void teszt1(){
         Tekton t1= new Tekton();
         Tekton t2= new Tekton();
@@ -88,7 +110,10 @@ public class Skeleton {
     }
 
     //Gombafonal növesztése Gombafonalból
-    //Gombafonal növesztése Tektonra Gombafonalból, SIKERTELEN: nem szomszédosak
+    /**
+     * @brief A teszt 2-et előkészítő és lefuttató metódus.
+     * Gombafonal növesztése Tektonra Gombafonalból, SIKERTELEN: nem szomszédosak
+     */
     public void teszt2(){
         Tekton t1= new Tekton();
         Tekton t2= new Tekton();
@@ -117,7 +142,10 @@ public class Skeleton {
     }
 
     //Gombafonal növesztése Gombafonalból
-    //Gombafonal növesztése Tektonra Gombafonalból, SIKERTELEN: nincs kezdeti gombafonal
+    /**
+     * @brief A teszt 3-at előkészítő és lefuttató metódus.
+     * Gombafonal növesztése Tektonra Gombafonalból, SIKERTELEN: nincs kezdeti gombafonal
+     */
     public void teszt3(){
         Tekton t1= new Tekton();
         Tekton t2= new Tekton();
@@ -142,8 +170,11 @@ public class Skeleton {
         }
     }
 
-    //Gombafonal növesztése Monotektonra Gombafonalból, SIKERES
     //Gombafonal növesztése Monotektonra Gombafonalból
+    /**
+     * @brief A teszt 4-et előkészítő és lefuttató metódus.
+     * Gombafonal növesztése Monotektonra Gombafonalból, SIKERES
+     */
     public void teszt4(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -179,8 +210,11 @@ public class Skeleton {
 
     }
 
-    //Gombafonal növesztése Monotektonra Gombafonalból, SIKERTELEN: m1-el jelen van másik gombafaj fonala
     //Gombafonal növesztése Monotektonra Gombafonalból
+    /**
+     * @brief A teszt 5-öt előkészítő és lefuttató metódus.
+     * Gombafonal növesztése Monotektonra Gombafonalból, SIKERTELEN: m1-el jelen van másik gombafaj fonala
+     */
     public void teszt5(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -224,8 +258,11 @@ public class Skeleton {
         }
     }
 
-    //Gombafonal növesztése Tektonra Gombatestből, SIKERES
     //Gombafonal növesztése Gombatestből
+    /**
+     * @brief A teszt 6-ot előkészítő és lefuttató metódus.
+     * Gombafonal növesztése Tektonra Gombatestből, SIKERES
+     */
     public void teszt6(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -245,8 +282,11 @@ public class Skeleton {
         }
     }
 
-    //Gombafonal növesztése Tektonra Gombatestből, SIKERTELEN
     //Gombafonal növesztése Gombatestből
+    /**
+     * @brief A teszt 7-et előkészítő és lefuttató metódus.
+     * Gombafonal növesztése Tektonra Gombatestből, SIKERTELEN
+     */
     public void teszt7(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -265,7 +305,10 @@ public class Skeleton {
 
     
     //Gombatest növesztése Tektonra
-    //Gombatest növesztés Tektonra
+    /**
+     * @brief A teszt 8-at előkészítő és lefuttató metódus.
+     * Gombatest növesztés Tektonra
+     */
     public void teszt8(){
         Gombafaj g1 = new Gombafaj();
         Tekton t1 = new Tekton();
@@ -299,8 +342,11 @@ public class Skeleton {
          }
     }
 
-    //Gombatest növesztése Tektonra, SIKERTELEN: nincs g1 típusú spóra a test növesztésére
     //Gombatest növesztés Tektonra
+    /**
+     * @brief A teszt 9-et előkészítő és lefuttató metódus.
+     * Gombatest növesztése Tektonra, SIKERTELEN: nincs g1 típusú spóra a test növesztésére
+     */
     public void teszt9(){
         Gombafaj g1 = new Gombafaj();
         Tekton t1 = new Tekton();
@@ -330,8 +376,11 @@ public class Skeleton {
         }
     }
 
-    //Gombatest növesztése Tektonra, SIKERTELEN: van már gombatest t1 tektonon
     //Gombatest növesztés Tektonra
+    /**
+     * @brief A teszt 10-et előkészítő és lefuttató metódus.
+     * Gombatest növesztése Tektonra, SIKERTELEN: van már gombatest t1 tektonon
+     */
     public void teszt10(){
         Gombafaj g1 = new Gombafaj();
         Tekton t1 = new Tekton();
@@ -370,7 +419,10 @@ public class Skeleton {
     }
 
     //Gombatest növesztése Puritektonra
-    //Gombatest növesztése Puritektonra
+    /**
+     * @brief A teszt 11-et előkészítő és lefuttató metódus.
+     * Gombatest növesztése Puritektonra
+     */
     public void teszt11(){
         Tekton t1 = new Tekton();
         Tekton p1 = new Puritekton();
@@ -403,8 +455,11 @@ public class Skeleton {
        
     }
 
-    //Spóra szórása még nem létező Spórával
     //Fejlett Spora Szoras
+    /**
+     * @brief A teszt 12-et előkészítő és lefuttató metódus.
+     * Spóra szórása még nem létező Spórával
+     */
     public void teszt12(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -432,6 +487,10 @@ public class Skeleton {
         }
     }
 
+    /**
+     * @brief A teszt 13-at előkészítő és lefuttató metódus.
+     * Rovar mászik létező úttal
+     */
     public void teszt13(){
         Tekton t1 = new Tekton();
         Tekton t2= new Tekton();
@@ -457,6 +516,10 @@ public class Skeleton {
         }
     }
 
+    /**
+     * @brief A teszt 14-et előkészítő és lefuttató metódus.
+     * Rovar mászik NEM létező úttal
+     */
     public void teszt14(){
         Tekton t1 = new Tekton();
         Tekton t2= new Tekton();
@@ -475,6 +538,10 @@ public class Skeleton {
         }
     }
 
+    /**
+     * @brief A teszt 15-öt előkészítő és lefuttató metódus.
+     * Gombafonal felszívódása Disszolátoron
+     */
     public void teszt15(){
         Tekton d1 = new Disszolator();
         Tekton t1 = new Tekton();
@@ -498,6 +565,10 @@ public class Skeleton {
         }
     }
 
+    /**
+     * @brief A teszt 16-ot előkészítő és lefuttató metódus.
+     * Fonal vágás
+     */
     public void teszt16(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -543,6 +614,10 @@ public class Skeleton {
         }
     }
 
+    /**
+     * @brief A teszt 17-et előkészítő és lefuttató metódus.
+     * Bénító spóra evése
+     */
     public void teszt17(){
         Rovar r1 = new Rovar();
         Tekton t1 = new Tekton();
@@ -581,6 +656,10 @@ public class Skeleton {
         }
     }
 
+    /**
+     * @brief A teszt 18-at előkészítő és lefuttató metódus.
+     * T2 Tekton törés
+     */
     public void teszt18(){
         Jatekter jt1 = new Jatekter();
         Tekton t1 = new Tekton();
@@ -632,6 +711,10 @@ public class Skeleton {
         }
     }
 
+    /**
+     * @brief A teszt 19-et előkészítő és lefuttató metódus.
+     * Fonál lastChance újrakötött fonállal
+     */
     public void teszt19(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -678,6 +761,10 @@ public class Skeleton {
         }
     }
 
+    /**
+     * @brief A teszt 20-at előkészítő és lefuttató metódus.
+     * Fonál lastChance nem újrakötött fonállal
+     */
     public void teszt20(){
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
