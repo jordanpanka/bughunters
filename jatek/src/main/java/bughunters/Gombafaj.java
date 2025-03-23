@@ -113,7 +113,7 @@ public class Gombafaj implements FonalKezeles{
      * és ha nem, akkor változtatja az állapotukat.
      */
     private void haldoklas(){
-        System.out.println("Meghívódott a Gombafaj haldoklas metódusa.(privát metódus)");
+        System.out.println("Meghívódik a Gombafaj haldoklas metódusa.(privát metódus)");
         ArrayList<Tekton> gombatestesTektonok=new ArrayList<>();
 
         if (gombaTestek != null) { 
@@ -144,7 +144,7 @@ public class Gombafaj implements FonalKezeles{
      * @throws Exception Ha nem lehetséges a fonal növesztése.
      */
     public void  fonalNov(Tekton honnan, Tekton hova)throws Exception{
-        System.out.println("Meghívódott a Gombafaj fonalNov metódusa.");
+        System.out.println("Meghívódik a Gombafaj fonalNov metódusa.");
         try{
             Gombafonal uj= hova.gombafonalAdd(this,honnan);
             addFonal(uj);

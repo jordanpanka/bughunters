@@ -13,7 +13,7 @@ public class Disszolator extends Tekton {
      */
     @Override
     public void gombafonalFelszivas() {
-        System.out.println("Meghívódott a Disszolator gombafonalFelszivas metódusa.");
+        System.out.println("Meghívódik a Disszolator gombafonalFelszivas metódusa.");
 
         boolean valasz = Skeleton.getInstance().Kerdes("gf1 gombafonal már öt kör óta rajta van a tektonon?");
         if(valasz){
