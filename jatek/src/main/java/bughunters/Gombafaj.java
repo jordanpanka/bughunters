@@ -11,6 +11,7 @@ public class Gombafaj implements FonalKezeles{
     private int eddigNovesztettTestekSzama;
     private int gombatestFejlettsegIdo;
     private int gombatestEletSzama;
+    private int gombafonalEletSzama;
     private ArrayList<Gombatest> gombaTestek;
     private ArrayList<Gombafonal> gombafonalhalozat;
     /**
@@ -76,6 +77,14 @@ public class Gombafaj implements FonalKezeles{
     public void setGombatestEletSzama(int gombatestEletSzama) {
         this.gombatestEletSzama = gombatestEletSzama;
     }
+    public int getGombafonalEletSzama() {
+        return gombafonalEletSzama;
+    }
+    
+    public void setGombafonalEletSzama(int gombafonalEletSzama) {
+        this.gombafonalEletSzama = gombafonalEletSzama;
+    }
+    
     /**
      * @brief Visszaadja a gomba testeit tartalmazó listát.
      *
@@ -218,7 +227,12 @@ public class Gombafaj implements FonalKezeles{
         {
             g.urit();
             t.sporaSzor(this);
-            boolean valasz=Skeleton.getInstance().Kerdes("Elhal a gombatest?");
+           // boolean valasz=Skeleton.getInstance().Kerdes("Elhal a gombatest?");
+            boolean valasz=false;
+            if(g.getKor()==gombatestEletSzama)
+            {
+                valasz=true;
+            }
             if(valasz){
                 torolGombatest(g);
             }
@@ -228,7 +242,7 @@ public class Gombafaj implements FonalKezeles{
     
     }
     void torolGombatest(Gombatest gt){
-        System.out.println("Meghívódik a Gombafaj torolGombatest metódusa.");
+        //System.out.println("Meghívódik a Gombafaj torolGombatest metódusa.");
         gombaTestek.remove(gt);
     }
     /**
@@ -236,7 +250,7 @@ public class Gombafaj implements FonalKezeles{
      */
     //HashMap melyik fonalról van szó
     public void lastChance(){
-        System.out.println("Meghívódik a Gombafaj lastChance metodusa.");
+        //System.out.println("Meghívódik a Gombafaj lastChance metodusa.");
         ArrayList<Tekton> gombatestesTektonok=new ArrayList<>();
         for(Gombatest gt: gombaTestek){
            gombatestesTektonok.add(gt.getTekton());
@@ -251,28 +265,19 @@ public class Gombafaj implements FonalKezeles{
             }
 
             if (van && i!=0) {
-                    if(Skeleton.getInstance().Kerdes("Haldoklo állapotban van a fonal?") )
-                {
-                    gombafonalhalozat.get(i).allapotvalt();
-                    gombafonalhalozat.get(i).allapotvalt();
-                        
-                }
-                else if(Skeleton.getInstance().Kerdes("UtolsoEsely állapotban van a fonal?")){
-                    //elér e testhez az adott fonal
-                    gombafonalhalozat.get(i).allapotvalt();
-                }      
+                
+                    gombafonalhalozat.get(i).setAllapot(Ep);;
+                   
             }else if(!van){
-                if(Skeleton.getInstance().Kerdes("Haldoklo állapotban van a fonal?") )
+                if(gombafonalhalozat.get(i).getAllapot()==Haldoklo && gombafonalhalozat.get(i).getMiota()==gombafonalEletSzama )
                 {
                     gombafonalhalozat.get(i).allapotvalt();
 
-                }else if(Skeleton.getInstance().Kerdes("UtolsoEsely állapotban van a fonal?")){
+                }else if(gombafonalhalozat.get(i).getAllapot().equals(UtolsoEsely)){
                     //elér e testhez az adott fonal
                     gombafonalhalozat.get(i).vegpontTorles();     
                 }      
             }
-
-            
         }
     }
     /**
