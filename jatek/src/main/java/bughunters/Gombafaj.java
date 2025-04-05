@@ -6,11 +6,11 @@ import java.util.ArrayList;
  * fonalhálózatát, valamint a spóraszórás és a haldoklás folyamatait.
  */
 public class Gombafaj implements FonalKezeles{
-   /*private String nev;
+    private String nev;
     private int termelesIdeje;
     private int eddigNovesztettTestekSzama;
     private int gombatestFejlettsegIdo;
-    private int gombatestEletSzama;*/
+    private int gombatestEletSzama;
     private ArrayList<Gombatest> gombaTestek;
     private ArrayList<Gombafonal> gombafonalhalozat;
     /**
@@ -28,16 +28,16 @@ public class Gombafaj implements FonalKezeles{
      * @param gtesz A gombatest életszáma.
      */
     public Gombafaj(String n, int tI, int ents, int gtfi,int gtesz){
-        /*nev=n;
+        nev=n;
         termelesIdeje=tI;
         eddigNovesztettTestekSzama=ents;
         gombatestFejlettsegIdo=gtfi;
-        gombatestEletSzama=gtesz;*/
+        gombatestEletSzama=gtesz;
         gombaTestek=new ArrayList<Gombatest>();
         gombafonalhalozat=new ArrayList<Gombafonal>();
         System.out.println("Létrejött egy új Gombafaj:" );
     }
-    /*public String getNev() {
+    public String getNev() {
         return nev;
     }
     
@@ -75,7 +75,7 @@ public class Gombafaj implements FonalKezeles{
     
     public void setGombatestEletSzama(int gombatestEletSzama) {
         this.gombatestEletSzama = gombatestEletSzama;
-    }*/
+    }
     /**
      * @brief Visszaadja a gomba testeit tartalmazó listát.
      *
@@ -112,8 +112,10 @@ public class Gombafaj implements FonalKezeles{
      * @brief A haldoklási folyamatot kezeli. Ellenőrzi, hogy a fonalak elérnek-e egy gombatesthez,
      * és ha nem, akkor változtatja az állapotukat.
      */
+    //meg kell nézni, hogy a gombafajhoz meddig marad életben a haldoklás után
+    //hogy kapcsolódik-e hozzá gombatest
     private void haldoklas(){
-        System.out.println("Meghívódik a Gombafaj haldoklas metódusa.(privát metódus)");
+        //System.out.println("Meghívódik a Gombafaj haldoklas metódusa.(privát metódus)");
         ArrayList<Tekton> gombatestesTektonok=new ArrayList<>();
 
         if (gombaTestek != null) { 
@@ -125,7 +127,7 @@ public class Gombafaj implements FonalKezeles{
         for(Gombafonal gf:gombafonalhalozat){
             boolean van=false;
             for(Tekton t:gombatestesTektonok){
-                System.out.print("A privát függvényhívás részei: ");
+                //System.out.print("A privát függvényhívás részei: ");
                 if(t.vanUt(gf.getVegpont1())){
                     van=true;
                     break;
@@ -144,7 +146,7 @@ public class Gombafaj implements FonalKezeles{
      * @throws Exception Ha nem lehetséges a fonal növesztése.
      */
     public void  fonalNov(Tekton honnan, Tekton hova)throws Exception{
-        System.out.println("Meghívódik a Gombafaj fonalNov metódusa.");
+        //System.out.println("Meghívódik a Gombafaj fonalNov metódusa.");
         try{
             Gombafonal uj= hova.gombafonalAdd(this,honnan);
             addFonal(uj);
@@ -160,7 +162,7 @@ public class Gombafaj implements FonalKezeles{
      * @param gf A hozzáadandó gombafonal.
      */
     public void addFonal(Gombafonal gf){
-        System.out.println("Meghívódik a Gombafaj addFonal metódusa.");
+        //System.out.println("Meghívódik a Gombafaj addFonal metódusa.");
         if (gombafonalhalozat == null) {
             gombafonalhalozat = new ArrayList<>();
         }
@@ -172,7 +174,7 @@ public class Gombafaj implements FonalKezeles{
      * @param gf A megszakadt gombafonal.
      */
     public void  fonalSzakad(Gombafonal gf){
-        System.out.println("Meghivódik a Gombafaj fonalSzakad metódusa.");
+        //System.out.println("Meghivódik a Gombafaj fonalSzakad metódusa.");
         gombafonalhalozat.remove(gf);
         haldoklas();
     }
@@ -181,10 +183,10 @@ public class Gombafaj implements FonalKezeles{
      *
      * @param t A Tekton, amelyen a gombatest növekedni fog.
      */
-    public void testNovesztes(Tekton t)throws Exception{
-        System.out.println("Meghívódik a Gombafaj testNovesztes metodusa.");
+    public void testNovesztes(Tekton t, boolean sporaval)throws Exception{
+        //System.out.println("Meghívódik a Gombafaj testNovesztes metodusa.");
         try{
-            Gombatest uj=t.gombatestNov(this);
+            Gombatest uj=t.gombatestNov(this,sporaval);
             addTest(uj);
 
         }catch(Exception e)
@@ -211,7 +213,7 @@ public class Gombafaj implements FonalKezeles{
      * @param g A gombatest, amely spórát szór.
      */
     public void sporaSzoras(Tekton t, Gombatest g)throws Exception{
-        System.out.println("Meghívódik a Gombafaj sporaSzoras metodusa.");
+        //System.out.println("Meghívódik a Gombafaj sporaSzoras metodusa.");
         try
         {
             g.urit();

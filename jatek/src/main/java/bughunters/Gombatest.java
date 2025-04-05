@@ -1,7 +1,7 @@
 package bughunters;
 public class Gombatest {
-    /*private int sporaRaktar;
-    private int kor;*/
+    private int sporaRaktar;
+    private int kor;
     private Gombafaj gombafaj;
     private Tekton tekton;
 
@@ -47,7 +47,7 @@ public class Gombatest {
     public void setTekton(Tekton tekton) {
         this.tekton = tekton;
     }
-    /* 
+     
     public int getSporaRaktar() {
         return sporaRaktar;
     }
@@ -62,7 +62,7 @@ public class Gombatest {
     
     public void setKor(int kor) {
         this.kor = kor;
-    }*/
+    }
 
 
     /**
