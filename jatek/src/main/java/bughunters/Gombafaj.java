@@ -287,5 +287,8 @@ public class Gombafaj implements FonalKezeles{
         System.out.println("Meghívódik a Gombafaj toresHaldoklas metodusa.");
         haldoklas();
     }
+    public void rovarEves(Rovar r){
+        
+    }
 
 }
