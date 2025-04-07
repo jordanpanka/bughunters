@@ -29,7 +29,7 @@ public class Monotekton extends Tekton {
      * @exception Exception akkor dobódik ha nem lehet ide gombatestet növeszteni
      */
     @Override
-    public Gombatest gombatestNov(Gombafaj gf) throws Exception{
+    public Gombatest gombatestNov(Gombafaj gf,boolean sporaval) throws Exception{
         System.out.println("Meghívódik a Monotekton gombatestNov metódusa.");
 
         if(gf == getFonalak().get(0).getGombafaj()){
