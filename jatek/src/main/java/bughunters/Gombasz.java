@@ -12,8 +12,8 @@ public class Gombasz extends Jatekos{
         this.gombafaj = gombafaj;
     }
 
-    Gombasz(String nev,Gombafaj gfaj):Jatekos(nev){
-        
+    Gombasz(String nev,Gombafaj gfaj){
+        super(nev);
     }
     public void fonalNov(Tekton t1, Tekton t2){
 

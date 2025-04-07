@@ -33,7 +33,7 @@ public class Gyorsito extends Spora {
     public void hatas(Rovar r)
     {
         System.out.println("Meghívódik a Gyorsito osztaly hatas metodusa.");
-        r.gyorsito();
+       
     }
 }
 

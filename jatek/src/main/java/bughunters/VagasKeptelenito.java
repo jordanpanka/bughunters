@@ -30,6 +30,6 @@ public class VagasKeptelenito extends Spora {
     public void hatas(Rovar r)
     {
         System.out.println("Meghívódik a VagasKeptelenito osztaly hatas metodusa.");
-        r.vagaskeptelen();
+        //r.vagaskeptelen();
     }
 }

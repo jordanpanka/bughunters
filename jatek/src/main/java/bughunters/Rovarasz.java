@@ -13,8 +13,8 @@ public class Rovarasz extends Jatekos {
         this.rovarok = rovarok;
     }
 
-    public Rovarasz(String nev):Jatekos(nev){
-
+    public Rovarasz(String nev){
+        super(nev);
     }
     public void vag(Gombafonal gf){
 

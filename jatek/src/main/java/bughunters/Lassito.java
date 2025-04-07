@@ -30,7 +30,7 @@ public class Lassito extends Spora {
     public void hatas(Rovar r)
     {
         System.out.println("Meghívódik a Lassito osztaly hatas metodusa.");
-        r.lassito();
+       // r.lassito();
     }
 }
  
