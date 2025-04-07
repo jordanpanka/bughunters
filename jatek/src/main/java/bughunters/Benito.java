@@ -28,7 +28,7 @@ public class Benito extends Spora {
     @Override
     public void hatas(Rovar r) {
         System.out.println("Meghívódik a Benito osztaly hatas metodusa.");
-        r.benit();
+        //r.benit();
         
     }
 }
