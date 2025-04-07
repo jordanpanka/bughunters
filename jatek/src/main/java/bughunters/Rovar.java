@@ -3,6 +3,8 @@ package bughunters;
 public class Rovar {
     //private String szin;
     private Tekton tartozkodas;
+    private String szin;
+    private int allapotIdeje;
 
 
     /**
@@ -26,7 +28,7 @@ public class Rovar {
         this.tartozkodas = tartozkodas;
     }
 
-    /*
+    
     public String getSzin() { 
         System.out.println("Meghívódott a Rovar GetSzin metódusa.");
 
@@ -37,7 +39,7 @@ public class Rovar {
 
         this.szin = szin; 
     }
-    */
+    
 
     /**
      *  @brief Visszaadja a Rovar tartózkodását.
@@ -56,6 +58,13 @@ public class Rovar {
         System.out.println("Meghívódik a Rovar setTartozkodas() metodusa.");
     }
 
+    public void setAllapotIdeje(int ido){
+        allapotIdeje=ido;
+    }
+
+    public int getAllapotIdeje(){
+        return allapotIdeje;
+    }
     /**
      *  @brief Alapállapotba állítja a Rovart.
      */

@@ -30,6 +30,8 @@ public class Gombafonal {
     /** A fonal másik végpontja. */
     private Tekton vegpont2;
 
+    private int haldoklasIdeje;
+
     /**
      *  @brief a gombafonal osztály konstruktora
      */
