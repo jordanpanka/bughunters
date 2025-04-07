@@ -72,33 +72,6 @@ public class Rovar {
         System.out.println("Meghívódik a Rovar alapAllapot metódusa.");
     }
 
-    /**
-     *  @brief Lassítja a Rovart.
-     */
-    public void lassito(){
-        System.out.println("Meghívódik a Rovar lassito metódusa.");
-    }
-
-    /**
-     *  @brief Gyorsítja a Rovart.
-     */
-    public void gyorsito(){
-        System.out.println("Meghívódik a Rovar gyorsito metódusa.");
-    }
-
-    /**
-     *  @brief Lebénítja a Rovart.
-     */
-    public void benit(){
-        System.out.println("Meghívódik a Rovar benit metódusa.");
-    }
-
-    /**
-     *  @brief Vágásképtelenné teszi a Rovart.
-     */
-    public void vagaskeptelen(){
-        System.out.println("Meghívódik a Rovar vagaskeptelen metódusa.");
-    }
 
     /**
      *  @brief A Rovar elvágja a Gombafonalat, ha nincsen lebénítva vagy nem vágásképtelen.
