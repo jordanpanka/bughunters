@@ -111,7 +111,7 @@ public class Tekton implements FonalKezeles {
      * @return Ha tud növeszteni gombatestet, akkor azt adja vissza
      * @throws Exception ha nem tud gombatestet növeszteni vagy nem megfelelő feladatnál lett hívva
      */
-    public Gombatest gombatestNov(Gombafaj gf) throws Exception{
+    public Gombatest gombatestNov(Gombafaj gf,boolean sporaval) throws Exception{
         System.out.println("Meghívódik a Tekton gombatestNov metódusa.");
 
            
