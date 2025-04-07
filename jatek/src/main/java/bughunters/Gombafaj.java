@@ -249,6 +249,7 @@ public class Gombafaj implements FonalKezeles{
      * @brief Kezeli az utolsó esély állapotot a gombafonalhálózatban.
      */
     //HashMap melyik fonalról van szó
+    //fonal haldokls állapotának növelése
     public void lastChance(){
         //System.out.println("Meghívódik a Gombafaj lastChance metodusa.");
         ArrayList<Tekton> gombatestesTektonok=new ArrayList<>();
@@ -266,14 +267,14 @@ public class Gombafaj implements FonalKezeles{
 
             if (van && i!=0) {
                 
-                    gombafonalhalozat.get(i).setAllapot(Ep);;
+                gombafonalhalozat.get(i).setAllapot(fonalAllapot.Ep);
                    
             }else if(!van){
-                if(gombafonalhalozat.get(i).getAllapot()==Haldoklo && gombafonalhalozat.get(i).getMiota()==gombafonalEletSzama )
+                if(gombafonalhalozat.get(i).getAllapot().equals("Haldoklo") && gombafonalhalozat.get(i).getMiota()==gombafonalEletSzama )
                 {
                     gombafonalhalozat.get(i).allapotvalt();
 
-                }else if(gombafonalhalozat.get(i).getAllapot().equals(UtolsoEsely)){
+                }else if(gombafonalhalozat.get(i).getAllapot().equals("UtolsoEsely")){
                     //elér e testhez az adott fonal
                     gombafonalhalozat.get(i).vegpontTorles();     
                 }      
