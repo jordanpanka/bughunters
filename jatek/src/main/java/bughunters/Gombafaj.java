@@ -283,12 +283,9 @@ public class Gombafaj implements FonalKezeles{
     /**
      * @brief A törés utáni haldoklási folyamatot kezeli.
      */
-    public void toresHaldoklas(){
-        System.out.println("Meghívódik a Gombafaj toresHaldoklas metodusa.");
-        haldoklas();
-    }
+    
     public void rovarEves(Rovar r){
-        
+
     }
 
 }
