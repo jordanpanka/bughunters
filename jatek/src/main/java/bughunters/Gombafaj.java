@@ -265,7 +265,7 @@ public class Gombafaj implements FonalKezeles{
                 }
             }
 
-            if (van ) {
+            if (van) {
                 
                 gombafonalhalozat.get(i).setAllapot(fonalAllapot.Ep);
                    
