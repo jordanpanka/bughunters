@@ -21,9 +21,9 @@ public class Gombatest {
      * @param gombafaj A gombatesthez tartozó gombafaj.
      * @param tekton A Tekton, amin a gombatest elhelyezkedik.
      */
-    public Gombatest(/*int sporaRaktar, int kor,*/ Gombafaj gombafaj, Tekton tekton) {
-        /*this.sporaRaktar = sporaRaktar;
-        this.kor = kor;*/
+    public Gombatest(int sporaRaktar, int kor, Gombafaj gombafaj, Tekton tekton) {
+        this.sporaRaktar = sporaRaktar;
+        this.kor = kor;
         this.gombafaj = gombafaj;
         this.tekton = tekton;
         System.out.println("Létrejött egy új Gombatest.");
@@ -73,7 +73,12 @@ public class Gombatest {
      */
     public void urit() throws Exception{
         System.out.println("Meghívódik a Gombatest urit metodusa.");
-        if(Skeleton.getInstance().Kerdes("Van elég spóra a szóráshoz?") ){
+        //mikor tud spórát szórni?
+        if(sporaRaktar>=gombafaj.getTermelesIdeje()){
+            //szórás után növeljük a korát
+            kor++;
+            //kiürítjük a spóraraktárat
+            sporaRaktar=0;
         }
         else
         {
@@ -90,12 +95,15 @@ public class Gombatest {
         return gombafaj;
     }
     
+    public void setGombafaj(Gombafaj gombafaj) {
+        this.gombafaj = gombafaj;
+    }
     /**
      * @brief A gombatest a körök végén spórát gyűjt.
      */
     public void sporaGyujtes(){
-        System.out.println("Meghívódik a Gombatest sporaGyujtes metodusa.");
-
+        //System.out.println("Meghívódik a Gombatest sporaGyujtes metodusa.");
+        sporaRaktar++;
     }
     
 }

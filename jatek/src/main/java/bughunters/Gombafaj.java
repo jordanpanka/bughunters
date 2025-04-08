@@ -197,7 +197,7 @@ public class Gombafaj implements FonalKezeles{
         try{
             Gombatest uj=t.gombatestNov(this,sporaval);
             addTest(uj);
-
+            eddigNovesztettTestekSzama++;
         }catch(Exception e)
         {
             throw new Exception("Nem nőhet gombatest.");
