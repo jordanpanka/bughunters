@@ -21,9 +21,9 @@ public class Gombatest {
      * @param gombafaj A gombatesthez tartozó gombafaj.
      * @param tekton A Tekton, amin a gombatest elhelyezkedik.
      */
-    public Gombatest(int sporaRaktar, int kor, Gombafaj gombafaj, Tekton tekton) {
-        this.sporaRaktar = sporaRaktar;
-        this.kor = kor;
+    public Gombatest(Gombafaj gombafaj, Tekton tekton) {
+        this.sporaRaktar = 0;
+        this.kor = 0;
         this.gombafaj = gombafaj;
         this.tekton = tekton;
         System.out.println("Létrejött egy új Gombatest.");
