@@ -281,12 +281,14 @@ public class Gombafaj implements FonalKezeles{
             }
         }
     }
-    /**
-     * @brief A törés utáni haldoklási folyamatot kezeli.
-     */
     
-    public void rovarEves(Rovar r){
-
+    public void rovarEves(Rovar r)throws Exception{
+        try{
+             testNovesztes(r.getTartozkodas(), false);
+        }catch(Exception e){
+            throw new Exception("Nem nőhet gombatest.");
+        }
+       
     }
 
 }
