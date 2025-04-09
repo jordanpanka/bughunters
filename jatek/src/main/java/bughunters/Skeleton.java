@@ -336,7 +336,7 @@ public class Skeleton {
         System.out.println("Létrejött a teszt 8 pálya.\n");
 
          try {
-            g1.testNovesztes(t1);
+            //g1.testNovesztes(t1);
          } catch (Exception e) {
             System.out.println(e.getMessage());
          }
@@ -370,7 +370,7 @@ public class Skeleton {
         System.out.println("Létrejött a teszt 9 pálya.\n");
 
         try {
-            g1.testNovesztes(t1);
+            //g1.testNovesztes(t1);
          } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -412,7 +412,7 @@ public class Skeleton {
         System.out.println("Létrejött a teszt 10 pálya.\n");
 
        try {
-            g1.testNovesztes(t1);
+           // g1.testNovesztes(t1);
          } catch (Exception e) {
             System.out.println(e.getMessage());
          }
@@ -447,7 +447,7 @@ public class Skeleton {
                System.out.println("Létrejött a teszt 11 pálya.\n");
 
         try {
-           g1.testNovesztes(p1);
+           //g1.testNovesztes(p1);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -704,7 +704,7 @@ public class Skeleton {
 
         try {
             jt1.tores(1);
-            g1.toresHaldoklas();
+           // g1.toresHaldoklas();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

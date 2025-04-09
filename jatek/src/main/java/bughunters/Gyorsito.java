@@ -12,8 +12,8 @@ public class Gyorsito extends Spora {
      */
     public Gyorsito(int t, int m, Gombafaj g)
     {
-       super(t, m, g);
-       System.out.println("Létrejött egy új Gyorsító spóra:" );
+        super( m, g);
+        tapertek=0;
     }
 
     /**
@@ -21,7 +21,8 @@ public class Gyorsito extends Spora {
      */
     public Gyorsito()
     {
-        System.out.println("Létrejött egy Gyorsító spóra:" );
+        super( );
+        tapertek=0;
     }
 
      /**
@@ -32,8 +33,8 @@ public class Gyorsito extends Spora {
     @Override
     public void hatas(Rovar r)
     {
-        System.out.println("Meghívódik a Gyorsito osztaly hatas metodusa.");
-        r.gyorsito();
+        
+        r.setAllapot(Gyorsito);
     }
 }
 

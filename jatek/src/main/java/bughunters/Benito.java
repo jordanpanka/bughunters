@@ -9,15 +9,18 @@ public class Benito extends Spora {
     /**
      * @brief Benito osztály konstuktora
      */
-    public Benito(int t, int m, Gombafaj g)
+    public Benito( int m, Gombafaj g)
     {
-       super(t, m, g);
-       System.out.println("Létrejött egy új Bénító spóra:" );
+        super( m, g);
+        tapertek=30;
+       
+        
     }
 
     public Benito()
     {
-        System.out.println("Létrejött egy új Bénító spóra:" );
+        super();
+        tapertek=30;
     }
 
     /**
@@ -27,8 +30,7 @@ public class Benito extends Spora {
      */
     @Override
     public void hatas(Rovar r) {
-        System.out.println("Meghívódik a Benito osztaly hatas metodusa.");
-        r.benit();
+       r.setAllapot(Benito);
         
     }
 }

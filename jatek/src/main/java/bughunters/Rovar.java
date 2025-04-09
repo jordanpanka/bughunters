@@ -12,7 +12,11 @@ enum rovarAllapot {
 public class Rovar {
     //private String szin;
     private Tekton tartozkodas;
+<<<<<<< HEAD
     private rovarAllapot allapot;
+=======
+    private String szin;
+>>>>>>> 5ac71a1cd7206d89dde10752cde3880b840b50e9
     private int allapotIdeje;
 
 
@@ -41,7 +45,7 @@ public class Rovar {
         allapotIdeje = 0;
     }
 
-    /*
+    
     public String getSzin() { 
         System.out.println("Meghívódott a Rovar GetSzin metódusa.");
 
@@ -52,7 +56,7 @@ public class Rovar {
 
         this.szin = szin; 
     }
-    */
+    
 
     /**
      *  @brief Visszaadja a Rovar tartózkodását.
@@ -71,6 +75,13 @@ public class Rovar {
         System.out.println("Meghívódik a Rovar setTartozkodas() metodusa.");
     }
 
+    public void setAllapotIdeje(int ido){
+        allapotIdeje=ido;
+    }
+
+    public int getAllapotIdeje(){
+        return allapotIdeje;
+    }
     /**
      *  @brief Alapállapotba állítja a Rovart.
      */
@@ -79,6 +90,7 @@ public class Rovar {
         System.out.println("Meghívódik a Rovar alapAllapot metódusa.");
     }
 
+<<<<<<< HEAD
 
     /**
      * @brief Visszaadja a rovar jelenlegi állapotát.
@@ -141,6 +153,8 @@ public class Rovar {
     public void vagaskeptelen(){
         System.out.println("Meghívódik a Rovar vagaskeptelen metódusa.");
     }
+=======
+>>>>>>> 5ac71a1cd7206d89dde10752cde3880b840b50e9
 
     /**
      *  @brief A Rovar elvágja a Gombafonalat, ha nincsen lebénítva vagy nem vágásképtelen.

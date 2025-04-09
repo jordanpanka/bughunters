@@ -12,13 +12,14 @@ public class Lassito extends Spora {
      */
     public Lassito(int t, int m, Gombafaj g)
     {
-       super(t, m, g);
-       System.out.println("Létrejött egy új Lassító spóra:" );
+        super( m, g);
+        tapertek=15;
     }
 
     public Lassito()
     {
-        System.out.println("Létrejött egy új Lassito spóra:" );
+        super( );
+        tapertek=30;
     }
 
     /**
@@ -29,8 +30,7 @@ public class Lassito extends Spora {
     @Override
     public void hatas(Rovar r)
     {
-        System.out.println("Meghívódik a Lassito osztaly hatas metodusa.");
-        r.lassito();
+        r.setAllapot(Lassito);
     }
 }
  

@@ -3,7 +3,7 @@ package bughunters;
 
 /**
  * @brief A VagasKeptelenito osztály a Spora osztály egyik egyik utódja.
- * Ez a spóra képes gyorsito hatást gyakorolni a rovarokra.
+ * Ez a spóra képes vagasKeptelenito hatást gyakorolni a rovarokra.
  */
 public class VagasKeptelenito extends Spora {
 
@@ -11,15 +11,16 @@ public class VagasKeptelenito extends Spora {
     /**
      * @brief VagasKeptelenito osztály konstuktora
      */
-    public VagasKeptelenito(int t, int m, Gombafaj g)
+    public VagasKeptelenito( int m, Gombafaj g)
     {
-       super(t, m, g);
-       System.out.println("Létrejött egy új VagasKeptleníto spóra:" );
+        super( m, g);
+        tapertek=20;
     }
 
     public VagasKeptelenito()
     {
-        System.out.println("Létrejött egy új VagasKeptleníto spóra:" );
+        super();
+        tapertek=20;
     }
     /**
      * @brief A spóra hatást fejt ki a megadott rovarra, és nem engedi, hogy fonalat vágjon az adott rovar.
@@ -29,7 +30,6 @@ public class VagasKeptelenito extends Spora {
     @Override
     public void hatas(Rovar r)
     {
-        System.out.println("Meghívódik a VagasKeptelenito osztaly hatas metodusa.");
-        r.vagaskeptelen();
+       r.setAllapot(VagasKeptelenito)
     }
 }
