@@ -227,7 +227,6 @@ public class Gombafaj implements FonalKezeles{
         {
             g.urit();
             t.sporaSzor(this);
-           // boolean valasz=Skeleton.getInstance().Kerdes("Elhal a gombatest?");
             boolean valasz=false;
             if(g.getKor()==gombatestEletSzama)
             {
@@ -288,7 +287,7 @@ public class Gombafaj implements FonalKezeles{
                 testNovesztes(r.getTartozkodas(), false);
             }
             else {
-                throw new Exception("Nem bánított állapotban van a rovar.");
+                throw new Exception("Nem bénított állapotban van a rovar.");
             }
              
         }catch(Exception e){
