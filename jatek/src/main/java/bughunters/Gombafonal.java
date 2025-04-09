@@ -30,7 +30,7 @@ public class Gombafonal {
     /** A fonal másik végpontja. */
     private Tekton vegpont2;
 
-    private int haldoklasIdeje;
+    private int haldoklasIdeje=0;
 
     /**
      *  @brief a gombafonal osztály konstruktora
@@ -42,15 +42,14 @@ public class Gombafonal {
         vegpont1=veg1;
         vegpont2=veg2;
         gombafaj=g;
-        System.out.println("Létrejött egy új Gombafonal:" );
+      
         
     }
     /**
-     *  @brief a Gombafonal osztály paraméter nélküli konstruktora
+     *  @brief a Gombafonal osztály paraméter nélküli konstruktora, teszetknél van rá szükség
      */
     public Gombafonal()
     {
-        System.out.println("Létrejött egy új Gombafonal:" );
     }
 
     /**
@@ -58,6 +57,7 @@ public class Gombafonal {
      * - Ha az állapot "Ép", akkor "Haldokló" lesz.
      * - Ha az állapot "Haldokló", akkor "UtolsóEsély" lesz.
      */
+    /* 
     public void allapotvalt() {
         System.out.println("Meghívódik a gombafonal osztaly allapotvalt() metodusa.");
         if (allapot == fonalAllapot.Haldoklo) {
@@ -68,22 +68,32 @@ public class Gombafonal {
 
         
     }
+    */
 
     /**
      *  @brief Növeli az időtartamot, mióta a fonal létezik.
-     * Ezt a metódust a control hívja.
+     * Ezt a metódust a control hívja, minden kör végén
      */
     public void tartozkodasNov() {
-       // miota += 1;
-        System.out.println("Meghívódik a gombafonal osztaly tartozkodasNov() metodusa.");
+        miota += 1;
     }
 
+     /**
+     *  @brief Növeli az időtartamot, mióta a fonal létezik.
+     * Ezt a metódust a control hívja, minden kör végén
+     */
+    public void haldoklasIdejeNov()
+    {
+        if(allapot==fonalAllapot.Haldoklo)
+        {
+            haldoklasIdeje+=1;
+        }
+    }
     /**
      *  @brief Törli a fonalat a gombafaj és a végpontok közül.
      * A gombafaj és a két végpont értesül a fonal megszűnéséről.
      */
     public void vegpontTorles() {
-        System.out.println("Meghívódik a gombafonal osztaly vegpontTorles() metodusa.");
         gombafaj.fonalSzakad(this);
         vegpont1.fonalSzakad(this);
         vegpont2.fonalSzakad(this);  
@@ -114,9 +124,14 @@ public class Gombafonal {
 
     /**
      *   @brief allapot attribútum settere
+     *  Ha Ep állapotba kerül a gombafonal akkor, beállítja a haldoklás idejét 0-ra.
      */
     public void setAllapot(fonalAllapot uj)
     {
+        if(uj==fonalAllapot.Ep)
+        {
+            haldoklasIdeje=0;
+        }
         allapot=uj;
     }
 
@@ -167,4 +182,21 @@ public class Gombafonal {
     {
         vegpont2=t;
     }
+
+     /**
+     *   @brief haldoklasIdeje attribútum gettere
+     */
+    public int getHaldoklasIdeje()
+    {
+        return haldoklasIdeje;
+    }
+
+     /**
+     *   @brief haldoklasIdeje attribútum settere
+     */
+    public void getHaldoklasIdeje(int szam)
+    {
+        haldoklasIdeje=szam;
+    }
+
 }
