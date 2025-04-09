@@ -12,12 +12,9 @@ enum rovarAllapot {
 public class Rovar {
     //private String szin;
     private Tekton tartozkodas;
-<<<<<<< HEAD
-    private rovarAllapot allapot;
-=======
     private String szin;
->>>>>>> 5ac71a1cd7206d89dde10752cde3880b840b50e9
     private int allapotIdeje;
+    private rovarAllapot allapot;
 
 
     /**
@@ -75,22 +72,23 @@ public class Rovar {
         System.out.println("Meghívódik a Rovar setTartozkodas() metodusa.");
     }
 
+    /**
+ 
+    * @brief Beállítja, hogy a rovar mennyi ideje van a jelenlegi állapotában.
+    * @param ido Az idő (lépések száma), amelyet beállítunk a rovar állapotához.
+    */
     public void setAllapotIdeje(int ido){
         allapotIdeje=ido;
     }
 
+    /**
+    * @brief Visszaadja, hogy a rovar mennyi ideje van a jelenlegi állapotában.
+    * @return Az idő (lépések száma), amelyet a rovar a jelenlegi állapotában töltött.
+    */
     public int getAllapotIdeje(){
         return allapotIdeje;
     }
-    /**
-     *  @brief Alapállapotba állítja a Rovart.
-     */
-    public void alapAllapot(){
-        allapot = rovarAllapot.Alap;
-        System.out.println("Meghívódik a Rovar alapAllapot metódusa.");
-    }
 
-<<<<<<< HEAD
 
     /**
      * @brief Visszaadja a rovar jelenlegi állapotát.
@@ -108,53 +106,15 @@ public class Rovar {
         this.allapot = allapot;
     }
 
-    /**
-     * @brief Visszaadja, hogy a rovar mennyi ideje van a jelenlegi állapotában.
-     * @return Az idő (lépések száma), amelyet a rovar a jelenlegi állapotában töltött.
-     */
-    public int getAllapotIdeje() {
-        return allapotIdeje;
-    }
 
     /**
-     * @brief Beállítja, hogy a rovar mennyi ideje van a jelenlegi állapotában.
-     * @param allapotIdeje Az idő (lépések száma), amelyet beállítunk a rovar állapotához.
+     *  @brief Alapállapotba állítja a Rovart.
      */
-    public void setAllapotIdeje(int allapotIdeje) {
-        this.allapotIdeje = allapotIdeje;
+    public void alapAllapot(){
+        allapot = rovarAllapot.Alap;
+        System.out.println("Meghívódik a Rovar alapAllapot metódusa.");
     }
 
-
-
-    /**
-     *  @brief Lassítja a Rovart.
-     */
-    public void lassito(){
-        System.out.println("Meghívódik a Rovar lassito metódusa.");
-    }
-
-    /**
-     *  @brief Gyorsítja a Rovart.
-     */
-    public void gyorsito(){
-        System.out.println("Meghívódik a Rovar gyorsito metódusa.");
-    }
-
-    /**
-     *  @brief Lebénítja a Rovart.
-     */
-    public void benit(){
-        System.out.println("Meghívódik a Rovar benit metódusa.");
-    }
-
-    /**
-     *  @brief Vágásképtelenné teszi a Rovart.
-     */
-    public void vagaskeptelen(){
-        System.out.println("Meghívódik a Rovar vagaskeptelen metódusa.");
-    }
-=======
->>>>>>> 5ac71a1cd7206d89dde10752cde3880b840b50e9
 
     /**
      *  @brief A Rovar elvágja a Gombafonalat, ha nincsen lebénítva vagy nem vágásképtelen.
