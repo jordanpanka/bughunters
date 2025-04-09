@@ -1,8 +1,19 @@
 package bughunters;
 
+enum rovarAllapot {
+    Alap,               // Az alapvető állapota a rovarnak
+    Lassitott,          // A rovar csak fele olyan gyorsan képes haladni
+    Gyorsitott,         // A rovar kétszer olyan gyorsan képes haéadni
+    VagasKeptelen,      // A rovar nem képes fonalat vágni
+    Benitott            // A rovar cselekvés képtelen
+}
+
+
 public class Rovar {
     //private String szin;
     private Tekton tartozkodas;
+    private rovarAllapot allapot;
+    private int allapotIdeje;
 
 
     /**
@@ -13,6 +24,8 @@ public class Rovar {
 
         //this.szin = "";
         this.tartozkodas = null;
+        allapot = rovarAllapot.Alap;
+        allapotIdeje = 0;
     }
 
     /**
@@ -24,6 +37,8 @@ public class Rovar {
 
         //this.szin = szin;
         this.tartozkodas = tartozkodas;
+        allapot = rovarAllapot.Alap;
+        allapotIdeje = 0;
     }
 
     /*
@@ -60,8 +75,44 @@ public class Rovar {
      *  @brief Alapállapotba állítja a Rovart.
      */
     public void alapAllapot(){
+        allapot = rovarAllapot.Alap;
         System.out.println("Meghívódik a Rovar alapAllapot metódusa.");
     }
+
+
+    /**
+     * @brief Visszaadja a rovar jelenlegi állapotát.
+     * @return A rovar aktuális állapota.
+     */
+    public rovarAllapot getAllapot() {
+        return allapot;
+    }
+
+    /**
+     * @brief Beállítja a rovar állapotát.
+     * @param allapot Az új állapot, amelyet beállítunk a rovarnak.
+     */
+    public void setAllapot(rovarAllapot allapot) {
+        this.allapot = allapot;
+    }
+
+    /**
+     * @brief Visszaadja, hogy a rovar mennyi ideje van a jelenlegi állapotában.
+     * @return Az idő (lépések száma), amelyet a rovar a jelenlegi állapotában töltött.
+     */
+    public int getAllapotIdeje() {
+        return allapotIdeje;
+    }
+
+    /**
+     * @brief Beállítja, hogy a rovar mennyi ideje van a jelenlegi állapotában.
+     * @param allapotIdeje Az idő (lépések száma), amelyet beállítunk a rovar állapotához.
+     */
+    public void setAllapotIdeje(int allapotIdeje) {
+        this.allapotIdeje = allapotIdeje;
+    }
+
+
 
     /**
      *  @brief Lassítja a Rovart.
