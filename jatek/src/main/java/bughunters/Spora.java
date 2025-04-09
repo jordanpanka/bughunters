@@ -9,7 +9,7 @@ package bughunters;
  * - Egy második verziót, amely egy rovarra is hatást gyakorol a fogyasztás során.
  */
 abstract class Spora {
-    private int tapertek;
+    protected int tapertek;
     private int mennyiseg;
     private Gombafaj gombafaj;
 
@@ -24,9 +24,9 @@ abstract class Spora {
      /**
      *  @brief Spora abasztrakt osztály konstruktora
      */
-    public Spora(int t, int m, Gombafaj g)
+    public Spora( int m, Gombafaj g)
     {
-        tapertek =t;
+       
         mennyiseg=m;
         gombafaj=g;
        
@@ -47,27 +47,14 @@ abstract class Spora {
      * @throws Exception ha nincs elegendő spóra
      */
     public void fogyaszt(int mennyit) throws Exception {
-
-        Skeleton s = Skeleton.getInstance();
-        System.out.println("Meghívódik a "+this.getClass().getSimpleName()+" osztaly fogyaszt metodusa.");
-        boolean valasz= s.Kerdes("Van elég spóra?");
-
-        if(valasz)
-        {
-            //Itt most írnom kell bármit, ha true?
-        }
-        else
-        {
-            throw new Exception("Nincs elég spóra az akció végrehajtására");
-        }
-        /* 
+        
         if (mennyiseg - mennyit >= 0) {
             mennyiseg -= mennyit;
             
         } else {
             throw new Exception("Nincs elég spóra az akció végrehajtására");
         }
-            */
+            
     }
 
     /**
@@ -79,35 +66,25 @@ abstract class Spora {
      * @throws Exception ha nincs elegendő spóra
      */
     public void fogyaszt(int mennyit, Rovar r) throws Exception {
-        System.out.println("Meghívódik a "+this.getClass().getSimpleName()+" osztaly fogyaszt metodusa.");
-      
 
-        if(mennyiseg>0)
+        if(mennyiseg-mennyit>=0)
         {
+            mennyiseg -= mennyit;
             hatas(r);
         }
         else
         {
             throw new Exception("Nincs elég spóra az akció végrehajtására");
         }
-        /* 
-        if (mennyiseg - mennyit >= 0) {
-            mennyiseg -= mennyit;
-            hatas(r);
-        } else {
-            throw new Exception("Nincs elég spóra az akció végrehajtására");
-        }
-            */
     }
 
     /**
-     *  @brief Akkor hívódik meg ha már egy létező spórából több kerül az adott tektonra. Lekérdezi, hogy
-     * az ő gombafajában mennyi spórát szórnak szét a gombatestek és azzal az értékkel növeli a mennyiseg attribútumát
+     *  @brief Akkor hívódik meg ha már egy létező spórából több kerül az adott tektonra. Ekkor 2-vel növeli az adott gomba
+     * mennyiseg attribútumát
      */
     public void szorasTortent()
     {
-        System.out.println("Meghívódik a "+this.getClass().getSimpleName()+" osztaly szorasTortent metodusa.");
-       // mennyiseg += gombafaj.getGombatestSzortSpora();
+       mennyiseg+=2;
     }
 
      /**
