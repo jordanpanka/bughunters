@@ -284,7 +284,13 @@ public class Gombafaj implements FonalKezeles{
     
     public void rovarEves(Rovar r)throws Exception{
         try{
-             testNovesztes(r.getTartozkodas(), false);
+            if(r.getAllapot().equals("Benito")){
+                testNovesztes(r.getTartozkodas(), false);
+            }
+            else {
+                throw new Exception("Nem bánított állapotban van a rovar.");
+            }
+             
         }catch(Exception e){
             throw new Exception("Nem nőhet gombatest.");
         }
