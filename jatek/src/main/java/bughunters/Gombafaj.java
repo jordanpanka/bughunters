@@ -123,7 +123,7 @@ public class Gombafaj implements FonalKezeles{
      */
     //meg kell nézni, hogy a gombafajhoz meddig marad életben a haldoklás után
     //hogy kapcsolódik-e hozzá gombatest
-    private void haldoklas(){
+    public void haldoklas(){
         //System.out.println("Meghívódik a Gombafaj haldoklas metódusa.(privát metódus)");
         ArrayList<Tekton> gombatestesTektonok=new ArrayList<>();
 
