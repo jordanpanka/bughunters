@@ -169,14 +169,15 @@ public class Rovar {
      * @param s Melyik Sporaból egyen
      * @throws Exception Ha a Rovar nem tud enni.
      */
-    public void eszik(Spora s, Rovarasz rs) throws Exception {
+    public void eszik(Spora s) throws Exception {
         System.out.println("Meghívódik a Rovar eszik metódusa.");
         try {
             if (this.allapot == rovarAllapot.Benitott) {
                 throw new Exception("Benitott allapotban van a rovar.");
             }
             else{
-            tartozkodas.eszik(s, this);
+                tartozkodas.eszik(s, this);
+                allapotIdeje = 0; // Az állapot idejét alaphelyzetbe állítjuk
             }
         } catch (Exception e) {
             throw e;
@@ -192,7 +193,7 @@ public class Rovar {
         ujRovar.tartozkodas = this.tartozkodas;
         ujRovar.allapot = rovarAllapot.Alap;
         ujRovar.allapotIdeje = 0;
-        rs.getRovarok().add(ujRovar);
+        rs.addRovar(ujRovar);
     }
 
 }
