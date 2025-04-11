@@ -114,7 +114,8 @@ public class Rovar {
     public void alapAllapot(){
         allapot = rovarAllapot.Alap;
         allapotIdeje = 0;
-        System.out.println("Meghívódik a Rovar alapAllapot metódusa.");
+        //System.out.println("Meghívódik a Rovar alapAllapot metódusa.");
+
     }
 
 
