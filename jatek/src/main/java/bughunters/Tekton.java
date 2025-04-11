@@ -179,22 +179,18 @@ public class Tekton implements FonalKezeles {
      * @param sp Spora: amit a rovar meg akar enni
      * @param r Rovar: akutális rovar ami eszik
      */
-    //-------------------------------------------------------------------------------------------------------------------
     public void eszik(Spora sp, Rovar r) throws Exception {
         //System.out.println("Meghívódik a Tekton eszik metódusa.");
-
-            boolean valasz = Skeleton.getInstance().Kerdes("van-e meg spora, amit meg tud enni?");
-            boolean valasz1 = Skeleton.getInstance().Kerdes("Igaz, hogy nem bénított állapotban van a rovar?");
             
-            if(valasz && valasz1){
-                boolean valasz2 = Skeleton.getInstance().Kerdes("maradni fog-e meg spora?");
+        if(r.getAllapot() != rovarAllapot.Benitott){
+            if(sp.getMennyiseg() >= 1){
+                boolean utolsoSpora = sp.getMennyiseg() == 1 ? true : false;
                 for (Spora spora : sporak) {
                     if(spora == sp) {
-                        sp.fogyaszt(3, r);
+                        sp.fogyaszt(1, r);
                     }
                 }
-
-                if(!valasz2){
+                if(utolsoSpora){
                     for (Spora spora : sporak) {
                         if(spora == sp) {
                             sporak.remove(sp);
@@ -202,9 +198,14 @@ public class Tekton implements FonalKezeles {
                         }
                     }
                 }
-            } else {
-                throw new Exception("Nincs spora.");
+            } 
+            else {
+                throw new Exception("Nincs elég spóra, amit meg tudna enni.");
             }
+        }
+        else {
+            throw new Exception("A rovar benitott allapotban van.");
+        }
     }
 
     /***
@@ -279,9 +280,16 @@ public class Tekton implements FonalKezeles {
     public List<Gombafonal> gombafonalIgazitas(){
         //System.out.println("Meghívódik a Tekton gombafonalIgazitas metódusa.");
 
+        /*
         List<Gombafonal> ujFonal = new ArrayList<Gombafonal>();
         ujFonal.add(gombafonalak.get(1));
         gombafonalak.get(1).vegpontTorles();
+        */
+
+        List<Gombafonal> ujFonal = new ArrayList<Gombafonal>();
+
+
+
         return ujFonal;
     }
 
@@ -329,7 +337,6 @@ public class Tekton implements FonalKezeles {
      * @brief Elszakítja a paraméterben kapott gombafonalat, azáltal hogy kiveszi a gombafonal listából
      * @param gf Gombafonal: elszakítani kívánt gombafonal
      */
-    //----------------------------------------------------------------------------------------------------------
     @Override
     public void fonalSzakad(Gombafonal gf){
         //System.out.println("Meghívódik a "+this.getClass().getSimpleName()+" fonalSzakad metódusa.");
@@ -338,30 +345,25 @@ public class Tekton implements FonalKezeles {
         
         for (Tekton tekton : szomszedok) {
             if(tekton == gf.getVegpont2() || tekton == gf.getVegpont1()){
+                List<Gombafonal> ideiglenes = new ArrayList<Gombafonal>();
 
-                List<Gombafonal> ideiglenes=new ArrayList<Gombafonal>();
-                for (Gombafonal gombafonal : tekton.getFonalak()) {
-                    
+                for (Gombafonal gombafonal : tekton.getFonalak()) {    
                     if(gombafonal.equals(gf)){
-                        
                         //tekton.getFonalak().remove(gf);
                         ideiglenes.add(gf);
-                        
                     }
-                    
                 }
-                
                 tekton.getFonalak().removeAll(ideiglenes);
             }
-           
         } 
-        
     }
 
+    // Disszilátor override-olja
     public void gombafonalFelszivas(){
 
     }
 
+    // Infinátor override-olja
     public void eletbenTartas(){
 
     }
