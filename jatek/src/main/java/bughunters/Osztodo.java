@@ -27,11 +27,11 @@ public class Osztodo extends Spora{
      *
      * @param r a rovar, amelyre a spóra hatással lesz
      */
-    /* 
+    
     @Override
     public void hatas(Rovar r) {
        r.osztodik();
         
     }
-       */
+       
 }

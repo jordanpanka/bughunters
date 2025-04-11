@@ -34,7 +34,8 @@ public class Gyorsito extends Spora {
     public void hatas(Rovar r)
     {
         
-        r.setAllapot(Gyorsito);
+        r.setAllapot(rovarAllapot.Gyorsitott);
+        r.setAllapotIdeje(0);
     }
 }
 

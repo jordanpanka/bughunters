@@ -30,6 +30,7 @@ public class VagasKeptelenito extends Spora {
     @Override
     public void hatas(Rovar r)
     {
-       r.setAllapot(VagasKeptelenito)
+       r.setAllapot(rovarAllapot.VagasKeptelen);
+       r.setAllapotIdeje(0);
     }
 }
