@@ -114,7 +114,8 @@ public class Rovar {
     public void alapAllapot(){
         allapot = rovarAllapot.Alap;
         allapotIdeje = 0;
-        System.out.println("Meghívódik a Rovar alapAllapot metódusa.");
+        //System.out.println("Meghívódik a Rovar alapAllapot metódusa.");
+
     }
 
 
@@ -177,7 +178,6 @@ public class Rovar {
             }
             else{
                 tartozkodas.eszik(s, this);
-                allapotIdeje = 0; // Az állapot idejét alaphelyzetbe állítjuk
             }
         } catch (Exception e) {
             throw e;
@@ -190,7 +190,6 @@ public class Rovar {
 
         Rovar ujRovar = new Rovar(this.tartozkodas, this.rs);
         ujRovar.szin = this.szin;
-        ujRovar.tartozkodas = this.tartozkodas;
         ujRovar.allapot = rovarAllapot.Alap;
         ujRovar.allapotIdeje = 0;
         rs.addRovar(ujRovar);
