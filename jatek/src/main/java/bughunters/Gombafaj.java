@@ -299,4 +299,15 @@ public class Gombafaj implements FonalKezeles{
        
     }
 
+    //A játékos köre végén a cselekedetek elvégézése
+    public void korVegiCselekedetek(){
+        lastChance();
+        for(Gombafonal gf:gombafonalhalozat){
+            gf.tartozkodasNov();
+        }
+        for(Gombatest gt:gombaTestek){
+            gt.sporaGyujtes();
+        }
+    }
+
 }

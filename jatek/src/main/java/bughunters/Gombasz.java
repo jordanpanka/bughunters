@@ -17,9 +17,9 @@ public class Gombasz extends Jatekos{
         this.gombafaj=gfaj;
     }
 
-    public void lastChanceRun(){
+    public void korVegiCselekedetekRun(){
         try {
-            gombafaj.lastChance();
+            gombafaj.korVegiCselekedetek();
         } catch (Exception e) {
             throw e;
         }

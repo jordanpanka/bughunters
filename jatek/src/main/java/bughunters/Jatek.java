@@ -112,13 +112,12 @@ public class Jatek {
             }
 
             //lastChance futtatása
-            for (Gombasz gombasz : gombaszok) {
-                gombasz.lastChanceRun();
-            }
-
             //Gombatestek sporaraktárának növelése
-            
             //Gombafonal "miota" növelése
+            for (Gombasz gombasz : gombaszok) {
+                gombasz.korVegiCselekedetekRun();            
+            }
+            
         }
         catch (Exception e){
             throw e;        
@@ -147,6 +146,7 @@ public class Jatek {
 
             //jatek: jatekosok felvetele. Nagy pálya betöltése
             //létrehozza a jatekosokat, a jatekteret, a jatekosok listáját act/arrange parancsokkal.
+            //megkérdezi hogy akar-e még játékost felvenni? Nem-->elindítja a ...
             //elindítja a jatekInditasa() metódust, elindítja a játékot
     }
 }
