@@ -23,6 +23,10 @@ public class Rovarasz extends Jatekos {
         rovarok.add(rovar);
     }
 
+    public void removeRovar(Rovar rovar) {
+        rovarok.remove(rovar);
+    }
+
     public void vag(Gombafonal gf, Rovar r) throws Exception {
         try {
             if(!rovarok.contains(r)){
@@ -39,6 +43,7 @@ public class Rovarasz extends Jatekos {
         }
         
     }
+
     public void maszik(Tekton hova, Rovar r) throws Exception {
        try {
             if(!rovarok.contains(r)){

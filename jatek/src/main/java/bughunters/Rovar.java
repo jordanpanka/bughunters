@@ -42,6 +42,9 @@ public class Rovar {
         allapotIdeje = 0;
     }
 
+    public void torolRovar(){
+        rs.removeRovar(this);
+    }
     
     public String getSzin() { 
         System.out.println("Meghívódott a Rovar GetSzin metódusa.");

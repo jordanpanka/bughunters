@@ -40,13 +40,28 @@ public class Jatek {
         this.jatekosok = jatekosok;
     }
 
-    public void bemenetAkcio(String action){
+    public void bemenetAkcio(String action, Jatekos aktivJatekos){
+            //megkapja a bemeneti stringet, azalapján eldönti melyik akció fut le.
+            // (likelihood ellenőrzés) %-r eves%
+            //elindul az akció.
+            //akció lehet create() is, ebben az esetben HashMap-be belekerülnek az új objektumok.
+            //create() féle akció nem csak constructor, de mondjuk osztodas(), gombatest novesztes esetén is lehetséges.
+            //Kinyeri a fontos objektumokat név/string alapján a HashMapből
+            //végrehajtja az akciót a kinyert objektumokkal.
+    }
 
+    public void tesztekInditasa(){
+            //Minden, a Teszt mappában lévő tesztet lefuttatja.
+            //Teszt mappában, Test1, Test2 ... névvel ellátott mappában lesznek elhelyezve a különböző tesztek fájlai.
+            //Teszt1 mappa tartalma: arrange.txt, act.txt, assert.txt 
+            //tesztek feltöltik a HashMap-et a szükséges objektumokkal minden teszt esetén az arrange.txt-ből.
+            //act.txt alapján végrehajtja a tesztesetet bemenetAkcio() metódussal, itt nem fogyhatnak el az akcióPontok, jatekos.setAkciopont(3) minden sikeres parancs után.
+            //eredmenyeket kiírja actual.txt-be. 
+            //Tester külön cmd-ben összehasonlítja az actual.txt tartalmát az assert.txt tartalmával.
     }
 
     public void jatekInditasa(){
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
-        //System.out.println(kerdes);
         String parancs= "";
 
         while (true) { 
@@ -58,7 +73,7 @@ public class Jatek {
                     try {
                         parancs = r.readLine();
                         parancs = parancs.toLowerCase();
-                        bemenetAkcio(parancs);
+                        bemenetAkcio(parancs, jatekos);
                     } catch (Exception e) {
                         System.err.println(e.getMessage());
                     }
@@ -90,19 +105,19 @@ public class Jatek {
                 jatekter.tores(randomSzamToreshez());
             }
 
-            //lastChance futtatása
-            for (Gombasz gombasz : gombaszok) {
-                gombasz.lastChanceRun();
-            }
-
             //Rovar állapot idejének növelése
             for (Rovarasz rovarasz : rovaraszok) {
                 rovarasz.rovarokAllapotIdejenekNovelese();
+                rovarasz.rovarokAlapallapotbaHelyezese();
             }
 
+            //lastChance futtatása
             //Gombatestek sporaraktárának növelése
-            
             //Gombafonal "miota" növelése
+            for (Gombasz gombasz : gombaszok) {
+                gombasz.korVegiCselekedetekRun();            
+            }
+            
         }
         catch (Exception e){
             throw e;        
@@ -118,12 +133,20 @@ public class Jatek {
 
     //incomplite i think
     public void skipTurn(){
-        
+        //egy teljes kör kihagyása, minden játékos köre kihagyásra kerül, a kör végi cselekedetek végrehajtódnak.
         korVegiCselekedetek();
     }
     
     //Why is this here??
     public static void main(){
+            //kiválasztja a program módját. 
+            //test/jatek mód kiválasztása
+            //test: elindítja a tesztekInditasa() metódust, lefuttatja a teszteket.
+            //tesztek feltöltik a HashMap-et a szükséges objektumokkal minden teszt esetén.
 
+            //jatek: jatekosok felvetele. Nagy pálya betöltése
+            //létrehozza a jatekosokat, a jatekteret, a jatekosok listáját act/arrange parancsokkal.
+            //megkérdezi hogy akar-e még játékost felvenni? Nem-->elindítja a ...
+            //elindítja a jatekInditasa() metódust, elindítja a játékot
     }
 }
