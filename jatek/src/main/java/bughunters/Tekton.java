@@ -179,7 +179,7 @@ public class Tekton implements FonalKezeles {
      * @param sp Spora: amit a rovar meg akar enni
      * @param r Rovar: akutális rovar ami eszik
      */
-    //_-------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------------
     public void eszik(Spora sp, Rovar r) throws Exception {
         //System.out.println("Meghívódik a Tekton eszik metódusa.");
 
