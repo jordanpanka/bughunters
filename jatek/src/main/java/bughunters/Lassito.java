@@ -30,7 +30,8 @@ public class Lassito extends Spora {
     @Override
     public void hatas(Rovar r)
     {
-        r.setAllapot(Lassito);
+        r.setAllapot(rovarAllapot.Lassitott);
+        r.setAllapotIdeje(0);
     }
 }
  
