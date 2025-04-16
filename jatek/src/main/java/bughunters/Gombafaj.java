@@ -281,10 +281,12 @@ public class Gombafaj implements FonalKezeles{
         }
     }
     
+    //VÁLTOZTATAS: r.torolRovar(), kitörli a rovart a rovarasz listából
     public void rovarEves(Rovar r)throws Exception{
         try{
             if(r.getAllapot().equals("Benito")){
                 testNovesztes(r.getTartozkodas(), false);
+                r.torolRovar();
             }
             else {
                 throw new Exception("Nem bénított állapotban van a rovar.");
@@ -294,6 +296,17 @@ public class Gombafaj implements FonalKezeles{
             throw new Exception("Nem nőhet gombatest.");
         }
        
+    }
+
+    //A játékos köre végén a cselekedetek elvégézése
+    public void korVegiCselekedetek(){
+        lastChance();
+        for(Gombafonal gf:gombafonalhalozat){
+            gf.tartozkodasNov();
+        }
+        for(Gombatest gt:gombaTestek){
+            gt.sporaGyujtes();
+        }
     }
 
 }

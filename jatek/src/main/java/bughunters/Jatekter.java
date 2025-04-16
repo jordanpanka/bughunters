@@ -2,6 +2,7 @@ package bughunters;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @brief A játéktér osztálya, amely a Tekton objektumokat kezeli.
@@ -35,33 +36,71 @@ public class Jatekter {
         tektonok = t;
     }
 
+ 
     /**
-     * @brief Egy új Tekton objektumot hoz létre és hozzáadja a játéktérhez.
-     * Emellett frissíti a kapcsolódó Gombafonal objektumokat.
-     * @param darab A törés során létrejövő új elemek száma (jelenleg nem használatos a metódusban).
+     * @brief Egy vagy több új Tekton objektumot hoz létre, amelyeket véletlenszerűen kiválasztott,
+     * már létező Tekton objektumokhoz kapcsol. Az új Tektonokat szomszédként beállítja,
+     * és átveszi az adott Tekton-hoz kapcsolódó Gombafonalakat is Ezekhez a fonalakhoz tartozó
+     * végpontokat megfeleő módon beállítja.
+     * 
+     * A kiválasztás során nem szerepelhet duplikált index – minden új Tekton különböző
+     * meglévő Tekton-hoz csatlakozik.
+     * 
+     * @param darab Az törés során széttörő Tekton objektumok száma.
      */
     public void tores(int darab) {
         System.out.println("Meghívódik a Jatekter tores metodusa.");
 
-        Tekton t4 = new Tekton();
-        
-        tektonok.get(1).szomszedAllitas(t4);
+        // Eltároljuk a jelenlegi Tekton-ok számát
+        int tektondb = tektonok.size();
 
-        List<Gombafonal> ujszomszed = tektonok.get(1).gombafonalIgazitas();
+        Random random = new Random();
 
-        for (Gombafonal gombafonal : ujszomszed) {
-            if (gombafonal.getVegpont1() == tektonok.get(1)) {
-                gombafonal.setVegpont1(t4);
+        // A már kiválasztott Tekton indexek listája – nem lehet ismétlődés
+        List<Integer> sorszamok = new ArrayList<>();
+
+        // Létrehozunk 'darab' számú új Tekton-t
+        for (int i = 0; i < darab; i++) {
+            int sorszam = 0;
+
+            // Véletlenszerű index generálása a meglévő Tekton-okból
+            int index = random.nextInt(tektondb);
+
+            // Ha ez az index már ki lett választva, újra próbálkozunk
+            if (!sorszamok.contains(index)) {
+                sorszamok.add(index);
+                sorszam = index;
             } else {
-                gombafonal.setVegpont2(t4);
+                i--; // visszalépés, mert ez az index már szerepelt
+                continue;
             }
-        }
 
-        for (Gombafonal fonal : ujszomszed) {
-            t4.addFonal(fonal);
-        }
+            // Új Tekton létrehozása
+            Tekton ujTekton = new Tekton();
 
-        tektonAdd(t4);
+            // Az új Tekton-t szomszédként beállítjuk a kiválasztott régi Tekton-hoz
+            tektonok.get(sorszam).szomszedAllitas(ujTekton);
+
+            // Lekérjük a kiválasztott Tekton-hoz tartozó Gombafonalakat
+            List<Gombafonal> fonalak = tektonok.get(sorszam).gombafonalIgazitas();
+
+            // Módosítjuk a Gombafonal végpontját: ha a régi Tekton volt a végpont, azt lecseréljük az újra
+            for (Gombafonal gombafonal : fonalak) {
+                if (gombafonal.getVegpont1() == tektonok.get(sorszam)) {
+                    gombafonal.setVegpont1(ujTekton);
+                } else {
+                    gombafonal.setVegpont2(ujTekton);
+                }
+            }
+
+            // Az új Tekton-hoz hozzárendeljük a módosított fonalakat
+            for (Gombafonal gombafonal : fonalak) {
+                ujTekton.addFonal(gombafonal);
+            }
+
+            // Az új Tekton-t hozzáadjuk a játéktérhez
+            tektonAdd(ujTekton);
+        }
     }
 
     /**

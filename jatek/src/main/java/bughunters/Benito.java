@@ -30,7 +30,8 @@ public class Benito extends Spora {
      */
     @Override
     public void hatas(Rovar r) {
-       r.setAllapot(Benito);
+       r.setAllapot(rovarAllapot.Benitott);
+       r.setAllapotIdeje(0);
         
     }
 }
