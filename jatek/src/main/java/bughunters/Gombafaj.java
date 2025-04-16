@@ -143,7 +143,7 @@ public class Gombafaj implements FonalKezeles{
                 }
             }
             if(!van && gf.getAllapot().equals("Ep")){
-                gf.allapotvalt();
+                gf.setAllapot(fonalAllapot.Haldoklo);
             }
         }
     }
@@ -271,7 +271,7 @@ public class Gombafaj implements FonalKezeles{
             }else if(!van){
                 if(gombafonalhalozat.get(i).getAllapot().equals("Haldoklo") && gombafonalhalozat.get(i).getMiota()==gombafonalEletSzama )
                 {
-                    gombafonalhalozat.get(i).allapotvalt();
+                    gombafonalhalozat.get(i).setAllapot(fonalAllapot.UtolsoEsely);
 
                 }else if(gombafonalhalozat.get(i).getAllapot().equals("UtolsoEsely")){
                     //elér e testhez az adott fonal
@@ -288,7 +288,8 @@ public class Gombafaj implements FonalKezeles{
                 testNovesztes(r.getTartozkodas(), false);
                 r.torolRovar();
             }
-            else {
+            else
+            {
                 throw new Exception("Nem bénított állapotban van a rovar.");
             }
              
