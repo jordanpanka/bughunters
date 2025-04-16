@@ -19,7 +19,7 @@ public class Lassito extends Spora {
     public Lassito()
     {
         super( );
-        tapertek=30;
+        tapertek=15;
     }
 
     /**

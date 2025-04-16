@@ -10,10 +10,10 @@ public class Gyorsito extends Spora {
     /**
      * @brief Gyorsito osztály konstuktora
      */
-    public Gyorsito(int t, int m, Gombafaj g)
+    public Gyorsito( int m, Gombafaj g)
     {
         super( m, g);
-        tapertek=0;
+        tapertek=10;
     }
 
     /**
@@ -22,7 +22,7 @@ public class Gyorsito extends Spora {
     public Gyorsito()
     {
         super( );
-        tapertek=0;
+        tapertek=10;
     }
 
      /**
