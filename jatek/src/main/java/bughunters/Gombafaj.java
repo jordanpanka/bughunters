@@ -288,7 +288,8 @@ public class Gombafaj implements FonalKezeles{
                 testNovesztes(r.getTartozkodas(), false);
                 r.torolRovar();
             }
-            else {}
+            else
+            {
                 throw new Exception("Nem bénított állapotban van a rovar.");
             }
              
