@@ -83,7 +83,7 @@ public class Parancskezelok {
             
     }
 
-    //assert + arrange Parancsokként metódusok maybee
+    //arrange Parancsok
     
     //assert parancsok
     public void listGf(PrintStream output){
