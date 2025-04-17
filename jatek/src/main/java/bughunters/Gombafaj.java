@@ -28,12 +28,13 @@ public class Gombafaj implements FonalKezeles{
      * @param gtfi  A gombatest fejlettségi ideje.
      * @param gtesz A gombatest életszáma.
      */
-    public Gombafaj(String n, int tI, int ents, int gtfi,int gtesz){
+    public Gombafaj(String n, int tI, int ents, int gtfi,int gtesz, int gfesz){
         nev=n;
         termelesIdeje=tI;
         eddigNovesztettTestekSzama=ents;
         gombatestFejlettsegIdo=gtfi;
         gombatestEletSzama=gtesz;
+        gombafonalEletSzama = gfesz;
         gombaTestek=new ArrayList<Gombatest>();
         gombafonalhalozat=new ArrayList<Gombafonal>();
         System.out.println("Létrejött egy új Gombafaj:" );
