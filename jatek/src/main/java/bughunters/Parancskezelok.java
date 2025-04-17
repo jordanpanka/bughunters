@@ -2,7 +2,9 @@ package bughunters;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,7 +12,6 @@ enum parancsAllapot {
     Game,               // Játék állapotban van a parancskezelő, nem fér hozzá Arrange parancsokhoz.
     Test                // Teszt állapotban van a parancskezelő, minden parancshoz hozzáfér.
 }
-
 
 public class Parancskezelok {
     private List<Jatekos> jatekosok;
@@ -80,6 +81,322 @@ public class Parancskezelok {
             }
 
             
+    }
+
+    //assert + arrange Parancsokként metódusok maybee
+    
+    //assert parancsok
+    public void listGf(PrintStream output){
+        List<String> nevek = new ArrayList<>();
+        for(String kulcs : objektumok.keySet()) {
+            if (kulcs.matches("gombafonal\\d+")) {
+                nevek.add(kulcs);
+            }
+        }
+        if(nevek.isEmpty()){
+            output.println("Nincs gombafonal a palyan");
+            return;
+        }
+        szamszeruSort(nevek);
+        for(String nev : nevek) {
+            output.println(nev);
+        }
+    }
+
+    public void listGt(PrintStream output){
+        List<String> nevek = new ArrayList<>();
+        for(String kulcs : objektumok.keySet()) {
+            if (kulcs.matches("gombatest\\d+")) {
+                nevek.add(kulcs);
+            }
+        }
+        if(nevek.isEmpty()){
+            output.println("Nincs gombatest a palyan");
+            return;
+        }
+        szamszeruSort(nevek);
+        for(String nev : nevek) {
+            output.println(nev);
+        }
+    }
+
+    public void listRovarok(PrintStream output){
+        List<String> rovarNevek = new ArrayList<>();
+        for(String kulcs : objektumok.keySet()) {
+            if (kulcs.matches("rovar\\d+")) {
+                rovarNevek.add(kulcs);
+            }
+        }
+        if(rovarNevek.isEmpty()){
+            output.println("Nincs rovar a palyan");
+            return;
+        }
+
+        szamszeruSort(rovarNevek);
+
+        for(String nev : rovarNevek) {
+            Rovar rovar = (Rovar)objektumok.get(nev);
+            Tekton tartozkodas = rovar.getTartozkodas();
+            String tektonNev = objektumokbolString.get(tartozkodas);
+
+            output.println(nev+" "+tektonNev);
+        }
+
+    }
+
+    public void listTektonok(PrintStream output){
+        List<String> nevek = new ArrayList<>();
+        for(String kulcs : objektumok.keySet()) {
+            if (kulcs.matches("tekton\\d+")) {
+                nevek.add(kulcs);
+            }
+        }
+        if(nevek.isEmpty()){
+            return;
+        }
+
+        szamszeruSort(nevek);
+        for(String nev : nevek) {
+            output.println(nev);
+        }
+    }
+
+    // /act SPORASZOR-nal ha sikeres a lefutás akkor a Sporat fel kell venni a HashMap-be. Megvizsgálni hogy élettartalma lejár-e, ha igen a testet is kivenni a HashMap-ből.
+    // /act fonalvagas sikeres lefutása esetén megkeressük az elvágott fonalat a HashMap-ben és eltávolítjuk.
+    // /act gombatestnovesztese sikeres lefutása esetén megkeressük a gombatestet és hozzáadjuk a HashMap-hez.
+    // ha elhal egy fonal idővel a HashMapből el kell távolítani (hogy a retekbe?)
+    // /act tores-nél megkeressük az új tektont és hozzáadjuk a HashMap-hez.
+
+    public void listSpora(PrintStream output){
+        List<String> benitonevek = new ArrayList<>();
+        List<String> osztodonevek = new ArrayList<>();
+        List<String> vagasKeptelenitonevek = new ArrayList<>();
+        List<String> lassitonevek = new ArrayList<>();
+        List<String> gyorsitonevek = new ArrayList<>();
+
+        for(String kulcs : objektumok.keySet()) {
+            if (kulcs.matches("osztodo\\d+")) {
+                osztodonevek.add(kulcs);
+            }else if (kulcs.matches("benito\\d+")) {
+                benitonevek.add(kulcs);
+            }else if (kulcs.matches("vagasKeptelenito\\d+")) {
+                vagasKeptelenitonevek.add(kulcs);
+            }else if (kulcs.matches("lassito\\d+")) {
+                lassitonevek.add(kulcs);
+            }else if (kulcs.matches("gyorsito\\d+")) {
+                gyorsitonevek.add(kulcs);
+            }
+        }
+        if(osztodonevek.isEmpty() && benitonevek.isEmpty() && vagasKeptelenitonevek.isEmpty() && lassitonevek.isEmpty() && gyorsitonevek.isEmpty()){
+            output.println("Nincs spora a palyan");
+            return;
+        }
+
+        szamszeruSort(osztodonevek);
+        szamszeruSort(benitonevek);
+        szamszeruSort(vagasKeptelenitonevek);
+        szamszeruSort(lassitonevek);
+        szamszeruSort(gyorsitonevek);
+
+        for(String nev : benitonevek) {
+            Spora spora = (Benito)objektumok.get(nev);
+            String tektonNev = melyikTektononVanRajtaASpora(spora);
+            output.println(nev +" "+spora.getMennyiseg()+" "+tektonNev);
+        }
+        for(String nev : gyorsitonevek) {
+            Spora spora = (Gyorsito)objektumok.get(nev);
+            String tektonNev = melyikTektononVanRajtaASpora(spora);
+            output.println(nev +" "+spora.getMennyiseg()+" "+tektonNev);        }
+        for(String nev : lassitonevek) {
+            Spora spora = (Lassito)objektumok.get(nev);
+            String tektonNev = melyikTektononVanRajtaASpora(spora);
+            output.println(nev +" "+spora.getMennyiseg()+" "+tektonNev);
+        }
+        for(String nev : osztodonevek) {
+            Spora spora = (Osztodo)objektumok.get(nev);
+            String tektonNev = melyikTektononVanRajtaASpora(spora);
+            output.println(nev +" "+spora.getMennyiseg()+" "+tektonNev);
+        }
+        for(String nev : vagasKeptelenitonevek) {
+            Spora spora = (VagasKeptelenito)objektumok.get(nev);
+            String tektonNev = melyikTektononVanRajtaASpora(spora);
+            output.println(nev +" "+spora.getMennyiseg()+" "+tektonNev);
+        }
+    }
+
+    private String melyikTektononVanRajtaASpora(Spora spora){
+        String tetkonNev="";
+
+        for(String kulcs : objektumok.keySet()) {
+            if (kulcs.matches("tekton\\d+")) {
+                Tekton tekton = (Tekton)objektumok.get(kulcs);
+                if(tekton.getSporak().contains(spora)){
+                    tetkonNev = kulcs;
+                    break;
+                }
+            }else if (kulcs.matches("disszolator\\d+")) {
+                Tekton tekton = (Disszolator)objektumok.get(kulcs);
+                if(tekton.getSporak().contains(spora)){
+                    tetkonNev = kulcs;
+                    break;
+                }
+            }else if (kulcs.matches("puritekton\\d+")) {
+                Tekton tekton = (Puritekton)objektumok.get(kulcs);
+                if(tekton.getSporak().contains(spora)){
+                    tetkonNev = kulcs;
+                    break;
+                }
+            }else if (kulcs.matches("monotekton\\d+")) {
+                Tekton tekton = (Monotekton)objektumok.get(kulcs);
+                if(tekton.getSporak().contains(spora)){
+                    tetkonNev = kulcs;
+                    break;
+                }
+                
+            }else if (kulcs.matches("infinator\\d+")) {
+                Tekton tekton = (Infinator)objektumok.get(kulcs);
+                if(tekton.getSporak().contains(spora)){
+                    tetkonNev = kulcs;
+                    break;
+                }
+                
+            }
+        }
+
+        return tetkonNev;
+    }
+
+    public void listJatekosok(PrintStream output){
+        List<String> nevek = new ArrayList<>();
+        List<String> Rovarasznevek = new ArrayList<>();
+
+        if(jatekosok.isEmpty()){
+            return;
+        }
+
+        for(Rovarasz rovarasz : rovaraszok) {
+            Rovarasznevek.add(rovarasz.getNev());
+            nevek.add(rovarasz.getNev());
+        }
+        for(Gombasz gombasz : gombaszok) {
+            nevek.add(gombasz.getNev());
+        }
+
+        Collections.sort(nevek);
+        for(String nev : nevek) {
+            if(Rovarasznevek.contains(nev)) {
+                output.println(nev+" rovarasz");
+            }else{
+                output.println(nev+" gombasz");
+            }
+        }
+    }
+
+    public void listGombaszok(PrintStream output){
+        List<String> nevek = new ArrayList<>();
+        for(Gombasz gombasz : gombaszok) {
+            nevek.add(gombasz.getNev());
+        }
+        if(nevek.isEmpty()){
+            return;
+        }
+        Collections.sort(nevek);
+        for(String nev : nevek) {
+            output.println("Gombasz "+nev);
+        }
+    }
+
+    public void listRovaraszok(PrintStream output){
+        List<String> nevek = new ArrayList<>();
+        for(Rovarasz rovarasz : rovaraszok) {
+            nevek.add(rovarasz.getNev());
+        }
+        if(nevek.isEmpty()){
+            return;
+        }
+        Collections.sort(nevek);
+        for(String nev : nevek) {
+            output.println("Rovarasz "+nev);
+        }
+    }
+
+    public void listGFSzomszedok(PrintStream output, String tektonNev){
+        List<String> nevek = new ArrayList<>();
+       Tekton szurtTekton = parancsTektonCast(tektonNev.charAt(0), tektonNev);
+       if(szurtTekton.getFonalak().isEmpty()){
+            output.println("Nincs rajta gombafonal");
+       }
+        List<Gombafonal> fonalak = szurtTekton.getFonalak();
+        for(Gombafonal fonal : fonalak) {
+            if(!szurtTekton.equals(fonal.getVegpont1())) {
+                nevek.add(objektumokbolString.get(fonal.getVegpont1()));
+
+            }else if(!szurtTekton.equals(fonal.getVegpont2())) {
+                nevek.add(objektumokbolString.get(fonal.getVegpont2()));
+            }
+        }
+
+        for(String nev : nevek) {
+            output.println("Szomszed "+nev);
+        }
+    }
+
+    public void listTektonSzomszedok(PrintStream output, String tektonNev){
+        List<String> nevek = new ArrayList<>();
+        Tekton szurtTekton = parancsTektonCast(tektonNev.charAt(0), tektonNev);
+        if(szurtTekton == null){
+            output.println("Nem letezik "+tektonNev);
+            return;
+        }
+        List<Tekton> szomszedok = szurtTekton.getSzomszedok();
+        for(Tekton szomszed : szomszedok) {
+            nevek.add(objektumokbolString.get(szomszed));
+        }
+        if(nevek.isEmpty()){
+            return;
+        }
+        szamszeruSort(nevek);
+        for(String nev : nevek) {
+            output.println(nev);
+        }
+
+    }
+
+    public void showRovarAllapot(PrintStream output, String rovarNev){
+        Rovar rovar = (Rovar)objektumok.get(rovarNev);
+        if(rovar == null) {
+            output.println("Nem letezik "+rovarNev);
+            return;
+        }
+
+        switch (rovar.getAllapot()) {
+            case Alap:
+                 output.println("Alap hatas ervenyesul "+rovarNev +" rovarra");
+                break;
+            case Benitott:
+                output.println("Benito hatas ervenyesul "+rovarNev +" rovarra");
+                break;
+            case VagasKeptelen:
+                output.println("VagasKeptelenito hatas ervenyesul "+rovarNev +" rovarra");
+                break;
+            case Lassitott:
+                output.println("Lasito hatas ervenyesul "+rovarNev +" rovarra");
+                break;
+            case Gyorsitott:
+                output.println("Gyorsito hatas ervenyesul "+rovarNev +" rovarra");
+                break;
+            default:
+                throw new AssertionError();
+        }
+       
+    }
+
+    public void szamszeruSort(List<String> nevek) {
+        nevek.sort((a, b) -> {
+            int numA = Integer.parseInt(a.replaceAll("\\D+", ""));
+            int numB = Integer.parseInt(b.replaceAll("\\D+", ""));
+            return Integer.compare(numA, numB);
+        });
     }
 
     //csakis játék módban fut le, a játékosok felvételére szolgál.
@@ -342,7 +659,6 @@ public class Parancskezelok {
         return null;
     }
 
-    //assert + arrange Parancsokként metódusok maybee
     
     public static void main(String[] args){
             //kiválasztja a program módját. 
