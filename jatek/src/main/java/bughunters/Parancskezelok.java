@@ -9,7 +9,6 @@ import java.util.List;
 enum parancsAllapot {
     Game,               // Játék állapotban van a parancskezelő, nem fér hozzá Arrange parancsokhoz.
     Test                // Teszt állapotban van a parancskezelő, minden parancshoz hozzáfér.
-   
 }
 
 
@@ -70,23 +69,11 @@ public class Parancskezelok {
                 if (allapot == parancsAllapot.Game) {
                     //játékhoz szükséges akciók - act és assert parancsok
 
-                    switch (action) {
-                    case :
-                        
-                        break;
-                    default:
-                        throw new Exception("Nincs ilyen akció: " + action);
-                    }
+                    
                 }else if (allapot == parancsAllapot.Test) {
                     //teszteléshez szükséges akciók - minden parancs
 
-                    switch (action) {
-                    case :
-                        
-                        break;
-                    default:
-                        throw new Exception("Nincs ilyen akció: " + action);
-                    }
+                   
                 }
             } catch (Exception e) {
                 throw e;
@@ -107,9 +94,23 @@ public class Parancskezelok {
         while (felvenni) { 
             try {
                 String parancs = r.readLine();
+                //játékos: Rovarász + 1Rovar létrehozása
                 if (parancs.matches("/arrange -j \\S+ -r -t \\S+")) {
-                    
-                }else if (parancs.matches("/arrange -j \\S+ -g \\S+")) {
+                    Rovarasz rovarasz = new Rovarasz(parancs.split(" ")[2]);
+                    jatekosok.add(rovarasz);
+                    rovaraszok.add(rovarasz);
+
+                    //Rovar léterhozása
+                    String tektonNeve = parancs.split(" ")[4];
+                    char tektonTipus = tektonNeve.charAt(0);
+                    Tekton tartozkodas = parancsTektonCast(tektonTipus, tektonNeve);
+                    Rovar ujRovar = new Rovar(tartozkodas,rovarasz);
+
+                    //Rovar kezelése
+                    rovarasz.addRovar(ujRovar);
+                    objektumok.put(ujRovarNev(), ujRovar);
+
+                }else if (parancs.matches("/arrange -j \\S+ -g \\S+")) { //Gombasz + 1Gombatest létrehozása
                     //gombasz létrehozasa
 
                     //1db gomba lehelyezése, parancsból
@@ -134,6 +135,44 @@ public class Parancskezelok {
             }
         }
 
+    }
+
+    public String ujRovarNev(){
+        int maxRovarSzam = 0;
+        for (String kulcs : objektumok.keySet()) {
+            if (kulcs.matches("r\\d+")) {
+                String szamResz = kulcs.substring(1); // levágjuk az "r"-t
+                int szam = Integer.parseInt(szamResz);
+                if (szam > maxRovarSzam) {
+                    maxRovarSzam = szam;
+                }
+            }
+        }
+        return "r" + (maxRovarSzam + 1); // új név a következő Rovarhoz
+    }
+
+    public Tekton parancsTektonCast(char tektonTipus, String tektonNeve) {
+        switch (tektonTipus) {
+                        case 't':
+                            return (Tekton)objektumok.get(tektonNeve);
+                            
+                        case 'm':
+                            return (Monotekton)objektumok.get(tektonNeve);
+                            
+                        case 'd':
+                            return (Disszolator)objektumok.get(tektonNeve);
+                            
+                        case 'p':
+                            return (Puritekton)objektumok.get(tektonNeve);
+                            
+                        case 'i':
+                            return (Infinator)objektumok.get(tektonNeve);
+                            
+                        default:
+                            System.out.println("Nincs ilyen tekton: " + tektonNeve);
+                            break;
+        }
+        return null;
     }
 
     //assert + arrange Parancsokként metódusok maybee
