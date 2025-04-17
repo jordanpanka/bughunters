@@ -67,7 +67,7 @@ public class Jatek {
 
     //Nagy Uniform pálya a játékhoz, egy txt-ből beolvasása.
     public void jatekPalyaAlkotasa(){
-            
+            //végigfut a pálya txt-n, mindegyik során lefuttatja a parancskezelot.
     }
 
     public void korVegiCselekedetek(List<Jatekos> jatekosok, List<Gombasz> gombaszok, List<Rovarasz> rovaraszok){

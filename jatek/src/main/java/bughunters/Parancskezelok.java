@@ -96,19 +96,7 @@ public class Parancskezelok {
                 String parancs = r.readLine();
                 //játékos: Rovarász + 1Rovar létrehozása
                 if (parancs.matches("/arrange -j \\S+ -r -t \\S+")) {
-                    Rovarasz rovarasz = new Rovarasz(parancs.split(" ")[2]);
-                    jatekosok.add(rovarasz);
-                    rovaraszok.add(rovarasz);
-
-                    //Rovar léterhozása
-                    String tektonNeve = parancs.split(" ")[4];
-                    char tektonTipus = tektonNeve.charAt(0);
-                    Tekton tartozkodas = parancsTektonCast(tektonTipus, tektonNeve);
-                    Rovar ujRovar = new Rovar(tartozkodas,rovarasz);
-
-                    //Rovar kezelése
-                    rovarasz.addRovar(ujRovar);
-                    objektumok.put(ujRovarNev(), ujRovar);
+                    rovaraszFelvetel(parancs);
 
                 }else if (parancs.matches("/arrange -j \\S+ -g \\S+")) { //Gombasz + 1Gombatest létrehozása
                     //gombasz létrehozasa
@@ -135,6 +123,22 @@ public class Parancskezelok {
             }
         }
 
+    }
+
+    public void rovaraszFelvetel(String parancs){
+        Rovarasz rovarasz = new Rovarasz(parancs.split(" ")[2]);
+        jatekosok.add(rovarasz);
+        rovaraszok.add(rovarasz);
+
+        //Rovar léterhozása
+        String tektonNeve = parancs.split(" ")[4];
+        char tektonTipus = tektonNeve.charAt(0);
+        Tekton tartozkodas = parancsTektonCast(tektonTipus, tektonNeve);
+        Rovar ujRovar = new Rovar(tartozkodas,rovarasz);
+
+        //Rovar kezelése
+        rovarasz.addRovar(ujRovar);
+        objektumok.put(ujRovarNev(), ujRovar);
     }
 
     public String ujRovarNev(){
@@ -214,7 +218,7 @@ public class Parancskezelok {
                     parancskezelo.setParancsAllapot(parancsAllapot.Test);
                     jatek.jatekPalyaAlkotasa();
                     parancskezelo.setParancsAllapot(parancsAllapot.Game);
-                    
+
                     //játékosok felvétele
                     helyesMode = true;
                     parancskezelo.setParancsAllapot(parancsAllapot.Game);
