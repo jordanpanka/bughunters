@@ -210,9 +210,15 @@ public class Parancskezelok {
                     jatek.tesztekInditasa();
                     break;
                 case "-game":
+                    //pálya alkotás
+                    parancskezelo.setParancsAllapot(parancsAllapot.Test);
+                    jatek.jatekPalyaAlkotasa();
+                    parancskezelo.setParancsAllapot(parancsAllapot.Game);
+                    
                     //játékosok felvétele
                     helyesMode = true;
                     parancskezelo.setParancsAllapot(parancsAllapot.Game);
+                    parancskezelo.jatekosokFelvetele();
                     jatek.jatekInditasa(parancskezelo.getJatekosok(), parancskezelo.getGombaszok(), parancskezelo.getRovaraszok());
                     break;
                 default:

@@ -67,7 +67,7 @@ public class Jatek {
 
     //Nagy Uniform pálya a játékhoz, egy txt-ből beolvasása.
     public void jatekPalyaAlkotasa(){
-
+            
     }
 
     public void korVegiCselekedetek(List<Jatekos> jatekosok, List<Gombasz> gombaszok, List<Rovarasz> rovaraszok){
