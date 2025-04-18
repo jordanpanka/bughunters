@@ -19,6 +19,7 @@ public class Tekton implements FonalKezeles {
     private List<Tekton> szomszedok; //melyik tektonok a szomszédjai
     private List<Gombafonal> gombafonalak; //megtalálható gombafonalak listája
     private List<Spora> sporak; //megtalálható spórák listája
+    private String tektonNev;
 
     public Tekton() {
         szomszedok = new ArrayList<>();
@@ -58,6 +59,9 @@ public class Tekton implements FonalKezeles {
     }
     public void setSporak(List<Spora> ujsporak){
         sporak = ujsporak;
+    }
+    public void setTektonNev(String nev){
+        tektonNev = nev;
     }
 
     /***
