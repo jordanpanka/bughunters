@@ -193,7 +193,8 @@ public class Parancskezelok {
             for (Spora spora : sporak) {
                 if (!sporakAHashMapben.contains(spora)) {
                     //ha nincs benne a HashMap-ben, de a Tekton listájában igen.
-                    char sporaTipus= ;
+                    String nev = spora.getClass().getSimpleName().toLowerCase();
+                    char sporaTipus= nev.charAt(0); //spora tipus
                     String ujSporaNev = ujSporaNev(sporaTipus); //spora neve
                     objektumok.put(ujSporaNev, spora); //spora neve alapjan mentjuk el a Sporakat a Map-en
                     objektumokbolString.put(spora, ujSporaNev);
@@ -202,7 +203,8 @@ public class Parancskezelok {
 
             if(!tektonokAHashMapben.contains(tektonJatekteren)) {
                 //ha nincs benne a HashMap-ben, de a Tekton listájában igen.
-                Char tektonTipus = ;
+                String nev = tektonJatekteren.getClass().getSimpleName().toLowerCase();
+                char tektonTipus = nev.charAt(0); //tekton tipus
                 String ujTektonNev = ujTektonNev(tektonTipus); //tekton neve
                 objektumok.put(ujTektonNev, tektonJatekteren); //tekton neve alapjan mentjuk el a Tektonokat a Map-en
                 objektumokbolString.put(tektonJatekteren, ujTektonNev);
