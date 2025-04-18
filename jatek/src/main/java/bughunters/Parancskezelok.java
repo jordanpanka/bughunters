@@ -83,6 +83,9 @@ public class Parancskezelok {
                         objektumok.put(ujTektonNev(tektonTip), ujTekton);
                         objektumokbolString.put(ujTekton, ujTektonNev(tektonTip));
                     }
+                    if(action.matches("/arrange -j \\S+ -r -t \\S+")){
+                        rovaraszFelvetel(action);
+                    }
                     if(action.matches("/arrange -szomszed -t \\S+ -t \\S+")){
                         String tekton1 = action.split(" ")[3];
                         String tekton2 = action.split(" ")[5];
@@ -92,10 +95,13 @@ public class Parancskezelok {
                         Tekton1.addSzomszed(Tekton2);
                         Tekton2.addSzomszed(Tekton1);
                     }
+                    if(action.matches("/arrange -j \\S+ -g \\S+")){
+                        gombaszFelvetele(action);
+                    }
                     if(action.matches("/arrange -gf -t1 \\S+ -t2 \\S+ -g \\S+")){
                         String gombafaj = action.split(" ")[7];
-                        char gombaf = gombafaj.charAt(0);
-                        Gombafaj gf = (Gombafaj)objektumok.get(gombaf);
+                        //char gombaf = gombafaj.charAt(0);
+                        Gombafaj gf = (Gombafaj)objektumok.get(gombafaj);
 
                         String tekton1 = action.split(" ")[3];
                         String tekton2 = action.split(" ")[5];
@@ -113,7 +119,7 @@ public class Parancskezelok {
                     if(action.matches("/arrange -s \\S+ -t \\S+ \\d+")){
                         String sporaTipus = action.split(" ")[2];
                         char sporaTip = sporaTipus.charAt(0);
-                        Gombafaj gf = (Gombafaj)objektumok.get(sporaTip);
+                        Gombafaj gf = (Gombafaj)objektumok.get(sporaTipus);
 
                         String tekton1 = action.split(" ")[4];
                         Tekton Tekton1 = (Tekton)objektumok.get(tekton1);
@@ -123,13 +129,13 @@ public class Parancskezelok {
 
                         Spora ujSpora = sporaLetrehoz(sporaTip, gf, szam);
                         Tekton1.addSpora(ujSpora);
-                        objektumok.put(ujTektonNev(sporaTip), ujSpora);
-                        objektumokbolString.put(ujSpora, ujTektonNev(sporaTip));
+                        objektumok.put(ujSporaNev(sporaTip), ujSpora);
+                        objektumokbolString.put(ujSpora, ujSporaNev(sporaTip));
                     }
                     if(action.matches("/arrange -gt \\S+ -t \\S+")){
                         String gombaTipus = action.split(" ")[2];
-                        char gombaTip = gombaTipus.charAt(0);
-                        Gombafaj gf = (Gombafaj)objektumok.get(gombaTip);
+                        //char gombaTip = gombaTipus.charAt(0);
+                        Gombafaj gf = (Gombafaj)objektumok.get(gombaTipus);
 
                         String tekton1 = action.split(" ")[4];
                         Tekton Tekton1 = (Tekton)objektumok.get(tekton1);
@@ -139,8 +145,8 @@ public class Parancskezelok {
                         objektumok.put(ujGombatestNev(), ujGombatest);
                         objektumokbolString.put(ujGombatest, ujGombatestNev());
                     }
+
                     //act parancsok
-                    //Kérdés: hogyan értesül a Parancskezelo a változásokról? Kell-e értesülnie?
                     if(action.matches("/act -eszik -r \\S+ -g \\S+ -t \\S+")){
                         //Kérdés: Itt kell-e lekezelni, hogy ha a tekton és a rovar tartozkodása nem egyezik meg, akkor nem tud enni?
                         String rovarStr = action.split(" ")[3];
@@ -190,8 +196,8 @@ public class Parancskezelok {
                     }
                     if(action.matches("/act -gfnov -t \\S+ -t \\S+ -g \\S+")){
                         String gombafaj = action.split(" ")[7];
-                        char gombaf = gombafaj.charAt(0);
-                        Gombafaj gf = (Gombafaj)objektumok.get(gombaf);
+                        //char gombaf = gombafaj.charAt(0);
+                        Gombafaj gf = (Gombafaj)objektumok.get(gombafaj);
 
                         String tekton1 = action.split(" ")[3];
                         String tekton2 = action.split(" ")[5];
@@ -206,7 +212,6 @@ public class Parancskezelok {
                         Gombatest gombatest = (Gombatest)objektumok.get(gombatestStr);
 
                         Tekton tartozkodas = gombatest.getTekton();
-                        //Valami nem jó!!!!!!!!!!!!!!!
                         
                         Gombasz gombasz = (Gombasz)aktivJatekos;
                         gombasz.sporaSzoras(tartozkodas, gombatest);
@@ -215,7 +220,33 @@ public class Parancskezelok {
                         String tektonStr = action.split(" ")[3];
                         Tekton tekton = (Tekton)objektumok.get(tektonStr);
 
-                        
+                        jatekter.tores(1, tekton, true);
+                    }
+                    if(action.matches("/act -gt -t \\S+")){
+                        String tektonStr = action.split(" ")[3];
+                        Tekton tekton = (Tekton)objektumok.get(tektonStr);
+
+                        Gombasz gombasz = (Gombasz)aktivJatekos;
+                        gombasz.testNovesztes(tekton, true);
+                    }
+                    if(action.matches("/act -gt \\S+ -fejlett")){
+                        String gombatestStr = action.split(" ")[3];
+                        Gombatest gombatest = (Gombatest)objektumok.get(gombatestStr);
+
+                        int gtFejlettsegIdo = gombatest.getGombafaj().getGombatestFejlettsegIdo();
+
+                        gombatest.setKor(gtFejlettsegIdo);
+                    }
+                    if(action.matches("/act -aktivJatekos \\S+")){
+                        for(int i = 0; i < jatekosok.size(); i++){
+                            if(jatekosok.get(i).getNev().equals(action.split(" ")[2])){
+                                aktivJatekos = jatekosok.get(i);
+                                break;
+                            }
+                        }
+                    }
+                    if(action.matches("/act -endTurn")){
+                        aktivJatekos.korVege();
                     }
                 }
             } catch (Exception e) {
@@ -226,32 +257,172 @@ public class Parancskezelok {
 
 
     public String ujTektonNev(char c) {
-        int maxTektonSzam = 0;
-        for (String kulcs : objektumok.keySet()) {
-            if (kulcs.startsWith(Character.toString(c)) && kulcs.substring(1).matches("\\d+")) {
-                String szamResz = kulcs.substring(1); // levágjuk az első karaktert
-                int szam = Integer.parseInt(szamResz);
-                if (szam > maxTektonSzam) {
-                    maxTektonSzam = szam;
+        switch (c) {
+            case 't':
+                int maxSzamT = 0;
+                for (String kulcs : objektumok.keySet()) {
+                    if (kulcs.matches("tekton\\d+")) {
+                        String szamResz = kulcs.substring(6); // levágjuk az "tekton"-t
+                        int szam = Integer.parseInt(szamResz);
+                        if (szam > maxSzamT) {
+                            maxSzamT = szam;
+                        }
+                    }
                 }
-            }
+                return "tekton" + (maxSzamT + 1); // új név a következő Rovarhoz
+                
+            case 'm':
+                int maxSzamM = 0;
+                for (String kulcs : objektumok.keySet()) {
+                    if (kulcs.matches("monotekton\\d+")) {
+                        String szamResz = kulcs.substring(10); // levágjuk az "tekton"-t
+                        int szam = Integer.parseInt(szamResz);
+                        if (szam > maxSzamM) {
+                            maxSzamM = szam;
+                        }
+                    }
+                }
+                return "monotekton" + (maxSzamM + 1); // új név a következő Rovarhoz
+                
+            case 'd':
+                int maxSzamD = 0;
+                for (String kulcs : objektumok.keySet()) {
+                    if (kulcs.matches("disszolator\\d+")) {
+                        String szamResz = kulcs.substring(11); // levágjuk az "tekton"-t
+                        int szam = Integer.parseInt(szamResz);
+                        if (szam > maxSzamD) {
+                            maxSzamD = szam;
+                        }
+                    }
+                }
+                return "disszolator" + (maxSzamD + 1); // új név a következő Rovarhoz
+                
+            case 'p':
+                int maxSzamP = 0;
+                for (String kulcs : objektumok.keySet()) {
+                    if (kulcs.matches("puritekton\\d+")) {
+                        String szamResz = kulcs.substring(10); // levágjuk az "tekton"-t
+                        int szam = Integer.parseInt(szamResz);
+                        if (szam > maxSzamP) {
+                            maxSzamP = szam;
+                        }
+                    }
+                }
+                return "puritekton" + (maxSzamP + 1); // új név a következő Rovarhoz
+                
+            case 'i':
+                int maxSzamI = 0;
+                for (String kulcs : objektumok.keySet()) {
+                    if (kulcs.matches("infinator\\d+")) {
+                        String szamResz = kulcs.substring(9); // levágjuk az "tekton"-t
+                        int szam = Integer.parseInt(szamResz);
+                        if (szam > maxSzamI) {
+                            maxSzamI = szam;
+                        }
+                    }
+                }
+                return "infinator" + (maxSzamI + 1); // új név a következő Rovarhoz
+                
+            default:
+                System.out.println("Nincs ilyen tipus: " + c);
+                break;
         }
-        return c + Integer.toString(maxTektonSzam + 1);
+        
+        return null;
     }
+
+
+    public String ujSporaNev(char c) {
+        switch (c) {
+            case 'b':
+                int maxSzamB = 0;
+                for (String kulcs : objektumok.keySet()) {
+                    if (kulcs.matches("benito\\d+")) {
+                        String szamResz = kulcs.substring(6); // levágjuk az "tekton"-t
+                        int szam = Integer.parseInt(szamResz);
+                        if (szam > maxSzamB) {
+                            maxSzamB = szam;
+                        }
+                    }
+                }
+                return "benito" + (maxSzamB + 1); // új név a következő Rovarhoz
+                
+            case 'g':
+                int maxSzamG = 0;
+                for (String kulcs : objektumok.keySet()) {
+                    if (kulcs.matches("gyorsito\\d+")) {
+                        String szamResz = kulcs.substring(8); // levágjuk az "tekton"-t
+                        int szam = Integer.parseInt(szamResz);
+                        if (szam > maxSzamG) {
+                            maxSzamG = szam;
+                        }
+                    }
+                }
+                return "gyorsito" + (maxSzamG + 1); // új név a következő Rovarhoz
+                
+            case 'l':
+                int maxSzamL = 0;
+                for (String kulcs : objektumok.keySet()) {
+                    if (kulcs.matches("lassito\\d+")) {
+                        String szamResz = kulcs.substring(7); // levágjuk az "tekton"-t
+                        int szam = Integer.parseInt(szamResz);
+                        if (szam > maxSzamL) {
+                            maxSzamL = szam;
+                        }
+                    }
+                }
+                return "lassito" + (maxSzamL + 1); // új név a következő Rovarhoz
+                
+            case 'v':
+                int maxSzamV = 0;
+                for (String kulcs : objektumok.keySet()) {
+                    if (kulcs.matches("vagaskeptelenio\\d+")) {
+                        String szamResz = kulcs.substring(15); // levágjuk az "tekton"-t
+                        int szam = Integer.parseInt(szamResz);
+                        if (szam > maxSzamV) {
+                            maxSzamV = szam;
+                        }
+                    }
+                }
+                return "vagaskeptelenio" + (maxSzamV + 1); // új név a következő Rovarhoz
+                
+            case 'o':
+                int maxSzamO = 0;
+                for (String kulcs : objektumok.keySet()) {
+                    if (kulcs.matches("osztodo\\d+")) {
+                        String szamResz = kulcs.substring(7); // levágjuk az "tekton"-t
+                        int szam = Integer.parseInt(szamResz);
+                        if (szam > maxSzamO) {
+                            maxSzamO = szam;
+                        }
+                    }
+                }
+                return "osztodo" + (maxSzamO + 1); // új név a következő Rovarhoz
+                
+            default:
+                System.out.println("Nincs ilyen tipus: " + c);
+                break;
+        }
+        
+        return null;
+    }
+
 
     public String ujGombafonalNev(){
         int maxGombafonalSzam = 0;
         for (String kulcs : objektumok.keySet()) {
-            if (kulcs.matches("gf\\d+")) {
-                String szamResz = kulcs.substring(2); // levágjuk az "gf"-t
+            if (kulcs.matches("gombafonal\\d+")) {
+                String szamResz = kulcs.substring(10); // levágjuk az "gombafonal"-t
                 int szam = Integer.parseInt(szamResz);
                 if (szam > maxGombafonalSzam) {
                     maxGombafonalSzam = szam;
                 }
             }
         }
-        return "gf" + (maxGombafonalSzam + 1); // új név a következő Rovarhoz
+        return "gombafonal" + (maxGombafonalSzam + 1); // új név a következő Rovarhoz
     }
+
+    
 
 
     public Tekton tektonLetrehoz(char tektonTipus){
@@ -804,6 +975,30 @@ public class Parancskezelok {
         return null;
     }
 
+
+    public void gombaszFelvetele(String parancs) throws Exception{
+        String gombaszNev = parancs.split(" ")[2];
+        String gombafajSporaNev = parancs.split(" ")[4];
+        Gombafaj ujGombafaj = createGombafajBySpora(gombafajSporaNev.charAt(0));
+        if (vanGombafajAzObjektumokban(gombafajSporaNev)) {
+            throw new Exception("A"+gombafajSporaNev+" szerep mar foglalt. Valassz mast");
+        }
+
+        Gombasz gombasz = new Gombasz(parancs.split(" ")[2],ujGombafaj);
+        if (objektumok.containsKey(gombaszNev)) {
+            throw new Exception("Már van ilyen nevu jatekos");
+        }
+
+        objektumok.put(gombafajSporaNev, ujGombafaj);                               //Spora neve alapjan mentjuk el a gombafajt a Map-en
+        objektumokbolString.put(ujGombafaj, gombafajSporaNev);
+
+        gombaszok.add(gombasz);
+        jatekosok.add(gombasz);
+        objektumok.put(gombaszNev, gombasz);                               //Gombasz neve alapjan mentjuk el a gombaszt a Map-en
+        objektumokbolString.put(gombasz, gombaszNev); 
+    }
+
+
     public void rovaraszFelvetel(String parancs) throws Exception {
         Rovarasz rovarasz = new Rovarasz(parancs.split(" ")[2]);
         if (objektumok.containsKey(rovarasz.getNev())) {
@@ -830,15 +1025,15 @@ public class Parancskezelok {
     public String ujGombatestNev(){
         int maxGtSzam = 0;
         for (String kulcs : objektumok.keySet()) {
-            if (kulcs.matches("gt\\d+")) {
-                String szamResz = kulcs.substring(2); // levágjuk a "gt"-t
+            if (kulcs.matches("gombatest\\d+")) {
+                String szamResz = kulcs.substring(9); // levágjuk a "gombatest"-t
                 int szam = Integer.parseInt(szamResz);
                 if (szam > maxGtSzam) {
                     maxGtSzam = szam;
                 }
             }
         }
-        return "gt" + (maxGtSzam + 1); // új név a következő Gombatesthez
+        return "gombatest" + (maxGtSzam + 1); // új név a következő Gombatesthez
     }    
 
     public String ujRovarNev(){
