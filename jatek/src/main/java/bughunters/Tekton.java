@@ -59,10 +59,7 @@ public class Tekton implements FonalKezeles {
     public void setSporak(List<Spora> ujsporak){
         sporak = ujsporak;
     }
-    public void setTektonNev(String nev){
-        tektonNev = nev;
-    }
-
+   
     /***
      * @brief Új szomszédot ad hozzá az aktuális tektonhoz
      * @param ujszomszed Tekton: új szomszéd
