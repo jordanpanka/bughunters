@@ -1,0 +1,11 @@
+/arrange -t tekton
+/arrange -t tekton
+/arrange -szomszed -t tekton1 -t tekton2
+/arrange  -j Pista -r -t tekton1
+/arrange -j Jani -g vagaskeptelenito
+/arrange -s vagaskeptelenito -t tekton1 2
+/arrange -gf -t1 tekton1 -t2 tekton2
+/act aktivJatekos Pista
+/act -eszik -r rovar1 -g vagaskeptelenito1
+/act -vag -r rovar1 -gf gombafonal1
+/assert -rallapot rovar1

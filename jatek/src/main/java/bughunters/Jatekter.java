@@ -48,45 +48,22 @@ public class Jatekter {
      * 
      * @param darab Az törés során széttörő Tekton objektumok száma.
      */
-    public void tores(int darab) {
+    public void tores(int darab, Tekton tekton, boolean teszt) {
         System.out.println("Meghívódik a Jatekter tores metodusa.");
 
-        // Eltároljuk a jelenlegi Tekton-ok számát
-        int tektondb = tektonok.size();
-
-        Random random = new Random();
-
-        // A már kiválasztott Tekton indexek listája – nem lehet ismétlődés
-        List<Integer> sorszamok = new ArrayList<>();
-
-        // Létrehozunk 'darab' számú új Tekton-t
-        for (int i = 0; i < darab; i++) {
-            int sorszam = 0;
-
-            // Véletlenszerű index generálása a meglévő Tekton-okból
-            int index = random.nextInt(tektondb);
-
-            // Ha ez az index már ki lett választva, újra próbálkozunk
-            if (!sorszamok.contains(index)) {
-                sorszamok.add(index);
-                sorszam = index;
-            } else {
-                i--; // visszalépés, mert ez az index már szerepelt
-                continue;
-            }
-
+        if(teszt){
             // Új Tekton létrehozása
             Tekton ujTekton = new Tekton();
 
             // Az új Tekton-t szomszédként beállítjuk a kiválasztott régi Tekton-hoz
-            tektonok.get(sorszam).szomszedAllitas(ujTekton);
+            tekton.szomszedAllitas(ujTekton);
 
             // Lekérjük a kiválasztott Tekton-hoz tartozó Gombafonalakat
-            List<Gombafonal> fonalak = tektonok.get(sorszam).gombafonalIgazitas();
+            List<Gombafonal> fonalak = tekton.gombafonalIgazitas();
 
             // Módosítjuk a Gombafonal végpontját: ha a régi Tekton volt a végpont, azt lecseréljük az újra
             for (Gombafonal gombafonal : fonalak) {
-                if (gombafonal.getVegpont1() == tektonok.get(sorszam)) {
+                if (gombafonal.getVegpont1() == tekton) {
                     gombafonal.setVegpont1(ujTekton);
                 } else {
                     gombafonal.setVegpont2(ujTekton);
@@ -100,6 +77,59 @@ public class Jatekter {
 
             // Az új Tekton-t hozzáadjuk a játéktérhez
             tektonAdd(ujTekton);
+        }
+        else{
+
+            // Eltároljuk a jelenlegi Tekton-ok számát
+            int tektondb = tektonok.size();
+
+            Random random = new Random();
+
+            // A már kiválasztott Tekton indexek listája – nem lehet ismétlődés
+            List<Integer> sorszamok = new ArrayList<>();
+
+            // Létrehozunk 'darab' számú új Tekton-t
+            for (int i = 0; i < darab; i++) {
+                int sorszam = 0;
+
+                // Véletlenszerű index generálása a meglévő Tekton-okból
+                int index = random.nextInt(tektondb);
+
+                // Ha ez az index már ki lett választva, újra próbálkozunk
+                if (!sorszamok.contains(index)) {
+                    sorszamok.add(index);
+                    sorszam = index;
+                } else {
+                    i--; // visszalépés, mert ez az index már szerepelt
+                    continue;
+                }
+
+                // Új Tekton létrehozása
+                Tekton ujTekton = new Tekton();
+
+                // Az új Tekton-t szomszédként beállítjuk a kiválasztott régi Tekton-hoz
+                tektonok.get(sorszam).szomszedAllitas(ujTekton);
+
+                // Lekérjük a kiválasztott Tekton-hoz tartozó Gombafonalakat
+                List<Gombafonal> fonalak = tektonok.get(sorszam).gombafonalIgazitas();
+
+                // Módosítjuk a Gombafonal végpontját: ha a régi Tekton volt a végpont, azt lecseréljük az újra
+                for (Gombafonal gombafonal : fonalak) {
+                    if (gombafonal.getVegpont1() == tektonok.get(sorszam)) {
+                        gombafonal.setVegpont1(ujTekton);
+                    } else {
+                        gombafonal.setVegpont2(ujTekton);
+                    }
+                }
+
+                // Az új Tekton-hoz hozzárendeljük a módosított fonalakat
+                for (Gombafonal gombafonal : fonalak) {
+                    ujTekton.addFonal(gombafonal);
+                }
+
+                // Az új Tekton-t hozzáadjuk a játéktérhez
+                tektonAdd(ujTekton);
+            }
         }
     }
 

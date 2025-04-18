@@ -82,7 +82,7 @@ public class Jatek {
 
             //töres mind 5.ik körben egy egyre növekvő random számmal
             if (korSzam % 5 == 0) {
-                jatekter.tores(randomSzamToreshez());
+                jatekter.tores(randomSzamToreshez(), null, false);
             }
 
             //Rovar állapot idejének növelése
