@@ -1,0 +1,9 @@
+/arrange -t tekton
+/arrange -t tekton
+/arrange -szomszed -t tekton1 -t tekton2
+/arrange -j Pista -g benito
+/arrange -gf benito -t tekton1 -t2 
+/arrange -s benito -t tekton1 2
+/act -aktivJatekos Pista
+/act -gt -t tekton1
+/act -list gt

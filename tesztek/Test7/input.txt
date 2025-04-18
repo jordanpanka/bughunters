@@ -1,0 +1,9 @@
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t monotekton
+/arrange -szomszed -t tekton1 -t tekton2
+/arrange -szomszed -t tekton2 -t monotekton1
+/arrange -j Pista -g benito
+/arrange -gf benito -t1 tekton1 -t2 tekton2
+/act -gfnov -t tekton1 -t monotekton2
+/assert -list gf

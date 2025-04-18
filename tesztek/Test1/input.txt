@@ -1,0 +1,2 @@
+/arrange -j Pista -g benito
+/assert -list -jatekosok
