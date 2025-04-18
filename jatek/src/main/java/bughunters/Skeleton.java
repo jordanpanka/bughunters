@@ -703,7 +703,7 @@ public class Skeleton {
         System.out.println("Létrejött a teszt 18 pálya.\n");
 
         try {
-            jt1.tores(1);
+            jt1.tores(1, null, false);
            // g1.toresHaldoklas();
         } catch (Exception e) {
             System.out.println(e.getMessage());

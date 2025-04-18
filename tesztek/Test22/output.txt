@@ -1,0 +1,11 @@
+Hozzaadva tekton1
+Hozzaadva tekton2
+Szomszedos lett tekton1 és tekton2
+Hozzaadva Pista rovarasz rovar1
+Hozzaadva Jani vagaskeptelenito gombasz
+Hozzaadva vagaskeptelenito1 spora
+Hozzaadva gombafonal1
+Aktiv jatekos Pista
+Vagaskeptelenito hatas ervenyesul rovar1 rovarra
+Rovar vagaskeptelinto allapotban van
+Vagaskeptelenito

@@ -2,26 +2,19 @@ package bughunters;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
 public class Jatek {
-    private List<Jatekos> jatekosok;
-    private List<Gombasz> gombaszok;
-    private List<Rovarasz> rovaraszok;
-    private Jatekter jatekter;
+    
     private int korSzam;
-    private HashMap<String, Object> objektumok;
+    private Jatekter jatekter;
+    private Parancskezelok parancskezelo;
 
-    Jatek() {
+    Jatek(Parancskezelok kapottParancskezelo, Jatekter kapottJatekter)  {
         this.korSzam = 1;
-        this.objektumok = new HashMap<>();
-        this.jatekosok = new ArrayList<>();
-        this.gombaszok = new ArrayList<>();
-        this.rovaraszok = new ArrayList<>();
-        this.jatekter = new Jatekter();
+        this.parancskezelo = kapottParancskezelo;
+        this.jatekter = kapottJatekter;
     }
 
     public int getKorSzam() {
@@ -30,24 +23,6 @@ public class Jatek {
 
     public void setKorSzam(int korSzam) {
         this.korSzam = korSzam;
-    }
-
-    public List<Jatekos> getJatekosok() {
-        return jatekosok;
-    }
-
-    public void setJatekosok(List<Jatekos> jatekosok) {
-        this.jatekosok = jatekosok;
-    }
-
-    public void bemenetAkcio(String action, Jatekos aktivJatekos){
-            //megkapja a bemeneti stringet, azalapján eldönti melyik akció fut le.
-            // (likelihood ellenőrzés) %-r eves%
-            //elindul az akció.
-            //akció lehet create() is, ebben az esetben HashMap-be belekerülnek az új objektumok.
-            //create() féle akció nem csak constructor, de mondjuk osztodas(), gombatest novesztes esetén is lehetséges.
-            //Kinyeri a fontos objektumokat név/string alapján a HashMapből
-            //végrehajtja az akciót a kinyert objektumokkal.
     }
 
     public void tesztekInditasa(){
@@ -60,7 +35,7 @@ public class Jatek {
             //Tester külön cmd-ben összehasonlítja az actual.txt tartalmát az assert.txt tartalmával.
     }
 
-    public void jatekInditasa(){
+    public void jatekInditasa(List<Jatekos> jatekosok, List<Gombasz> gombaszok, List<Rovarasz> rovaraszok) {
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
         String parancs= "";
 
@@ -73,7 +48,7 @@ public class Jatek {
                     try {
                         parancs = r.readLine();
                         parancs = parancs.toLowerCase();
-                        bemenetAkcio(parancs, jatekos);
+                        parancskezelo.bemenetAkcio(parancs, jatekos);
                     } catch (Exception e) {
                         System.err.println(e.getMessage());
                     }
@@ -83,14 +58,19 @@ public class Jatek {
             
             //Kör végén minden játékos akciópontja visszaáll 3-ra
             try {
-                korVegiCselekedetek();
+                korVegiCselekedetek(jatekosok, gombaszok, rovaraszok);
             } catch (Exception e) {
                 System.err.println(e.getMessage());
             }
         }
     }
 
-    public void korVegiCselekedetek(){
+    //Nagy Uniform pálya a játékhoz, egy txt-ből beolvasása.
+    public void jatekPalyaAlkotasa(){
+            //végigfut a pálya txt-n, mindegyik során lefuttatja a parancskezelot.
+    }
+
+    public void korVegiCselekedetek(List<Jatekos> jatekosok, List<Gombasz> gombaszok, List<Rovarasz> rovaraszok){
         try{
             //kör számláló növelése
             korSzam++;
@@ -102,7 +82,7 @@ public class Jatek {
 
             //töres mind 5.ik körben egy egyre növekvő random számmal
             if (korSzam % 5 == 0) {
-                jatekter.tores(randomSzamToreshez());
+                jatekter.tores(randomSzamToreshez(), null, false);
             }
 
             //Rovar állapot idejének növelése
@@ -132,21 +112,8 @@ public class Jatek {
     }
 
     //incomplite i think
-    public void skipTurn(){
+    public void skipTurn(List<Jatekos> jatekosok, List<Gombasz> gombaszok, List<Rovarasz> rovaraszok){
         //egy teljes kör kihagyása, minden játékos köre kihagyásra kerül, a kör végi cselekedetek végrehajtódnak.
-        korVegiCselekedetek();
-    }
-    
-    //Why is this here??
-    public static void main(){
-            //kiválasztja a program módját. 
-            //test/jatek mód kiválasztása
-            //test: elindítja a tesztekInditasa() metódust, lefuttatja a teszteket.
-            //tesztek feltöltik a HashMap-et a szükséges objektumokkal minden teszt esetén.
-
-            //jatek: jatekosok felvetele. Nagy pálya betöltése
-            //létrehozza a jatekosokat, a jatekteret, a jatekosok listáját act/arrange parancsokkal.
-            //megkérdezi hogy akar-e még játékost felvenni? Nem-->elindítja a ...
-            //elindítja a jatekInditasa() metódust, elindítja a játékot
+        korVegiCselekedetek(jatekosok, gombaszok, rovaraszok);
     }
 }

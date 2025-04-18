@@ -1,0 +1,9 @@
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -szomszed -t tekton1 -t tekton2
+/arrange -szomszed -t tekton2 -t tekton3
+/arrange -j Jani -g osztodo
+/arrange -gt osztodo -t tekton1
+/act -spszot -gt gombatest1
+/assert -list -spora -db -t

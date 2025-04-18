@@ -1,0 +1,9 @@
+Hozzaadva tekton1
+Hozzaadva Pista rovarasz rovar1
+Hozzaadva Jani osztodo gombasz
+Hozzaadva osztodo1 spora
+Aktiv jatekos Pista
+Osztodo hatas ervenyesul rovar1 rovarra
+Hozzaadva rovar2
+rovar1 tekton1
+rovar2 tekton1

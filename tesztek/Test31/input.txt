@@ -1,0 +1,8 @@
+/arrange -t tekton
+/arrange  -j Pista -r -t tekton1
+/arrange -j Jani -g osztodo
+/arrange -s osztodo -t tekton1 2
+/act aktivJatekos Pista
+/act -eszik -r rovar1 -g osztodo
+/assert -list -r -t
+/assert -list -gt

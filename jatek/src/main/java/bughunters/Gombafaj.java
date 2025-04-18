@@ -28,12 +28,13 @@ public class Gombafaj implements FonalKezeles{
      * @param gtfi  A gombatest fejlettségi ideje.
      * @param gtesz A gombatest életszáma.
      */
-    public Gombafaj(String n, int tI, int ents, int gtfi,int gtesz){
+    public Gombafaj(String n, int tI, int ents, int gtfi,int gtesz, int gfesz){
         nev=n;
         termelesIdeje=tI;
         eddigNovesztettTestekSzama=ents;
         gombatestFejlettsegIdo=gtfi;
         gombatestEletSzama=gtesz;
+        gombafonalEletSzama = gfesz;
         gombaTestek=new ArrayList<Gombatest>();
         gombafonalhalozat=new ArrayList<Gombafonal>();
         System.out.println("Létrejött egy új Gombafaj:" );
@@ -143,7 +144,7 @@ public class Gombafaj implements FonalKezeles{
                 }
             }
             if(!van && gf.getAllapot().equals("Ep")){
-                gf.allapotvalt();
+                gf.setAllapot(fonalAllapot.Haldoklo);
             }
         }
     }
@@ -227,7 +228,6 @@ public class Gombafaj implements FonalKezeles{
         {
             g.urit();
             t.sporaSzor(this);
-           // boolean valasz=Skeleton.getInstance().Kerdes("Elhal a gombatest?");
             boolean valasz=false;
             if(g.getKor()==gombatestEletSzama)
             {
@@ -272,7 +272,7 @@ public class Gombafaj implements FonalKezeles{
             }else if(!van){
                 if(gombafonalhalozat.get(i).getAllapot().equals("Haldoklo") && gombafonalhalozat.get(i).getMiota()==gombafonalEletSzama )
                 {
-                    gombafonalhalozat.get(i).allapotvalt();
+                    gombafonalhalozat.get(i).setAllapot(fonalAllapot.UtolsoEsely);
 
                 }else if(gombafonalhalozat.get(i).getAllapot().equals("UtolsoEsely")){
                     //elér e testhez az adott fonal
@@ -289,8 +289,9 @@ public class Gombafaj implements FonalKezeles{
                 testNovesztes(r.getTartozkodas(), false);
                 r.torolRovar();
             }
-            else {
-                throw new Exception("Nem bánított állapotban van a rovar.");
+            else
+            {
+                throw new Exception("Nem bénított állapotban van a rovar.");
             }
              
         }catch(Exception e){

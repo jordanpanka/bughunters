@@ -1,0 +1,3 @@
+/arrange -t tekton
+/act -tores -t tekton1
+/assert -list -t
