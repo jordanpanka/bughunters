@@ -76,6 +76,7 @@ public class Tekton implements FonalKezeles {
      * @return növesztett gombafonalat adja vissza
      * @throws Exception ha nem tud gombafonalat növeszteni vagy rossz feladatnál lett hívva
      */
+    //------Azt is nézni kell, hogy csak gombatest van a szomszédon, nem gombafonal-----------
     public Gombafonal gombafonalAdd(Gombafaj g, Tekton honnan) throws Exception {
         //System.out.println("Meghívódik a Tekton gombafonalAdd metódusa.");
         
@@ -115,7 +116,7 @@ public class Tekton implements FonalKezeles {
      * @return Ha tud növeszteni gombatestet, akkor azt adja vissza
      * @throws Exception ha nem tud gombatestet növeszteni vagy nem megfelelő feladatnál lett hívva
      */
-    public Gombatest gombatestNov(Gombafaj gf,boolean sporaval) throws Exception{
+    public Gombatest gombatestNov(Gombafaj gf, boolean sporaval) throws Exception{
         //System.out.println("Meghívódik a Tekton gombatestNov metódusa.");
         try{
             if(sporaval){
@@ -126,8 +127,8 @@ public class Tekton implements FonalKezeles {
                         }
                     }
                 }
-                boolean elfogyott=false;
-                if(sporak!=null){
+                boolean elfogyott = false;
+                if(sporak != null){
                     for(Spora sp:sporak){
                         if(sp.getGombafaj().equals(gf)) {
                             sp.fogyaszt(3);
@@ -140,8 +141,6 @@ public class Tekton implements FonalKezeles {
                         }
                     }
                 }
-                //sporak.get(0).fogyaszt(3);
-                //boolean valasz=Skeleton.getInstance().Kerdes("Elfogyott a spóra a növesztés által?");
 
                 Gombatest gt1 = new Gombatest(gf,this);
                 return gt1;

@@ -1,5 +1,7 @@
 package bughunters;
 
+import java.util.List;
+
 public class Infinator extends Tekton {
     
     /***
@@ -11,4 +13,10 @@ public class Infinator extends Tekton {
             gf.setAllapot(fonalAllapot.Ep);
         }
     }
+
+    public Infinator(List<Tekton> szomszed, List<Gombafonal> gombafonal, List<Spora> spora){
+        super(szomszed,gombafonal,spora);
+    }
+
+    public Infinator(){}
 }
