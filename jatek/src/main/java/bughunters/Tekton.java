@@ -326,10 +326,8 @@ public class Tekton implements FonalKezeles {
             }
         }
         for (Gombafonal gombafonal : ujFonal) {
-             gombafonalak.remove(gombafonal);
-        }
-
-       
+            gombafonalak.remove(gombafonal);
+        } 
         return ujFonal;
     }
 
