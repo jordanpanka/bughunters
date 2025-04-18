@@ -4,6 +4,10 @@ Hozzaadva tekton3
 Szomszedos lett tekton1 és tekton2
 Szomszedos lett tekton2 és tekton3
 Hozzaadva Jani osztodo gombasz
-Hozzadva gombatest1
-Sikeres szoras
-osztodo1 3  tekton2
+Hozzaadva gombafonal1
+Hozzaadva gombatest1
+Vege Jani korenek
+Vege Jani korenek
+Vege Jani korenek
+Vege Jani korenek
+Nincs gombafonal a palyan

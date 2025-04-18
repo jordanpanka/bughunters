@@ -4,6 +4,9 @@
 /arrange -szomszed -t tekton1 -t tekton2
 /arrange -szomszed -t tekton2 -t tekton3
 /arrange -j Jani -g osztodo
+/arrange -gf osztodo -t1 tekton2 -t2 tekton3
 /arrange -gt osztodo -t tekton1
-/act -spszot -gt gombatest1
-/assert -list -spora -db -t
+/act endTurn
+/act -gfnov -t tekton1 -t tekton2
+/assert -list -gf
+/assert -gfallapot gombafonal1

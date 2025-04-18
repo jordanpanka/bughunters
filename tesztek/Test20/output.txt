@@ -1,0 +1,8 @@
+Hozzaadva tekton1
+Hozzaadva tekton2
+Szomszedos lett tekton1 és tekton2
+Hozzaadva Pista rovarasz rovar1
+Hozzaadva Jani benito gombasz
+Aktiv jatekos Pista
+Nem lehet atmenni tekton2 tektonra
+rovar1 tekton1
