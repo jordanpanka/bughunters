@@ -6,4 +6,8 @@ Szomszedos lett tekton2 és tekton3
 Hozzaadva Jani osztodo gombasz
 Hozzadva gombatest1
 Sikeres szoras
+<<<<<<< HEAD
 osztodo1 3  tekton2
+=======
+osztodo1 3  tekton2
+>>>>>>> ff98a77f7113fdf75830a4fd58c93a42a853b80c

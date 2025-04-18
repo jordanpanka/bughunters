@@ -6,4 +6,8 @@
 /arrange -j Jani -g osztodo
 /arrange -gt osztodo -t tekton1
 /act -spszot -gt gombatest1
+<<<<<<< HEAD
 /assert -list -spora -db -t
+=======
+/assert -list -spora -db -t
+>>>>>>> ff98a77f7113fdf75830a4fd58c93a42a853b80c
