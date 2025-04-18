@@ -312,8 +312,24 @@ public class Tekton implements FonalKezeles {
             //végpontx önmaga
             //végpontx szomszéd
             //ami nem önmaga, 
+            if(gombafonal.getVegpont1().equals(this)){
+                if(!szomszedok.contains(gombafonal.getVegpont2()))
+                {
+                    ujFonal.add(gombafonal);
+                }
+            }
+            if(gombafonal.getVegpont2().equals(this)){
+                if(!szomszedok.contains(gombafonal.getVegpont1()))
+                {
+                    ujFonal.add(gombafonal);
+                }
+            }
+        }
+        for (Gombafonal gombafonal : ujFonal) {
+             gombafonalak.remove(gombafonal);
         }
 
+       
         return ujFonal;
     }
 
