@@ -19,7 +19,6 @@ public class Tekton implements FonalKezeles {
     private List<Tekton> szomszedok; //melyik tektonok a szomszédjai
     private List<Gombafonal> gombafonalak; //megtalálható gombafonalak listája
     private List<Spora> sporak; //megtalálható spórák listája
-    private String tektonNev;
 
     public Tekton() {
         szomszedok = new ArrayList<>();
@@ -266,13 +265,31 @@ public class Tekton implements FonalKezeles {
     //------------------------------------------------------------------------------------------------
     public void szomszedAllitas(Tekton t){
         //System.out.println("Meghívódik a Tekton szomszedAllitas metódusa.");
+
+        // egyik fele a régi tekton szomszédja lesz, 
+        // a másik fele pedig az új tektoné
         
+        /*
         szomszedok.add(t);
 
         t.addSzomszed(this);
         t.addSzomszed(szomszedok.get(2));
 
         szomszedok.remove(2);
+        */
+
+        // t1 --> t1 -- t2 szomszédok 
+        szomszedok.add(t);
+        t.addSzomszed(this);
+
+        int db = szomszedok.size();
+        int fele = db / 2;
+
+        //aktTektonból a szomszédok kitörlése, a másik tektonhoz pedig hozzáadás
+        for(int i = fele; i < db; i++){
+            szomszedok.remove(szomszedok.get(i));
+            t.addSzomszed(szomszedok.get(i));
+        }
     }
 
     /***
@@ -291,7 +308,11 @@ public class Tekton implements FonalKezeles {
 
         List<Gombafonal> ujFonal = new ArrayList<Gombafonal>();
 
-
+        for (Gombafonal gombafonal : gombafonalak) {
+            //végpontx önmaga
+            //végpontx szomszéd
+            //ami nem önmaga, 
+        }
 
         return ujFonal;
     }
