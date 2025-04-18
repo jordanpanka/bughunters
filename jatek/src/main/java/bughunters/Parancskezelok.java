@@ -178,8 +178,8 @@ public class Parancskezelok {
                     Spora vagaskeptelenitoSpora = (VagasKeptelenito)objektumok.get(kulcs);
                     sporakAHashMapben.add(vagaskeptelenitoSpora);
                 }else if (kulcs.matches("lassito\\d+")) {
-                    Spora benitoSpora = (Benito)objektumok.get(kulcs);
-                    sporakAHashMapben.add(benitoSpora);
+                    Spora lassiSpora = (Lassito)objektumok.get(kulcs);
+                    sporakAHashMapben.add(lassiSpora);
                 }else if (kulcs.matches("gyorsito\\d+")) {
                     Spora gyorsitSpora = (Gyorsito)objektumok.get(kulcs);
                     sporakAHashMapben.add(gyorsitSpora);
