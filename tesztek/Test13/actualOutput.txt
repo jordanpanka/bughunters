@@ -1,0 +1,8 @@
+Hozzaadva tekton1 tekton
+Hozzaadva tekton2 tekton
+Szomszedos lett tekton1 és tekton2
+Hozzaadva Pista benito gombasz
+Hozzaadva Jani osztodo gombasz
+Hozzaadva osztodo1 spora
+Aktiv jatekos Pista
+Nincs eleg spora gombatest noveszteshez

@@ -10,7 +10,7 @@ public class Gombatest {
      * @brief Alapértelmezett konstruktor, amely létrehoz egy új Gombatest példányt.
      */
     public Gombatest(){
-        System.out.println("Létrejött egy Gombatest.");
+        //System.out.println("Létrejött egy Gombatest.");
     }
 
     /**
@@ -26,7 +26,7 @@ public class Gombatest {
         this.kor = 0;
         this.gombafaj = gombafaj;
         this.tekton = tekton;
-        System.out.println("Létrejött egy új Gombatest.");
+        //System.out.println("Létrejött egy új Gombatest.");
     }
 
     /**

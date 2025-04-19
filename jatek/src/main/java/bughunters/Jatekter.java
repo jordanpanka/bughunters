@@ -15,7 +15,7 @@ public class Jatekter {
      * @return A tektonok listája.
      */
     public List<Tekton> getTektonok() {
-        System.out.println("Meghívódik a Jatekter getTektonok metodusa.");
+        //System.out.println("Meghívódik a Jatekter getTektonok metodusa.");
         return tektonok;
     }
 
@@ -23,7 +23,7 @@ public class Jatekter {
      * @brief Alapértelmezett konstruktor, amely létrehozza a Jatekter objektumot.
      */
     public Jatekter() {
-        System.out.println("Meghívódik a Jatekter paraméter nélküli konstruktora.");
+        //System.out.println("Meghívódik a Jatekter paraméter nélküli konstruktora.");
         tektonok=new ArrayList<Tekton>();
     }
 
@@ -49,7 +49,7 @@ public class Jatekter {
      * @param darab Az törés során széttörő Tekton objektumok száma.
      */
     public void tores(int darab, Tekton tekton, boolean teszt) {
-        System.out.println("Meghívódik a Jatekter tores metodusa.");
+        //System.out.println("Meghívódik a Jatekter tores metodusa.");
 
         if(teszt){
             // Új Tekton létrehozása
@@ -57,7 +57,6 @@ public class Jatekter {
 
             // Az új Tekton-t szomszédként beállítjuk a kiválasztott régi Tekton-hoz
             tekton.szomszedAllitas(ujTekton);
-
             // Lekérjük a kiválasztott Tekton-hoz tartozó Gombafonalakat
             List<Gombafonal> fonalak = tekton.gombafonalIgazitas();
 
@@ -138,7 +137,7 @@ public class Jatekter {
      * @param t Az új Tekton objektum.
      */
     public void tektonAdd(Tekton t) {
-        System.out.println("Meghívódik a Jatekter tektonAdd metodusa.");
+        //System.out.println("Meghívódik a Jatekter tektonAdd metodusa.");
         tektonok.add(t);
     }
 }

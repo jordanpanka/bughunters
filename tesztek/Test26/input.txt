@@ -2,6 +2,6 @@
 /arrange -j Pista -r -t tekton1
 /arrange -j Jani -g benito
 /arrange -s benito -t tekton1 2
-/act aktivJatekos Pista
-/act -eszik -r rovar1 -g benito 
-/assert -list spora -db -t
+/act -aktivJatekos Pista
+/act -eszik -r rovar1 -g benito
+/assert -list -spora -db -t

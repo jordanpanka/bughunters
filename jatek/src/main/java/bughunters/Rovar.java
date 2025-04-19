@@ -20,7 +20,7 @@ public class Rovar {
      * @brief Paraméter nélküli konstruktor.
      */
     public Rovar() {
-        System.out.println("Létrejött egy új Rovar.");
+        //System.out.println("Létrejött egy új Rovar.");
 
         //this.szin = "";
         this.tartozkodas = null;
@@ -33,7 +33,7 @@ public class Rovar {
      * @param tartozkodas A Tekton ahol a Rovar tartózkodik.
      */
     public Rovar(/*String szin,*/ Tekton tartozkodas, Rovarasz rs) {
-        System.out.println("Létrejött egy új Rovar.");
+        //System.out.println("Létrejött egy új Rovar.");
 
         //this.szin = szin;
         this.rs = rs;
@@ -47,12 +47,12 @@ public class Rovar {
     }
     
     public String getSzin() { 
-        System.out.println("Meghívódott a Rovar GetSzin metódusa.");
+        //System.out.println("Meghívódott a Rovar GetSzin metódusa.");
 
         return szin; 
     }
     public void setSzin(String szin) { 
-        System.out.println("Meghívódott a Rovar setSzin metódusa.");
+        //System.out.println("Meghívódott a Rovar setSzin metódusa.");
 
         this.szin = szin; 
     }
@@ -72,7 +72,7 @@ public class Rovar {
      */
     public void setTartozkodas(Tekton t){ 
         this.tartozkodas = t; 
-        System.out.println("Meghívódik a Rovar setTartozkodas() metodusa.");
+       // System.out.println("Meghívódik a Rovar setTartozkodas() metodusa.");
     }
 
     /**
@@ -128,7 +128,7 @@ public class Rovar {
      * @throws Exception Hogyha a Rovar le van bénítva vagy vágásképtelen.
      */
     public void vag(Gombafonal g) throws Exception {
-        System.out.println("Meghívódik a Rovar vag metódusa.");
+        //System.out.println("Meghívódik a Rovar vag metódusa.");
 
         //boolean valasz = Skeleton.getInstance().Kerdes("Vágásképtelen vagy Bénított állapotban van a rovar?");
         try {
@@ -148,7 +148,7 @@ public class Rovar {
      * @throws Exception Ha a Rovar lebénítva van, vagy nincsen út a Tektonok között.
      */
     public void maszik(Tekton hova) throws Exception {
-        System.out.println("Meghívódik a Rovar maszik metódusa.");
+        //System.out.println("Meghívódik a Rovar maszik metódusa.");
         //boolean valasz = Skeleton.getInstance().Kerdes("Bénított állapotban van a rovar?");
 
         try {
@@ -174,7 +174,7 @@ public class Rovar {
      * @throws Exception Ha a Rovar nem tud enni.
      */
     public void eszik(Spora s) throws Exception {
-        System.out.println("Meghívódik a Rovar eszik metódusa.");
+        //System.out.println("Meghívódik a Rovar eszik metódusa.");
         try {
             if (this.allapot == rovarAllapot.Benitott) {
                 throw new Exception("Benitott allapotban van a rovar.");
@@ -189,7 +189,7 @@ public class Rovar {
     }
 
     public void osztodik(){
-        System.out.println("Meghívódik a Rovar osztodik metódusa.");
+        //System.out.println("Meghívódik a Rovar osztodik metódusa.");
 
         Rovar ujRovar = new Rovar(this.tartozkodas, this.rs);
         ujRovar.szin = this.szin;

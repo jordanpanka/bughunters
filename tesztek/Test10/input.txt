@@ -2,5 +2,5 @@
 /arrange -t tekton
 /arrange -szomszed -t tekton1 -t tekton2
 /arrange -j Pista -g benito
-/act -gfnov -t1 tekton1 -t2 tekton2
-/assert -gf
+/act -gfnov -t tekton1 -t tekton2 -g benito
+/assert -list -gf

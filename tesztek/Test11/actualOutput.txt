@@ -1,0 +1,7 @@
+Hozzaadva tekton1 tekton
+Hozzaadva tekton2 tekton
+Szomszedos lett tekton1 és tekton2
+Hozzaadva Pista benito gombasz
+Hozzaadva benito1 spora
+Aktiv jatekos Pista
+Mar van gombatest az adott tektonon

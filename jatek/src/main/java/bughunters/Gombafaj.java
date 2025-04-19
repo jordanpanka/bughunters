@@ -37,7 +37,7 @@ public class Gombafaj implements FonalKezeles{
         gombafonalEletSzama = gfesz;
         gombaTestek=new ArrayList<Gombatest>();
         gombafonalhalozat=new ArrayList<Gombafonal>();
-        System.out.println("Létrejött egy új Gombafaj:" );
+        //System.out.println("Létrejött egy új Gombafaj:" );
     }
     public String getNev() {
         return nev;
@@ -210,7 +210,7 @@ public class Gombafaj implements FonalKezeles{
      * @param gt A hozzáadandó gombatest.
      */
     void addTest(Gombatest gt){
-        System.out.println("Meghívódik a Gombafaj addTest metodusa.");
+        //System.out.println("Meghívódik a Gombafaj addTest metodusa.");
         if (gombaTestek == null) {
             gombaTestek = new ArrayList<>();
         }
