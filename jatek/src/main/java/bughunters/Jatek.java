@@ -48,7 +48,7 @@ public class Jatek {
                     try {
                         parancs = r.readLine();
                         parancs = parancs.toLowerCase();
-                        parancskezelo.bemenetAkcio(parancs, jatekos);
+                        parancskezelo.bemenetAkcio(parancs, jatekos, null);
                     } catch (Exception e) {
                         System.err.println(e.getMessage());
                     }

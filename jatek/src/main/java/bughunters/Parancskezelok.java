@@ -58,7 +58,7 @@ public class Parancskezelok {
 
 
     //A játékosok a játék indítása után nem férhetnek hozzá Arrange parancsokhoz, de a tesztek mindenhez hozzáférnek
-    public void bemenetAkcio(String action, Jatekos aktivJatekos) throws Exception {
+    public void bemenetAkcio(String action, Jatekos aktivJatekos, PrintStream output) throws Exception {
             //megkapja a bemeneti stringet, azalapján eldönti melyik akció fut le.
             // (likelihood ellenőrzés) %-r eves%
             //elindul az akció.
@@ -80,8 +80,11 @@ public class Parancskezelok {
                         char tektonTip = tektonTipus.charAt(0);
                         Tekton ujTekton = tektonLetrehoz(tektonTip);
                         jatekter.tektonAdd(ujTekton);
-                        objektumok.put(ujTektonNev(tektonTip), ujTekton);
-                        objektumokbolString.put(ujTekton, ujTektonNev(tektonTip));
+                        String ujNev = ujTektonNev(tektonTip);
+                        objektumok.put(ujNev, ujTekton);
+                        objektumokbolString.put(ujTekton, ujNev);
+
+                        output.println("Hozzaadva " + ujNev + " tekton");
                     }
                     if(action.matches("/arrange -j \\S+ -r -t \\S+")){
                         rovaraszFelvetel(action);
@@ -92,8 +95,20 @@ public class Parancskezelok {
 
                         Tekton Tekton1 = (Tekton)objektumok.get(tekton1);
                         Tekton Tekton2 = (Tekton)objektumok.get(tekton2);
+
+                        if(Tekton1 == null){
+                            output.println("Nem letezik: " + tekton1);
+                            return;
+                        }
+                        if(Tekton2 == null){
+                            output.println("Nem letezik: " + tekton2);
+                            return;
+                        }
+
                         Tekton1.addSzomszed(Tekton2);
                         Tekton2.addSzomszed(Tekton1);
+
+                        output.println("Szomszedos lett " + tekton1 + " és " + tekton2);
                     }
                     if(action.matches("/arrange -j \\S+ -g \\S+")){
                         gombaszFelvetele(action);
@@ -103,47 +118,101 @@ public class Parancskezelok {
                         //char gombaf = gombafaj.charAt(0);
                         Gombafaj gf = (Gombafaj)objektumok.get(gombafaj);
 
+                        if(gf == null){
+                            output.println("Nem letezik: " + gombafaj);
+                            return;
+                        }
+
                         String tekton1 = action.split(" ")[3];
                         String tekton2 = action.split(" ")[5];
 
                         Tekton Tekton1 = (Tekton)objektumok.get(tekton1);
                         Tekton Tekton2 = (Tekton)objektumok.get(tekton2);
 
+                        if(Tekton1 == null){
+                            output.println("Nem letezik: " + tekton1);
+                            return;
+                        }
+                        if(Tekton2 == null){
+                            output.println("Nem letezik: " + tekton2);
+                            return;
+                        }
+
                         Gombafonal ujGombafonal = new Gombafonal(gf, Tekton1, Tekton2);
+
+                        if(ujGombafonal == null){
+                            output.println("Nem sikerult hozzaadni a gombafonalat");
+                            return;
+                        }
+
                         gf.addFonal(ujGombafonal);
                         Tekton1.addFonal(ujGombafonal);
                         Tekton2.addFonal(ujGombafonal);
-                        objektumok.put(ujGombafonalNev(), ujGombafonal);
-                        objektumokbolString.put(ujGombafonal, ujGombafonalNev());
+                        String ujNev = ujGombafonalNev();
+                        objektumok.put(ujNev, ujGombafonal);
+                        objektumokbolString.put(ujGombafonal, ujNev);
+
+                        output.println("Hozzaadva " + ujNev);
                     }
                     if(action.matches("/arrange -s \\S+ -t \\S+ \\d+")){
                         String sporaTipus = action.split(" ")[2];
                         char sporaTip = sporaTipus.charAt(0);
                         Gombafaj gf = (Gombafaj)objektumok.get(sporaTipus);
 
+                        if(gf == null){
+                            output.println("Nem letezik: " + sporaTipus);
+                            return;
+                        }
+
                         String tekton1 = action.split(" ")[4];
                         Tekton Tekton1 = (Tekton)objektumok.get(tekton1);
+
+                        if(Tekton1 == null){
+                            output.println("Nem letezik: " + tekton1);
+                            return;
+                        }
 
                         String szamResz = action.split(" ")[5];
                         int szam = Integer.parseInt(szamResz);
 
+                        if(szam < 0){
+                            output.println("Nem lehet negativ szamu spora");
+                            return;
+                        }
+
                         Spora ujSpora = sporaLetrehoz(sporaTip, gf, szam);
                         Tekton1.addSpora(ujSpora);
-                        objektumok.put(ujSporaNev(sporaTip), ujSpora);
-                        objektumokbolString.put(ujSpora, ujSporaNev(sporaTip));
+                        String ujNev = ujSporaNev(sporaTip);
+                        objektumok.put(ujNev, ujSpora);
+                        objektumokbolString.put(ujSpora, ujNev);
+
+                        output.println("Hozzaadva " + ujNev + " spora");
                     }
                     if(action.matches("/arrange -gt \\S+ -t \\S+")){
                         String gombaTipus = action.split(" ")[2];
                         //char gombaTip = gombaTipus.charAt(0);
                         Gombafaj gf = (Gombafaj)objektumok.get(gombaTipus);
 
+                        if(gf == null){
+                            output.println("Nem letezik: " + gombaTipus);
+                            return;
+                        }
+
                         String tekton1 = action.split(" ")[4];
                         Tekton Tekton1 = (Tekton)objektumok.get(tekton1);
 
+                        if(Tekton1 == null){
+                            output.println("Nem letezik: " + tekton1);
+                            return;
+                        }
+
                         Gombatest ujGombatest = new Gombatest(gf, Tekton1);
                         gf.addTest(ujGombatest);
-                        objektumok.put(ujGombatestNev(), ujGombatest);
-                        objektumokbolString.put(ujGombatest, ujGombatestNev());
+                        String ujNev = ujGombatestNev();
+                        objektumok.put(ujNev, ujGombatest);
+                        objektumokbolString.put(ujGombatest, ujNev);
+
+                        output.println("Hozzaadva " + ujNev);
                     }
 
                     //act parancsok
@@ -152,52 +221,139 @@ public class Parancskezelok {
                         String rovarStr = action.split(" ")[3];
                         Rovar rovar = (Rovar)objektumok.get(rovarStr);
 
+                        if(rovar == null){
+                            output.println("Nem letezik: " + rovarStr);
+                            return;
+                        }
+
                         String tekton1 = action.split(" ")[7];
                         Tekton Tekton1 = (Tekton)objektumok.get(tekton1);
+
+                        if(Tekton1 == null){
+                            output.println("Nem letezik: " + tekton1);
+                            return;
+                        }
+                        if(!rovar.getTartozkodas().equals(Tekton1)) {
+                            output.println("A rovar nem a megadott tektonon tartozkodik");
+                            return;
+                        }
 
                         List<Spora> sporak = Tekton1.getSporak();
                         
                         String gombaTipus = action.split(" ")[5];
                         char gombaTip = gombaTipus.charAt(0);
 
+                        if(rovar.getAllapot() == rovarAllapot.Benitott){
+                            output.println("A rovar le van benitva");
+                            return;
+                        }
+
+                        int db = 0;
                         for(Spora spora : sporak) {
                             String sporaTipus = objektumokbolString.get(spora);
                             char sporaTip = sporaTipus.charAt(0);
                             if(sporaTip == gombaTip) {
                                 rovar.eszik(spora);
+                                db++;
                                 break;
                             }
                         }
+
+                        if(db == 0){
+                            output.println("Nincs " + gombaTipus + " spora " + tekton1 + " tektonon");
+                            return;
+                        }
+
+                        output.println(gombaTipus + " hatas ervenyesul " + rovarStr + " rovarra");
                     }
                     if(action.matches("/act -vag -r \\S+ -gf \\S+")){
                         String rovarStr = action.split(" ")[3];
                         Rovar rovar = (Rovar)objektumok.get(rovarStr);
 
+                        if(rovar == null){
+                            output.println("Nem letezik: " + rovarStr);
+                            return;
+                        }
+
                         String gombafonalStr = action.split(" ")[5];
                         Gombafonal gombafonal = (Gombafonal)objektumok.get(gombafonalStr);
 
+                        if(gombafonal == null){
+                            output.println("Nem letezik: " + gombafonalStr);
+                            return;
+                        }
+                        if(rovar.getAllapot() == rovarAllapot.Benitott){
+                            output.println("A rovar le van benitva");
+                            return;
+                        }
+                        if(rovar.getAllapot() == rovarAllapot.VagasKeptelen){
+                            output.println("Rovar vagaskeptelenito allapotban van");
+                            return;
+                        }
+
                         rovar.vag(gombafonal);
+
+                        output.println("Megszunt " + gombafonalStr);
                     }
                     if(action.matches("/act -maszik -r \\S+ -t \\S+")){
                         String rovarStr = action.split(" ")[3];
                         Rovar rovar = (Rovar)objektumok.get(rovarStr);
 
+                        if(rovar == null){
+                            output.println("Nem letezik: " + rovarStr);
+                            return;
+                        }
+
                         String tektonStr = action.split(" ")[5];
                         Tekton tekton = (Tekton)objektumok.get(tektonStr);
 
-                        rovar.maszik(tekton);
+                        if(tekton == null){
+                            output.println("Nem letezik: " + tektonStr);
+                            return;
+                        }
+                        if(rovar.getAllapot() == rovarAllapot.Benitott){
+                            output.println("A rovar le van benitva");
+                            return;
+                        }
+
+                        try{
+                            rovar.maszik(tekton);
+                        }catch(Exception e){
+                            output.println("Nem lehet atmenni " + tektonStr + " tektonra");
+                            return;
+                        }
+
+                        output.println(rovarStr + " " + tektonStr + " tektonon van");
                     }
                     if(action.matches("/act -reszik -r \\S+")){
                         String rovarStr = action.split(" ")[3];
                         Rovar rovar = (Rovar)objektumok.get(rovarStr);
 
+                        if(rovar == null){
+                            output.println("Nem letezik: " + rovarStr);
+                            return;
+                        }
+
                         Gombasz gombasz = (Gombasz)aktivJatekos;
+
+                        if(rovar.getAllapot() != rovarAllapot.Benitott){
+                            output.println("A rovar nincs lebenitva");
+                            return;
+                        }
+
                         gombasz.rovarEves(rovar);
+
+                        output.println("Megszunt " + rovarStr);
                     }
                     if(action.matches("/act -gfnov -t \\S+ -t \\S+ -g \\S+")){
                         String gombafaj = action.split(" ")[7];
                         //char gombaf = gombafaj.charAt(0);
                         Gombafaj gf = (Gombafaj)objektumok.get(gombafaj);
+
+                        if(gf == null){
+                            output.println("Nem letezik: " + gombafaj);
+                            return;
+                        }
 
                         String tekton1 = action.split(" ")[3];
                         String tekton2 = action.split(" ")[5];
@@ -205,48 +361,151 @@ public class Parancskezelok {
                         Tekton Tekton1 = (Tekton)objektumok.get(tekton1);
                         Tekton Tekton2 = (Tekton)objektumok.get(tekton2);
 
+                        if(Tekton1 == null){
+                            output.println("Nem letezik: " + tekton1);
+                            return;
+                        }
+                        if(Tekton2 == null){
+                            output.println("Nem letezik: " + tekton2);
+                            return;
+                        }
+
+                        List<Tekton> szomszedok = Tekton1.getSzomszedok();
+                        List<Gombafonal> gombafonalak1 = Tekton1.getFonalak();
+
+                        int db = 0;
+                        for(Tekton szomszed : szomszedok) {
+                            if (szomszed.equals(Tekton2)) {
+                                db++;
+                                break;
+                            }
+                        }
+                        for(Gombafonal fonal : gombafonalak1) {
+                            if (fonal.getGombafaj().equals(gf)) {
+                                db++;
+                                break;
+                            }
+                        }
+
+                        if(db < 2){
+                            output.println("Nem sikerult gombafonalat noveszteni");
+                            return;
+                        }
+
+
+                        if(tekton1.charAt(0) == 'm'){
+                            List<Gombafonal> gombafonalak2 = Tekton2.getFonalak();
+                            if(!gombafonalak2.isEmpty()){
+                                for(Gombafonal fonal : gombafonalak2) {
+                                    if (!fonal.getGombafaj().equals(gf)) {
+                                        output.println("Nem sikerult gombafonalat noveszteni");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+
                         gf.fonalNov(Tekton1, Tekton2);
+
+                        output.println("Hozzaadva " + ujGombafonalNev());
                     }
                     if(action.matches("/act -spszor -gt \\S+")){
                         String gombatestStr = action.split(" ")[3];
                         Gombatest gombatest = (Gombatest)objektumok.get(gombatestStr);
 
+                        if(gombatest == null){
+                            output.println("Nem letezik: " + gombatestStr);
+                            return;
+                        }
+
                         Tekton tartozkodas = gombatest.getTekton();
                         
                         Gombasz gombasz = (Gombasz)aktivJatekos;
                         gombasz.sporaSzoras(tartozkodas, gombatest);
+
+                        output.println("Sikeres szoras");
                     }
                     if(action.matches("/act -tores -t \\S+")){
                         String tektonStr = action.split(" ")[3];
                         Tekton tekton = (Tekton)objektumok.get(tektonStr);
 
+                        if(tekton == null){
+                            output.println("Nem letezik: " + tektonStr);
+                            return;
+                        }
+
                         jatekter.tores(1, tekton, true);
+
+                        output.println("Sikeres tores");
+                        output.println("Hozzaadva " + ujTektonNev(tektonStr.charAt(0)));
                     }
                     if(action.matches("/act -gt -t \\S+")){
                         String tektonStr = action.split(" ")[3];
                         Tekton tekton = (Tekton)objektumok.get(tektonStr);
 
+                        if(tekton == null){
+                            output.println("Nem letezik: " + tektonStr);
+                            return;
+                        }
+                        if(tektonStr.charAt(0) == 'p'){
+                            output.println("Ezen a tektonon nem lehet gombatestet noveszteni");
+                            return;
+                        }
+
                         Gombasz gombasz = (Gombasz)aktivJatekos;
-                        gombasz.testNovesztes(tekton, true);
+
+                        List<Spora> sporak = tekton.getSporak();
+                        boolean vanSpora = false;
+
+                        for(Spora spora : sporak) {
+                            if(spora.getGombafaj().equals(gombasz.getGombafaj())) {
+                                if(spora.getMennyiseg() >= 3){
+                                    vanSpora = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if(!vanSpora){
+                            output.println("Nincs eleg spora gombatest noveszteshez");
+                            return;
+                        }
+
+                        try{
+                            gombasz.testNovesztes(tekton, true);
+                        }catch(Exception e){
+                            output.println("Mar van gombatest az adott tektonon");
+                            return;
+                        }
+
+                        output.println("Hozzaadva " + ujGombatestNev());
                     }
                     if(action.matches("/act -gt \\S+ -fejlett")){
                         String gombatestStr = action.split(" ")[3];
                         Gombatest gombatest = (Gombatest)objektumok.get(gombatestStr);
 
+                        if(gombatest == null){
+                            output.println("Nem letezik: " + gombatestStr);
+                            return;
+                        }
+
                         int gtFejlettsegIdo = gombatest.getGombafaj().getGombatestFejlettsegIdo();
 
                         gombatest.setKor(gtFejlettsegIdo);
+
+                        output.println(gombatestStr + " fejlett");
                     }
                     if(action.matches("/act -aktivJatekos \\S+")){
                         for(int i = 0; i < jatekosok.size(); i++){
                             if(jatekosok.get(i).getNev().equals(action.split(" ")[2])){
                                 aktivJatekos = jatekosok.get(i);
+                                output.println("Aktiv jatekos: " + aktivJatekos.getNev());
                                 break;
                             }
                         }
                     }
                     if(action.matches("/act -endTurn")){
                         aktivJatekos.korVege();
+                        //Kiíratás?
                     }
                 }
             } catch (Exception e) {
