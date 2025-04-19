@@ -1,8 +1,8 @@
 Hozzaadva tekton1 tekton
 Hozzaadva tekton2 tekton
-Szomszedos lett tekton1 és tekton2
+Szomszedos lett tekton1 es tekton2
 Hozzaadva Pista benito gombasz
 Hozzaadva g1 gombafonal
 Hozzadva benito1 benito spora
-Aktív játékos Jani
+Aktiv jatekos Jani
 Hozzadva gombatest1 
