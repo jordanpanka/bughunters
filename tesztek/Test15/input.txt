@@ -5,4 +5,4 @@
 /arrange -gf osztodo -t1 tekton1 -t2 puritekton1
 /arrange -s osztodo -t puritekton1 5
 /act -gt -t puritekton1
-/assert -list gt
+/assert -list -gt
