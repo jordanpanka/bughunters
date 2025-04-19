@@ -1,0 +1,8 @@
+/arrange -t tekton
+/arrange -t puritekton
+/arrange -szomszed -t tekton1 -t puritekton1
+/arrange -j Jani -g osztodo
+/arrange -gf osztodo -t1 tekton1 -t2 puritekton1
+/arrange -s osztodo -t puritekton1 5
+/act -gt -t puritekton1
+/assert -list gt

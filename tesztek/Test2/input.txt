@@ -1,0 +1,3 @@
+/arrange -j Pista -g benito
+/arrange -j Kacsa -g benito
+/assert -list -jatekosok

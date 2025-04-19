@@ -1,0 +1,11 @@
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t monotekton
+/arrange -szomszed -t tekton1 -t tekton2
+/arrange -szomszed -t tekton2 -t monotekton1
+/arrange -j Pista -g benito
+/arrange -j Jani -g gyorsito
+/arrange -gf  benito -t1 tekton2  -t2 tekton3	
+/arrange -gf gyorsito -t tekton1 -t2 monotekon1
+/act -aktivJatekos Jani
+/act -gfnov -t tekton2 -t monotekton1

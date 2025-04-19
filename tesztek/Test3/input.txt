@@ -1,0 +1,3 @@
+/arrange -t tekton
+/arrange -j Pista -r  -t tekton1
+/assert -list -jatekosok

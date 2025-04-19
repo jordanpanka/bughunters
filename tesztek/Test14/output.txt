@@ -1,0 +1,12 @@
+Hozzaadva tekton1 tekton
+Hozzaadva tekton2 tekton
+Szomszedos lett tekton1 és tekton2
+Hozzaadva Pista benito gombasz
+Hozzaadva g1 gombafonal
+Hozzaadba gombatest1
+Hozzaadva Jani osztodo gombasz
+Hozzaadva g2 gombafonal
+Hozzadva osztodo1 osztodo spora
+Aktív játékos Jani
+Már van gombatest az adott tektonon
+gombatest1
