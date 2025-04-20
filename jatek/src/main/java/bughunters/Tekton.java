@@ -179,18 +179,16 @@ public class Tekton implements FonalKezeles {
      */
     public void eszik(Spora sp, Rovar r) throws Exception {
         //System.out.println("Meghívódik a Tekton eszik metódusa.");
-
-            boolean valasz = Skeleton.getInstance().Kerdes("van-e meg spora, amit meg tud enni?");
-            boolean valasz1 = Skeleton.getInstance().Kerdes("Igaz, hogy nem bénított állapotban van a rovar?");
-            if(valasz && valasz1){
-                boolean valasz2 = Skeleton.getInstance().Kerdes("maradni fog-e meg spora?");
+            
+        if(r.getAllapot() != rovarAllapot.Benitott){
+            if(sp.getMennyiseg() >= 1){
+                boolean utolsoSpora = sp.getMennyiseg() == 1 ? true : false;
                 for (Spora spora : sporak) {
                     if(spora == sp) {
-                        sp.fogyaszt(3, r);
+                        sp.fogyaszt(1, r);
                     }
                 }
-
-                if(!valasz2){
+                if(utolsoSpora){
                     for (Spora spora : sporak) {
                         if(spora == sp) {
                             sporak.remove(sp);
@@ -198,11 +196,16 @@ public class Tekton implements FonalKezeles {
                         }
                     }
                 }
-            } else {
-                throw new Exception("Nincs spora.");
+            } 
+            else {
+                throw new Exception("Nincs elég spóra, amit meg tudna enni.");
             }
+        }
+        else {
+            throw new Exception("A rovar benitott allapotban van.");
+        }
     }
-
+    
     /***
      * @brief A spóraszórást valósítja meg azáltal, hogy a szomszedok listájában szereplő tektonokra spórát rak
      * @param gf Gombafaj: Ehhez a fajhoz tartozik a spóra
@@ -240,7 +243,7 @@ public class Tekton implements FonalKezeles {
             }
         }
     }
-    
+
     /***
      * @brief A Tekton sporak listájához hozzáadja a paraméterben kapott spórát
      * @param sp Spora: amit hozzáadunk a listához
