@@ -57,6 +57,7 @@ public class Jatekter {
 
             // Az új Tekton-t szomszédként beállítjuk a kiválasztott régi Tekton-hoz
             tekton.szomszedAllitas(ujTekton);
+
             // Lekérjük a kiválasztott Tekton-hoz tartozó Gombafonalakat
             List<Gombafonal> fonalak = tekton.gombafonalIgazitas();
 

@@ -1,0 +1,10 @@
+Hozzaadva tekton1 tekton
+Hozzaadva tekton2 tekton
+Hozzaadva tekton3 tekton
+Hozzaadva infinator1 tekton
+Szomszedos lett tekton1 és tekton2
+Szomszedos lett tekton2 és tekton3
+Szomszedos lett tekton3 és infinator1
+Hozzaadva Jani osztodo gombasz
+Hozzaadva gombatest1
+Nincs gombafonal a palyan

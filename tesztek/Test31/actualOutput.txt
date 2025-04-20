@@ -1,0 +1,5 @@
+Hozzaadva tekton1 tekton
+Hozzaadva Jani osztodo gombasz
+Hozzaadva osztodo1 spora
+Nincs rovar a palyan
+Nincs gombatest a palyan

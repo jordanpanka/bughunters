@@ -77,7 +77,6 @@ public class Parancskezelok {
                 if (allapot == parancsAllapot.Game) {
                     //játékhoz szükséges akciók - act és assert parancsok
 
-                    
                 }else if (allapot == parancsAllapot.Test) {
                     //teszteléshez szükséges akciók - minden parancs
 
@@ -443,6 +442,7 @@ public class Parancskezelok {
                         }
 
                         jatekter.tores(1, tekton, true);
+                        
                         output.println("Sikeres tores");
                         output.println("Hozzaadva " + ujTektonNev(tektonStr.charAt(0)));
                     }

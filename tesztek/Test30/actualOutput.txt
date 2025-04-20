@@ -1,0 +1,8 @@
+Hozzaadva tekton1 tekton
+Hozzaadva tekton2 tekton
+Szomszedos lett tekton1 és tekton2
+Hozzaadva Jani benito gombasz
+Hozzaadva benito1 spora
+Nem letezik: rovar1
+Nincs rovar a palyan
+Nincs gombatest a palyan

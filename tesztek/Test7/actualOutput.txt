@@ -1,0 +1,6 @@
+Hozzaadva tekton1 tekton
+Hozzaadva tekton2 tekton
+Hozzaadva monotekton1 tekton
+Szomszedos lett tekton1 és tekton2
+Szomszedos lett tekton2 és monotekton1
+Hozzaadva Pista benito gombasz

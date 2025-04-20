@@ -271,8 +271,8 @@ public class Tekton implements FonalKezeles {
 
         //aktTektonból a szomszédok kitörlése, a másik tektonhoz pedig hozzáadás
         for(int i = fele; i < db; i++){
-            szomszedok.remove(szomszedok.get(i));
             t.addSzomszed(szomszedok.get(i));
+            szomszedok.remove(szomszedok.get(i));
         }
     }
 
