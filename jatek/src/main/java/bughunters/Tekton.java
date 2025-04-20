@@ -284,8 +284,25 @@ public class Tekton implements FonalKezeles {
         //System.out.println("Meghívódik a Tekton gombafonalIgazitas metódusa.");
 
         List<Gombafonal> ujFonal = new ArrayList<Gombafonal>();
-        ujFonal.add(gombafonalak.get(1));
-        gombafonalak.get(1).vegpontTorles();
+
+        for (Gombafonal gombafonal : gombafonalak) {
+            if(gombafonal.getVegpont1().equals(this)){
+                if(!szomszedok.contains(gombafonal.getVegpont2())) {
+                    ujFonal.add(gombafonal);
+                }
+            }
+
+            if(gombafonal.getVegpont2().equals(this)) {
+                if(!szomszedok.contains(gombafonal.getVegpont1())) {
+                    ujFonal.add(gombafonal);
+                }
+            }
+        }
+
+        for (Gombafonal gombafonal : ujFonal) {
+             gombafonalak.remove(gombafonal);
+        }
+       
         return ujFonal;
     }
 
