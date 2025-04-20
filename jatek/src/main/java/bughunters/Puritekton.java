@@ -1,5 +1,7 @@
 package bughunters;
 
+import java.util.List;
+
 public class Puritekton extends Tekton {
 
     /***
@@ -12,4 +14,10 @@ public class Puritekton extends Tekton {
         System.out.println("Meghívódik a Puritekton gombatestNov metódusa.");
         throw new Exception("Erre a tektonra nem lehet gombatestet növeszteni.");
     }
+
+     public Puritekton(List<Tekton> szomszed, List<Gombafonal> gombafonal, List<Spora> spora){
+        super(szomszed,gombafonal,spora);
+    }
+
+    public Puritekton(){}
 }
