@@ -75,6 +75,8 @@ public class Tekton implements FonalKezeles {
      * @return növesztett gombafonalat adja vissza
      * @throws Exception ha nem tud gombafonalat növeszteni vagy rossz feladatnál lett hívva
      */
+
+    //--------Azt is nézni kell, hogy csak gombatest van a szomszédon, nem gombafonal-----------
     public Gombafonal gombafonalAdd(Gombafaj g, Tekton honnan) throws Exception {
         //System.out.println("Meghívódik a Tekton gombafonalAdd metódusa.");
         //ellenőrizni hogy létezik e már ilyen gombafonal
@@ -205,7 +207,7 @@ public class Tekton implements FonalKezeles {
             throw new Exception("A rovar benitott allapotban van.");
         }
     }
-    
+
     /***
      * @brief A spóraszórást valósítja meg azáltal, hogy a szomszedok listájában szereplő tektonokra spórát rak
      * @param gf Gombafaj: Ehhez a fajhoz tartozik a spóra
@@ -260,12 +262,18 @@ public class Tekton implements FonalKezeles {
     public void szomszedAllitas(Tekton t){
         //System.out.println("Meghívódik a Tekton szomszedAllitas metódusa.");
         
+        // t1 --> t1 -- t2 szomszédok 
         szomszedok.add(t);
-
         t.addSzomszed(this);
-        t.addSzomszed(szomszedok.get(2));
 
-        szomszedok.remove(2);
+        int db = szomszedok.size();
+        int fele = db / 2;
+
+        //aktTektonból a szomszédok kitörlése, a másik tektonhoz pedig hozzáadás
+        for(int i = fele; i < db; i++){
+            szomszedok.remove(szomszedok.get(i));
+            t.addSzomszed(szomszedok.get(i));
+        }
     }
 
     /***
