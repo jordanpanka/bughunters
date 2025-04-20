@@ -13,26 +13,18 @@ public class Disszolator extends Tekton {
      */
     @Override
     public void gombafonalFelszivas() {
-        System.out.println("Meghívódik a Disszolator gombafonalFelszivas metódusa.");
+        //System.out.println("Meghívódik a Disszolator gombafonalFelszivas metódusa.");
 
-        boolean valasz = Skeleton.getInstance().Kerdes("gf1 gombafonal már öt kör óta rajta van a tektonon?");
-        if(valasz){
-            List<Gombafonal> fonalak = getFonalak(); // Elkerüljük a többszöri metódushívást
-
-        if (fonalak != null) { 
-            for (Gombafonal gombafonal : new ArrayList<>(fonalak)) { 
-                        gombafonal.vegpontTorles();  
-                    } 
-                }
-                    
-            /*for (Gombafonal gombafonal : getFonalak()) {
-                gombafonal.vegpontTorles(); 
-                
-                if(getFonalak()==null)
-                
-            }*/
-            
+        for (Gombafonal gombafonal : getFonalak()) {
+            if(gombafonal.getMiota() >= 5){
+                gombafonal.vegpontTorles();
+            }
         }
-        
+    }   
+
+    public Disszolator(List<Tekton> szomszed, List<Gombafonal> gombafonal, List<Spora> spora){
+        super(szomszed,gombafonal,spora);
     }
+
+    public Disszolator(){}
 }
