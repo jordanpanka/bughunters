@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /***
  * @brief A feladata a Tekton megvalósítása, valamint a további tektontípusok közös 
@@ -208,8 +209,12 @@ public class Tekton implements FonalKezeles {
      */
     public void sporaSzor(Gombafaj gf){
         //System.out.println("Meghívódik a Tekton sporaSzor metódusa.");
-        boolean valasz=Skeleton.getInstance().Kerdes("Fejlett a gombatest?");
-        if(valasz)
+        //boolean valasz=Skeleton.getInstance().Kerdes("Fejlett a gombatest?");
+
+        List<Gombatest> szurtLista = gf.getGombaTestek().stream().filter(gt -> gt.getTekton().equals(this)).collect(Collectors.toList());
+
+        //fejlett
+        if(gf.getGombatestFejlettsegIdo() <= szurtLista.get(0).getKor())
         {
             for (Tekton tekton : szomszedok) {
                 Benito b1=new Benito();
@@ -225,6 +230,8 @@ public class Tekton implements FonalKezeles {
                 }
             }
         }
+
+        //nem fejlett
         else{
             for (Tekton tekton : szomszedok) {
                 Benito b1=new Benito();
@@ -232,9 +239,8 @@ public class Tekton implements FonalKezeles {
                 tekton.addSpora(b1);
             }
         }
-   
     }
-
+    
     /***
      * @brief A Tekton sporak listájához hozzáadja a paraméterben kapott spórát
      * @param sp Spora: amit hozzáadunk a listához
