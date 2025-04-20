@@ -1,6 +1,6 @@
-Hozzaadva tekton1 tekton
-Hozzaadva tekton2 tekton
-Hozzaadva tekton3 tekton
+Hozzaadva tekton1
+Hozzaadva tekton2
+Hozzaadva tekton3
 Szomszedos lett tekton1 és tekton2
 Szomszedos lett tekton2 és tekton3
 Hozzaadva Jani osztodo gombasz

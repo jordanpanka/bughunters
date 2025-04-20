@@ -1,4 +1,4 @@
-Hozzaadva tekton1 tekton
+Hozzaadva tekton1
 Hozzaadva Pista rovarasz rovar1
 Hozzaadva Jani benito gombasz
 Hozzaadva benito1 spora

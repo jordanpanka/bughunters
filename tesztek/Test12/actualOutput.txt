@@ -1,5 +1,5 @@
-Hozzaadva tekton1 tekton
-Hozzaadva tekton2 tekton
+Hozzaadva tekton1
+Hozzaadva tekton2
 Szomszedos lett tekton1 és tekton2
 Hozzaadva Pista benito gombasz
 Hozzaadva benito1 spora

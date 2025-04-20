@@ -1,5 +1,5 @@
-Hozzaadva tekton1 tekton
-Hozzaadva disszolator1 tekton
+Hozzaadva tekton1
+Hozzaadva disszolator1
 Szomszedos lett tekton1 és disszolator1
 Hozzaadva Jani osztodo gombasz
 Hozzaadva gombatest1

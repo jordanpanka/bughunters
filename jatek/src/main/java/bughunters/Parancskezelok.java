@@ -90,7 +90,7 @@ public class Parancskezelok {
                         objektumok.put(ujNev, ujTekton);
                         objektumokbolString.put(ujTekton, ujNev);
 
-                        output.println("Hozzaadva " + ujNev + " tekton");
+                        output.println("Hozzaadva " + ujNev);
                     }
                     if(action.matches("/arrange -j \\S+ -r -t \\S+")){
                         rovaraszFelvetel(action,output);
@@ -1498,12 +1498,14 @@ public class Parancskezelok {
         String gombafajSporaNev = parancs.split(" ")[4];
         Gombafaj ujGombafaj = createGombafajBySpora(gombafajSporaNev.charAt(0));
         if (vanGombafajAzObjektumokban(gombafajSporaNev)) {
-            output.println("A"+gombafajSporaNev+" szerep mar foglalt. Valassz mast");
+            output.println("A "+gombafajSporaNev+" szerep mar foglalt. Valassz mast");
+            return;
         }
 
         Gombasz gombasz = new Gombasz(parancs.split(" ")[2],ujGombafaj);
         if (objektumok.containsKey(gombaszNev)) {
             output.println("Mar van ilyen nevu jatekos");
+            return;
         }
 
         objektumok.put(gombafajSporaNev, ujGombafaj);                               //Spora neve alapjan mentjuk el a gombafajt a Map-en

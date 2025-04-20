@@ -1,5 +1,5 @@
-Hozzaadva tekton1 tekton
-Hozzaadva puritekton1 tekton
+Hozzaadva tekton1
+Hozzaadva puritekton1
 Szomszedos lett tekton1 és puritekton1
 Hozzaadva Jani osztodo gombasz
 Hozzaadva osztodo1 spora
