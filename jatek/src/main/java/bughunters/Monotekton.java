@@ -1,6 +1,6 @@
 package bughunters;
 
-import java.awt.List;
+import java.util.List;
 
 public class Monotekton extends Tekton {
     /***
@@ -38,45 +38,48 @@ public class Monotekton extends Tekton {
      * @return Ha tud növeszteni gombatestet, akkor azt adja vissza
      * @exception Exception akkor dobódik ha nem lehet ide gombatestet növeszteni
      */
-    //----------------------------------------------------------------------------------------
     @Override
-    public Gombatest gombatestNov(Gombafaj gf, boolean sporaval) throws Exception{
-        //System.out.println("Meghívódik a Monotekton gombatestNov metódusa.");
-
-        if(!getFonalak().isEmpty()){
-            //gf van e jelen
-            for (Gombafonal gombafonal : getFonalak()) {
-                if(gombafonal.getGombafaj() == gf && 
-                (gombafonal.getVegpont1() == this || gombafonal.getVegpont2() == this)){
-
-                    if(sporaval){
-                        //gf-hez van e spora a tektonon
-                        for (Spora spora : getSporak()) {
-                            if(spora.getGombafaj() == gf){
-                                spora.fogyaszt(3);
-                                Gombatest gombatest = new Gombatest();
-                                return gombatest;
-                            }
-                        }
-                        throw new Exception("Nincs a Gombafajhoz tartozó spóra.");
-                    } 
-                    else {
-                        Gombatest gombatest = new Gombatest();
-                        return gombatest;
-                    }
-                } 
-                else {
-                    throw new Exception("Nincs jelen a megadott Gombafaj a tektonon.");
-                }
-            }
-        } else {
+    public Gombatest gombatestNov(Gombafaj gf, boolean sporaval) throws Exception {
+        if (getFonalak().isEmpty()) {
             throw new Exception("Nem tud gombatestet növeszteni erre a Tektonra, mert nincs jelen Gombafonal.");
         }
+
+        // Ellenőrizzük, hogy van-e a megadott Gombafajhoz tartozó Gombafonal
+        boolean gfJelen = false;
+        for (Gombafonal gombafonal : getFonalak()) {
+            if (gombafonal.getGombafaj() == gf && 
+                (gombafonal.getVegpont1() == this || gombafonal.getVegpont2() == this)) {
+                gfJelen = true;
+                break;
+            }
+        }
+
+        if (!gfJelen) {
+            throw new Exception("Nincs jelen a megadott Gombafaj a tektonon.");
+        }
+
+        // Spóra ellenőrzés, ha szükséges
+        if (sporaval) {
+            boolean vanSpora = false;
+            for (Spora spora : getSporak()) {
+                if (spora.getGombafaj() == gf) {
+                    spora.fogyaszt(3);
+                    vanSpora = true;
+                    break;
+                }
+            }
+            if (!vanSpora) {
+                throw new Exception("Nincs a Gombafajhoz tartozó spóra.");
+            }
+        }
+
+        return new Gombatest();
     }
 
     public Monotekton(List<Tekton> szomszed, List<Gombafonal> gombafonal, List<Spora> spora){
-        super(szomszed,gombafonal,spora);
+        super(szomszed, gombafonal, spora);
     }
+
 
     public Monotekton(){}
 }
