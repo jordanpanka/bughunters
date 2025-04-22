@@ -3,4 +3,4 @@
 /arrange -szomszed -t tekton1 -t tekton2
 /arrange -j Pista -g benito
 /arrange -gt benito -t tekton1
-/act -gfnov -t tekton1 -t tekton2
+/act -gfnov -t tekton1 -t tekton2 -g benito

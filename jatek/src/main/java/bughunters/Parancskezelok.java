@@ -114,12 +114,12 @@ public class Parancskezelok {
                         Tekton1.addSzomszed(Tekton2);
                         Tekton2.addSzomszed(Tekton1);
 
-                        output.println("Szomszedos lett " + tekton1 + " és " + tekton2);
+                        output.println("Szomszedos lett " + tekton1 + " es " + tekton2);
                     }
                     if(action.matches("/arrange -j \\S+ -g \\S+")){
                         gombaszFelvetele(action,output);
                     }
-                    if(action.matches("/arrange -gf -t1 \\S+ -t2 \\S+ -g \\S+")){
+                    if(action.matches("/arrange -gf -t \\S+ -t \\S+ -g \\S+")){
                         String gombafaj = action.split(" ")[7];
                         //char gombaf = gombafaj.charAt(0);
                         Gombafaj gf = (Gombafaj)objektumok.get(gombafaj);
@@ -378,7 +378,7 @@ public class Parancskezelok {
 
                         List<Tekton> szomszedok = Tekton1.getSzomszedok();
                         List<Gombafonal> gombafonalak1 = Tekton1.getFonalak();
-
+                        /*
                         int db = 0;
                         for(Tekton szomszed : szomszedok) {
                             if (szomszed.equals(Tekton2)) {
@@ -398,8 +398,16 @@ public class Parancskezelok {
                             return;
                         }
 
-
                         if(tekton1.charAt(0) == 'm'){
+                            if(!gombafonalak1.isEmpty()){
+                                for(Gombafonal fonal : gombafonalak1) {
+                                    if (!fonal.getGombafaj().equals(gf)) {
+                                        output.println("Nem sikerult gombafonalat noveszteni");
+                                        return;
+                                    }
+                                }
+                            }
+                        }else if(tekton2.charAt(0) == 'm'){
                             List<Gombafonal> gombafonalak2 = Tekton2.getFonalak();
                             if(!gombafonalak2.isEmpty()){
                                 for(Gombafonal fonal : gombafonalak2) {
@@ -409,10 +417,15 @@ public class Parancskezelok {
                                     }
                                 }
                             }
+                        }*/
+
+                        try {
+                            gf.fonalNov(Tekton1, Tekton2);
+                        } catch (Exception e) {
+                            output.println("Nem sikerult gombafonalat noveszteni");
+                            return;
                         }
-
-                        gf.fonalNov(Tekton1, Tekton2);
-
+                        
                         output.println("Hozzaadva " + ujGombafonalNev());
                     }
                     if(action.matches("/act -spszor -gt \\S+")){
@@ -480,6 +493,7 @@ public class Parancskezelok {
                         try{
                             gombasz.testNovesztes(tekton, true);
                         }catch(Exception e){
+                            System.out.println(e.getMessage());
                             output.println("Mar van gombatest az adott tektonon");
                             return;
                         }
@@ -715,13 +729,14 @@ public class Parancskezelok {
         return "gombafonal" + (maxGombafonalSzam + 1); // új név a következő Rovarhoz
     }
 
-    public void renewProject(){
-        this.objektumok = new HashMap<>();
-        this.objektumokbolString = new HashMap<>();
-        this.jatekosok = new ArrayList<>();
-        this.gombaszok = new ArrayList<>();
-        this.rovaraszok = new ArrayList<>();
+    public void renewProject(){ 
+        this.objektumok.clear();
+        this.objektumokbolString.clear();
+        this.jatekosok.clear();
+        this.gombaszok.clear();
+        this.rovaraszok.clear();
         this.jatekter = new Jatekter();
+        this.aktivJatekos = null;
     }
 
     public void updateHashMaps(){
@@ -1012,7 +1027,7 @@ public class Parancskezelok {
             }
         }
         if(nevek.isEmpty()){
-            output.println("Nincs gombatest a palyan");
+            output.println("Nincsen gombatest a palyan");
             return;
         }
         szamszeruSort(nevek);
@@ -1516,7 +1531,6 @@ public class Parancskezelok {
         objektumok.put(gombaszNev, gombasz);                               //Gombasz neve alapjan mentjuk el a gombaszt a Map-en
         objektumokbolString.put(gombasz, gombaszNev); 
         output.println("Hozzaadva "+gombaszNev +" "+gombafajSporaNev+" gombasz");
-
     }
 
 
@@ -1612,7 +1626,7 @@ public class Parancskezelok {
 
             Parancskezelok parancskezelo = new Parancskezelok();
             Jatek jatek = new Jatek(parancskezelo, parancskezelo.getJatekter());
-
+            
             BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
             String mode= "";
             boolean helyesMode= false;

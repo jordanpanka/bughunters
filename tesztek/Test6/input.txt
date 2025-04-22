@@ -4,6 +4,6 @@
 /arrange -szomszed -t tekton1 -t tekton2
 /arrange -szomszed -t tekton2 -t tekton3
 /arrange -j Pista -g benito
-/act -gfnov -t  tekton2 -t tekton3 -g benito
+/act -gfnov -t tekton2 -t tekton3 -g benito
 /assert -gfszomszedok -t tekton2
 /assert -gfszomszedok -t tekton3

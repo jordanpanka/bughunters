@@ -1,8 +1,11 @@
 Hozzaadva tekton1
 Hozzaadva tekton2
 Hozzaadva tekton3
-Szomszedos lett tekton1 és tekton2
-Szomszedos lett tekton2 és tekton3
+Szomszedos lett tekton1 es tekton2
+Szomszedos lett tekton2 es tekton3
 Hozzaadva Pista benito gombasz
-Nincs rajta gombafonal
-Nincs rajta gombafonal
+Hozzaadva gombafonal1
+Hozzaadva gombafonal2
+Szomszed tekton1
+Szomszed tekton3
+Szomszed tekton2

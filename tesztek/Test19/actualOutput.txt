@@ -1,6 +1,6 @@
 Hozzaadva tekton1
 Hozzaadva tekton2
-Szomszedos lett tekton1 és tekton2
+Szomszedos lett tekton1 es tekton2
 Hozzaadva Pista rovarasz rovar1
 Hozzaadva Jani benito gombasz
 Nem lehet atmenni tekton2 tektonra

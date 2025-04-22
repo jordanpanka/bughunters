@@ -2,4 +2,4 @@ Hozzaadva tekton1
 Hozzaadva Jani osztodo gombasz
 Hozzaadva osztodo1 spora
 Nincs rovar a palyan
-Nincs gombatest a palyan
+Nincsen gombatest a palyan

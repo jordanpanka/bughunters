@@ -1,8 +1,8 @@
 Hozzaadva tekton1
 Hozzaadva tekton2
 Hozzaadva tekton3
-Szomszedos lett tekton1 és tekton2
-Szomszedos lett tekton2 és tekton3
+Szomszedos lett tekton1 es tekton2
+Szomszedos lett tekton2 es tekton3
 Hozzaadva Jani osztodo gombasz
 Hozzaadva gombatest1
 Nincs spora a palyan

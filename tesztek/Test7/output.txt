@@ -1,10 +1,10 @@
-Hozzaadva tekton1 tekton
-Hozzaadva tekton2 tekton
-Hozzaadva monotekton1 monotekton
+Hozzaadva tekton1
+Hozzaadva tekton2
+Hozzaadva monotekton1
 Szomszedos lett tekton1 es tekton2
 Szomszedos lett tekton2 es monotekton1
 Hozzaadva Pista benito gombasz
-Hozzaadva gombafonal1	
-Hozzadva gombafonal2
+Hozzaadva gombafonal1
+Hozzaadva gombafonal2
 gombafonal1
 gombafonal2

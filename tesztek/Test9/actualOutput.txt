@@ -1,5 +1,6 @@
 Hozzaadva tekton1
 Hozzaadva tekton2
-Szomszedos lett tekton1 és tekton2
+Szomszedos lett tekton1 es tekton2
 Hozzaadva Pista benito gombasz
 Hozzaadva gombatest1
+Hozzaadva gombafonal1

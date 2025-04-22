@@ -1,6 +1,6 @@
 Hozzaadva tekton1
 Hozzaadva tekton2
-Szomszedos lett tekton1 és tekton2
+Szomszedos lett tekton1 es tekton2
 Hozzaadva Jani benito gombasz
 Hozzaadva benito1 spora
 Nem letezik: rovar1

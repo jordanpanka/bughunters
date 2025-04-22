@@ -1,7 +1,9 @@
 Hozzaadva tekton1
 Hozzaadva tekton2
 Hozzaadva tekton3
-Szomszedos lett tekton1 és tekton2
+Szomszedos lett tekton1 es tekton2
 Hozzaadva Pista benito gombasz
-Nincs rajta gombafonal
+Hozzaadva gombafonal1
+Nem sikerult gombafonalat noveszteni
+Szomszed tekton1
 Nincs rajta gombafonal

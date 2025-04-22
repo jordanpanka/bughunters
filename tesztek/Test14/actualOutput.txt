@@ -1,9 +1,9 @@
 Hozzaadva tekton1
 Hozzaadva tekton2
-Szomszedos lett tekton1 és tekton2
+Szomszedos lett tekton1 es tekton2
 Hozzaadva Pista benito gombasz
 Nem letezik: bentio
 Hozzaadva Jani osztodo gombasz
 Hozzaadva osztodo1 spora
 Aktiv jatekos Jani
-Mar van gombatest az adott tektonon
+Hozzaadva gombatest1

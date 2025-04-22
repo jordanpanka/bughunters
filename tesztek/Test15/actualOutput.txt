@@ -1,7 +1,7 @@
 Hozzaadva tekton1
 Hozzaadva puritekton1
-Szomszedos lett tekton1 és puritekton1
+Szomszedos lett tekton1 es puritekton1
 Hozzaadva Jani osztodo gombasz
 Hozzaadva osztodo1 spora
 Ezen a tektonon nem lehet gombatestet noveszteni
-Nincs gombatest a palyan
+Nincsen gombatest a palyan

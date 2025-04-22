@@ -1,8 +1,11 @@
 Hozzaadva tekton1
 Hozzaadva tekton2
 Hozzaadva monotekton1
-Szomszedos lett tekton1 és tekton2
-Szomszedos lett tekton2 és monotekton1
+Szomszedos lett tekton1 es tekton2
+Szomszedos lett tekton2 es monotekton1
 Hozzaadva Pista benito gombasz
 Hozzaadva Jani gyorsito gombasz
+Hozzaadva gombafonal1
+Hozzaadva gombafonal2
 Aktiv jatekos Jani
+Nem sikerult gombafonalat noveszteni
