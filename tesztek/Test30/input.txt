@@ -1,13 +1,13 @@
 /arrange -t tekton
 /arrange -t tekton
 /arrange -szomszed -t tekton1 -t tekton2
-/arrange  -j Pista -r -t tekton1
+/arrange -j Pista -r -t tekton1
 /arrange -j Jani -g benito
 /arrange -s benito -t tekton1 2
-/arrange -gf benito -t1 tekton1 -t2 tekton2
-/act aktivJatekos Pista
-/act -eszik -r rovar1 -g benito 
-/act aktivJatekos Jani
-/act -reszik -r rovar1
+/arrange -gf -t tekton1 -t tekton2 -g benito
+/act -aktivJatekos Pista
+/act -eszik -r rovar1 -g benito -t tekton1
+/act -aktivJatekos Jani
+/act reszik -r rovar1
 /assert -list -r -t
 /assert -list -gt

@@ -1,8 +1,12 @@
 Hozzaadva tekton1
 Hozzaadva tekton2
 Szomszedos lett tekton1 es tekton2
+Hozzaadva Pista rovarasz rovar1
 Hozzaadva Jani benito gombasz
 Hozzaadva benito1 spora
-Nem letezik: rovar1
-Nincs rovar a palyan
+Hozzaadva gombafonal1
+Aktiv jatekos Pista
+benito hatas ervenyesul rovar1 rovarra
+Aktiv jatekos Jani
+rovar1 tekton1
 Nincsen gombatest a palyan

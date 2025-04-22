@@ -6,5 +6,6 @@ Hozzaadva Jani vagaskeptelenito gombasz
 Hozzaadva vagaskeptelenito1 spora
 Hozzaadva gombafonal1
 Aktiv jatekos Pista
-Megszunt gombafonal1
-Alap hatas ervenyesul rovar1 rovarra
+vagaskeptelenito1 hatas ervenyesul rovar1 rovarra
+Rovar vagaskeptelenito allapotban van
+VagasKeptelenito hatas ervenyesul rovar1 rovarra

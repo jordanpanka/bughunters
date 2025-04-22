@@ -6,6 +6,6 @@
 /arrange -s vagaskeptelenito -t tekton1 2
 /arrange -gf -t tekton1 -t tekton2 -g vagaskeptelenito
 /act -aktivJatekos Pista
-/act -eszik -r rovar1 -g vagaskeptelenito1
+/act -eszik -r rovar1 -g vagaskeptelenito1 -t tekton1
 /act -vag -r rovar1 -gf gombafonal1
 /assert -rallapot rovar1

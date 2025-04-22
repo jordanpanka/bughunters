@@ -4,9 +4,9 @@
 /arrange -szomszed -t tekton1 -t tekton2
 /arrange -szomszed -t tekton2 -t tekton3
 /arrange -j Jani -g osztodo
-/arrange -gf osztodo -t1 tekton2 -t2 tekton3
+/arrange -gf -t tekton2 -t tekton3 -g osztodo
 /arrange -gt osztodo -t tekton1
 /act endTurn
-/act -gfnov -t tekton1 -t tekton2
+/act -gfnov -t tekton1 -t tekton2 -g osztodo
 /assert -list -gf
 /assert -gfallapot gombafonal1

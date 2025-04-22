@@ -3,4 +3,4 @@ Hozzaadva Pista rovarasz rovar1
 Hozzaadva Jani benito gombasz
 Aktiv jatekos Pista
 Nincs benito spora tekton1 tektonon
-Alap
+Alap hatas ervenyesul rovar1 rovarra

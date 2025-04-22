@@ -1,5 +1,7 @@
 Hozzaadva tekton1
+Hozzaadva Pista rovarasz rovar1
 Hozzaadva Jani osztodo gombasz
 Hozzaadva osztodo1 spora
-Nincs rovar a palyan
-Nincsen gombatest a palyan
+Aktiv jatekos Pista
+Nincs benito spora tekton1 tektonon
+rovar1 tekton1

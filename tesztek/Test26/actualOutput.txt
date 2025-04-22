@@ -3,4 +3,5 @@ Hozzaadva Pista rovarasz rovar1
 Hozzaadva Jani benito gombasz
 Hozzaadva benito1 spora
 Aktiv jatekos Pista
-benito1 2 tekton1
+benito hatas ervenyesul rovar1 rovarra
+benito1 1 tekton1

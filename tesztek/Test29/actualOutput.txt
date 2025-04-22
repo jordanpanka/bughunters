@@ -4,5 +4,6 @@ Hozzaadva tekton3
 Szomszedos lett tekton1 es tekton2
 Szomszedos lett tekton2 es tekton3
 Hozzaadva Jani osztodo gombasz
+Hozzaadva gombafonal1
 Hozzaadva gombatest1
-Nincs gombafonal a palyan
+gombafonal1

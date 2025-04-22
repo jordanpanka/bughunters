@@ -2,14 +2,11 @@ Hozzaadva tekton1
 Hozzaadva tekton2
 Hozzaadva tekton3
 Hozzaadva infinator1
-Szomszedos lett tekton1 és tekton2
-Szomszedos lett tekton2 és tekton3
-Szomszedos lett tekton3 és infinator1
+Szomszedos lett tekton1 es tekton2
+Szomszedos lett tekton2 es tekton3
+Szomszedos lett tekton3 es infinator1
 Hozzaadva Jani osztodo gombasz
 Hozzaadva gombafonal1
 Hozzaadva gombafonal2
 Hozzaadva gombatest1
-Vege Jani korenek
-Vege Jani korenek
-Vege Jani korenek
 gombafonal2
