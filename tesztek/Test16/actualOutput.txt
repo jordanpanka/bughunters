@@ -5,5 +5,5 @@ Szomszedos lett tekton1 es tekton2
 Szomszedos lett tekton2 es tekton3
 Hozzaadva Jani osztodo gombasz
 Hozzaadva gombatest1
-Nem letezik: -fejlett
+gombatest1 fejlett
 Nincs spora a palyan

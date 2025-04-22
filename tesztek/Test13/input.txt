@@ -2,9 +2,9 @@
 /arrange -t tekton
 /arrange -szomszed -t tekton1 -t tekton2
 /arrange -j Pista -g benito
-/arrange -gf benito -t tekton1 -t2 
+/arrange -gf -t tekton1 -t tekton2 -g benito
 /arrange -j Jani -g osztodo
 /arrange -s osztodo -t tekton1 5
 /act -aktivJatekos Pista
 /act -gt -t tekton1
-/assert -list gt
+/assert -list -gt

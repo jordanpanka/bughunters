@@ -2,7 +2,9 @@ Hozzaadva tekton1
 Hozzaadva tekton2
 Szomszedos lett tekton1 es tekton2
 Hozzaadva Pista benito gombasz
+Hozzaadva gombafonal1
 Hozzaadva Jani osztodo gombasz
 Hozzaadva osztodo1 spora
 Aktiv jatekos Pista
 Nincs eleg spora gombatest noveszteshez
+Nincsen gombatest a palyan

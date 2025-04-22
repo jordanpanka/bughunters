@@ -501,7 +501,7 @@ public class Parancskezelok {
                         output.println("Hozzaadva " + ujGombatestNev());
                     }
                     if(action.matches("/act -gt \\S+ -fejlett")){
-                        String gombatestStr = action.split(" ")[3];
+                        String gombatestStr = action.split(" ")[2];
                         Gombatest gombatest = (Gombatest)objektumok.get(gombatestStr);
 
                         if(gombatest == null){

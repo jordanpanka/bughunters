@@ -1,12 +1,12 @@
-Hozzaadva tekton1 tekton
-Hozzaadva tekton2 tekton
+Hozzaadva tekton1
+Hozzaadva tekton2
 Szomszedos lett tekton1 es tekton2
 Hozzaadva Pista benito gombasz
-Hozzaadva g1 gombafonal
-Hozzaadba gombatest1
+Hozzaadva gombafonal1
+Hozzaadva gombatest1
 Hozzaadva Jani osztodo gombasz
-Hozzaadva g2 gombafonal
-Hozzadva osztodo1 osztodo spora
+Hozzaadva gombafonal2
+Hozzadva osztodo1 spora
 Aktiv jatekos Jani
 Mar van gombatest az adott tektonon
 gombatest1
