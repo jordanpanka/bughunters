@@ -3,7 +3,7 @@
 /arrange -szomszed -t tekton1 -t tekton2
 /arrange -j Pista -r -t tekton1
 /arrange -j Jani -g benito
-/arrange -gf -t1 tekton1 -t2 tekton2
-/act aktivJatekos Pista
+/arrange -gf -t tekton1 -t tekton2 -g benito
+/act -aktivJatekos Pista
 /act -maszik -r rovar1 -t tekton2
 /assert -list -r -t

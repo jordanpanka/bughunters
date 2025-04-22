@@ -2,11 +2,11 @@
 /arrange -t disszolator
 /arrange -szomszed -t tekton1 -t disszolator1
 /arrange -j Jani -g osztodo
-/arrange -gf osztodo -t1 tekton1 -t2 disszolator1
+/arrange -gf -t tekton1 -t disszolator1 -g osztodo
 /arrange -gt osztodo -t tekton1
-/act endTurn
-/act endTurn
-/act endTurn
-/act endTurn
-/act endTurn
+/act -endTurn
+/act -endTurn
+/act -endTurn
+/act -endTurn
+/act -endTurn
 /assert -list -gf

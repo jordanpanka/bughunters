@@ -1,7 +1,10 @@
 Hozzaadva tekton1
 Hozzaadva tekton2
 Szomszedos lett tekton1 es tekton2
+Hozzaadva Pista rovarasz rovar1
 Hozzaadva Jani vagaskeptelenito gombasz
-Hozzaadva vagaskeptelenio1 spora
-Nem letezik: rovar1
-Nem letezik rovar1
+Hozzaadva vagaskeptelenito1 spora
+Hozzaadva gombafonal1
+Aktiv jatekos Pista
+Megszunt gombafonal1
+Alap hatas ervenyesul rovar1 rovarra

@@ -683,7 +683,7 @@ public class Parancskezelok {
             case 'v':
                 int maxSzamV = 0;
                 for (String kulcs : objektumok.keySet()) {
-                    if (kulcs.matches("vagaskeptelenio\\d+")) {
+                    if (kulcs.matches("vagaskeptelenito\\d+")) {
                         String szamResz = kulcs.substring(15); // levágjuk az "tekton"-t
                         int szam = Integer.parseInt(szamResz);
                         if (szam > maxSzamV) {
@@ -691,7 +691,7 @@ public class Parancskezelok {
                         }
                     }
                 }
-                return "vagaskeptelenio" + (maxSzamV + 1); // új név a következő Rovarhoz
+                return "vagaskeptelenito" + (maxSzamV + 1); // új név a következő Rovarhoz
                 
             case 'o':
                 int maxSzamO = 0;

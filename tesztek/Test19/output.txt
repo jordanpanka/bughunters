@@ -1,9 +1,9 @@
 Hozzaadva tekton1
 Hozzaadva tekton2
-Szomszedos lett tekton1 és tekton2
+Szomszedos lett tekton1 es tekton2
 Hozzaadva Pista rovarasz rovar1
 Hozzaadva Jani benito gombasz
-Hozzaadva gombafonal 1
+Hozzaadva gombafonal1
 Aktiv jatekos Pista
 rovar1 tekton2 tektonon van
 rovar1 tekton2
