@@ -6,7 +6,7 @@ Hozzaadva gombafonal1
 Hozzaadva gombatest1
 Hozzaadva Jani osztodo gombasz
 Hozzaadva gombafonal2
-Hozzadva osztodo1 spora
+Hozzaadva osztodo1 spora
 Aktiv jatekos Jani
 Mar van gombatest az adott tektonon
 gombatest1

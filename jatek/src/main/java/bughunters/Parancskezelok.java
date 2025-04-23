@@ -490,6 +490,20 @@ public class Parancskezelok {
                             return;
                         }
 
+                        //egyéb gombatest a tektonon ellenőrzés
+                        ArrayList<Gombatest> gombatestek = new ArrayList<>();
+                        for(Gombasz egygombasz : gombaszok) {
+                            Gombafaj gombaszFaja = egygombasz.getGombafaj();
+                            gombatestek.addAll(gombaszFaja.getGombaTestekList());
+                        }
+                        for(Gombatest gombatest : gombatestek) {
+                            if(gombatest.getTekton().equals(tekton)) {
+                                output.println("Mar van gombatest az adott tektonon");
+                                return;
+                            }
+                        }
+
+
                         try{
                             gombasz.testNovesztes(tekton, true);
                         }catch(Exception e){

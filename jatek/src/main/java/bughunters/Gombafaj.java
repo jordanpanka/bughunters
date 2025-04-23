@@ -39,6 +39,11 @@ public class Gombafaj implements FonalKezeles{
         gombafonalhalozat=new ArrayList<Gombafonal>();
         //System.out.println("Létrejött egy új Gombafaj:" );
     }
+
+    public ArrayList<Gombatest> getGombaTestekList() {
+        return gombaTestek;
+    }
+
     public String getNev() {
         return nev;
     }

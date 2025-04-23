@@ -8,6 +8,5 @@ Hozzaadva Jani osztodo gombasz
 Hozzaadva gombafonal2
 Hozzaadva osztodo1 spora
 Aktiv jatekos Jani
-Hozzaadva gombatest2
+Mar van gombatest az adott tektonon
 gombatest1
-gombatest2
