@@ -5,5 +5,8 @@ Szomszedos lett tekton1 es tekton2
 Szomszedos lett tekton2 es tekton3
 Hozzaadva Jani osztodo gombasz
 Hozzaadva gombatest1
+gombatest1gombatest spora raktara 4
 gombatest1 fejlett
-Nincs spora a palyan
+Sikeres szoras
+benito1 1 tekton2
+benito2 1 tekton3

@@ -72,8 +72,9 @@ public class Jatek {
                     //parancskezelo.setAktivJatekos(jatekosok.get(0)); // Teszteléshez az első játékost állítjuk be aktívnak a legelején, amit parancsal lehet változtatni
                     while ((parancs = r.readLine()) != null) {
                         //ha elérünk az első /act parancshoz és csak 1 játékos van, akkor ő lesz az aktiv jatekos
-                        if (parancs.matches("/act \\S+") && jatekosok.size()==1 && !elsoActLezajlott) {
-                                parancskezelo.setAktivJatekos(jatekosok.get(0)); 
+                        if(parancs.matches("^/act .*") && jatekosok.size()==1 && !elsoActLezajlott) {
+                                parancskezelo.setAktivJatekos(jatekosok.get(0));
+                                System.out.println("Aktiv jatekos beallitva: " + jatekosok.get(0).getNev());
                                 elsoActLezajlott=true;
                         }
                         parancskezelo.bemenetAkcio(parancs, writer);

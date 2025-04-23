@@ -74,6 +74,7 @@ public class Gombatest {
     public void urit() throws Exception{
         System.out.println("Meghívódik a Gombatest urit metodusa.");
         //mikor tud spórát szórni?
+        System.out.println("sporaRaktar: " + sporaRaktar +"termelesIdeje: " + gombafaj.getTermelesIdeje());
         if(sporaRaktar>=gombafaj.getTermelesIdeje()){
             //szórás után növeljük a korát
             kor++;

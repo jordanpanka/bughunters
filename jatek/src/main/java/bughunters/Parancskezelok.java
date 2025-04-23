@@ -220,6 +220,21 @@ public class Parancskezelok {
 
                         output.println("Hozzaadva " + ujNev);
                     }
+                    if (action.matches("/arrange -gt \\S+ -sr \\S+")) {
+                        String gombatestNev = action.split(" ")[2];
+                        Gombatest gombatest = (Gombatest)objektumok.get(gombatestNev);
+                        int sporaRaktar = Integer.parseInt(action.split(" ")[4]);
+                        if (gombatest == null) {
+                            output.println("Nem letezik: " + gombatestNev);
+                            return;
+                        }
+                        if (sporaRaktar < 0) {
+                            output.println("Nem lehet negativ szamu spora");
+                            return;
+                        }
+                        gombatest.setSporaRaktar(sporaRaktar);
+                        output.println(gombatestNev + "gombatest spora raktara " + sporaRaktar);
+                    }
 
                     //act parancsok
                     if(action.matches("/act -eszik -r \\S+ -g \\S+ -t \\S+")){
