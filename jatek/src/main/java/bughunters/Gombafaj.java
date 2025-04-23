@@ -214,10 +214,11 @@ public class Gombafaj implements FonalKezeles{
      *
      * @param gt A hozzáadandó gombatest.
      */
-    void addTest(Gombatest gt){
+    void addTest(Gombatest gt) {
         //System.out.println("Meghívódik a Gombafaj addTest metodusa.");
-        if (gombaTestek == null) {
-            gombaTestek = new ArrayList<>();
+
+        if(gombaTestek == null) {
+            gombaTestek = new ArrayList<Gombatest>();
         }
         gombaTestek.add(gt);
     }
