@@ -6,6 +6,6 @@ Szomszedos lett tekton2 es tekton3
 Hozzaadva Jani osztodo gombasz
 Hozzaadva gombatest1
 gombatest1 fejlett
-Sikeres szoras
+gombatest1 gombatest spora raktara 4
 osztodo1 3  tekton2
 osztodo2 3  tekton3
