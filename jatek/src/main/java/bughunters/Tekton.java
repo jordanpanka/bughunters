@@ -251,7 +251,7 @@ public class Tekton implements FonalKezeles {
         }
 
         for (Tekton tekton : szomszedok) {
-            ujSpora.get(0).szorasTortent();
+            ujSpora.getLast().szorasTortent();
             tekton.addSpora(ujSpora.get(0));
 
             //fejlett
@@ -260,7 +260,7 @@ public class Tekton implements FonalKezeles {
                 for (Tekton tektonszomszed : tekton.getSzomszedok()) {
                     if(tektonszomszed != this)
                     {
-                        ujSpora.get(0).szorasTortent();
+                        ujSpora.getLast().szorasTortent();
                         tektonszomszed.addSpora(ujSpora.get(0));     
                     }
                 }
