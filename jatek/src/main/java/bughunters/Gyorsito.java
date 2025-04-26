@@ -37,5 +37,9 @@ public class Gyorsito extends Spora {
         r.setAllapot(rovarAllapot.Gyorsitott);
         r.setAllapotIdeje(0);
     }
+    @Override
+    public void szorasTortent() {
+        mennyiseg+=2;
+    }
 }
 

@@ -33,4 +33,8 @@ public class VagasKeptelenito extends Spora {
        r.setAllapot(rovarAllapot.VagasKeptelen);
        r.setAllapotIdeje(0);
     }
+    @Override
+    public void szorasTortent() {
+        mennyiseg+=2;
+    }
 }

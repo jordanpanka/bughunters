@@ -33,5 +33,8 @@ public class Osztodo extends Spora{
        r.osztodik();
         
     }
-       
+    @Override
+    public void szorasTortent() {
+        mennyiseg+=3;
+    }
 }
