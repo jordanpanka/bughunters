@@ -33,5 +33,9 @@ public class Lassito extends Spora {
         r.setAllapot(rovarAllapot.Lassitott);
         r.setAllapotIdeje(0);
     }
+    @Override
+    public void szorasTortent() {
+        mennyiseg+=2;
+    }
 }
  

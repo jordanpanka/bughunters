@@ -10,7 +10,7 @@ package bughunters;
  */
 abstract class Spora {
     protected int tapertek;
-    private int mennyiseg;
+    protected int mennyiseg;
     private Gombafaj gombafaj;
 
     /**
@@ -36,7 +36,7 @@ abstract class Spora {
      */
     public Spora()
     {
-        mennyiseg=1;
+        mennyiseg=0;
     }
 
     /**

@@ -34,4 +34,8 @@ public class Benito extends Spora {
        r.setAllapotIdeje(0);
         
     }
+    @Override
+    public void szorasTortent() {
+        mennyiseg+=3;
+    }
 }
