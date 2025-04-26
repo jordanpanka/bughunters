@@ -233,7 +233,7 @@ public class Parancskezelok {
                             return;
                         }
                         gombatest.setSporaRaktar(sporaRaktar);
-                        output.println(gombatestNev + "gombatest spora raktara " + sporaRaktar);
+                        output.println(gombatestNev + " gombatest spora raktara " + sporaRaktar);
                     }
 
                     //act parancsok
