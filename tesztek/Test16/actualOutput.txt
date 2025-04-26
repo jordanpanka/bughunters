@@ -1,0 +1,12 @@
+Hozzaadva tekton1
+Hozzaadva tekton2
+Hozzaadva tekton3
+Szomszedos lett tekton1 es tekton2
+Szomszedos lett tekton2 es tekton3
+Hozzaadva Jani osztodo gombasz
+Hozzaadva gombatest1
+gombatest1gombatest spora raktara 4
+gombatest1 fejlett
+Sikeres szoras
+osztodo1 6 tekton3
+osztodo2 6 tekton3
