@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 Hozzaadva tekton1
 Hozzaadva tekton2
 Hozzaadva tekton3
@@ -12,4 +10,3 @@ gombatest1 fejlett
 Sikeres szoras
 osztodo1 6 tekton3
 osztodo2 6 tekton3
->>>>>>> a0a1f0a80de43cecc52d0c313f45ce82814ca16c
