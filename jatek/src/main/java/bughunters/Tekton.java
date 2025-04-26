@@ -218,30 +218,54 @@ public class Tekton implements FonalKezeles {
 
         List<Gombatest> szurtLista = gf.getGombaTestek().stream().filter(gt -> gt.getTekton().equals(this)).collect(Collectors.toList());
 
-        //fejlett
-        if(gf.getGombatestFejlettsegIdo() <= szurtLista.get(0).getKor())
-        {
-            for (Tekton tekton : szomszedok) {
-                Benito b1=new Benito();
-                b1.setGombafaj(gf);
-                tekton.addSpora(b1);
+        Spora spora = new Benito();
+
+        for (Tekton tekton : szomszedok) {
+            if(gf.getNev().equalsIgnoreCase("Légyölő galóca")){
+                //Benito b2 = new Benito();
+                spora.setGombafaj(gf);
+                spora.szorasTortent();
+                tekton.addSpora(spora);
+            }
+            else if(gf.getNev().equalsIgnoreCase("Vargánya gomba")){
+                spora = (Lassito)spora;
+                //Lassito l = new Lassito();
+                spora.setGombafaj(gf);
+                spora.szorasTortent();
+                tekton.addSpora(spora);
+            }
+            else if(gf.getNev().equalsIgnoreCase("Foltos püffeteg")){
+                //Osztodo o = new Osztodo();
+                spora = (Osztodo)spora;
+                spora.setGombafaj(gf);
+                spora.szorasTortent();
+                tekton.addSpora(spora);
+            }
+            else if(gf.getNev().equalsIgnoreCase("Szegfűgomba")){
+                //VagasKeptelenito v = new VagasKeptelenito();
+                spora = (VagasKeptelenito)spora;
+                spora.setGombafaj(gf);
+                spora.szorasTortent();
+                tekton.addSpora(spora);
+            }
+            else if(gf.getNev().equalsIgnoreCase("Csiperke gomba")){
+                //Gyorsito gy = new Gyorsito();
+                spora = (Gyorsito)spora;
+                spora.setGombafaj(gf);
+                spora.szorasTortent();
+                tekton.addSpora(spora);
+            }
+
+            //fejlett
+            if(gf.getGombatestFejlettsegIdo() <= szurtLista.get(0).getKor())
+            {
                 for (Tekton tektonszomszed : tekton.getSzomszedok()) {
                     if(tektonszomszed != this)
                     {
-                    Benito b2=new Benito();
-                    b2.setGombafaj(gf);
-                    tektonszomszed.addSpora(b2);
+                        spora.szorasTortent();
+                        tektonszomszed.addSpora(spora);     
                     }
                 }
-            }
-        }
-
-        //nem fejlett
-        else{
-            for (Tekton tekton : szomszedok) {
-                Benito b1=new Benito();
-                b1.setGombafaj(gf);
-                tekton.addSpora(b1);
             }
         }
     }
