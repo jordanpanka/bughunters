@@ -116,6 +116,8 @@ public class Jatek {
                 //Jatekos köre, amíg van akciópontja
                 while(jatekos.getakcioSzama() > 0){
                     try {
+                        System.out.println("Aktiv játékos: " + jatekos.getNev() + " | Kör: " + korSzam + " | Akciópont: " + jatekos.getakcioSzama());
+
                         parancs = r.readLine();
                         
                         parancskezelo.bemenetAkcio(parancs, systemOut);
@@ -160,12 +162,15 @@ public class Jatek {
                         parancskezelo.bemenetAkcio(parancs, writer);
                         
                     }
+                    
+
                     r.close();
                     writer.close();
                 }catch (Exception e) {
                     System.err.println(e.getMessage());
                 }
-                    
+
+  
     }
 
     public void korVegiCselekedetek(List<Jatekos> jatekosok, List<Gombasz> gombaszok, List<Rovarasz> rovaraszok){

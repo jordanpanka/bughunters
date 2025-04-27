@@ -1,54 +1,53 @@
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t tekton  
-/arrange -t puritekton  
-/arrange -t puritekton  
-/arrange -t puritekton  
-/arrange -t puritekton  
-/arrange -t puritekton  
-/arrange -t puritekton  
-/arrange -t puritekton  
-/arrange -t puritekton  
-/arrange -t puritekton  
-/arrange -t infinator  
-/arrange -t infinator  
-/arrange -t infinator  
-/arrange -t infinator  
-/arrange -t infinator  
-/arrange -t infinator  
-/arrange -t infinator  
-/arrange -t monotekton  
-/arrange -t monotekton  
-/arrange -t monotekton  
-/arrange -t monotekton  
-/arrange -t monotekton  
-/arrange -t monotekton  
-/arrange -t monotekton  
-/arrange -t monotekton  
-/arrange -t disszolator  
-/arrange -t disszolator  
-/arrange -t disszolator  
-/arrange -t disszolator  
-/arrange -t disszolator  
-/arrange -t disszolator  
-/arrange -t disszolator  
-/arrange -t disszolator 
-
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t tekton
+/arrange -t puritekton
+/arrange -t puritekton
+/arrange -t puritekton
+/arrange -t puritekton
+/arrange -t puritekton
+/arrange -t puritekton
+/arrange -t puritekton
+/arrange -t puritekton
+/arrange -t puritekton
+/arrange -t infinator
+/arrange -t infinator
+/arrange -t infinator
+/arrange -t infinator
+/arrange -t infinator
+/arrange -t infinator
+/arrange -t infinator
+/arrange -t monotekton
+/arrange -t monotekton
+/arrange -t monotekton
+/arrange -t monotekton
+/arrange -t monotekton
+/arrange -t monotekton
+/arrange -t monotekton
+/arrange -t monotekton
+/arrange -t disszolator
+/arrange -t disszolator
+/arrange -t disszolator
+/arrange -t disszolator
+/arrange -t disszolator
+/arrange -t disszolator
+/arrange -t disszolator
+/arrange -t disszolator
 /arrange -szomszed -t disszolator1 -t disszolator3
 /arrange -szomszed -t disszolator1 -t disszolator8
 /arrange -szomszed -t disszolator1 -t tekton13
@@ -139,5 +138,3 @@
 /arrange -szomszed -t tekton15 -t tekton17
 /arrange -szomszed -t tekton16 -t tekton2
 /arrange -szomszed -t tekton17 -t tekton18
-
-
