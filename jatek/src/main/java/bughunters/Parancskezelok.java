@@ -1912,7 +1912,9 @@ public class Parancskezelok {
                             
                            
                             ujGombafaj.testNovesztes(testHelye, false);                                 //kivételt dobhat, ha foglalt a helye
-                            Gombatest ujGombatest = ujGombafaj.getGombaTestek().getLast();
+                            //Gombatest ujGombatest = ujGombafaj.getGombaTestek().getLast();
+                            Gombatest ujGombatest = ujGombafaj.getGombaTestek().get(ujGombafaj.getGombaTestek().size() - 1);
+                            
                             String ujGombatestNev = ujGombatestNev();                                  //gombatest neve
                             objektumok.put(ujGombatestNev, ujGombatest);                               //Gombatest neve alapjan mentjuk el a gombatestet a Map-en
                             objektumokbolString.put(ujGombatest, ujGombatestNev);
