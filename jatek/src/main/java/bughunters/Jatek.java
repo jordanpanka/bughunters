@@ -20,20 +20,38 @@ public class Jatek {
     private Jatekter jatekter;
     private Parancskezelok parancskezelo;
 
+    /***
+     * @brief Konstruktor, amely inicializálja a játékot a kapott parancskezelő és játéktér paraméterekkel
+     * @param kapottParancskezelo A parancsok kezelésére szolgáló objektum
+     * @param kapottJatekter A játéktér objektuma
+     */
     Jatek(Parancskezelok kapottParancskezelo, Jatekter kapottJatekter)  {
         this.korSzam = 1;
         this.parancskezelo = kapottParancskezelo;
         this.jatekter = kapottJatekter;
     }
 
+    /***
+     * @brief A kör számának lekérdezése
+     * @return A játék aktuális körének száma
+     */
     public int getKorSzam() {
         return korSzam;
     }
 
+    /***
+     * @brief A kör számának beállítása
+     * @param korSzam Az új kör szám
+     */
     public void setKorSzam(int korSzam) {
         this.korSzam = korSzam;
     }
 
+    /***
+     * @brief Tesztek indítása a "tesztek" mappából
+     * A tesztek mappában lévő teszt fájlokat végrehajtja
+     * @param jatekosok A játékosok listája
+     */
     public void tesztekInditasa(List<Jatekos> jatekosok){
             //Minden, a Teszt mappában lévő tesztet lefuttatja.
             //Teszt mappában, Test1, Test2 ... névvel ellátott mappában lesznek elhelyezve a különböző tesztek fájlai.
@@ -103,6 +121,13 @@ public class Jatek {
             }
     }
 
+     /***
+     * @brief A játék indítása, ahol a játékosok felváltva hajtják végre a műveleteket
+     * A játékosok körönkénti cselekvését és a parancsok végrehajtását kezeli
+     * @param jatekosok A játékosok listája
+     * @param gombaszok A gombászok listája
+     * @param rovaraszok A rovarászok listája
+     */
     public void jatekInditasa(List<Jatekos> jatekosok, List<Gombasz> gombaszok, List<Rovarasz> rovaraszok) {
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
         String parancs;
@@ -138,6 +163,9 @@ public class Jatek {
     }
 
     //Nagy Uniform pálya a játékhoz, egy txt-ből beolvasása.
+    /***
+     * @brief A játéktér és pálya alkotása, ami egy txt fájlból olvasódik be
+     */
     public void jatekPalyaAlkotasa(){
             //végigfut a pálya txt-n, mindegyik során lefuttatja a parancskezelot.
             Path palyaMappaPath = Paths.get("palya").toAbsolutePath();
@@ -173,6 +201,13 @@ public class Jatek {
   
     }
 
+     /***
+     * @brief A kör végén végrehajtandó műveletek
+     * Növeli a kör számát, visszaállítja a játékosok akciópontjait, és egyéb kör végén történő eseményeket is kezel
+     * @param jatekosok A játékosok listája
+     * @param gombaszok A gombászok listája
+     * @param rovaraszok A rovarászok listája
+     */
     public void korVegiCselekedetek(List<Jatekos> jatekosok, List<Gombasz> gombaszok, List<Rovarasz> rovaraszok){
         try{
             //kör számláló növelése
@@ -211,13 +246,22 @@ public class Jatek {
     }
 
     // random szám generálás a töréshez a körszám alapján egyre növekvő tartományban.
+    /***
+     * @brief Véletlenszerű szám generálása a töréshez a kör számának függvényében
+     * @return A véletlen szám, amely a törést fogja irányítani
+     */
     private int randomSzamToreshez() {
         Random random = new Random();
         int max = korSzam / 5; // Scale the range based on korSzam
         return random.nextInt(max) + 1; // Generate a number between 1 and max (inclusive)
     }
 
-    //incomplite i think
+    /***
+     * @brief Egy teljes kör kihagyása, minden játékos körét kihagyja
+     * @param jatekosok A játékosok listája
+     * @param gombaszok A gombászok listája
+     * @param rovaraszok A rovarászok listája
+     */
     public void skipTurn(List<Jatekos> jatekosok, List<Gombasz> gombaszok, List<Rovarasz> rovaraszok){
         //egy teljes kör kihagyása, minden játékos köre kihagyásra kerül, a kör végi cselekedetek végrehajtódnak.
         korVegiCselekedetek(jatekosok, gombaszok, rovaraszok);

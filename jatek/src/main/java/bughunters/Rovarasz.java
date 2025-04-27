@@ -6,27 +6,53 @@ import java.util.List;
 public class Rovarasz extends Jatekos {
     private List<Rovar> rovarok;
 
+    /***
+     * @brief A rovarok listájának lekérdezése
+     * @return A Rovarász által irányított rovarok listája
+     */
     public List<Rovar> getRovarok() {
         return rovarok;
     }
 
+     /***
+     * @brief A rovarok listájának beállítása
+     * @param rovarok A beállítandó rovarok lista
+     */
     public void setRovarok(List<Rovar> rovarok) {
         this.rovarok = rovarok;
     }
 
+    /***
+     * @brief Konstruktor, amely inicializálja a Rovarász nevét és a rovarok listáját
+     * @param nev A Rovarász neve
+     */
     public Rovarasz(String nev){
         super(nev);
         rovarok = new ArrayList<>();
     }
    
+    /***
+     * @brief Új rovar hozzáadása a Rovarászhoz
+     * @param rovar A hozzáadandó rovar
+     */
     public void addRovar(Rovar rovar) {
         rovarok.add(rovar);
     }
 
+    /***
+     * @brief Rovar eltávolítása a Rovarászból
+     * @param rovar A törlendő rovar
+     */
     public void removeRovar(Rovar rovar) {
         rovarok.remove(rovar);
     }
 
+    /***
+     * @brief A Rovarász által végzett vágás művelet
+     * @param gf A Gombafonal, amelyet a rovar vág
+     * @param r A rovar, amely végrehajtja a vágást
+     * @throws Exception Ha a rovar nem tartozik a Rovarászhoz vagy nincs elegendő akciópont
+     */
     public void vag(Gombafonal gf, Rovar r) throws Exception {
         try {
             if(!rovarok.contains(r)){
@@ -44,6 +70,12 @@ public class Rovarasz extends Jatekos {
         
     }
 
+    /***
+     * @brief A Rovarász mászó művelete, amely a rovarok állapotától függ
+     * @param hova A célpont (Tekton), ahova a rovar mászik
+     * @param r A mászó rovar
+     * @throws Exception Ha a rovar nem tartozik a Rovarászhoz vagy nincs elegendő akciópont
+     */
     public void maszik(Tekton hova, Rovar r) throws Exception {
        try {
             if(!rovarok.contains(r)){
@@ -79,6 +111,12 @@ public class Rovarasz extends Jatekos {
         }
     }
 
+     /***
+     * @brief A Rovarász eszik művelete, ahol a rovar eszik egy spórát
+     * @param sp A spóra, amit a rovar eszik
+     * @param r A rovar, amely eszik
+     * @throws Exception Ha a rovar nem tartozik a Rovarászhoz vagy nincs elegendő akciópont
+     */
     public void eszik(Spora sp, Rovar r) throws Exception {
         try {
             if(!rovarok.contains(r)){
@@ -96,6 +134,9 @@ public class Rovarasz extends Jatekos {
         }
     }
 
+    /***
+     * @brief A rovarok állapotidejének növelése minden egyes rovar számára
+     */
     public void rovarokAllapotIdejenekNovelese(){
         for (Rovar rovar : rovarok) {
             int ideiglenes = rovar.getAllapotIdeje();
@@ -103,6 +144,9 @@ public class Rovarasz extends Jatekos {
         }
     }
 
+    /***
+     * @brief A rovarok visszaállítása alapállapotba, ha az állapotidejük nagyobb vagy egyenlő mint 1
+     */
     public void rovarokAlapallapotbaHelyezese(){
         for (Rovar rovar : rovarok) {
             if(rovar.getAllapotIdeje()>=1){
@@ -111,6 +155,10 @@ public class Rovarasz extends Jatekos {
         }
     }
 
+    /***
+     * @brief A kör végén végrehajtott műveletek
+     * Az akciópontok 0-ra állítása, valamint a rovarok állapotidejének növelése és alapállapotba helyezése
+     */
     @Override
     public void endTurnForTests(){
         this.setakcioSzama(0);
