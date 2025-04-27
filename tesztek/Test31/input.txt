@@ -3,5 +3,5 @@
 /arrange -j Jani -g osztodo
 /arrange -s osztodo -t tekton1 2
 /act -aktivJatekos Pista
-/act -eszik -r rovar1 -g benito -t tekton1
+/act -eszik -r rovar1 -g osztodo -t tekton1
 /assert -list -r -t

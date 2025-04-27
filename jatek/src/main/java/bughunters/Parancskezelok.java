@@ -239,6 +239,7 @@ public class Parancskezelok {
                     //act parancsok
                     if(action.matches("/act -eszik -r \\S+ -g \\S+ -t \\S+")){
                         //Kérdés: Itt kell-e lekezelni, hogy ha a tekton és a rovar tartozkodása nem egyezik meg, akkor nem tud enni?
+                        
                         String rovarStr = action.split(" ")[3];
                         Rovar rovar = (Rovar)objektumok.get(rovarStr);
 
@@ -1076,7 +1077,7 @@ public class Parancskezelok {
             output.println("Nincs rovar a palyan");
             return;
         }
-
+        
         szamszeruSort(rovarNevek);
 
         for(String nev : rovarNevek) {
@@ -1086,7 +1087,6 @@ public class Parancskezelok {
 
             output.println(nev+" "+tektonNev);
         }
-
     }
 
     public void listTektonok(PrintWriter output){
@@ -1606,7 +1606,8 @@ public class Parancskezelok {
         int maxRovarSzam = 0;
         for (String kulcs : objektumok.keySet()) {
             if (kulcs.matches("rovar\\d+")) {
-                String szamResz = kulcs.substring(1); // levágjuk az "r"-t
+                //String szamResz = kulcs.substring(1); // levágjuk az "r"-t
+                String szamResz = kulcs.substring(5); // levágjuk az "r"-t
                 int szam = Integer.parseInt(szamResz);
                 if (szam > maxRovarSzam) {
                     maxRovarSzam = szam;

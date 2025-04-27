@@ -8,5 +8,6 @@ Hozzaadva gombafonal1
 Aktiv jatekos Pista
 benito hatas ervenyesul rovar1 rovarra
 Aktiv jatekos Jani
-rovar1 tekton1
-Nincsen gombatest a palyan
+Megszunt rovar1
+Nincs rovar a palyan
+gombatest1

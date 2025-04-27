@@ -209,6 +209,7 @@ public class Gombafaj implements FonalKezeles{
             throw new Exception("Nem nőhet gombatest.");
         }
     }
+
      /**
      * @brief Hozzáad egy új gombatestet a listához.
      *
@@ -222,6 +223,7 @@ public class Gombafaj implements FonalKezeles{
         }
         gombaTestek.add(gt);
     }
+    
     /**
      * @brief Spóraszórás folyamatát kezeli egy adott Tekton és Gombatest között.
      *
@@ -234,7 +236,6 @@ public class Gombafaj implements FonalKezeles{
         {
             g.urit();
             t.sporaSzor(this);
-            System.out.println("asdaffdfdsfsdf");
             boolean valasz=false;
             if(g.getKor()==gombatestEletSzama)
             {
@@ -248,6 +249,7 @@ public class Gombafaj implements FonalKezeles{
         }
     
     }
+
     void torolGombatest(Gombatest gt){
         //System.out.println("Meghívódik a Gombafaj torolGombatest metódusa.");
         gombaTestek.remove(gt);
@@ -292,7 +294,7 @@ public class Gombafaj implements FonalKezeles{
     //VÁLTOZTATAS: r.torolRovar(), kitörli a rovart a rovarasz listából
     public void rovarEves(Rovar r)throws Exception{
         try{
-            if(r.getAllapot().equals("Benito")){
+            if(r.getAllapot() == rovarAllapot.Benitott){
                 testNovesztes(r.getTartozkodas(), false);
                 r.torolRovar();
             }

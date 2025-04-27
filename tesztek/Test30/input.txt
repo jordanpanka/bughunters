@@ -8,6 +8,6 @@
 /act -aktivJatekos Pista
 /act -eszik -r rovar1 -g benito -t tekton1
 /act -aktivJatekos Jani
-/act reszik -r rovar1
+/act -reszik -r rovar1
 /assert -list -r -t
 /assert -list -gt

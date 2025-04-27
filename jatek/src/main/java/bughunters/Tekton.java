@@ -122,6 +122,7 @@ public class Tekton implements FonalKezeles {
                     throw new Exception("Már van gombatest ezen a tektonon.");
                 }
             }
+            
             if(sporaval){
                 boolean elfogyott=false;
 
@@ -157,8 +158,7 @@ public class Tekton implements FonalKezeles {
 
                 Gombatest gt1 = new Gombatest(gf,this);
                 return gt1;
-            }
-                   
+            }      
         }
         catch(Exception e){
             throw e;
