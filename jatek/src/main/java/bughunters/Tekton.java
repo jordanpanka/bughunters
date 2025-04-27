@@ -75,8 +75,6 @@ public class Tekton implements FonalKezeles {
      * @return növesztett gombafonalat adja vissza
      * @throws Exception ha nem tud gombafonalat növeszteni vagy rossz feladatnál lett hívva
      */
-
-    //--------Azt is nézni kell, hogy csak gombatest van a szomszédon, nem gombafonal-----------
     public Gombafonal gombafonalAdd(Gombafaj g, Tekton honnan) throws Exception {
         //System.out.println("Meghívódik a Tekton gombafonalAdd metódusa.");
         //ellenőrizni hogy létezik e már ilyen gombafonal
