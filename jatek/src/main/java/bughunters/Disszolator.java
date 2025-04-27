@@ -13,12 +13,19 @@ public class Disszolator extends Tekton {
      */
     @Override
     public void gombafonalFelszivas() {
-        //System.out.println("Meghívódik a Disszolator gombafonalFelszivas metódusa.");
+        List<Gombafonal> gombafonalaim = getFonalak();
+        List<Gombafonal> torlendoFonalak = new ArrayList<>();
 
-        for (Gombafonal gombafonal : getFonalak()) {
+        for (Gombafonal gombafonal : gombafonalaim) {
             if(gombafonal.getMiota() >= 5){
-                gombafonal.vegpontTorles();
+                //gombafonal.vegpontTorles();
+                torlendoFonalak.add(gombafonal);
             }
+        }
+        
+
+        for (Gombafonal torlendoFonal : torlendoFonalak) {
+            torlendoFonal.vegpontTorles();
         }
     }   
 

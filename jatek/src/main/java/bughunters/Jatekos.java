@@ -50,4 +50,8 @@ public abstract class Jatekos {
     public void korVege(){
         akcioSzama=0;
     }
+
+    public void endTurnForTests(){
+
+    }
 }

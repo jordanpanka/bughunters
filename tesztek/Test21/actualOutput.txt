@@ -4,4 +4,4 @@ Szomszedos lett tekton1 es disszolator1
 Hozzaadva Jani osztodo gombasz
 Hozzaadva gombafonal1
 Hozzaadva gombatest1
-gombafonal1
+Nincs gombafonal a palyan

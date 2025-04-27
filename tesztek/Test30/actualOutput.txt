@@ -9,5 +9,6 @@ Aktiv jatekos Pista
 benito hatas ervenyesul rovar1 rovarra
 Aktiv jatekos Jani
 Megszunt rovar1
+Hozzaadva gombatest1
 Nincs rovar a palyan
 gombatest1

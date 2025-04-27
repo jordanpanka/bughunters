@@ -285,8 +285,11 @@ public class Parancskezelok {
                             output.println("Nincs " + gombaTipus + " spora " + tekton1 + " tektonon");
                             return;
                         }
-
+                       
                         output.println(gombaTipus + " hatas ervenyesul " + rovarStr + " rovarra");
+                        if(gombaTipus.equals("osztodo")){
+                            output.println("Hozzaadva "+ujRovarNev());
+                        }
                     }
                     if(action.matches("/act -vag -r \\S+ -gf \\S+")){
                         String rovarStr = action.split(" ")[3];
@@ -366,6 +369,7 @@ public class Parancskezelok {
                         gombasz.rovarEves(rovar);
 
                         output.println("Megszunt " + rovarStr);
+                        output.println("Hozzaadva " + ujGombatestNev());
                     }
                     if(action.matches("/act -gfnov -t \\S+ -t \\S+ -g \\S+")){ 
                         String gombafaj = action.split(" ")[7];
@@ -555,8 +559,13 @@ public class Parancskezelok {
                         }
                     }
                     if(action.matches("/act -endTurn")){
-                        aktivJatekos.korVege();
+                        //aktivJatekos.korVege();
+                        //aktivJatekos.endTurnForTests();
                         //Kiíratás?
+
+                        for (Jatekos jatekos : jatekosok) {
+                            jatekos.endTurnForTests();
+                        }
                     }
                     if (action.matches("/assert -tszomszedok -t \\S+")) {
                         String tektonStr = action.split(" ")[3];
@@ -797,6 +806,7 @@ public class Parancskezelok {
                 if(!objektumokbolString.containsKey(rovar)) {
                     //ha nincs benne a HashMap-ben, de a Rovarasz listájában igen.
                     String ujRovarNev = ujRovarNev(); //rovar neve
+
                     objektumok.put(ujRovarNev, rovar); //Rovar neve alapjan mentjuk el a Rovarokat a Map-en
                     objektumokbolString.put(rovar, ujRovarNev);
 

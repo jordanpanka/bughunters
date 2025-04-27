@@ -74,7 +74,6 @@ public class Jatek {
                         //ha elérünk az első /act parancshoz és csak 1 játékos van, akkor ő lesz az aktiv jatekos
                         if(parancs.matches("^/act .*") && jatekosok.size()==1 && !elsoActLezajlott) {
                                 parancskezelo.setAktivJatekos(jatekosok.get(0));
-                                System.out.println("Aktiv jatekos beallitva: " + jatekosok.get(0).getNev());
                                 elsoActLezajlott=true;
                         }
                         parancskezelo.bemenetAkcio(parancs, writer);
@@ -102,8 +101,6 @@ public class Jatek {
             } catch (Exception e) {
                 System.err.println(e.getMessage());
             }
-            
-
     }
 
     public void jatekInditasa(List<Jatekos> jatekosok, List<Gombasz> gombaszok, List<Rovarasz> rovaraszok) {
@@ -199,6 +196,9 @@ public class Jatek {
                 gombasz.korVegiCselekedetekRun();            
             }
             
+            for(Tekton tekton : jatekter.getTektonok()){
+                tekton.gombafonalFelszivas();
+            }
         }
         catch (Exception e){
             throw e;        

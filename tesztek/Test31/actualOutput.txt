@@ -4,5 +4,6 @@ Hozzaadva Jani osztodo gombasz
 Hozzaadva osztodo1 spora
 Aktiv jatekos Pista
 osztodo hatas ervenyesul rovar1 rovarra
+Hozzaadva rovar2
 rovar1 tekton1
 rovar2 tekton1

@@ -1,5 +1,7 @@
 package bughunters;
 
+import java.util.ArrayList;
+
 public class Gombasz extends Jatekos{
 
     private Gombafaj gombafaj;
@@ -78,5 +80,25 @@ public class Gombasz extends Jatekos{
         }
     }
 
-
+    @Override
+    public void endTurnForTests(){
+        this.setakcioSzama(0);
+        korVegiCselekedetekRun();
+        
+        ArrayList<Gombafonal> fonalak = gombafaj.getGombafonalhalozat();
+        ArrayList<Tekton> tektonok = new ArrayList<>();
+        for (Gombafonal gombafonal : fonalak) {
+            Tekton vegpont1 = gombafonal.getVegpont1();
+            Tekton vegpont2 = gombafonal.getVegpont2();
+            if (!tektonok.contains(vegpont1)) {
+                tektonok.add(vegpont1);
+            }
+            if (!tektonok.contains(vegpont2)) {
+                tektonok.add(vegpont2);
+            }
+        }
+        for (Tekton tekton : tektonok) {
+            tekton.gombafonalFelszivas();
+        }
+    }
 }

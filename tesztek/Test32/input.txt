@@ -9,7 +9,8 @@
 /arrange -gf -t tekton2 -t tekton3 -g osztodo
 /arrange -gf -t tekton1 -t infinator1 -g osztodo
 /arrange -gt osztodo -t tekton1
-/act endTurn
-/act endTurn
-/act endTurn
+/act -endTurn
+/act -endTurn
+/act -endTurn
+/act -endTurn
 /assert -list -gf

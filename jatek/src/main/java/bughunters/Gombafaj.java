@@ -148,7 +148,12 @@ public class Gombafaj implements FonalKezeles{
                     break;
                 }
             }
+            /*
             if(!van && gf.getAllapot().equals("Ep")){
+                gf.setAllapot(fonalAllapot.Haldoklo);
+            }
+            */
+            if(!van && gf.getAllapot().equals(fonalAllapot.Ep)){
                 gf.setAllapot(fonalAllapot.Haldoklo);
             }
         }
@@ -279,11 +284,22 @@ public class Gombafaj implements FonalKezeles{
                 gombafonalhalozat.get(i).setAllapot(fonalAllapot.Ep);
                    
             }else if(!van){
+                /*
                 if(gombafonalhalozat.get(i).getAllapot().equals("Haldoklo") && gombafonalhalozat.get(i).getMiota()==gombafonalEletSzama )
                 {
                     gombafonalhalozat.get(i).setAllapot(fonalAllapot.UtolsoEsely);
 
                 }else if(gombafonalhalozat.get(i).getAllapot().equals("UtolsoEsely")){
+                    //elér e testhez az adott fonal
+                    gombafonalhalozat.get(i).vegpontTorles();     
+                }  
+
+                */  
+                if(gombafonalhalozat.get(i).getAllapot().equals(fonalAllapot.Haldoklo) && gombafonalhalozat.get(i).getMiota()==(gombafonalEletSzama-1) )
+                {
+                    gombafonalhalozat.get(i).setAllapot(fonalAllapot.UtolsoEsely);
+
+                }else if(gombafonalhalozat.get(i).getAllapot().equals(fonalAllapot.UtolsoEsely)){
                     //elér e testhez az adott fonal
                     gombafonalhalozat.get(i).vegpontTorles();     
                 }      
@@ -311,6 +327,7 @@ public class Gombafaj implements FonalKezeles{
 
     //A játékos köre végén a cselekedetek elvégézése
     public void korVegiCselekedetek(){
+        haldoklas();
         lastChance();
         for(Gombafonal gf:gombafonalhalozat){
             gf.tartozkodasNov();

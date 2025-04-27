@@ -110,4 +110,11 @@ public class Rovarasz extends Jatekos {
             }
         }
     }
+
+    @Override
+    public void endTurnForTests(){
+        this.setakcioSzama(0);
+        rovarokAllapotIdejenekNovelese();
+        rovarokAlapallapotbaHelyezese();
+    }
 }

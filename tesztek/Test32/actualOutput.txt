@@ -9,5 +9,4 @@ Hozzaadva Jani osztodo gombasz
 Hozzaadva gombafonal1
 Hozzaadva gombafonal2
 Hozzaadva gombatest1
-gombafonal1
 gombafonal2
