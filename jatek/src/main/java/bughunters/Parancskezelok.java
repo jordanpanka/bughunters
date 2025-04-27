@@ -8,6 +8,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * A parancsok állapotát reprezentáló enum
+ * Game - Játék állapot, ahol nem érhetők el az Arrange parancsok
+ * Test - Teszt állapot, ahol minden parancs elérhető
+ */
 enum parancsAllapot {
     Game,               // Játék állapotban van a parancskezelő, nem fér hozzá Arrange parancsokhoz.
     Test                // Teszt állapotban van a parancskezelő, minden parancshoz hozzáfér.
@@ -23,6 +28,9 @@ public class Parancskezelok {
     private parancsAllapot allapot;
     private Jatekos aktivJatekos;
 
+    /**
+     * @brief Parancskezelő konstruktor, inicializálja az adattagokat
+     */
     Parancskezelok() {
         this.objektumok = new HashMap<>();
         this.objektumokbolString = new HashMap<>();
@@ -33,9 +41,20 @@ public class Parancskezelok {
         
     }
 
+    
+
+    /**
+     * @brief Beállítja a parancskezelő állapotát
+     * @param allapot Az új állapot (Game/Test)
+     */
     public void setParancsAllapot(parancsAllapot allapot) {
         this.allapot = allapot;
     }
+    
+    /**
+     * @brief Visszaadja a parancskezelő aktuális állapotát
+     * @return A parancskezelő állapota (Game/Test)
+     */
     public parancsAllapot getParancsAllapot() {
         return allapot;
     }
@@ -65,6 +84,13 @@ public class Parancskezelok {
     }
 
     //A játékosok a játék indítása után nem férhetnek hozzá Arrange parancsokhoz, de a tesztek mindenhez hozzáférnek
+    
+    /**
+     * @brief Feldolgozza a bemeneti akciót és végrehajtja a megfelelő műveletet. A metódus a bemeneti string alapján azonosítja a parancsot, ellenőrzi a jogosultságokat, majd végrehajtja a kért műveletet. A parancsok lehetnek act (játék műveletek), arrange (elrendezés) vagy assert (ellenőrzés) típusúak.
+     * @param action A bemeneti parancs string
+     * @param output A kimeneti író
+     * @throws Exception Ha hiba történik a parancs végrehajtása közben
+     */
     public void bemenetAkcio(String action, PrintWriter output) throws Exception {
             //megkapja a bemeneti stringet, azalapján eldönti melyik akció fut le.
             // (likelihood ellenőrzés) %-r eves%
@@ -929,7 +955,11 @@ public class Parancskezelok {
 
     }
 
-
+    /**
+     * @brief Generál egy új tekton nevet a megadott típus alapján
+     * @param c A tekton típusa (t, m, d, p, i)
+     * @return Az új tekton neve, vagy null hibás típus esetén
+     */
     public String ujTektonNev(char c) {
         switch (c) {
             case 't':
@@ -1005,7 +1035,11 @@ public class Parancskezelok {
         return null;
     }
 
-
+    /**
+     * @brief Generál egy új spóra nevet a megadott típus alapján
+     * @param c A spóra típusa (b, g, l, v, o)
+     * @return Az új spóra neve, vagy null hibás típus esetén
+     */
     public String ujSporaNev(char c) {
         switch (c) {
             case 'b':
@@ -1081,7 +1115,10 @@ public class Parancskezelok {
         return null;
     }
 
-
+    /**
+     * @brief Generál egy új gombafonal nevet
+     * @return Az új gombafonal neve
+     */
     public String ujGombafonalNev(){
         int maxGombafonalSzam = 0;
         for (String kulcs : objektumok.keySet()) {
@@ -1096,6 +1133,9 @@ public class Parancskezelok {
         return "gombafonal" + (maxGombafonalSzam + 1); // új név a következő Rovarhoz
     }
 
+    /**
+     * @brief Újraindítja a projektet, törli az összes adatot a tesztekhez
+     */
     public void renewProject(){ 
         this.objektumok.clear();
         this.objektumokbolString.clear();
@@ -1106,6 +1146,9 @@ public class Parancskezelok {
         this.aktivJatekos = null;
     }
 
+    /**
+     * @brief Frissíti a HashMap-eket az aktuális állapot szerint. Ellenőrzi az összes objektumot a játékban, és frissíti a HashMap-eket, hogy azok mindig a legfrissebb állapotot tükrözzék
+     */
     public void updateHashMaps(){
         /*
             Végigmenni a
@@ -1296,7 +1339,11 @@ public class Parancskezelok {
 
     }
 
-
+    /**
+     * @brief Létrehoz egy új tektont a megadott típus alapján
+     * @param tektonTipus A tekton típusa (t, m, d, p, i)
+     * @return Az új Tekton objektum, vagy null hibás típus esetén
+     */
     public Tekton tektonLetrehoz(char tektonTipus){
         switch (tektonTipus) {
             case 't':
@@ -1322,6 +1369,13 @@ public class Parancskezelok {
         return null;
     }
 
+    /**
+     * @brief Létrehoz egy új spórat a megadott típus alapján
+     * @param sporaTipus A spóra típusa (b, g, l, v, o)
+     * @param gf A spórához tartozó gombafaj
+     * @param mennyiseg A spóra mennyisége
+     * @return Az új Spora objektum, vagy null hibás típus esetén
+     */
     public Spora sporaLetrehoz(char sporaTipus, Gombafaj gf, int mennyiseg){
         switch (sporaTipus) {
             case 'b':
@@ -1350,6 +1404,11 @@ public class Parancskezelok {
     //arrange Parancsok
     
     //assert parancsok
+    /**
+     * @brief Kiírja egy gombafonal állapotát
+     * @param output A kimeneti író
+     * @param fonalNev A gombafonal neve
+     */
     public void showFonalAllapot(PrintWriter output, String fonalNev){
         Gombafonal fonal = (Gombafonal)objektumok.get(fonalNev);
         if(fonal == null){
@@ -1370,6 +1429,11 @@ public class Parancskezelok {
                 break;
         }
     }
+    
+    /**
+     * @brief Kilistázza az összes gombafonalat
+     * @param output A kimeneti író
+     */
     public void listGf(PrintWriter output){
         List<String> nevek = new ArrayList<>();
         for(String kulcs : objektumok.keySet()) {
@@ -1387,6 +1451,10 @@ public class Parancskezelok {
         }
     }
 
+    /**
+     * @brief Kilistázza az összes gombatestet
+     * @param output A kimeneti író
+     */
     public void listGt(PrintWriter output){
         List<String> nevek = new ArrayList<>();
         for(String kulcs : objektumok.keySet()) {
@@ -1404,6 +1472,10 @@ public class Parancskezelok {
         }
     }
 
+    /**
+     * @brief Kilistázza az összes rovart és tartozkodasi helyet
+     * @param output A kimeneti író
+     */
     public void listRovarok(PrintWriter output){
         List<String> rovarNevek = new ArrayList<>();
         for(String kulcs : objektumok.keySet()) {
@@ -1427,6 +1499,10 @@ public class Parancskezelok {
         }
     }
 
+    /**
+     * @brief Kilistázza az összes tektont
+     * @param output A kimeneti író
+     */
     public void listTektonok(PrintWriter output){
         List<String> nevek = new ArrayList<>();
         for(String kulcs : objektumok.keySet()) {
@@ -1444,12 +1520,10 @@ public class Parancskezelok {
         }
     }
 
-    // /act SPORASZOR-nal ha sikeres a lefutás akkor a Sporat fel kell venni a HashMap-be. Megvizsgálni hogy élettartalma lejár-e, ha igen a testet is kivenni a HashMap-ből.
-    // /act fonalvagas sikeres lefutása esetén megkeressük az elvágott fonalat a HashMap-ben és eltávolítjuk.
-    // /act gombatestnovesztese sikeres lefutása esetén megkeressük a gombatestet és hozzáadjuk a HashMap-hez.
-    // ha elhal egy fonal idővel a HashMapből el kell távolítani (hogy a retekbe?)
-    // /act tores-nél megkeressük az új tektont és hozzáadjuk a HashMap-hez.
-
+    /**
+     * @brief Kilistázza az összes spórát
+     * @param output A kimeneti író
+     */
     public void listSpora(PrintWriter output){
         List<String> benitonevek = new ArrayList<>();
         List<String> osztodonevek = new ArrayList<>();
@@ -1507,6 +1581,11 @@ public class Parancskezelok {
         }
     }
 
+    /**
+     * @brief Megkeresi, hogy egy spóra melyik tektonon van rajta
+     * @param spora A keresett spóra
+     * @return A tekton neve, amely tartalmazza a spórát
+     */
     private String melyikTektononVanRajtaASpora(Spora spora){
         String tetkonNev="";
 
@@ -1549,6 +1628,10 @@ public class Parancskezelok {
         return tetkonNev;
     }
 
+    /**
+     * @brief Kilistázza a játékosokat
+     * @param output A kimeneti író
+     */
     public void listJatekosok(PrintWriter output){
         List<String> nevek = new ArrayList<>();
         List<String> Rovarasznevek = new ArrayList<>();
@@ -1575,6 +1658,10 @@ public class Parancskezelok {
         }
     }
 
+    /**
+     * @brief Kilistázza a gombászokat
+     * @param output A kimeneti író
+     */
     public void listGombaszok(PrintWriter output){
         List<String> nevek = new ArrayList<>();
         for(Gombasz gombasz : gombaszok) {
@@ -1589,6 +1676,10 @@ public class Parancskezelok {
         }
     }
 
+    /**
+     * @brief Kilistázza a rovarászokat
+     * @param output A kimeneti író
+     */
     public void listRovaraszok(PrintWriter output){
         List<String> nevek = new ArrayList<>();
         for(Rovarasz rovarasz : rovaraszok) {
@@ -1603,6 +1694,11 @@ public class Parancskezelok {
         }
     }
 
+    /**
+     * @brief Kilistázza a egy tekton fonalakkal osszekotott szomszedait
+     * @param output A kimeneti író
+     * @param tektonNev A tekton neve
+     */
     public void listGFSzomszedok(PrintWriter output, String tektonNev){
         List<String> nevek = new ArrayList<>();
        Tekton szurtTekton = parancsTektonCast(tektonNev.charAt(0), tektonNev);
@@ -1624,6 +1720,11 @@ public class Parancskezelok {
         }
     }
 
+    /**
+     * @brief Kilistázza a tekton szomszédait
+     * @param output A kimeneti író
+     * @param tektonNev A tekton neve
+     */
     public void listTektonSzomszedok(PrintWriter output, String tektonNev){
         List<String> nevek = new ArrayList<>();
         Tekton szurtTekton = parancsTektonCast(tektonNev.charAt(0), tektonNev);
@@ -1645,6 +1746,11 @@ public class Parancskezelok {
 
     }
 
+    /**
+     * @brief kiírja a rovar állapotát
+     * @param output A kimeneti író
+     * @param rovarNev A rovar neve
+     */
     public void showRovarAllapot(PrintWriter output, String rovarNev){
         Rovar rovar = (Rovar)objektumok.get(rovarNev);
         if(rovar == null) {
@@ -1674,6 +1780,10 @@ public class Parancskezelok {
        
     }
 
+    /**
+     * @brief Számok szerint rendezi a listát
+     * @param nevek A rendezendő lista
+     */
     public void szamszeruSort(List<String> nevek) {
         nevek.sort((a, b) -> {
             int numA = Integer.parseInt(a.replaceAll("\\D+", ""));
@@ -1683,6 +1793,9 @@ public class Parancskezelok {
     }
 
     //csakis játék módban fut le, a játékosok felvételére szolgál.
+    /**
+     * @brief Játékosok felvétele a játék kezdetekor. Interaktíven kéri a játékosok adatait, és hozzáadja őket a játékhoz
+     */
     public void jatekosokFelvetele() {
         //Jatekosok felvetele a jatekosok listájába.
         //Jatekosok felvetele a HashMap-be.
@@ -1723,6 +1836,11 @@ public class Parancskezelok {
 
     }
 
+    /**
+     * @brief Gombász és egy gombatest felvétele a játék kezdetekor
+     * @param parancs A felvételi parancs
+     * @param r A bemeneti olvasó
+     */
     public void gombaszFelvetelJatekKezdetekor(String parancs, BufferedReader r){
         //gombasz létrehozasa játék kezdetekor
                     String gombaszNev = parancs.split(" ")[2];
@@ -1836,16 +1954,22 @@ public class Parancskezelok {
 
     }
 
+    /**
+     * @brief Ellenőrzi, hogy egy gombafaj szerepel-e az objektumok között
+     * @param gombafajNeve A gombafaj neve
+     * @return true, ha a gombafaj már szerepel, false egyébként
+     */
     public boolean vanGombafajAzObjektumokban(String gombafajNeve) {
         return objektumok.containsKey(gombafajNeve);
     }
 
-    public void createGombatestByGombafaj(String parancs){
-        String tektonNeve= parancs.split(" ")[4];
-        String gombafajNeve = parancs.split(" ")[2];
+   
 
-    }
-
+    /**
+     * @brief Létrehoz egy gombafajt a spóra típusa alapján
+     * @param sporaTipus A spóra típusa (o, b, v, l, g)
+     * @return Az új Gombafaj objektum
+     */
     public Gombafaj createGombafajBySpora(char sporaTipus){
             String nev="";
             int termelesIdeje=0;
@@ -1929,7 +2053,12 @@ public class Parancskezelok {
         return null;
     }
 
-
+    /**
+     * @brief Gombász felvétele
+     * @param parancs A felvételi parancs
+     * @param output A kimeneti író
+     * @throws Exception Ha hiba történik a felvétel során
+     */
     public void gombaszFelvetele(String parancs, PrintWriter output) throws Exception{
         String gombaszNev = parancs.split(" ")[2];
         String gombafajSporaNev = parancs.split(" ")[4];
@@ -1955,7 +2084,11 @@ public class Parancskezelok {
         output.println("Hozzaadva "+gombaszNev +" "+gombafajSporaNev+" gombasz");
     }
 
-
+    /**
+     * @brief Rovarász felvétele
+     * @param parancs A felvételi parancs
+     * @param output A kimeneti író
+     */
     public void rovaraszFelvetel(String parancs, PrintWriter output){
         Rovarasz rovarasz = new Rovarasz(parancs.split(" ")[2]);
         if (objektumok.containsKey(rovarasz.getNev())) {
@@ -1981,6 +2114,10 @@ public class Parancskezelok {
         output.println("Hozzaadva "+rovarasz.getNev() +" rovarasz "+ujRovarNev);
     }
 
+    /**
+     * @brief Generál egy új gombatest nevet
+     * @return Az új gombatest neve
+     */
     public String ujGombatestNev(){
         int maxGtSzam = 0;
         for (String kulcs : objektumok.keySet()) {
@@ -1995,6 +2132,10 @@ public class Parancskezelok {
         return "gombatest" + (maxGtSzam + 1); // új név a következő Gombatesthez
     }    
 
+    /**
+     * @brief Generál egy új rovar nevet
+     * @return Az új rovar neve
+     */
     public String ujRovarNev(){
         int maxRovarSzam = 0;
         for (String kulcs : objektumok.keySet()) {
@@ -2011,6 +2152,12 @@ public class Parancskezelok {
     }
 
     //névből és típusból kinyeri a HashMap-ből a tektont, majd cast-olja a megfelelő típusra.
+    /**
+     * @brief Név és típus alapján visszaad egy tektont a HashMap-ből
+     * @param tektonTipus A tekton típusa (t, m, d, p, i)
+     * @param tektonNeve A tekton neve
+     * @return A Tekton objektum, vagy null ha nem található
+     */
     public Tekton parancsTektonCast(char tektonTipus, String tektonNeve) {
         switch (tektonTipus) {
                         case 't':
@@ -2035,7 +2182,11 @@ public class Parancskezelok {
         return null;
     }
 
-    
+    /**
+     * @brief A program fő belépési pontja
+     * @param args Parancssori argumentumok
+     * @details Kezeli a program módját (test/játék), és indítja el a megfelelő műveleteket
+     */
     public static void main(String[] args){
             //kiválasztja a program módját. 
             //test/jatek mód kiválasztása
