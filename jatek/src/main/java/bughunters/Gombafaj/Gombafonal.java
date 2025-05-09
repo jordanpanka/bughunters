@@ -1,13 +1,9 @@
-package bughunters;
+package bughunters.Gombafaj;
 
-/**
- * @brief A fonalAllapot enum a gombafonal állapotait reprezentálja.
- */
-enum fonalAllapot {
-    Ep,           // Az egészséges állapot
-    Haldoklo,     //  haldokló állapot, még 2 körön belül helyrehozható
-    UtolsoEsely   // Az utolsó esély állapot, még 1 körön belül helyrehozható
-}
+import bughunters.Tekton.*;
+
+
+
 
 /**
  *   @brief A Gombafonal osztály egy gomba fonalát reprezentálja, amely két Tekton végpont között húzódik.

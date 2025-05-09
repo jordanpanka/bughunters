@@ -1,4 +1,4 @@
-package bughunters;
+package bughunters.Egyeb;
 
 import java.io.BufferedReader;
 import java.io.IOException;

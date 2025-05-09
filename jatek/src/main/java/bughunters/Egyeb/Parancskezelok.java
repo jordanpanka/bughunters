@@ -1,4 +1,9 @@
-package bughunters;
+package bughunters.Egyeb;
+
+import bughunters.Gombafaj.*;
+import bughunters.Tekton.*;
+import bughunters.Rovar.*;
+import bughunters.Egyeb.*;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

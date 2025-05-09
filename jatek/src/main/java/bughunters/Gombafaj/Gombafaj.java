@@ -1,4 +1,8 @@
-package bughunters;
+package bughunters.Gombafaj;
+
+import bughunters.Tekton.*;
+import bughunters.Rovar.*;
+
 
 import java.util.ArrayList;
 /**
@@ -220,7 +224,7 @@ public class Gombafaj implements FonalKezeles{
      *
      * @param gt A hozzáadandó gombatest.
      */
-    void addTest(Gombatest gt) {
+    public void addTest(Gombatest gt) {
         //System.out.println("Meghívódik a Gombafaj addTest metodusa.");
 
         if(gombaTestek == null) {

@@ -1,4 +1,8 @@
-package bughunters;
+package bughunters.Egyeb;
+
+import bughunters.Rovar.*;
+import bughunters.Gombafaj.*;
+import bughunters.Tekton.*;
 
 import java.util.ArrayList;
 import java.util.List;

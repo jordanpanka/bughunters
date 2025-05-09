@@ -1,6 +1,10 @@
-package bughunters;
+package bughunters.Egyeb;
 
 import java.util.ArrayList;
+
+import bughunters.Gombafaj.*;
+import bughunters.Tekton.*;
+import bughunters.Rovar.*;
 
 public class Gombasz extends Jatekos{
 
@@ -56,6 +60,7 @@ public class Gombasz extends Jatekos{
             }
 
             gombafaj.fonalNov(t1, t2);
+            
             akciopontCsokkentes(1);
         } catch (Exception e) {
             throw e;

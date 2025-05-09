@@ -1,4 +1,6 @@
-package bughunters;
+package bughunters.Gombafaj;
+
+import bughunters.Rovar.*;
 
 /**
  * @brief A Osztodo osztály a Spora osztály egyik egyik utódja.

@@ -1,4 +1,8 @@
-package bughunters;
+package bughunters.Gombafaj;
+
+import bughunters.Tekton.*;
+
+
 public class Gombatest {
     private int sporaRaktar;
     private int kor;

@@ -1,4 +1,6 @@
-package bughunters;
+package bughunters.Egyeb;
+
+
 public abstract class Jatekos {
 
     private double akcioSzama;

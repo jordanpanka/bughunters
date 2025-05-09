@@ -1,4 +1,6 @@
-package bughunters;
+package bughunters.Gombafaj;
+
+import bughunters.Rovar.*;
 
 /**
  * @brief A Benito osztály a Spora osztály egyik utódja.

@@ -1,4 +1,6 @@
-package bughunters;
+package bughunters.Gombafaj;
+
+import bughunters.Rovar.*;
 
 
 /**

@@ -1,4 +1,6 @@
-package bughunters;
+package bughunters.Tekton;
+
+import bughunters.Gombafaj.*;
 
 import java.util.ArrayList;
 import java.util.List;

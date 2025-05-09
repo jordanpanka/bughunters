@@ -1,4 +1,7 @@
-package bughunters;
+package bughunters.Gombafaj;
+
+import bughunters.Rovar.*;
+
 
 /**
  * A Gyorsito osztály a Spora osztály egyik egyik utódja.

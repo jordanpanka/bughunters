@@ -1,4 +1,6 @@
-package bughunters;
+package bughunters.Egyeb;
+
+import bughunters.Tekton.*;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;

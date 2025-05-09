@@ -1,4 +1,7 @@
-package bughunters;
+package bughunters.Tekton;
+
+import bughunters.Gombafaj.*;
+import bughunters.Rovar.*;
 
 import java.awt.font.GlyphVector;
 import java.lang.reflect.Array;

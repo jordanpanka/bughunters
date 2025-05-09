@@ -1,4 +1,7 @@
-package bughunters; 
+package bughunters.Gombafaj; 
+
+import bughunters.Rovar.*;
+
 
 /**
  *  @brief Az Spora osztály egy absztrakt ősosztály
@@ -8,7 +11,7 @@ package bughunters;
  * - Egy általános fogyasztási metódust, amely csökkenti a spóra mennyiségét, ezt használjuk gombatest növesztés esetén
  * - Egy második verziót, amely egy rovarra is hatást gyakorol a fogyasztás során.
  */
-abstract class Spora {
+public abstract class Spora {
     protected int tapertek;
     protected int mennyiseg;
     private Gombafaj gombafaj;
