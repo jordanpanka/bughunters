@@ -207,6 +207,7 @@ public class Gombafaj implements FonalKezeles{
      *
      * @param t A Tekton, amelyen a gombatest növekedni fog.
      */
+    
     public void testNovesztes(Tekton t, boolean sporaval)throws Exception{
         //System.out.println("Meghívódik a Gombafaj testNovesztes metodusa.");
         try{
