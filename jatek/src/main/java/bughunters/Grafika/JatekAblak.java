@@ -26,6 +26,10 @@ public class JatekAblak extends JFrame {
         setResizable(false);
 
         //gombok elrendezése
+        JPanel foGombaszPanel=new JPanel();
+        JPanel foRovaraszPanel=new JPanel();
+        
+
         JPanel jatekosInfo=new JPanel();
 
         JPanel gombaszGombok=new JPanel();
@@ -41,10 +45,27 @@ public class JatekAblak extends JFrame {
         Eszik=new JButton("Spóra evése");
         megjelenit=new JButton("Megjelenít");
 
+        //gombasz gombok
+        gombaszGombok.add(TestNov);
+        gombaszGombok.add(Sporaszor);
+        gombaszGombok.add(FonalNov);
+        gombaszGombok.add(RovarEves);
+
+
+        //rovarasz gombok
+        rovaraszGombok.add(Maszik);
+        rovaraszGombok.add(Vag);
+        rovaraszGombok.add(Eszik);
 
 
 
-        
+
+
+        setVisible(true);
     }
-    
+   /*  void gombokBeallitasa(JButton gomb){
+        gomb.setMaximumSize(50,100);
+        gomb.setPreferredSize(50,100);
+        gomb.setFont(getFont());
+    }*/
 }
