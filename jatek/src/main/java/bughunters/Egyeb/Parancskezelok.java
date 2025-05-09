@@ -1,10 +1,11 @@
 package bughunters.Egyeb;
 
 import bughunters.Gombafaj.*;
+import bughunters.Grafika.JatekAblak;
 import bughunters.Tekton.*;
 import bughunters.Rovar.*;
 import bughunters.Egyeb.*;
-
+import bughunters.Grafika.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.swing.SwingUtilities;
 
 /**
  * A parancsok állapotát reprezentáló enum
@@ -2205,7 +2208,7 @@ public class Parancskezelok {
             //megkérdezi hogy akar-e még játékost felvenni? Nem-->elindítja a ...
             //elindítja a jatekInditasa() metódust, elindítja a játékot
 
-            Parancskezelok parancskezelo = new Parancskezelok();
+            /*Parancskezelok parancskezelo = new Parancskezelok();
             Jatek jatek = new Jatek(parancskezelo, parancskezelo.getJatekter());
             
             BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
@@ -2246,6 +2249,10 @@ public class Parancskezelok {
                     System.out.println("Nincs ilyen mód: " + mode);
                 }
         }
-            
+            */
+            SwingUtilities.invokeLater(()->{
+                JatekAblak jatek=new JatekAblak();
+                jatek.setVisible(true);
+            });
     }
 }
