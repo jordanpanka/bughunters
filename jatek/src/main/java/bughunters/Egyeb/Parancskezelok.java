@@ -2250,8 +2250,10 @@ public class Parancskezelok {
                 }
         }
             */
+            Parancskezelok pk;
+            Jatek jt;
             SwingUtilities.invokeLater(()->{
-                JatekAblak jatek=new JatekAblak();
+                JatekAblak jatek=new JatekAblak(pk,jt);
                 jatek.setVisible(true);
             });
     }

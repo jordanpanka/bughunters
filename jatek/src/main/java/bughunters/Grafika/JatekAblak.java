@@ -2,6 +2,8 @@ package bughunters.Grafika;
 
 import javax.swing.*;
 import java.awt.*;
+
+import bughunters.Egyeb.Jatek;
 import bughunters.Egyeb.Parancskezelok;
 
 public class JatekAblak extends JFrame {
@@ -18,9 +20,10 @@ public class JatekAblak extends JFrame {
     private JComboBox tektonok;
     private JButton megjelenit;
     private boolean isGombasz;
-    public JatekAblak(){
+    public JatekAblak(Parancskezelok pk, Jatek jatek){
+        game=pk;
+
         setTitle("Bughunters");
-       // setSize(700,600);
         setExtendedState(JFrame.MAXIMIZED_BOTH); 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -56,7 +59,8 @@ public class JatekAblak extends JFrame {
         }
 
         // kör és játékos
-        JLabel korAdatok=new JLabel("Kör : "+"Aktív játékos: "+game.getAktivJatekos().getNev());
+        JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+"Aktív játékos: "+game.getAktivJatekos().getNev());
+        
         //rovarasz vagy gombasz gombok
         if(game.getGombaszok().contains(game.getAktivJatekos())){
             isGombasz=true;
@@ -81,7 +85,6 @@ public class JatekAblak extends JFrame {
         //gombok lenyomása
 
 
-
         //gombasz gombok
         gombaszGombok.add(TestNov);
         gombaszGombok.add(Box.createHorizontalStrut(10));
@@ -104,9 +107,8 @@ public class JatekAblak extends JFrame {
         gombaszGombok.add(korVege);
 
 
-
-        foGombaszPanel.add(jatekosInfo);
-        foGombaszPanel.add(gombaszGombok);
+        foGombaszPanel.add(jatekosInfo,BorderLayout.NORTH);
+        foGombaszPanel.add(gombaszGombok,BorderLayout.SOUTH);
         add(foGombaszPanel);
 
     }
