@@ -106,4 +106,7 @@ public abstract class Jatekos {
     public void endTurnForTests(){
 
     }
+    public String szerepKor(){
+        return "Jatekos";
+    }
 }

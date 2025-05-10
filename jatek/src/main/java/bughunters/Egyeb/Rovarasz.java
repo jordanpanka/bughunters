@@ -169,4 +169,8 @@ public class Rovarasz extends Jatekos {
         rovarokAllapotIdejenekNovelese();
         rovarokAlapallapotbaHelyezese();
     }
+    @Override
+    public String szerepKor(){
+        return "Rovarász";
+    }
 }
