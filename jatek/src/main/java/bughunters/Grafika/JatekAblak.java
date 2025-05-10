@@ -42,6 +42,7 @@ public class JatekAblak extends JFrame {
             JLabel akcio=new JLabel("Akciók: "+game.getJatekosok().get(i).getakcioSzama());
             JLabel fajta=new JLabel(game.getJatekosok().get(i).szerepKor());
             JLabel pontok=new JLabel("Pontok: "+game.getJatekosok().get(i).getGyozelmiPontok());
+            
             jatekos.add(jatekos);
             jatekos.add(Box.createVerticalStrut(10));
             jatekos.add(akcio);
@@ -50,7 +51,17 @@ public class JatekAblak extends JFrame {
             jatekos.add(Box.createVerticalStrut(10));
             jatekos.add(pontok);
             jatekos.add(Box.createVerticalStrut(10));
+            
+            jatekosInfo.add(jatekos);
         }
+        //rovarasz vagy gombasz gombok
+        if(game.getGombaszok().contains(game.getAktivJatekos())){
+            isGombasz=true;
+        }
+        else{
+            isGombasz=false;
+        }
+
         //gombok létrehozása
         korVege=new JButton("Kör vége");
         TestNov=new JButton("Test növesztés");
