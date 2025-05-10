@@ -61,7 +61,15 @@ public class Grafika {
         return new Gombafonal();
     }
     public Gombatest gombatestKeres(int x, int y){
-        return new Gombatest();
+        for(int i=0; i< gombatestek.size();i++){
+            double xC=gombatestek.get(i).getX();
+            double yC=gombatestek.get(i).getY();
+            double d=Math.sqrt(x-xC,y-yC);
+            if(d<=R){
+                return gombatestek.get(i);
+            }
+
+        }
     }
     public Tekton tektonKeres(int x, int y){
         for(int i=0; i< tektonok.size();i++){
