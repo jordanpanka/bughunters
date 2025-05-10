@@ -39,6 +39,10 @@ public class Grafika {
             tektonok.get(t.getSzomszedok().get(0)).setX(elozoX);
             tektonok.get(t.getSzomszedok().get(0)).setY(elozoY);
         }
+        //gombatestek beállítása
+
+        //spórák beállítássa
+        //rovar beállítása
 
     
         for(int i=0; tektonok.size(); i++){
