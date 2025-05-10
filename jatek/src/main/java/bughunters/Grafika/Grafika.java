@@ -58,6 +58,23 @@ public class Grafika {
         }
     }
     public Gombafonal fonalKeres(int x, int y){
+        for (int i=0; i<gombafonalak.size(); i++){
+            double X1=gombafonalak.get(i).getX();
+            double X2=gombafonalak.get(i).getX2();
+            double Y1=gombafonalak.get(i).getY();
+            double Y2=gombafonalak.get(i).getY2();
+            double dX=gombafonalak.get(i).getX()-gombafonalak.get(i).getX2();
+            double dY=gombafonalak.get(i).getY()-gombafonalak.get(i).getY2();
+            double t=((x-X1)*dX+(y-Y1)*dY)/(dX*dX+dY*dY);
+            t=Math.max(0,Math.min(1,t));
+            double projX = X1 + t * dX;
+            double projY = Y1 + t * dY;
+            double tav=Math.hypot(x - projX, y - projY);
+            if(tav<=0.5){
+                return gombafonalak.get(i);
+            }
+
+        }
         return new Gombafonal();
     }
     public Gombatest gombatestKeres(int x, int y){
