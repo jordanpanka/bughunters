@@ -54,6 +54,9 @@ public class JatekAblak extends JFrame {
             
             jatekosInfo.add(jatekos);
         }
+
+        // kör és játékos
+        JLabel korAdatok=new JLabel("Kör : "+"Aktív játékos: "+game.getAktivJatekos().getNev());
         //rovarasz vagy gombasz gombok
         if(game.getGombaszok().contains(game.getAktivJatekos())){
             isGombasz=true;
@@ -74,27 +77,37 @@ public class JatekAblak extends JFrame {
         megjelenit=new JButton("Megjelenít");
 
         Dimension gombMeret=new Dimension(100,50);
+
         //gombok lenyomása
 
 
 
         //gombasz gombok
         gombaszGombok.add(TestNov);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
         gombaszGombok.add(Sporaszor);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
         gombaszGombok.add(FonalNov);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
         gombaszGombok.add(RovarEves);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
+        gombaszGombok.add(korVege);
 
 
         //rovarasz gombok
         rovaraszGombok.add(Maszik);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
         rovaraszGombok.add(Vag);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
         rovaraszGombok.add(Eszik);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
+        gombaszGombok.add(korVege);
 
 
 
-
-
-        add(gombaszGombok);
+        foGombaszPanel.add(jatekosInfo);
+        foGombaszPanel.add(gombaszGombok);
+        add(foGombaszPanel);
 
     }
     void gombokBeallitasa(JButton gomb, Dimension dimension){
