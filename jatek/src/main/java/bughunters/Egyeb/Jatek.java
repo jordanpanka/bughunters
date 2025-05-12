@@ -27,7 +27,7 @@ public class Jatek {
      * @param kapottParancskezelo A parancsok kezelésére szolgáló objektum
      * @param kapottJatekter A játéktér objektuma
      */
-    Jatek(Parancskezelok kapottParancskezelo, Jatekter kapottJatekter)  {
+    public Jatek(Parancskezelok kapottParancskezelo, Jatekter kapottJatekter)  {
         this.korSzam = 1;
         this.parancskezelo = kapottParancskezelo;
         this.jatekter = kapottJatekter;

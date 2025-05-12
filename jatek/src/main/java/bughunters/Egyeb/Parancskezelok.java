@@ -39,7 +39,7 @@ public class Parancskezelok {
     /**
      * @brief Parancskezelő konstruktor, inicializálja az adattagokat
      */
-    Parancskezelok() {
+    public Parancskezelok() {
         this.objektumok = new HashMap<>();
         this.objektumokbolString = new HashMap<>();
         this.jatekosok = new ArrayList<>();
