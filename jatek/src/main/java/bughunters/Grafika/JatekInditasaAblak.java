@@ -6,12 +6,11 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.jar.JarFile;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-public class JatekInditasaAblak<game> extends JFrame {
+public class JatekInditasaAblak extends JFrame {
     public JButton UjJatek;
     private Parancskezelok game;
 
