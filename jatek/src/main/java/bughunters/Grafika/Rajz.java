@@ -3,7 +3,7 @@ package bughunters.Grafika;
 public abstract class Rajz {
     protected int x;
     protected int y;
-    public double getX() {
+    public int getX() {
         return x;
     }
 

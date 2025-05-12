@@ -94,8 +94,8 @@ public class Grafika {
     }
     public Tekton tektonKeres(int x, int y){
         for(int i=0; i< tektonok.size();i++){
-            double xC=tektonok.get(i).getX();
-            double yC=tektonok.get(i).getY();
+            int xC=tektonok.get(i).getX();
+            int yC=tektonok.get(i).getY();
             double d=Math.sqrt(x-xC,y-yC);
             if(d<=R){
                 return tektonok.get(i);
