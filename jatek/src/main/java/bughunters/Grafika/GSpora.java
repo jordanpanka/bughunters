@@ -9,7 +9,8 @@ public class GSpora extends Rajz {
      *
      * @param g a grafikus kontextus, ahová rajzolunk
      */
+    @Override
     public void Draw(Graphics g) {
-        g.fillOval(x, y, 6, 6);   // Kis körrel jelöljük a spórát
+        g.fillOval(x, y, 6, 6);   
     }
 }

@@ -34,6 +34,7 @@ public class GRovar extends Rajz {
      *
      * @param g a grafikus kontextus, amire rajzolni kell
      */
+    @Override
     public void Draw(Graphics g) {
         if (image != null) {
             g.drawImage(image, x, y, null);

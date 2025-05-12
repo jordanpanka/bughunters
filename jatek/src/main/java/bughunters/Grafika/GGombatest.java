@@ -1,6 +1,7 @@
 package bughunters.Grafika;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 /**
@@ -32,11 +33,12 @@ public class GGombatest extends Rajz{
      * Kirajzolja a gombatestet a pályára, ha a kép elérhető.
      * 
      */
-    public void Draw(Graphics g) {
+    @Override
+    public void Draw( Graphics g) {
         if (image != null) {
-            double X;
-            double Y;
-            g.drawImage(image,x , y, null);
+            
+            g.drawImage(image, x, y, null);
+            
         }
     }
 
