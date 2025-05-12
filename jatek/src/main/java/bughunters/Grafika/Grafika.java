@@ -18,11 +18,11 @@ public class Grafika {
     public void Draw(Tekton t){
         
         int szomszedokSzama=t.getSzomszedok().size();
-        double R;
-        double cX;
-        double cY;
-        double elozoX=cX;
-        double elozoY=cY+R;
+        int R;
+        int cX;
+        int cY;
+        int elozoX=cX;
+        int elozoY=cY+R;
         //középső tekton pozíciójának beállítása
         tektonok.get(t).setX(2);
         tektonok.get(t).setY(3);
@@ -85,7 +85,9 @@ public class Grafika {
         for(int i=0; i< gombatestek.size();i++){
             double xC=gombatestek.get(i).getX();
             double yC=gombatestek.get(i).getY();
-            double d=Math.sqrt(x-xC,y-yC);
+           // double d=Math.sqrt(x-xC,y-yC);
+            double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
+
             if(d<=R){
                 return gombatestek.get(i);
             }
@@ -96,7 +98,9 @@ public class Grafika {
         for(int i=0; i< tektonok.size();i++){
             int xC=tektonok.get(i).getX();
             int yC=tektonok.get(i).getY();
-            double d=Math.sqrt(x-xC,y-yC);
+            //double d=Math.sqrt(x-xC,y-yC);
+            double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
+
             if(d<=R){
                 return tektonok.get(i);
             }
@@ -107,7 +111,9 @@ public class Grafika {
         for(int i=0; i< rovarok.size();i++){
             double xC=rovarok.get(i).getX();
             double yC=rovarok.get(i).getY();
-            double d=Math.sqrt(x-xC,y-yC);
+            //double d=Math.sqrt(x-xC,y-yC);
+            double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
+
             if(d<=R){
                 return rovarok.get(i);
             }
