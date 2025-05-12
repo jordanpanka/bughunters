@@ -57,6 +57,8 @@ public class JatekAblak extends JFrame {
             
             jatekosInfo.add(jatekos);
         }
+        String[] nevek=game.getObjektumok().keySet();
+        tektonok=new JComboBox<>(nevek);
 
         // kör és játékos
         JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+"Aktív játékos: "+game.getAktivJatekos().getNev());
@@ -83,7 +85,15 @@ public class JatekAblak extends JFrame {
         Dimension gombMeret=new Dimension(100,50);
 
         //gombok lenyomása
-
+        korVege.addActionListener();
+        TestNov.actionListener();
+        Sporaszor.actionListener();
+        FonalNov.actionListener();
+        RovarEves.actionListener();
+        Maszik.actionListener();
+        Vag.actionListener();
+        Eszik.actionListener();
+        megjelenit.actionListener();
 
         //gombasz gombok
         gombaszGombok.add(TestNov);
