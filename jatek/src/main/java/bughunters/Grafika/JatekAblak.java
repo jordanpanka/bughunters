@@ -1,9 +1,9 @@
 package bughunters.Grafika;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.*;
 import java.awt.*;
+
+import bughunters.Egyeb.Jatek;
 import bughunters.Egyeb.Parancskezelok;
 
 public class JatekAblak extends JFrame {
@@ -19,21 +19,58 @@ public class JatekAblak extends JFrame {
     private Grafika grafika;
     private JComboBox tektonok;
     private JButton megjelenit;
-    public JatekAblak(){
+    private boolean isGombasz;
+    public JatekAblak(Parancskezelok pk, Jatek jatek){
+        game=pk;
+
         setTitle("Bughunters");
-        setSize(700,600);
+        setExtendedState(JFrame.MAXIMIZED_BOTH); 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        //gombok elrendezése
+        //panelek létrehozása
         JPanel foGombaszPanel=new JPanel();
         JPanel foRovaraszPanel=new JPanel();
-        
 
         JPanel jatekosInfo=new JPanel();
 
         JPanel gombaszGombok=new JPanel();
         JPanel rovaraszGombok=new JPanel();
+
+        //jatekosok adatainak megjelenítése
+        for(int i=0; i<game.getJatekosok().size(); i++){
+            JPanel jatekos=new JPanel();
+
+            JLabel nev=new JLabel(game.getJatekosok().get(i).getNev());
+            JLabel akcio=new JLabel("Akciók: "+game.getJatekosok().get(i).getakcioSzama());
+            JLabel fajta=new JLabel(game.getJatekosok().get(i).szerepKor());
+            JLabel pontok=new JLabel("Pontok: "+game.getJatekosok().get(i).getGyozelmiPontok());
+            
+            jatekos.add(jatekos);
+            jatekos.add(Box.createVerticalStrut(10));
+            jatekos.add(akcio);
+            jatekos.add(Box.createVerticalStrut(10));
+            jatekos.add(fajta);
+            jatekos.add(Box.createVerticalStrut(10));
+            jatekos.add(pontok);
+            jatekos.add(Box.createVerticalStrut(10));
+            
+            jatekosInfo.add(jatekos);
+        }
+        String[] nevek=game.getObjektumok().keySet();
+        tektonok=new JComboBox<>(nevek);
+
+        // kör és játékos
+        JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+"Aktív játékos: "+game.getAktivJatekos().getNev());
+        
+        //rovarasz vagy gombasz gombok
+        if(game.getGombaszok().contains(game.getAktivJatekos())){
+            isGombasz=true;
+        }
+        else{
+            isGombasz=false;
+        }
+
         //gombok létrehozása
         korVege=new JButton("Kör vége");
         TestNov=new JButton("Test növesztés");
@@ -45,27 +82,49 @@ public class JatekAblak extends JFrame {
         Eszik=new JButton("Spóra evése");
         megjelenit=new JButton("Megjelenít");
 
+        Dimension gombMeret=new Dimension(100,50);
+
+        //gombok lenyomása
+        korVege.addActionListener();
+        TestNov.actionListener();
+        Sporaszor.actionListener();
+        FonalNov.actionListener();
+        RovarEves.actionListener();
+        Maszik.actionListener();
+        Vag.actionListener();
+        Eszik.actionListener();
+        megjelenit.actionListener();
+
         //gombasz gombok
         gombaszGombok.add(TestNov);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
         gombaszGombok.add(Sporaszor);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
         gombaszGombok.add(FonalNov);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
         gombaszGombok.add(RovarEves);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
+        gombaszGombok.add(korVege);
 
 
         //rovarasz gombok
         rovaraszGombok.add(Maszik);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
         rovaraszGombok.add(Vag);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
         rovaraszGombok.add(Eszik);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
+        gombaszGombok.add(korVege);
 
 
+        foGombaszPanel.add(jatekosInfo,BorderLayout.NORTH);
+        foGombaszPanel.add(gombaszGombok,BorderLayout.SOUTH);
+        add(foGombaszPanel);
 
-
-
-        setVisible(true);
     }
-   /*  void gombokBeallitasa(JButton gomb){
-        gomb.setMaximumSize(50,100);
-        gomb.setPreferredSize(50,100);
+    void gombokBeallitasa(JButton gomb, Dimension dimension){
+        gomb.setMaximumSize(dimension);
+        gomb.setPreferredSize(dimension);
         gomb.setFont(getFont());
-    }*/
+    }
 }

@@ -148,4 +148,8 @@ public class Gombasz extends Jatekos{
             tekton.gombafonalFelszivas();
         }
     }
+    @Override
+    public String szerepKor(){
+        return "Gombász";
+    }
 }

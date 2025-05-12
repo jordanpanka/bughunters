@@ -46,7 +46,7 @@ public class Parancskezelok {
     /**
      * @brief Parancskezelő konstruktor, inicializálja az adattagokat
      */
-    Parancskezelok() {
+    public Parancskezelok() {
         this.objektumok = new HashMap<>();
         this.objektumokbolString = new HashMap<>();
         this.jatekosok = new ArrayList<>();
@@ -2700,8 +2700,10 @@ public class Parancskezelok {
                 }
         }
             */
+            Parancskezelok pk;
+            Jatek jt;
             SwingUtilities.invokeLater(()->{
-                JatekAblak jatek=new JatekAblak();
+                JatekAblak jatek=new JatekAblak(pk,jt);
                 jatek.setVisible(true);
             });
     }
