@@ -109,9 +109,9 @@ public class GGombafonal extends Rajz {
     /**
      * Kirajzolja a gombafonalat a megadott grafikus kontextusra.
      *
-     * @param g a rajzoláshoz használt grafikus kontextus
+     * @param g a rajzoláshoz használt grafikus elem
      */
-   
+   @Override
     public void Draw(Graphics g) {
         if (szin != null) {
             g.setColor(szin);

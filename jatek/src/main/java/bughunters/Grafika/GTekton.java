@@ -56,6 +56,7 @@ public class GTekton extends Rajz {
      *
      * @param g a grafikus kontextus
      */
+    @Override
     public void Draw(Graphics g) {
         if (tekton != null && szin != null) {
             g.setColor(szin);

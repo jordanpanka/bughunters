@@ -1,9 +1,12 @@
 package bughunters.Grafika;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 public abstract class Rajz {
     protected int x;
     protected int y;
-    public double getX() {
+    public int getX() {
         return x;
     }
 
@@ -12,7 +15,7 @@ public abstract class Rajz {
     }
 
     
-    public int getY() {
+    public double getY() {
         return y;
     }
 
@@ -20,6 +23,6 @@ public abstract class Rajz {
         this.y = y;
     }
 
-    public void Draw(){}
+    public void Draw(Graphics g){}
     
 }
