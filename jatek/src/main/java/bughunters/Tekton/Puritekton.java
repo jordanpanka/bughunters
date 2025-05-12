@@ -1,8 +1,11 @@
 package bughunters.Tekton;
 
-import bughunters.Gombafaj.*;
-
 import java.util.List;
+
+import bughunters.Gombafaj.Gombafaj;
+import bughunters.Gombafaj.Gombafonal;
+import bughunters.Gombafaj.Gombatest;
+import bughunters.Gombafaj.Spora;
 
 public class Puritekton extends Tekton {
 
@@ -13,7 +16,7 @@ public class Puritekton extends Tekton {
      */
     @Override
     public Gombatest gombatestNov(Gombafaj gf,boolean sporaval) throws Exception{
-        System.out.println("Meghívódik a Puritekton gombatestNov metódusa.");
+        //System.out.println("Meghívódik a Puritekton gombatestNov metódusa.");
         throw new Exception("Erre a tektonra nem lehet gombatestet növeszteni.");
     }
 
