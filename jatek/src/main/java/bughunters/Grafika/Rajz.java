@@ -1,22 +1,22 @@
 package bughunters.Grafika;
 
 public abstract class Rajz {
-    private double x;
-    private double y;
+    protected int x;
+    protected int y;
     public double getX() {
         return x;
     }
 
-    public void setX(double x) {
+    public void setX(int x) {
         this.x = x;
     }
 
     
-    public double getY() {
+    public int getY() {
         return y;
     }
 
-    public void setY(double y) {
+    public void setY(int y) {
         this.y = y;
     }
 

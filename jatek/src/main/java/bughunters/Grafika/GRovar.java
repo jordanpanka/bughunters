@@ -1,0 +1,42 @@
+package bughunters.Grafika;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+
+
+
+public class GRovar extends Rajz {
+   
+    private BufferedImage image;
+
+
+
+    /**
+     * Beállítja a rovar képét.
+     *
+     * @param image a beállítandó kép
+     */
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
+
+    /**
+     * Visszaadja a rovar képét.
+     *
+     * @return a rovar képe
+     */
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    /**
+     * Kirajzolja a rovart a megadott Graphics objektumra az (x, y) koordinátákra.
+     *
+     * @param g a grafikus kontextus, amire rajzolni kell
+     */
+    public void Draw(Graphics g) {
+        if (image != null) {
+            g.drawImage(image, x, y, null);
+        }
+    }
+}
