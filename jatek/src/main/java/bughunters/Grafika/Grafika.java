@@ -158,7 +158,7 @@ public class Grafika extends JPanel {
             double xC = entry.getValue().getX();
             double yC = entry.getValue().getY();
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
-            if (d <= R) {
+            if (d <= 10) {
                 return entry.getKey(); // megtaláltuk
             }
         }

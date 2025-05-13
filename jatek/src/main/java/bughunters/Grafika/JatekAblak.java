@@ -5,6 +5,7 @@ import javax.swing.*;
 import org.w3c.dom.events.MouseEvent;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.List;
@@ -37,6 +38,13 @@ public class JatekAblak extends JFrame {
     private HashMap<String, Boolean> mouse;
     public JatekAblak(Parancskezelok pk, Jatek jatek){
         game=pk;
+        mouse.put("testNov",false);
+        mouse.put("Sporaszor",false);
+        mouse.put("FonalNov",false);
+        mouse.put("Rovareves", false);
+        mouse.put("Maszik",false);
+        mouse.put("Vag",false);
+        mouse.put("Eszik",false);
 
         setTitle("Bughunters");
         setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -72,10 +80,12 @@ public class JatekAblak extends JFrame {
             
             jatekosInfo.add(jatekos);
         }
-        Set<String> nevek=game.getObjektumok().keySet();
-        List<String> nevek2;
+        /*Set<String> nevek=game.getObjektumok().keySet();
+        List<String> nevek2=new ArrayList<String>();
         nevek.forEach(s->nevek2.add(s));
-        tektonok=new JComboBox<>(nevek2);
+        tektonok=new JComboBox<>(nevek2);*/
+        tektonok = new JComboBox<>(game.getObjektumok().keySet().toArray(new String[0]));
+
 
         // kör és játékos
         JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+"Aktív játékos: "+game.getAktivJatekos().getNev());
@@ -127,14 +137,14 @@ public class JatekAblak extends JFrame {
             mouse.put("Eszik",true);
         });
         megjelenit.addActionListener(e->{
-            String kivalasztott=tektonok.getSelectedItem();
+            String kivalasztott=(String)tektonok.getSelectedItem();
             Object kiv =game.getObjektumok().get((Object)kivalasztott);
-            grafika.Draw(kiv);
+            grafika.Draw((Tekton)kiv,grafika.getGraphics());
         });
         this.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (mouse.get("testNov")) {
+                if (Boolean.TRUE.equals(mouse.get("testNov"))) {
                     Tekton t =grafika.tektonKeres(e.getScreenX(), e.getScreenY());
                     game.gtNov(t);
                     mouse.put("testNov",false);
@@ -159,7 +169,7 @@ public class JatekAblak extends JFrame {
                 else if( mouse.get("Rovareves")){
                     Rovar r=grafika.rovarKeres(e.getScreenX(),e.getScreenY());
                     game.rovart_eszik(r);
-                    mouse.put("FonalNov",false);
+                    mouse.put("Rovareves", false);
                 }
                 else if(mouse.get("Maszik")){
                     if(!elsokattintas){
@@ -197,7 +207,7 @@ public class JatekAblak extends JFrame {
                         Spora sp=grafika.sporaKeres(e.getScreenX(),e.getScreenY());
                         game.eszik(rovarKiv,sp);
                         rovarKiv=null;
-                         mouse.put("Vag",false);
+                         mouse.put("Eszik",false);
                     }
                 }
 
