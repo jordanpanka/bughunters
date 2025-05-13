@@ -6,7 +6,6 @@ import bughunters.Gombafaj.*;
 
 public class Rovar {
     private Tekton tartozkodas;
-    private String szin;
     private int allapotIdeje;
     private rovarAllapot allapot;
     private Rovarasz rs; // Rovarász objektum, amely a rovar viselkedését irányítja
@@ -15,9 +14,6 @@ public class Rovar {
      * @brief Paraméter nélküli konstruktor.
      */
     public Rovar() {
-        //System.out.println("Létrejött egy új Rovar.");
-
-        //this.szin = "";
         this.tartozkodas = null;
         allapot = rovarAllapot.Alap;
         allapotIdeje = 0;
@@ -27,10 +23,7 @@ public class Rovar {
      *  @brief Paraméteres konstruktor.
      * @param tartozkodas A Tekton ahol a Rovar tartózkodik.
      */
-    public Rovar(/*String szin,*/ Tekton tartozkodas, Rovarasz rs) {
-        //System.out.println("Létrejött egy új Rovar.");
-
-        //this.szin = szin;
+    public Rovar(Tekton tartozkodas, Rovarasz rs) {
         this.rs = rs;
         this.tartozkodas = tartozkodas;
         allapot = rovarAllapot.Alap;
@@ -41,16 +34,6 @@ public class Rovar {
         rs.removeRovar(this);
     }
     
-    public String getSzin() { 
-        //System.out.println("Meghívódott a Rovar GetSzin metódusa.");
-
-        return szin; 
-    }
-    public void setSzin(String szin) { 
-        //System.out.println("Meghívódott a Rovar setSzin metódusa.");
-
-        this.szin = szin; 
-    }
     
 
     /**

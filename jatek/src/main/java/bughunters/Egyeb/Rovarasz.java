@@ -1,15 +1,17 @@
 package bughunters.Egyeb;
 
-import bughunters.Rovar.*;
-import bughunters.Gombafaj.*;
-import bughunters.Tekton.*;
-
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import bughunters.Gombafaj.Gombafonal;
+import bughunters.Gombafaj.Spora;
+import bughunters.Rovar.Rovar;
+import bughunters.Tekton.Tekton;
+
 public class Rovarasz extends Jatekos {
     private List<Rovar> rovarok;
-
+    Color szin;
     /***
      * @brief A rovarok listájának lekérdezése
      * @return A Rovarász által irányított rovarok listája
@@ -35,6 +37,21 @@ public class Rovarasz extends Jatekos {
         rovarok = new ArrayList<>();
     }
    
+    /***
+     * @brief Konstruktor, amely inicializálja a Rovarász nevét és a rovarok listáját
+     * @param nev A Rovarász neve
+     * @param szin A Rovarász rovarjainak a szine
+     */
+    public Rovarasz(String nev, Color szin){
+        super(nev);
+        rovarok = new ArrayList<>();
+        this.szin = szin;
+    }
+
+    public Color getSzin() {
+        return szin;
+    }
+
     /***
      * @brief Új rovar hozzáadása a Rovarászhoz
      * @param rovar A hozzáadandó rovar

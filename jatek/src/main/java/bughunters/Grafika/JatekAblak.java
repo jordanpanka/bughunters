@@ -1,10 +1,17 @@
 package bughunters.Grafika;
 
 import javax.swing.*;
+
+import org.w3c.dom.events.MouseEvent;
+
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Set;
 
 import bughunters.Egyeb.Jatek;
 import bughunters.Egyeb.Parancskezelok;
+import bughunters.Rovar.Rovar;
+import bughunters.Tekton.Tekton;
 
 public class JatekAblak extends JFrame {
     private Parancskezelok game;
@@ -20,6 +27,10 @@ public class JatekAblak extends JFrame {
     private JComboBox tektonok;
     private JButton megjelenit;
     private boolean isGombasz;
+    private boolean elsokattintas;
+    private Tekton elsoTekton;
+    private Rovar rovarKiv;
+    private HashMap<String, Boolean> mouse;
     public JatekAblak(Parancskezelok pk, Jatek jatek){
         game=pk;
 
@@ -57,8 +68,10 @@ public class JatekAblak extends JFrame {
             
             jatekosInfo.add(jatekos);
         }
-        String[] nevek=game.getObjektumok().keySet();
-        tektonok=new JComboBox<>(nevek);
+        Set<String> nevek=game.getObjektumok().keySet();
+        String[] nevek2;
+        nevek.forEach(s->nevek2.add(s));
+        tektonok=new JComboBox<>(nevek2);
 
         // kör és játékos
         JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+"Aktív játékos: "+game.getAktivJatekos().getNev());
@@ -85,16 +98,108 @@ public class JatekAblak extends JFrame {
         Dimension gombMeret=new Dimension(100,50);
 
         //gombok lenyomása
-        korVege.addActionListener();
-        TestNov.actionListener();
-        Sporaszor.actionListener();
-        FonalNov.actionListener();
-        RovarEves.actionListener();
-        Maszik.actionListener();
-        Vag.actionListener();
-        Eszik.actionListener();
-        megjelenit.actionListener();
+        korVege.addActionListener(e->{
+            game.endTurn();
+        });
+        TestNov.addActionListener(e->{
+            mouse.get("testNov").booleanValue(true);
+        });
+        Sporaszor.actionListener(e->{
+            mouse.get("Sporaszor").booleanValue(true);
+        });
+        FonalNov.actionListener(e->{
+            mouse.get("FonalNov").booleanValue(true);
+        });
+        RovarEves.actionListener(e->{
+            mouse.get("Rovareves").booleanValue(true);
+        });
+        Maszik.actionListener(e->{
+            mouse.get("Maszik").booleanValue(true);
+        });
+        Vag.actionListener(e->{
+            mouse.get("Vag").booleanValue(true);
+        });
+        Eszik.actionListener(e->{
+            mouse.get("Eszik").booleanValue(true);
+        });
+        megjelenit.actionListener(e->{
+            String kivalasztott=tektonok.getSelectedItem();
+            Tekton kiv =game.getObjektumok().get(kivalasztott);
+            grafika.Draw(kiv);
+        });
+        this.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (mouse.get("testNov")) {
+                    Tekton t =grafika.tektonKeres(e.getScreenX(), e.getScreenY());
+                    game.gtNov(t);
+                    mouse.get("testNov").booleanValue(false);
+                }
+                else if(mouse.get("Sporaszor")){
+                    Gombatest gt=grafika.gombatestKeres(e.getScreenX(), e.getScreenY());
+                    game.sporaszor(gt);
+                    mouse.get("Sporaszor").booleanValue(false);
+                }
+                else if(mouse.get("FonalNov")){
+                    if(!elsokattintas){
+                        elsokattintas=true;
+                        elsoTekton=grafika.tektonKeres(e.getScreenX(),e.getScreenY());
+                    } 
+                    else{
+                        elsokattintas=false;
+                        Tekton t2=grafika.tektonKeres(e.getScreenX(),e.getScreenY());
+                        game.gfNov(elsoTekton,t2);
+                        mouse.get("FonalNov").booleanValue(false);
+                    }
+                }
+                else if( mouse.get("Rovareves")){
+                    Rovar r=grafika.rovarKeres(e.getScreenX(),e.getScreenY());
+                    game.rovart_eszik(r);
+                    mouse.get("RovarEves").booleanValue(false);
+                }
+                else if(mouse.get("Maszik")){
+                    if(!elsokattintas){
+                        elsokattintas=true;
+                        rovarKiv=grafika.rovarKeres(e.getScreenX(), e.getScreenY());
+                    }
+                    else{
+                        elsokattintas=false;
+                        Tekton t=grafika.tektonKeres(e.getScreenX(),e.getScreenY());
+                        game.maszik(rovarKiv, t);
+                        rovarKiv=null;
+                        mouse.get("Maszik").booleanValue(false);
+                    }
+                }
+                else if(mouse.get("Vag")){
+                    if(!elsokattintas){
+                        elsokattintas=true;
+                        rovarKiv=grafika.rovarKeres(e.getScreenX(), e.getScreenY());
+                    }
+                    else{
+                        elsokattintas=false;
+                        Gombafonal gf=grafika.fonalKeres(e.getScreenX(),e.getScreenY());
+                        game.vag(rovarKiv, gf);
+                        rovarKiv=null;
+                        mouse.get("Vag").booleanValue(false);
+                    }
+                }
+                else if(mouse.get("Eszik")){
+                    if(!elsokattintas){
+                        elsokattintas=true;
+                        rovarKiv=grafika.rovarKeres(e.getScreenX(), e.getScreenY());
+                    }
+                    else{
+                        elsokattintas=false;
+                        Spora sp=grafika.sporaKeres(e.getScreenX(),e.getScreenY());
+                        game.eszik(rovarKiv,sp);
+                        rovarKiv=null;
+                        mouse.get("Vag").booleanValue(false);
+                    }
+                }
 
+            }
+            
+        );
         //gombasz gombok
         gombaszGombok.add(TestNov);
         gombaszGombok.add(Box.createHorizontalStrut(10));
@@ -118,13 +223,19 @@ public class JatekAblak extends JFrame {
 
 
         foGombaszPanel.add(jatekosInfo,BorderLayout.NORTH);
+        foGombaszPanel.add(grafika);
         foGombaszPanel.add(gombaszGombok,BorderLayout.SOUTH);
+
+        foRovaraszPanel.add();
+        foRovaraszPanel.add();
+        foRovaraszPanel.add();
         add(foGombaszPanel);
 
     }
-    void gombokBeallitasa(JButton gomb, Dimension dimension){
+    public void gombokBeallitasa(JButton gomb, Dimension dimension){
         gomb.setMaximumSize(dimension);
         gomb.setPreferredSize(dimension);
         gomb.setFont(getFont());
     }
 }
+

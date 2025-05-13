@@ -1,12 +1,16 @@
 package bughunters.Egyeb;
 
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+
 import bughunters.Gombafaj.*;
-import bughunters.Grafika.JatekAblak;
 import bughunters.Tekton.*;
 import bughunters.Rovar.*;
 import bughunters.Egyeb.*;
 import bughunters.Grafika.*;
+
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -14,6 +18,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.SwingUtilities;
 
 /**
@@ -31,10 +36,22 @@ public class Parancskezelok {
     private List<Gombasz> gombaszok;
     private List<Rovarasz> rovaraszok;
     private HashMap<String, Object> objektumok;
+    public HashMap<String, Object> getObjektumok() {
+        return objektumok;
+    }
+
+
+
+    public void setObjektumok(HashMap<String, Object> objektumok) {
+        this.objektumok = objektumok;
+    }
+
     private HashMap<Object,String> objektumokbolString;
     private Jatekter jatekter;
     private parancsAllapot allapot;
     private Jatekos aktivJatekos;
+    private Grafika grafika;
+
 
     /**
      * @brief Parancskezelő konstruktor, inicializálja az adattagokat
@@ -92,7 +109,450 @@ public class Parancskezelok {
     }
 
     //A játékosok a játék indítása után nem férhetnek hozzá Arrange parancsokhoz, de a tesztek mindenhez hozzáférnek
-    
+
+    public BufferedImage getGombatestKepByFaj(Gombafaj gf){
+        BufferedImage img = null;
+        try {
+            switch(gf.getNev()) {
+                case "Csiperke gomba":
+                    img = ImageIO.read(new File(""));
+                    break;
+                case "Foltos püffeteg":
+                    img = ImageIO.read(new File(""));
+                    break;
+                case "Vargánya gomba":
+                    img = ImageIO.read(new File(""));
+                    break;
+                case "Légyölő galóca":
+                    img = ImageIO.read(new File(""));
+                    break;
+                case "Szegfűgomba":
+                    img = ImageIO.read(new File(""));
+                    break;
+                default:
+            }
+        } catch (Exception e) {
+            System.out.println("Nem sikerult betolteni a kepeket");
+            e.printStackTrace();
+        }   
+        return img;
+    }
+
+    public BufferedImage getRovarKepByColor(Color szin){
+        Color BROWN = new Color(121, 87, 53);
+        Color LIGHTBROWN = new Color(172, 86, 0);
+        try {
+            if (szin == Color.RED) {
+                return ImageIO.read(new File(""));
+            } else if (szin == Color.ORANGE) {
+                return ImageIO.read(new File(""));
+            } else if (szin == Color.MAGENTA) {
+                return ImageIO.read(new File(""));
+            } else if (szin == BROWN) {
+                return ImageIO.read(new File(""));
+            }else if (szin == LIGHTBROWN) {
+                return ImageIO.read(new File(""));
+            }
+        } catch (Exception e) {
+            System.out.println("Nem sikerult betolteni a kepeket");
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public Color getColorKepByFaj(Gombafaj gf){
+        Color szin = null;
+        switch(gf.getNev()) {
+            case "Csiperke gomba":
+                szin = Color.PINK;
+                break;
+            case "Foltos püffeteg":
+                szin = new Color(157, 64, 210);
+                break;
+            case "Vargánya gomba":
+                szin = Color.BLUE;
+                break;
+            case "Légyölő galóca":
+                szin = Color.RED;
+                break;
+            case "Szegfűgomba":
+                szin = Color.YELLOW;
+                break;
+            default:
+        }
+        return szin;
+    }
+
+    /**
+     * @brief visszaad egy tektont név alapján.
+     * @param nev A keresendő tekton neve
+     * @return A keresett tekton objektuma
+     */
+    public Tekton getTekton(String nev){
+        try {
+            Tekton tekton = (Tekton)objektumok.get(nev);
+            if(tekton != null){
+                return tekton;
+            }
+        } catch (Exception e) {
+            System.out.println("Parancskezelok getTekton() null vagy convert hiba" + e.getMessage());
+        }
+        return null;
+    }
+
+    /**
+     * @brief visszaad egy List<string>-et a tekonok neveire.
+     * @return A tektonok nevei egy istában
+     */
+    public List<String> getTektonNevList(){
+        List<String> tektonNevek = new ArrayList<>();
+        for(String kulcs : objektumok.keySet()) {
+            if (kulcs.matches("tekton\\d+") || kulcs.matches("monotekton\\d+") || kulcs.matches("puritekton\\d+") || kulcs.matches("disszolator\\d+") || kulcs.matches("infinator\\d+")) {
+                tektonNevek.add(kulcs);
+            }
+        }
+        szamszeruSort(tektonNevek);
+        return tektonNevek;
+    }
+
+    public Boolean kezdetiRovarokGombak(HashMap<Gombasz, Tekton> gombaszokTestei, HashMap<Rovarasz, Tekton> rovaraszokRovarjai) {
+        //Felveszi a játékosok kezdő objektumait.
+        for(Gombasz gombasz : gombaszokTestei.keySet()){
+            try {
+                gombasz.testNovesztes(gombaszokTestei.get(gombasz), false);
+            } catch (Exception e) {
+                HibaAblak uzenet = new HibaAblak("Nem sikerult gombatestet noveszteni");
+                return false;
+            }
+        }
+        for(Rovarasz rovarasz : rovaraszokRovarjai.keySet()){
+            try {
+                Rovar rovar = new Rovar(rovaraszokRovarjai.get(rovarasz),rovarasz);
+                rovarasz.addRovar(rovar);
+                GRovar grafRovar = new GRovar(getRovarKepByColor(rovarasz.getSzin()));
+
+                String ujRovarNev = ujRovarNev(); //rovar neve
+                objektumok.put(ujRovarNev, rovar);
+                objektumokbolString.put(rovar, ujRovarNev);
+
+                //GRAFIKA HASHMAP BERAKÁSA
+            } catch (Exception e) {
+                HibaAblak uzenet = new HibaAblak("Nem sikerult létrehozni a Rovart");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * @brief Felveszi a megkapott Rovaraszt a listákba. Név duplikáció esetén megejelnít egy hibaablakot és visszatér.
+     */
+    public void rovaraszFelvetel(Rovarasz rs){
+        if (objektumok.containsKey(rs.getNev())) {
+            HibaAblak uzenet = new HibaAblak("Mar van ilyen nevu jatekos");
+            return;
+        }
+        jatekosok.add(rs);
+        rovaraszok.add(rs);
+        objektumok.put(rs.getNev(), rs);
+        objektumokbolString.put(rs, rs.getNev());
+
+        /* 
+        //Rovar léterhozása
+        String tektonNeve = parancs.split(" ")[5];
+        char tektonTipus = tektonNeve.charAt(0);
+        Tekton tartozkodas = parancsTektonCast(tektonTipus, tektonNeve);
+        Rovar ujRovar = new Rovar(tartozkodas,rovarasz);
+
+        //Rovar kezelése
+        rovarasz.addRovar(ujRovar);
+        String ujRovarNev = ujRovarNev(); //rovar neve
+        objektumok.put(ujRovarNev, ujRovar);
+        objektumokbolString.put(ujRovar, ujRovarNev);
+
+        output.println("Hozzaadva "+rovarasz.getNev() +" rovarasz "+ujRovarNev);
+        */
+    }    
+
+    /**
+     * @brief Felveszi a megkapott Gombaszt a listákba. Név duplikáció esetén megejelnít egy hibaablakot és visszatér.
+     */
+    public void gombaszFelvetel(Gombasz gs){
+        //Felveszi a megkapott Gombaszt a listákba.
+        if (objektumok.containsKey(gs.getNev())) {
+            HibaAblak uzenet = new HibaAblak("Mar van ilyen nevu jatekos");
+            return;
+        }
+        jatekosok.add(gs);
+        gombaszok.add(gs);
+        objektumok.put(gs.getNev(), gs);
+        objektumokbolString.put(gs, gs.getNev());
+    }
+
+    public void eszik(Rovar r, Spora s, Tekton t) { 
+        // A paraméterben megadott Rovar megeszi a Gombafaj egyik spóráját a megadott Tektonról
+
+        if(r == null){
+            HibaAblak uzenet = new HibaAblak("parancskezelok eszik() rovar null");
+            return;
+        }
+
+        if(t == null){
+            HibaAblak uzenet = new HibaAblak("parancskezelok eszik() tekton null");
+            return;
+        }
+        if(s == null){
+            HibaAblak uzenet = new HibaAblak("parancskezelok eszik() spora null");
+            return;
+        }
+
+        if(!r.getTartozkodas().equals(t)) {
+            HibaAblak uzenet = new HibaAblak("A rovar nem a megadott tektonon tartozkodik");
+            return;
+        }
+
+        List<Spora> sporak = t.getSporak();
+
+        if(!sporak.contains(s)){
+            HibaAblak uzenet = new HibaAblak("Az adott gombafajnak nincsen spórája a tektonon");
+            return;
+        }
+
+        if(r.getAllapot() == rovarAllapot.Benitott){
+            HibaAblak uzenet = new HibaAblak("A rovar le van benitva");
+            return;
+        }
+        try {
+            Rovarasz rovarasz = (Rovarasz)aktivJatekos;
+            rovarasz.eszik(s, r); 
+        } catch (Exception e) {
+            HibaAblak uzenet = new HibaAblak(e.getMessage());
+            return;
+        }
+    }
+
+    public void vag(Rovar r, Gombafonal gf) {
+        // A paraméterben megadott rovar elvágja a megadott gombafonalat
+                        if(r == null){
+                            HibaAblak uzenet = new HibaAblak("Vag() rovar objektum null");
+                            return;
+                        }
+
+                        if(gf == null){
+                            HibaAblak uzenet = new HibaAblak("Vag() Gombafonal objektum null");                            
+                            return;
+                        }
+
+                        if(r.getAllapot() == rovarAllapot.Benitott){
+                            HibaAblak uzenet = new HibaAblak("A rovar le van benitva");
+                            return;
+                        }
+                        if(r.getAllapot() == rovarAllapot.VagasKeptelen){
+                            HibaAblak uzenet = new HibaAblak("Rovar vagaskeptelenito allapotban van");
+                            return;
+                        }
+                        try {
+                            Rovarasz rovarasz = (Rovarasz)aktivJatekos;
+                            rovarasz.vag(gf, r);
+                        } catch(Exception e) {
+                            HibaAblak uzenet = new HibaAblak("Nem sikerult elvagni a gombafonalat");
+                        }
+    }
+
+    public void maszik(Rovar r, Tekton t) {
+        // A paraméterben megadott rovar átmászik a megadott tektonra a parancs hatására
+                        if(r == null){
+                            HibaAblak uzenet = new HibaAblak("Nem letezik a rovar. Parancskezelok maszik()");
+                            return;
+                        }
+                        if(t == null){
+                           HibaAblak uzenet = new HibaAblak("Nem letezik a Tekton. Parancskezelok maszik()");
+                            return;
+                        }
+                        if(r.getAllapot() == rovarAllapot.Benitott){
+                            HibaAblak uzenet = new HibaAblak("A rovar le van benitva");
+                            return;
+                        }
+
+                        try{
+                            Rovarasz rovarasz = (Rovarasz)aktivJatekos;
+                            rovarasz.maszik(t, r);
+                        }catch(Exception e){
+                            HibaAblak uzenet = new HibaAblak("Nem lehetett átmenni a megadott tektonra");
+                            return;
+                        }
+    }
+
+    public void rovart_eszik(Rovar r) {
+        // A gombasz jatekos megeszi a paraméterben kapott rovart
+            if(r == null){
+                HibaAblak uzenet = new HibaAblak("Nem letezik a rovar. Parancskezelok rovart_eszik()");
+                return;
+            }
+
+            Gombasz gombasz = (Gombasz)aktivJatekos;
+
+            if(r.getAllapot() != rovarAllapot.Benitott){
+                HibaAblak uzenet = new HibaAblak("A rovar nincs lebenitva");
+                return;
+            }
+            try {
+                gombasz.rovarEves(r);
+            } catch (Exception e) {
+                HibaAblak uzenet = new HibaAblak("Nem sikerult megenni a rovart");
+                return;
+            }
+    }
+
+    public void gfnov(Tekton t1, Tekton t2, Gombafaj g) {
+        // A megadott gombafaj gombafonalat húz a megadott két tekton közé
+            if(g == null){
+                HibaAblak uzenet = new HibaAblak("parancskezelok gfnov() gombafaj null");
+                return;
+            }
+            if(t1 == null){
+                HibaAblak uzenet = new HibaAblak("parancskezelok gfnov() tekton1 null");
+                return;
+            }
+            if(t2 == null){
+                HibaAblak uzenet = new HibaAblak("parancskezelok gfnov() tekton2 null");
+                return;
+            }
+           
+            try {
+                Gombasz gombasz = (Gombasz)aktivJatekos;
+                gombasz.fonalNov(t1, t2);
+            } catch (Exception e) {
+                HibaAblak uzenet = new HibaAblak("Nem sikerult gombafonalat noveszteni");
+                return;
+            }
+    }
+
+    public void sporaszor(Gombatest gt) {
+        // A megadott gombatest sporat szor
+
+        if(gt == null){
+            HibaAblak uzenet = new HibaAblak("parancskezelok sporaszor() gombatest null");
+            return;
+        }
+
+        Tekton tartozkodas = gt.getTekton();
+        try {
+            Gombasz gombasz = (Gombasz)aktivJatekos;
+            gombasz.sporaSzoras(tartozkodas, gt);
+        } catch (Exception e) {
+            HibaAblak uzenet = new HibaAblak("Nem sikerult sporat szorni");
+            return;
+        }
+    }
+
+    public void gtNov(Tekton t1) {
+        // A megadott Tektonra gombatestet növeszt
+                        if(t1 == null){
+                            HibaAblak uzenet = new HibaAblak("parancskezelok gtNov() tekton null");
+                            return;
+                        }
+                        Gombasz gombasz = (Gombasz)aktivJatekos;
+
+                        List<Spora> sporak = t1.getSporak();
+                        boolean vanSpora = false;
+
+                        for(Spora spora : sporak) {
+                            if(spora.getGombafaj().equals(gombasz.getGombafaj())) {
+                                if(spora.getMennyiseg() >= 3){
+                                    vanSpora = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if(!vanSpora){
+                            HibaAblak uzenet = new HibaAblak("Nincs eleg spora gombatest noveszteshez");
+                            return;
+                        }
+
+                        //egyéb gombatest a tektonon ellenőrzés
+                        ArrayList<Gombatest> gombatestek = new ArrayList<>();
+                        for(Gombasz egygombasz : gombaszok) {
+                            Gombafaj gombaszFaja = egygombasz.getGombafaj();
+                            gombatestek.addAll(gombaszFaja.getGombaTestekList());
+                        }
+                        for(Gombatest gombatest : gombatestek) {
+                            if(gombatest.getTekton().equals(t1)) {
+                                HibaAblak uzenet = new HibaAblak("Mar van gombatest az adott tektonon");
+                                return;
+                            }
+                        }
+
+                        try{
+                            gombasz.testNovesztes(t1, true);
+                        }catch(Exception e){
+                            HibaAblak uzenet = new HibaAblak(e.getMessage());
+                            return;
+                        }
+    }
+
+    /**
+     * @brief Az aktuális játékos köre véget ér
+     */
+    public void endTurn() {
+         aktivJatekos.korVege();
+    }
+
+    public void gombaszFelvetel(String nev, Gombafaj gf) {
+        // Ellenőrzi, hogy ne legyen két azonos nevű játékos, illetve egy gombafaj csak egy játékoshoz tartozzon
+        if(nev== null || gf == null) {
+            HibaAblak uzenet = new HibaAblak("Hibasan adta meg az adatokat");
+            return;
+        }
+        if(gombaszok != null) {
+            for(Gombasz gombasz : gombaszok) {
+                if(gombasz.getNev().equals(nev)) {
+                    HibaAblak uzenet = new HibaAblak("Mar van ilyen nevu jatekos");
+                    return;
+                }else if(gombasz.getGombafaj().equals(gf)) {
+                    HibaAblak uzenet = new HibaAblak("Mar van ilyen gombafaj");
+                    return;
+                }
+            }
+        }
+        Gombasz gombasz = new Gombasz(nev,gf);
+
+        objektumok.put(gf.getNev(), gf);                               //gombafaj neve alapjan mentjuk el a gombafajt a Map-en
+        objektumokbolString.put(gf, gf.getNev());
+
+        gombaszok.add(gombasz);
+        jatekosok.add(gombasz);
+        objektumok.put(nev, gombasz);                               //Gombasz neve alapjan mentjuk el a gombaszt a Map-en
+        objektumokbolString.put(gombasz, nev); 
+    }
+
+    public void rovaraszFelvetel(String nev, Color szin) {
+        // Ellenőrzi, hogy ne legyen két azonos nevű játékos, illetve egy rovar szín csak egy játékoshoz tartozzon
+        if(nev== null || szin == null) {
+            HibaAblak uzenet = new HibaAblak("Hibasan adta meg az adatokat");
+            return;
+        }
+        if(rovaraszok != null) {
+            for(Rovarasz rovarasz : rovaraszok) {
+                if(rovarasz.getNev().equals(nev)) {
+                    HibaAblak uzenet = new HibaAblak("Mar van ilyen nevu jatekos");
+                    return;
+                }else if(rovarasz.getSzin().equals(szin)) {
+                    HibaAblak uzenet = new HibaAblak("Mar van színű rovar");
+                    return;
+                }
+            }
+        }
+        Rovarasz rovarasz = new Rovarasz(nev,szin);
+
+        rovaraszok.add(rovarasz);
+        jatekosok.add(rovarasz);
+        objektumok.put(nev, rovarasz);                               //rovarasz neve alapjan mentjuk el a gombaszt a Map-en
+        objektumokbolString.put(rovarasz, nev); 
+    }
+
     /**
      * @brief Feldolgozza a bemeneti akciót és végrehajtja a megfelelő műveletet. A metódus a bemeneti string alapján azonosítja a parancsot, ellenőrzi a jogosultságokat, majd végrehajtja a kért műveletet. A parancsok lehetnek act (játék műveletek), arrange (elrendezés) vagy assert (ellenőrzés) típusúak.
      * @param action A bemeneti parancs string
@@ -2250,11 +2710,14 @@ public class Parancskezelok {
                 }
         }
             */
-            Parancskezelok pk;
-            Jatek jt;
+            Parancskezelok pk=new Parancskezelok();
+            Jatekter jatekter=new Jatekter();
+            Jatek jt=new Jatek(pk,jatekter);
             SwingUtilities.invokeLater(()->{
-                JatekAblak jatek=new JatekAblak(pk,jt);
-                jatek.setVisible(true);
+                //JatekAblak jatek=new JatekAblak(pk,jt);
+                //jatek.setVisible(true);
+                NevFajSzin nfsz=new NevFajSzin(pk,2,3,jt);
+                nfsz.setVisible(true);
             });
     }
 }
