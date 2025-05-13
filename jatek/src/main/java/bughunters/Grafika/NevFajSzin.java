@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import bughunters.Egyeb.Jatek;
+import bughunters.Egyeb.Jatekos;
 import bughunters.Egyeb.Parancskezelok;
 
 public class NevFajSzin extends JFrame{
@@ -65,7 +66,8 @@ public class NevFajSzin extends JFrame{
                     kiirjatekos.setText("Rovarász");
                     gombafaj.setText("Szín: ");
                     gombafajKiv.setModel(new DefaultComboBoxModel<>(szinek));
-                }
+        } 
+
         kovetkezo.addActionListener(e->{
             while(gombaszokSzama!=0){
 
@@ -107,6 +109,8 @@ public class NevFajSzin extends JFrame{
         panel.add(kivPanel);
         panel.add(Box.createVerticalStrut(10));
         panel.add(gombPanel);
+
+        add(panel);
 
     }
 
