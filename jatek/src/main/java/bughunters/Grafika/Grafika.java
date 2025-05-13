@@ -5,13 +5,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.swing.JPanel;
+
 import bughunters.Gombafaj.Gombafonal;
 import bughunters.Gombafaj.Gombatest;
 import bughunters.Gombafaj.Spora;
 import bughunters.Rovar.Rovar;
 import bughunters.Tekton.Tekton;
 
-public class Grafika  {
+public class Grafika extends JPanel {
     //private HashMap<Object,Rajz> grafikusElemek;
     private HashMap<Tekton, GTekton> tektonok;
 
@@ -109,12 +111,16 @@ public class Grafika  {
             Map.Entry::getValue
         ));
 
+        paintComponent(g);
+       
+    }
+    @Override
+    public void paintComponent(Graphics g){
         tektonok.forEach((kulcs, ertek)->{ertek.Draw(g);});
         gombatestek.forEach((kulcs, ertek)->{ertek.Draw(g);});
         gombafonalak.forEach((kulcs, ertek)->{ertek.Draw(g);});
         rovarok.forEach((kulcs, ertek)->{ertek.Draw(g);});
         sporak.forEach((kulcs, ertek)->{ertek.Draw(g);});
-       
     }
     public Gombafonal fonalKeres(int x, int y){
         for (Map.Entry<Gombafonal, GGombafonal> entry : gombafonalak.entrySet()) {
