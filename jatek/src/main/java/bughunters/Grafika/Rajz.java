@@ -15,7 +15,7 @@ public abstract class Rajz {
     }
 
     
-    public double getY() {
+    public int getY() {
         return y;
     }
 
