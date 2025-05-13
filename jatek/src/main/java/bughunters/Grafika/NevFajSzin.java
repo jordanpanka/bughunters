@@ -20,7 +20,6 @@ public class NevFajSzin extends JFrame{
     private JButton kovetkezo;
     private JButton kiirjatekos;
     private JComboBox<String> gombafajKiv;
-    //private JComboBox <String> szinKiv;
     private int gombaszokSzama;
     private int rovaraszokSzama;
     private Parancskezelok game;
@@ -111,7 +110,7 @@ public class NevFajSzin extends JFrame{
         panel.add(gombPanel);
 
         add(panel);
-
+        setVisible(true);
     }
 
     

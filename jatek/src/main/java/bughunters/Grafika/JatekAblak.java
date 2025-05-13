@@ -5,6 +5,7 @@ import javax.swing.*;
 import org.w3c.dom.events.MouseEvent;
 
 import java.awt.*;
+import java.util.Set;
 
 import bughunters.Egyeb.Jatek;
 import bughunters.Egyeb.Parancskezelok;
@@ -60,8 +61,10 @@ public class JatekAblak extends JFrame {
             
             jatekosInfo.add(jatekos);
         }
-        String[] nevek=game.getObjektumok().keySet();
-        tektonok=new JComboBox<>(nevek);
+        Set<String> nevek=game.getObjektumok().keySet();
+        String[] nevek2;
+        nevek.forEach(s->nevek2.add(s));
+        tektonok=new JComboBox<>(nevek2);
 
         // kör és játékos
         JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+"Aktív játékos: "+game.getAktivJatekos().getNev());

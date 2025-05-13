@@ -2710,11 +2710,14 @@ public class Parancskezelok {
                 }
         }
             */
-            Parancskezelok pk;
-            Jatek jt;
+            Parancskezelok pk=new Parancskezelok();
+            Jatekter jatekter=new Jatekter();
+            Jatek jt=new Jatek(pk,jatekter);
             SwingUtilities.invokeLater(()->{
-                JatekAblak jatek=new JatekAblak(pk,jt);
-                jatek.setVisible(true);
+                //JatekAblak jatek=new JatekAblak(pk,jt);
+                //jatek.setVisible(true);
+                NevFajSzin nfsz=new NevFajSzin(pk,2,3,jt);
+                nfsz.setVisible(true);
             });
     }
 }
