@@ -16,7 +16,12 @@ public class Grafika {
     private HashMap<Rovar, GRovar> rovarok;
     private HashMap<Spora,GSpora> sporak;
     public void Draw(Tekton t){
-        
+
+
+        for (Object iterable_element : grafikusElemek.) {
+            
+        }
+        grafikusElemek.forEach();
         int szomszedokSzama=t.getSzomszedok().size();
         double R;
         double cX;
