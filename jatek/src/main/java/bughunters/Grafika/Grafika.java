@@ -64,8 +64,8 @@ public class Grafika  {
         for(int i=1; i<t.getSzomszedok().size(); i++){
             double iranySzog=Math.atan2(elozoY-cY,elozoX-cX);
             double Szog=iranySzog+elfordulasSzoge;
-            elozoX=cX+R*Math.cos(Szog);
-            elozoY=cY+R*Math.cos(Szog);
+            elozoX=(int)(cX+R*Math.cos(Szog));
+            elozoY=(int) (cY+R*Math.cos(Szog));
             tektonok.get(t.getSzomszedok().get(0)).setX(elozoX);
             tektonok.get(t.getSzomszedok().get(0)).setY(elozoY);
         }
@@ -76,19 +76,19 @@ public class Grafika  {
 
     
         for(int i=0; i<tektonok.size(); i++){
-            tektonok.get(i).Draw();
+            tektonok.get(i).Draw(g);
         }
         for(int i=0; i<gombatestek.size(); i++){
-            gombatestek.get(i).Draw();
+            gombatestek.get(i).Draw(g);
         }
         for(int i=0; i<gombafonalak.size(); i++){
-            gombafonalak.get(i).Draw();
+            gombafonalak.get(i).Draw(g);
         }
         for(int i=0; i<rovarok.size(); i++){
-            rovarok.get(i).Draw();
+            rovarok.get(i).Draw(g);
         }
         for(int i=0; i<sporak.size(); i++){
-            sporak.get(i).Draw();
+            sporak.get(i).Draw(g);
         }
     }
     public Gombafonal fonalKeres(int x, int y){
