@@ -7,9 +7,13 @@ import org.w3c.dom.events.MouseEvent;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.List;
 
 import bughunters.Egyeb.Jatek;
 import bughunters.Egyeb.Parancskezelok;
+import bughunters.Gombafaj.Gombafonal;
+import bughunters.Gombafaj.Gombatest;
+import bughunters.Gombafaj.Spora;
 import bughunters.Rovar.Rovar;
 import bughunters.Tekton.Tekton;
 
@@ -69,7 +73,7 @@ public class JatekAblak extends JFrame {
             jatekosInfo.add(jatekos);
         }
         Set<String> nevek=game.getObjektumok().keySet();
-        String[] nevek2;
+        List<String> nevek2;
         nevek.forEach(s->nevek2.add(s));
         tektonok=new JComboBox<>(nevek2);
 
@@ -102,29 +106,29 @@ public class JatekAblak extends JFrame {
             game.endTurn();
         });
         TestNov.addActionListener(e->{
-            mouse.get("testNov").booleanValue(true);
+            mouse.put("testNov",true);
         });
-        Sporaszor.actionListener(e->{
-            mouse.get("Sporaszor").booleanValue(true);
+        Sporaszor.addActionListener(e->{
+            mouse.put("Sporaszor",true);
         });
-        FonalNov.actionListener(e->{
-            mouse.get("FonalNov").booleanValue(true);
+        FonalNov.addActionListener(e->{
+            mouse.put("FonalNov",true);
         });
-        RovarEves.actionListener(e->{
-            mouse.get("Rovareves").booleanValue(true);
+        RovarEves.addActionListener(e->{
+            mouse.put("Rovareves",true);
         });
-        Maszik.actionListener(e->{
-            mouse.get("Maszik").booleanValue(true);
+        Maszik.addActionListener(e->{
+            mouse.put("Maszik",true);
         });
-        Vag.actionListener(e->{
-            mouse.get("Vag").booleanValue(true);
+        Vag.addActionListener(e->{
+            mouse.put("Vag",true);
         });
-        Eszik.actionListener(e->{
-            mouse.get("Eszik").booleanValue(true);
+        Eszik.addActionListener(e->{
+            mouse.put("Eszik",true);
         });
-        megjelenit.actionListener(e->{
+        megjelenit.addActionListener(e->{
             String kivalasztott=tektonok.getSelectedItem();
-            Tekton kiv =game.getObjektumok().get(kivalasztott);
+            Object kiv =game.getObjektumok().get((Object)kivalasztott);
             grafika.Draw(kiv);
         });
         this.addMouseListener(new MouseAdapter(){
@@ -133,12 +137,12 @@ public class JatekAblak extends JFrame {
                 if (mouse.get("testNov")) {
                     Tekton t =grafika.tektonKeres(e.getScreenX(), e.getScreenY());
                     game.gtNov(t);
-                    mouse.get("testNov").booleanValue(false);
+                    mouse.put("testNov",false);
                 }
                 else if(mouse.get("Sporaszor")){
                     Gombatest gt=grafika.gombatestKeres(e.getScreenX(), e.getScreenY());
                     game.sporaszor(gt);
-                    mouse.get("Sporaszor").booleanValue(false);
+                    mouse.put("Sporaszor",false);
                 }
                 else if(mouse.get("FonalNov")){
                     if(!elsokattintas){
@@ -149,13 +153,13 @@ public class JatekAblak extends JFrame {
                         elsokattintas=false;
                         Tekton t2=grafika.tektonKeres(e.getScreenX(),e.getScreenY());
                         game.gfNov(elsoTekton,t2);
-                        mouse.get("FonalNov").booleanValue(false);
+                       mouse.put("FonalNov",false);
                     }
                 }
                 else if( mouse.get("Rovareves")){
                     Rovar r=grafika.rovarKeres(e.getScreenX(),e.getScreenY());
                     game.rovart_eszik(r);
-                    mouse.get("RovarEves").booleanValue(false);
+                    mouse.put("FonalNov",false);
                 }
                 else if(mouse.get("Maszik")){
                     if(!elsokattintas){
@@ -167,7 +171,7 @@ public class JatekAblak extends JFrame {
                         Tekton t=grafika.tektonKeres(e.getScreenX(),e.getScreenY());
                         game.maszik(rovarKiv, t);
                         rovarKiv=null;
-                        mouse.get("Maszik").booleanValue(false);
+                        mouse.put("Maszik",false);
                     }
                 }
                 else if(mouse.get("Vag")){
@@ -180,7 +184,7 @@ public class JatekAblak extends JFrame {
                         Gombafonal gf=grafika.fonalKeres(e.getScreenX(),e.getScreenY());
                         game.vag(rovarKiv, gf);
                         rovarKiv=null;
-                        mouse.get("Vag").booleanValue(false);
+                        mouse.put("Vag",false);
                     }
                 }
                 else if(mouse.get("Eszik")){
@@ -193,11 +197,12 @@ public class JatekAblak extends JFrame {
                         Spora sp=grafika.sporaKeres(e.getScreenX(),e.getScreenY());
                         game.eszik(rovarKiv,sp);
                         rovarKiv=null;
-                        mouse.get("Vag").booleanValue(false);
+                         mouse.put("Vag",false);
                     }
                 }
 
-            }
+            };
+        }
             
         );
         //gombasz gombok

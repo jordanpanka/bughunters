@@ -291,7 +291,7 @@ public class Parancskezelok {
         objektumokbolString.put(gs, gs.getNev());
     }
 
-    public void eszik(Rovar r, Spora s, Tekton t) { 
+    public void eszik(Rovar r, Spora s/* , Tekton t*/) { 
         // A paraméterben megadott Rovar megeszi a Gombafaj egyik spóráját a megadott Tektonról
 
         if(r == null){
@@ -299,16 +299,21 @@ public class Parancskezelok {
             return;
         }
 
-        if(t == null){
+        /*if(t == null){
             HibaAblak uzenet = new HibaAblak("parancskezelok eszik() tekton null");
             return;
-        }
+        }*/
         if(s == null){
             HibaAblak uzenet = new HibaAblak("parancskezelok eszik() spora null");
             return;
         }
 
-        if(!r.getTartozkodas().equals(t)) {
+        /*if(!r.getTartozkodas().equals(t)) {
+            HibaAblak uzenet = new HibaAblak("A rovar nem a megadott tektonon tartozkodik");
+            return;
+        }*/
+        Tekton t=r.getTartozkodas();
+        if(!t.getSporak().contains(t)){
             HibaAblak uzenet = new HibaAblak("A rovar nem a megadott tektonon tartozkodik");
             return;
         }
