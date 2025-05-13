@@ -45,19 +45,19 @@ public class Grafika {
         //rovar beállítása
 
     
-        for(int i=0; tektonok.size(); i++){
+        for(int i=0; i<tektonok.size(); i++){
             tektonok.get(i).Draw();
         }
-        for(int i=0; gombatestek.size(); i++){
+        for(int i=0; i<gombatestek.size(); i++){
             gombatestek.get(i).Draw();
         }
-        for(int i=0; gombafonalak.size(); i++){
+        for(int i=0; i<gombafonalak.size(); i++){
             gombafonalak.get(i).Draw();
         }
-        for(int i=0; rovarok.size(); i++){
+        for(int i=0; i<rovarok.size(); i++){
             rovarok.get(i).Draw();
         }
-        for(int i=0; sporak.size(); i++){
+        for(int i=0; i<sporak.size(); i++){
             sporak.get(i).Draw();
         }
     }
@@ -114,7 +114,7 @@ public class Grafika {
             //double d=Math.sqrt(x-xC,y-yC);
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
 
-            if(d<=R){
+            if(d<=4){
                 return rovarok.get(i);
             }
 
