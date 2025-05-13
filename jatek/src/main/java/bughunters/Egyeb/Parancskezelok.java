@@ -36,6 +36,16 @@ public class Parancskezelok {
     private List<Gombasz> gombaszok;
     private List<Rovarasz> rovaraszok;
     private HashMap<String, Object> objektumok;
+    public HashMap<String, Object> getObjektumok() {
+        return objektumok;
+    }
+
+
+
+    public void setObjektumok(HashMap<String, Object> objektumok) {
+        this.objektumok = objektumok;
+    }
+
     private HashMap<Object,String> objektumokbolString;
     private Jatekter jatekter;
     private parancsAllapot allapot;

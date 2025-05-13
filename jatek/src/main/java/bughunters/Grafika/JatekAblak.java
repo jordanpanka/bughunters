@@ -85,15 +85,33 @@ public class JatekAblak extends JFrame {
         Dimension gombMeret=new Dimension(100,50);
 
         //gombok lenyomása
-        korVege.addActionListener();
-        TestNov.actionListener();
-        Sporaszor.actionListener();
-        FonalNov.actionListener();
-        RovarEves.actionListener();
-        Maszik.actionListener();
-        Vag.actionListener();
-        Eszik.actionListener();
-        megjelenit.actionListener();
+        korVege.addActionListener(e->{
+            game.endTurn();
+        });
+        TestNov.addActionListener(e->{
+            mousePressed()
+        });
+        Sporaszor.actionListener(e->{
+
+        });
+        FonalNov.actionListener(e->{
+
+        });
+        RovarEves.actionListener(e->{
+
+        });
+        Maszik.actionListener(e->{
+
+        });
+        Vag.actionListener(e->{
+
+        });
+        Eszik.actionListener(e->{
+
+        });
+        megjelenit.actionListener(e->{
+            
+        });
 
         //gombasz gombok
         gombaszGombok.add(TestNov);
