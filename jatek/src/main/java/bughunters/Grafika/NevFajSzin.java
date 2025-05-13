@@ -1,5 +1,7 @@
 package bughunters.Grafika;
 
+import java.util.List;
+
 import javax.swing.Box;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -10,19 +12,22 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import bughunters.Egyeb.Jatek;
 import bughunters.Egyeb.Parancskezelok;
 
 public class NevFajSzin extends JFrame{
     private JButton kovetkezo;
     private JButton kiirjatekos;
     private JComboBox<String> gombafajKiv;
-    private JComboBox <String> szinKiv;
+    //private JComboBox <String> szinKiv;
     private int gombaszokSzama;
     private int rovaraszokSzama;
     private Parancskezelok game;
     private JTextField jatekosNev;
     private JButton gombaInfo;
-    public NevFajSzin(Parancskezelok pk, int gombaszSzam, int rovaraszokSzam){
+    List<Jatekos> jatekosok;
+    List<String> kivalasztott;
+    public NevFajSzin(Parancskezelok pk, int gombaszSzam, int rovaraszokSzam, Jatek jatek){
 
         setTitle("Alapadatok megadása");
         setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -54,36 +59,35 @@ public class NevFajSzin extends JFrame{
 
 
         String[] szinek=new String[]{"fekete","gesztenye barna","piszkos barna","terrakotta","arany"};
-        szinKiv=new JComboBox<>(szinek);
+        //szinKiv=new JComboBox<>(szinek);
 
         if(gombaszokSzama==0){
                     kiirjatekos.setText("Rovarász");
                     gombafaj.setText("Szín: ");
-                    gombafajKiv.setModel(new DefaultComboBoxModel<>(szinek))
+                    gombafajKiv.setModel(new DefaultComboBoxModel<>(szinek));
                 }
         kovetkezo.addActionListener(e->{
             while(gombaszokSzama!=0){
 
                 gombaszokSzama--;
                 SwingUtilities.invokeLater(() -> {
-                NevFajSzin nfsz = new NevFajSzin(game,gombaszokSzama,rovaraszokSzama); // példányosítás
+                NevFajSzin nfsz = new NevFajSzin(game,gombaszokSzama,rovaraszokSzama,jatek); // példányosítás
                 nfsz.setVisible(true);            // megjelenítés
                 });
             }
             while(gombaszokSzama==0 && rovaraszokSzama!=0){
-                rovaraszokSzam--;
+                rovaraszokSzama--;
                 SwingUtilities.invokeLater(() -> {
-                NevFajSzin nfsz = new NevFajSzin(game,gombaszokSzama,rovaraszokSzama); // példányosítás
+                NevFajSzin nfsz = new NevFajSzin(game,gombaszokSzama,rovaraszokSzama,jatek); // példányosítás
                 nfsz.setVisible(true);            // megjelenítés
                 });
             }
             SwingUtilities.invokeLater(() -> {
-                 nfsz = new NevFajSzin(game,gombaszokSzama,rovaraszokSzama); // példányosítás
-                nfsz.setVisible(true);            // megjelenítés
+                 JatekAblak jAblak = new JatekAblak(game,jatek); // példányosítás
+                jAblak.setVisible(true);            // megjelenítés
                 });
         });
 
-        
 
         JPanel jatekosnevp=new JPanel();
         jatekosnevp.add(jatekosnevL,jatekosNev);
@@ -98,9 +102,11 @@ public class NevFajSzin extends JFrame{
 
         panel.add(kiirjatekos);
         panel.add(Box.createVerticalStrut(10));
-
-
-
+        panel.add(jatekosnevp);
+        panel.add(Box.createVerticalStrut(10));
+        panel.add(kivPanel);
+        panel.add(Box.createVerticalStrut(10));
+        panel.add(gombPanel);
 
     }
 

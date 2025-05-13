@@ -1,6 +1,9 @@
 package bughunters.Grafika;
 
 import javax.swing.*;
+
+import org.w3c.dom.events.MouseEvent;
+
 import java.awt.*;
 
 import bughunters.Egyeb.Jatek;
@@ -110,9 +113,19 @@ public class JatekAblak extends JFrame {
 
         });
         megjelenit.actionListener(e->{
-            
-        });
 
+        });
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (varKattintasra) {
+                    int x = e.getX();
+                    int y = e.getY();
+                    infoLabel.setText("Kattintottál itt: X=" + x + ", Y=" + y);
+                    varKattintasra = false; // kilép a várakozó módból
+                }
+            }
+        });
         //gombasz gombok
         gombaszGombok.add(TestNov);
         gombaszGombok.add(Box.createHorizontalStrut(10));
