@@ -198,7 +198,7 @@ public class JatekAblak extends JFrame {
                 }
 
             }
-            }
+            
         );
         //gombasz gombok
         gombaszGombok.add(TestNov);
@@ -223,7 +223,12 @@ public class JatekAblak extends JFrame {
 
 
         foGombaszPanel.add(jatekosInfo,BorderLayout.NORTH);
+        foGombaszPanel.add(grafika);
         foGombaszPanel.add(gombaszGombok,BorderLayout.SOUTH);
+
+        foRovaraszPanel.add();
+        foRovaraszPanel.add();
+        foRovaraszPanel.add();
         add(foGombaszPanel);
 
     }
@@ -233,3 +238,4 @@ public class JatekAblak extends JFrame {
         gomb.setFont(getFont());
     }
 }
+
