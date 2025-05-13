@@ -8,14 +8,44 @@ import bughunters.Gombafaj.Spora;
 import bughunters.Rovar.Rovar;
 import bughunters.Tekton.Tekton;
 
-public class Grafika {
-    private HashMap<Object,Rajz> grafikusElemek;
+public class Grafika  {
+    //private HashMap<Object,Rajz> grafikusElemek;
     private HashMap<Tekton, GTekton> tektonok;
+    public HashMap<Tekton, GTekton> getTektonok() {
+        return tektonok;
+    }
+    public void setTektonok(HashMap<Tekton, GTekton> tektonok) {
+        this.tektonok = tektonok;
+    }
     private HashMap<Gombatest,GGombatest> gombatestek;
+    public HashMap<Gombatest, GGombatest> getGombatestek() {
+        return gombatestek;
+    }
+    public void setGombatestek(HashMap<Gombatest, GGombatest> gombatestek) {
+        this.gombatestek = gombatestek;
+    }
     private HashMap<Gombafonal,GGombafonal> gombafonalak;
+    public HashMap<Gombafonal, GGombafonal> getGombafonalak() {
+        return gombafonalak;
+    }
+    public void setGombafonalak(HashMap<Gombafonal, GGombafonal> gombafonalak) {
+        this.gombafonalak = gombafonalak;
+    }
     private HashMap<Rovar, GRovar> rovarok;
+    public HashMap<Rovar, GRovar> getRovarok() {
+        return rovarok;
+    }
+    public void setRovarok(HashMap<Rovar, GRovar> rovarok) {
+        this.rovarok = rovarok;
+    }
     private HashMap<Spora,GSpora> sporak;
-    public void Draw(Tekton t){
+    public HashMap<Spora, GSpora> getSporak() {
+        return sporak;
+    }
+    public void setSporak(HashMap<Spora, GSpora> sporak) {
+        this.sporak = sporak;
+    }
+    public void Draw(Tekton t, Graphics g){
         
         int szomszedokSzama=t.getSzomszedok().size();
         int R;
