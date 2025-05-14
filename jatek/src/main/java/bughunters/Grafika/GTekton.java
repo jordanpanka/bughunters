@@ -13,6 +13,13 @@ public class GTekton extends Rajz {
     private Color szin;
     private Tekton tekton;
 
+    public GTekton(int x, int y, Color szin, Tekton tekton)
+    {
+        super(x, y);
+        this.szin=szin;
+        this.tekton=tekton;
+    }
+
     /**
      * Beállítja a megjelenítendő színt.
      *

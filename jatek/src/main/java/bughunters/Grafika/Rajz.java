@@ -6,6 +6,17 @@ import java.awt.Graphics2D;
 public abstract class Rajz {
     protected int x;
     protected int y;
+
+    public Rajz()
+    {
+        x=0;
+        y=0;
+    }
+    public Rajz(int x, int y)
+    {
+        this.x=x;
+        this.y=y;
+    }
     public int getX() {
         return x;
     }

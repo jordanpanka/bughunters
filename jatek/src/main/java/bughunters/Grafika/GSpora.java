@@ -1,8 +1,22 @@
 package bughunters.Grafika;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class GSpora extends Rajz {
+
+    Color szin;
+    
+    public GSpora()
+    {
+        super();
+    }
+    public GSpora(Color szin, int x, int y)
+    {
+        super(x, y);
+        this.szin=szin;
+    }
+
      /**
      * Kirajzolja a spórát a pályára.
      * Egy kis színes körrel jelenik meg.
@@ -11,6 +25,7 @@ public class GSpora extends Rajz {
      */
     @Override
     public void Draw(Graphics g) {
+        g.setColor(szin);
         g.fillOval(x, y, 6, 6);   
     }
 }

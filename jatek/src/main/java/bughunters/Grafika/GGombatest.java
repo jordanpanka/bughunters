@@ -1,7 +1,6 @@
 package bughunters.Grafika;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 /**
@@ -11,11 +10,24 @@ import java.awt.image.BufferedImage;
  */
 public class GGombatest extends Rajz{
    private BufferedImage image;
-   /**
+  
+
+     public GGombatest()
+     {
+        super();
+     }
+     public GGombatest(BufferedImage image, int x, int y)
+     {
+        super(x, y);
+        this.image=image;
+     }
+
+      /**
      * Visszaadja a gombatesthez tartozó képet.
      * 
      * @return a BufferedImage kép
      */
+
     public BufferedImage getImage() {
         return image;
     }

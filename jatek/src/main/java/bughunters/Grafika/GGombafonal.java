@@ -16,6 +16,22 @@ public class GGombafonal extends Rajz {
     private int x2;
     private int y2;
 
+    public GGombafonal(Color szin, int x1, int y1, int x2, int y2)
+    {
+        this.szin= szin;
+        this.x1=x1;
+        this.x2=x2;
+        this.y1=y1;
+        this.y2=y2;
+    }
+    public GGombafonal()
+    {
+        this.x1=0;
+        this.x2=0;
+        this.y1=0;
+        this.y2=0;
+    }
+
     /**
      * Beállítja az első végpont X koordinátáját.
      *
