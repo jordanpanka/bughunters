@@ -166,7 +166,7 @@ public class JatekAblak extends JFrame {
                     else{
                         elsokattintas=false;
                         Tekton t2=grafika.tektonKeres(e.getX(),e.getY());
-                        game.gfNov(elsoTekton,t2);
+                        game.gfnov(elsoTekton,t2);
                        mouse.put("FonalNov",false);
                     }
                 }
