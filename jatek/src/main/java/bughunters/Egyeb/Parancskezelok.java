@@ -500,7 +500,7 @@ public class Parancskezelok {
                 if(gombasz.getNev().equals(nev)) {
                     HibaAblak uzenet = new HibaAblak("Mar van ilyen nevu jatekos");
                     return;
-                }else if(gombasz.getGombafaj().getNev()==gf.getNev()) {
+                }else if(gombasz.getGombafaj().getNev().equals(gf.getNev())) {
                     HibaAblak uzenet = new HibaAblak("Mar van ilyen gombafaj");
                     return;
                 }
