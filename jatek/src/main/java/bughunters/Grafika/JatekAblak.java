@@ -150,12 +150,23 @@ public class JatekAblak extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 if (Boolean.TRUE.equals(mouse.get("testNov"))) {
                     Tekton t =grafika.tektonKeres(e.getX(), e.getY());
-                    game.gtNov(t);
+                        try{
+                            game.gtNov(t);
+                        }catch(Exception ex){
+                            HibaAblak hb=new HibaAblak(ex.getMessage());
+                        }
+                  
+                    
                     mouse.put("testNov",false);
                 }
                 else if(mouse.get("Sporaszor")){
                     Gombatest gt=grafika.gombatestKeres(e.getX(), e.getY());
-                    game.sporaszor(gt);
+                    
+                    try{
+                           game.sporaszor(gt);
+                        }catch(Exception ex){
+                            HibaAblak hb=new HibaAblak(ex.getMessage());
+                        }
                     mouse.put("Sporaszor",false);
                 }
                 else if(mouse.get("FonalNov")){
@@ -166,13 +177,23 @@ public class JatekAblak extends JFrame {
                     else{
                         elsokattintas=false;
                         Tekton t2=grafika.tektonKeres(e.getX(),e.getY());
-                        game.gfnov(elsoTekton,t2);
+                        
+                        try{
+                           game.gfnov(elsoTekton,t2);
+                        }catch(Exception ex){
+                            HibaAblak hb=new HibaAblak(ex.getMessage());
+                        }
                        mouse.put("FonalNov",false);
                     }
                 }
                 else if( mouse.get("Rovareves")){
                     Rovar r=grafika.rovarKeres(e.getX(),e.getY());
-                    game.rovart_eszik(r);
+                    
+                    try{
+                           game.rovart_eszik(r);
+                        }catch(Exception ex){
+                            HibaAblak hb=new HibaAblak(ex.getMessage());
+                        }
                     mouse.put("Rovareves", false);
                 }
                 else if(mouse.get("Maszik")){
@@ -183,7 +204,12 @@ public class JatekAblak extends JFrame {
                     else{
                         elsokattintas=false;
                         Tekton t=grafika.tektonKeres(e.getX(),e.getY());
-                        game.maszik(rovarKiv, t);
+                        
+                        try{
+                           game.maszik(rovarKiv, t);
+                        }catch(Exception ex){
+                            HibaAblak hb=new HibaAblak(ex.getMessage());
+                        }
                         rovarKiv=null;
                         mouse.put("Maszik",false);
                     }
@@ -196,7 +222,12 @@ public class JatekAblak extends JFrame {
                     else{
                         elsokattintas=false;
                         Gombafonal gf=grafika.fonalKeres(e.getX(),e.getY());
-                        game.vag(rovarKiv, gf);
+                        
+                        try{
+                           game.vag(rovarKiv, gf);
+                        }catch(Exception ex){
+                            HibaAblak hb=new HibaAblak(ex.getMessage());
+                        }
                         rovarKiv=null;
                         mouse.put("Vag",false);
                     }
@@ -209,7 +240,12 @@ public class JatekAblak extends JFrame {
                     else{
                         elsokattintas=false;
                         Spora sp=grafika.sporaKeres(e.getX(),e.getY());
-                        game.eszik(rovarKiv,sp);
+                       
+                        try{
+                            game.eszik(rovarKiv,sp);
+                        }catch(Exception ex){
+                            HibaAblak hb=new HibaAblak(ex.getMessage());
+                        }
                         rovarKiv=null;
                          mouse.put("Eszik",false);
                     }
