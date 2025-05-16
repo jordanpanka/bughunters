@@ -1,9 +1,12 @@
 package bughunters.Grafika;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.util.List;
 
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -44,7 +47,8 @@ public class NevFajSzin extends JFrame{
     public NevFajSzin(Parancskezelok pk, int gombaszSzam, int rovaraszokSzam, Jatek jatek){
 
         setTitle("Alapadatok megadása");
-        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        setSize(600,700);
+        //setExtendedState(JFrame.MAXIMIZED_BOTH); 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
 
@@ -64,8 +68,21 @@ public class NevFajSzin extends JFrame{
 
         kovetkezo=new JButton("Következő");
         kiirjatekos=new JLabel("Gombász");
+        Dimension meret=new Dimension(200,70);
+        jatekosNev=new JTextField();
+
+        //méretek beállítása
+        kiirjatekos.setSize(meret);
+        kiirjatekos.setFont(new Font("SansSerif", Font.ITALIC,20));
+        jatekosNev.setSize(meret);
+
+
+
+
 
         JLabel jatekosnevL=new JLabel("Játékos neve: ");
+        
+
         JLabel gombafaj=new JLabel("Gombafaj: ");
 
         String[] gombafajoks=new String[]{"Lényölő galóca","Vargánya gomba", "Csiperke gomba","Szegfűgomba", "Foltos püffeteg"};
@@ -154,20 +171,33 @@ public class NevFajSzin extends JFrame{
 
         JPanel jatekosnevp=new JPanel();
         jatekosnevp.add(jatekosnevL);
+        jatekosNev.setPreferredSize(meret);
         jatekosnevp.add(jatekosNev);
     
         JPanel kivPanel=new JPanel();
+        gombafaj.setPreferredSize(meret);
+        gombafaj.setFont(new Font("SansSerif",Font.PLAIN,20));
         kivPanel.add(gombafaj);
+        kivPanel.add(Box.createHorizontalStrut(10));
+        gombafajKiv.setPreferredSize(meret);
+        gombafajKiv.setFont(new Font("SansSerif",Font.PLAIN,20));
         kivPanel.add(gombafajKiv);
 
         JPanel gombPanel=new JPanel();
+        gombaInfo.setPreferredSize(meret);
         gombPanel.add(gombaInfo);
+        gombPanel.add(Box.createHorizontalStrut(10));
+        kovetkezo.setPreferredSize(meret);
         gombPanel.add(kovetkezo);
 
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        panel.add(Box.createVerticalStrut(30));
+        kiirjatekos.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         panel.add(kiirjatekos);
         panel.add(Box.createVerticalStrut(10));
         panel.add(jatekosnevp);
-        panel.add(Box.createVerticalStrut(10));
+        panel.add(Box.createVerticalStrut(5));
         panel.add(kivPanel);
         panel.add(Box.createVerticalStrut(10));
         panel.add(gombPanel);
