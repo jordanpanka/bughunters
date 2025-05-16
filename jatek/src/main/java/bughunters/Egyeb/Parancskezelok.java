@@ -2,13 +2,6 @@ package bughunters.Egyeb;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-
-import bughunters.Gombafaj.*;
-import bughunters.Tekton.*;
-import bughunters.Rovar.*;
-import bughunters.Egyeb.*;
-import bughunters.Grafika.*;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
@@ -20,6 +13,27 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.SwingUtilities;
+
+import bughunters.Gombafaj.Benito;
+import bughunters.Gombafaj.Gombafaj;
+import bughunters.Gombafaj.Gombafonal;
+import bughunters.Gombafaj.Gombatest;
+import bughunters.Gombafaj.Gyorsito;
+import bughunters.Gombafaj.Lassito;
+import bughunters.Gombafaj.Osztodo;
+import bughunters.Gombafaj.Spora;
+import bughunters.Gombafaj.VagasKeptelenito;
+import bughunters.Grafika.GRovar;
+import bughunters.Grafika.Grafika;
+import bughunters.Grafika.HibaAblak;
+import bughunters.Grafika.NevFajSzin;
+import bughunters.Rovar.Rovar;
+import bughunters.Rovar.rovarAllapot;
+import bughunters.Tekton.Disszolator;
+import bughunters.Tekton.Infinator;
+import bughunters.Tekton.Monotekton;
+import bughunters.Tekton.Puritekton;
+import bughunters.Tekton.Tekton;
 
 /**
  * A parancsok állapotát reprezentáló enum
@@ -115,19 +129,19 @@ public class Parancskezelok {
         try {
             switch(gf.getNev()) {
                 case "Csiperke gomba":
-                    img = ImageIO.read(new File(""));
+                    img = ImageIO.read(new File("kepek/gyorsito.PNG"));
                     break;
                 case "Foltos püffeteg":
-                    img = ImageIO.read(new File(""));
+                    img = ImageIO.read(new File("kepek/osztodo.PNG"));
                     break;
                 case "Vargánya gomba":
-                    img = ImageIO.read(new File(""));
+                    img = ImageIO.read(new File("kepek/lassito.PNG"));
                     break;
                 case "Légyölő galóca":
-                    img = ImageIO.read(new File(""));
+                    img = ImageIO.read(new File("kepek/benito.PNG"));
                     break;
                 case "Szegfűgomba":
-                    img = ImageIO.read(new File(""));
+                    img = ImageIO.read(new File("kepek/vagasGatlo.PNG"));
                     break;
                 default:
             }
@@ -143,15 +157,15 @@ public class Parancskezelok {
         Color LIGHTBROWN = new Color(172, 86, 0);
         try {
             if (szin == Color.RED) {
-                return ImageIO.read(new File(""));
+                return ImageIO.read(new File("kepek\rovar4.PNG"));
             } else if (szin == Color.ORANGE) {
-                return ImageIO.read(new File(""));
+                return ImageIO.read(new File("kepek\rovar1.PNG"));
             } else if (szin == Color.MAGENTA) {
-                return ImageIO.read(new File(""));
-            } else if (szin == BROWN) {
-                return ImageIO.read(new File(""));
-            }else if (szin == LIGHTBROWN) {
-                return ImageIO.read(new File(""));
+                return ImageIO.read(new File("kepek\rovar5.PNG"));
+            } else if (szin.equals(BROWN)) {
+                return ImageIO.read(new File("kepek\rovar3.PNG"));
+            }else if (szin.equals(LIGHTBROWN)) {
+                return ImageIO.read(new File("kepek\rovar2.PNG"));
             }
         } catch (Exception e) {
             System.out.println("Nem sikerult betolteni a kepeket");
@@ -237,6 +251,7 @@ public class Parancskezelok {
                 objektumokbolString.put(rovar, ujRovarNev);
 
                 //GRAFIKA HASHMAP BERAKÁSA
+                grafika.getRovarok().put(rovar, grafRovar);
             } catch (Exception e) {
                 HibaAblak uzenet = new HibaAblak("Nem sikerult létrehozni a Rovart");
                 return false;
@@ -258,22 +273,6 @@ public class Parancskezelok {
         rovaraszok.add(rs);
         objektumok.put(rs.getNev(), rs);
         objektumokbolString.put(rs, rs.getNev());
-
-        /* 
-        //Rovar léterhozása
-        String tektonNeve = parancs.split(" ")[5];
-        char tektonTipus = tektonNeve.charAt(0);
-        Tekton tartozkodas = parancsTektonCast(tektonTipus, tektonNeve);
-        Rovar ujRovar = new Rovar(tartozkodas,rovarasz);
-
-        //Rovar kezelése
-        rovarasz.addRovar(ujRovar);
-        String ujRovarNev = ujRovarNev(); //rovar neve
-        objektumok.put(ujRovarNev, ujRovar);
-        objektumokbolString.put(ujRovar, ujRovarNev);
-
-        output.println("Hozzaadva "+rovarasz.getNev() +" rovarasz "+ujRovarNev);
-        */
     }    
 
     /**
