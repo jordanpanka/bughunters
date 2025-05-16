@@ -75,8 +75,8 @@ public class JatekosSzamanakMegadasa extends JFrame {
 
             dispose();
             Jatek jatek = new Jatek(game, jatekTer);
-            JatekAblak jatekAblak = new JatekAblak(game, jatek);
-            jatekAblak.setVisible(true);
+            NevFajSzin kovi = new NevFajSzin(game, gombaszok, rovaraszok, jatek);
+            kovi.setVisible(true);
         });
     }
 }
