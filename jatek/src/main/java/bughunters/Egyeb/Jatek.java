@@ -1,7 +1,5 @@
 package bughunters.Egyeb;
 
-import bughunters.Tekton.*;
-
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -15,6 +13,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Random;
+
+import bughunters.Tekton.Tekton;
 
 public class Jatek {
     
@@ -121,6 +121,27 @@ public class Jatek {
             } catch (Exception e) {
                 System.err.println(e.getMessage());
             }
+    }
+
+
+    public void korEllenorzes(){
+        if (korSzam >=60) {
+            //jatek véget ér, győzteseket hirdetünk.
+            return;
+        }
+      
+        if (parancskezelo.getAktivJatekos().getakcioSzama() <=0) {
+            List<Jatekos> jatekosok = parancskezelo.getJatekosok();
+            int sorszam = jatekosok.indexOf(parancskezelo.getAktivJatekos());
+
+            if (sorszam == jatekosok.size() - 1) {
+                korVegiCselekedetek(jatekosok, parancskezelo.getGombaszok(), parancskezelo.getRovaraszok());
+                parancskezelo.setAktivJatekos(jatekosok.get(0)); // Első játékosra váltás
+            }else{
+                parancskezelo.setAktivJatekos(jatekosok.get(sorszam + 1)); // Következő játékosra váltás
+            }
+        }
+        parancskezelo.updateHashMaps();
     }
 
      /***
