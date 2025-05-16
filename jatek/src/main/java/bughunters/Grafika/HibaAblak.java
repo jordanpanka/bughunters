@@ -22,6 +22,8 @@ public class HibaAblak extends JFrame{
         setSize(300, 150);  
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); 
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
 
         hibaLabel = new JLabel(hiba);
         hibaLabel.setHorizontalAlignment(JLabel.CENTER); 
