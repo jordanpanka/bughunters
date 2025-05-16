@@ -20,7 +20,7 @@ import bughunters.Gombafaj.Gombafaj;
 
 public class NevFajSzin extends JFrame{
     private JButton kovetkezo;
-    private JButton kiirjatekos;
+    private JLabel kiirjatekos;
     private JComboBox<String> gombafajKiv;
     private int gombaszokSzama;
     public int getGombaszokSzama() {
@@ -63,7 +63,7 @@ public class NevFajSzin extends JFrame{
         });
 
         kovetkezo=new JButton("Következő");
-        kiirjatekos=new JButton("Gombász");
+        kiirjatekos=new JLabel("Gombász");
 
         JLabel jatekosnevL=new JLabel("Játékos neve: ");
         JLabel gombafaj=new JLabel("Gombafaj: ");
@@ -153,7 +153,8 @@ public class NevFajSzin extends JFrame{
 
 
         JPanel jatekosnevp=new JPanel();
-        jatekosnevp.add(jatekosnevL,jatekosNev);
+        jatekosnevp.add(jatekosnevL);
+        jatekosnevp.add(jatekosNev);
     
         JPanel kivPanel=new JPanel();
         kivPanel.add(gombafaj);
