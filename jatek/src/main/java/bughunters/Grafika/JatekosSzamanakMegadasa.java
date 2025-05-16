@@ -65,13 +65,14 @@ public class JatekosSzamanakMegadasa extends JFrame {
     private void handleKovetkezo() {
         SwingUtilities.invokeLater(() -> {
 
-            //Még nincs beállítás a NevFajSzin ablak cuccra 
             int gombaszok = (int)gombaszokSzama.getSelectedItem();
             int rovaraszok = (int)rovaraszokSzama.getSelectedItem();
 
             game = new Parancskezelok();
             ArrayList<Tekton> t = new ArrayList<Tekton>();
             Jatekter jatekTer = new Jatekter(t);
+
+            //jaték függvény: pálya alkotás
 
             dispose();
             Jatek jatek = new Jatek(game, jatekTer);
