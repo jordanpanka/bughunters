@@ -1,8 +1,9 @@
 package bughunters.Rovar;
 
-import bughunters.Tekton.*;
-import bughunters.Egyeb.*;
-import bughunters.Gombafaj.*;
+import bughunters.Egyeb.Rovarasz;
+import bughunters.Gombafaj.Gombafonal;
+import bughunters.Gombafaj.Spora;
+import bughunters.Tekton.Tekton;
 
 public class Rovar {
     private Tekton tartozkodas;
@@ -170,7 +171,6 @@ public class Rovar {
         //System.out.println("Meghívódik a Rovar osztodik metódusa.");
 
         Rovar ujRovar = new Rovar(this.tartozkodas, this.rs);
-        ujRovar.szin = this.szin;
         ujRovar.allapot = rovarAllapot.Alap;
         ujRovar.allapotIdeje = 0;
         rs.addRovar(ujRovar);
