@@ -23,7 +23,11 @@ import bughunters.Gombafaj.Lassito;
 import bughunters.Gombafaj.Osztodo;
 import bughunters.Gombafaj.Spora;
 import bughunters.Gombafaj.VagasKeptelenito;
+import bughunters.Grafika.GGombafonal;
+import bughunters.Grafika.GGombatest;
 import bughunters.Grafika.GRovar;
+import bughunters.Grafika.GSpora;
+import bughunters.Grafika.GTekton;
 import bughunters.Grafika.Grafika;
 import bughunters.Grafika.HibaAblak;
 import bughunters.Grafika.NevFajSzin;
@@ -192,6 +196,29 @@ public class Parancskezelok {
                 break;
             case "Szegfűgomba":
                 szin = Color.YELLOW;
+                break;
+            default:
+        }
+        return szin;
+    }
+
+    public Color getColorTektonByName(char tektonNev){
+        Color szin = null;
+        switch(tektonNev) {
+            case 't':
+                szin = new Color(221, 190, 126);
+                break;
+            case 'm':
+                szin = new Color(118, 152, 180);
+                break;
+            case 'd':
+                szin = new Color(141, 183, 117);
+                break;
+            case 'p':
+                szin = new Color(179, 182, 111);
+                break;
+            case 'i':
+                szin = new Color(109, 184, 154);
                 break;
             default:
         }
@@ -1639,7 +1666,9 @@ public class Parancskezelok {
 
                     objektumok.put(ujRovarNev, rovar); //Rovar neve alapjan mentjuk el a Rovarokat a Map-en
                     objektumokbolString.put(rovar, ujRovarNev);
-
+                    //graf osztaly létrehozasa
+                    GRovar gRovar = new GRovar(getRovarKepByColor(rovarasz.getSzin()));
+                    grafika.getRovarok().put(rovar,gRovar);
                 }
             }
         }
@@ -1650,6 +1679,9 @@ public class Parancskezelok {
                 //ha nincs benne a Rovarasz listájában, de a HashMapben igen.
                 objektumok.remove(objektumokbolString.get(rovarAHashMapben)); //eltávolítjuk a HashMapből
                 objektumokbolString.remove(rovarAHashMapben); //eltávolítjuk a HashMapből
+
+                //grafikus objektum eltávolítása a hashMapből
+                grafika.getRovarok().remove(rovarAHashMapben);
             }   
         }
         
@@ -1682,6 +1714,9 @@ public class Parancskezelok {
                         String ujGombatestNev = ujGombatestNev(); //gombatest neve
                         objektumok.put(ujGombatestNev, fajGombateste); //Gombatest neve alapjan mentjuk el a Gombatestet a Map-en
                         objektumokbolString.put(fajGombateste, ujGombatestNev);
+
+                        GGombatest gGt = new GGombatest(getGombatestKepByFaj(gombaszFaja));
+                        grafika.getGombatestek().put(fajGombateste, gGt);
                     }
                 }
                 //Ha a HashMapben van Gombatest, de a Gombasz listájában nincs-->törölni kell a HashMapből
@@ -1694,6 +1729,9 @@ public class Parancskezelok {
                         String ujGombafonalNev = ujGombafonalNev(); //gombatest neve
                         objektumok.put(ujGombafonalNev, fajGombafonala); //Gombatest neve alapjan mentjuk el a Gombatestet a Map-en
                         objektumokbolString.put(fajGombafonala, ujGombafonalNev);
+
+                        GGombafonal gGf = new GGombafonal(getColorKepByFaj(gombaszFaja));
+                        grafika.getGombafonalak().put(fajGombafonala, gGf);
                     }
                 }
                 //Ha a HashMapben van Gombafonal, de a Gombasz listájában nincs-->törölni kell a HashMapből
@@ -1707,6 +1745,9 @@ public class Parancskezelok {
                     //ha nincs benne a Gombaszok listájában, de a HashMapben igen.
                     objektumok.remove(objektumokbolString.get(hashMapGombatest)); //eltávolítjuk a HashMapből
                     objektumokbolString.remove(hashMapGombatest); //eltávolítjuk a HashMapből
+
+                    //grafikus objektum eltávolítása a hashMapből
+                    grafika.getGombatestek().remove(hashMapGombatest);
                 }
             }
 
@@ -1716,6 +1757,9 @@ public class Parancskezelok {
                     //ha nincs benne a Gombaszok listájában, de a HashMapben igen.
                     objektumok.remove(objektumokbolString.get(hashmapGombafonal)); //eltávolítjuk a HashMapből
                     objektumokbolString.remove(hashmapGombafonal); //eltávolítjuk a HashMapből
+
+                    //grafikus objektum eltávolítása a hashMapből
+                    grafika.getGombafonalak().remove(hashmapGombafonal);
                 }
             }
 
@@ -1775,6 +1819,10 @@ public class Parancskezelok {
                     String ujSporaNev = ujSporaNev(sporaTipus); //spora neve
                     objektumok.put(ujSporaNev, spora); //spora neve alapjan mentjuk el a Sporakat a Map-en
                     objektumokbolString.put(spora, ujSporaNev);
+
+                    //graf osztaly létrehozasa
+                    GSpora gSpora = new GSpora(getColorKepByFaj(spora.getGombafaj()));
+                    grafika.getSporak().put(spora,gSpora);
                 }
             }
 
@@ -1785,6 +1833,10 @@ public class Parancskezelok {
                 String ujTektonNev = ujTektonNev(tektonTipus); //tekton neve
                 objektumok.put(ujTektonNev, tektonJatekteren); //tekton neve alapjan mentjuk el a Tektonokat a Map-en
                 objektumokbolString.put(tektonJatekteren, ujTektonNev);
+
+                //graf osztaly létrehozasa
+                GTekton gTekton = new GTekton(getColorTektonByName(tektonTipus));
+                grafika.getTektonok().put(tektonJatekteren,gTekton);
             }
         }
             //Ha a HashMapben van Spora, de az osszSpora listájában nincs-->törölni kell a HashMapből
@@ -1793,6 +1845,9 @@ public class Parancskezelok {
                     //ha nincs benne a Tektonok listáiban, de a HashMapben igen.
                     objektumok.remove(objektumokbolString.get(hashmapSpora)); //eltávolítjuk a HashMapből
                     objektumokbolString.remove(hashmapSpora); //eltávolítjuk a HashMapből
+
+                    //grafikus objektum eltávolítása a hashMapből
+                    grafika.getSporak().remove(hashmapSpora);
                 }
             }
 
