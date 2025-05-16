@@ -290,27 +290,17 @@ public class Parancskezelok {
         objektumokbolString.put(gs, gs.getNev());
     }
 
-    public void eszik(Rovar r, Spora s/* , Tekton t*/) { 
+    public void eszik(Rovar r, Spora s) { 
         // A paraméterben megadott Rovar megeszi a Gombafaj egyik spóráját a megadott Tektonról
 
         if(r == null){
             HibaAblak uzenet = new HibaAblak("parancskezelok eszik() rovar null");
             return;
         }
-
-        /*if(t == null){
-            HibaAblak uzenet = new HibaAblak("parancskezelok eszik() tekton null");
-            return;
-        }*/
         if(s == null){
             HibaAblak uzenet = new HibaAblak("parancskezelok eszik() spora null");
             return;
         }
-
-        /*if(!r.getTartozkodas().equals(t)) {
-            HibaAblak uzenet = new HibaAblak("A rovar nem a megadott tektonon tartozkodik");
-            return;
-        }*/
         Tekton t=r.getTartozkodas();
         if(!t.getSporak().contains(t)){
             HibaAblak uzenet = new HibaAblak("A rovar nem a megadott tektonon tartozkodik");
@@ -410,12 +400,9 @@ public class Parancskezelok {
             }
     }
 
-    public void gfnov(Tekton t1, Tekton t2, Gombafaj g) {
+    public void gfnov(Tekton t1, Tekton t2) {
         // A megadott gombafaj gombafonalat húz a megadott két tekton közé
-            if(g == null){
-                HibaAblak uzenet = new HibaAblak("parancskezelok gfnov() gombafaj null");
-                return;
-            }
+            
             if(t1 == null){
                 HibaAblak uzenet = new HibaAblak("parancskezelok gfnov() tekton1 null");
                 return;
