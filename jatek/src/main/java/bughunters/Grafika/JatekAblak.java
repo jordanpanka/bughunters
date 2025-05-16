@@ -2,7 +2,9 @@ package bughunters.Grafika;
 
 import javax.swing.*;
 
-import org.w3c.dom.events.MouseEvent;
+//import org.w3c.dom.events.MouseEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -38,6 +40,8 @@ public class JatekAblak extends JFrame {
     private HashMap<String, Boolean> mouse;
     public JatekAblak(Parancskezelok pk, Jatek jatek){
         game=pk;
+        mouse=new HashMap<>();
+        grafika=new Grafika();
         mouse.put("testNov",false);
         mouse.put("Sporaszor",false);
         mouse.put("FonalNov",false);
@@ -145,40 +149,40 @@ public class JatekAblak extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (Boolean.TRUE.equals(mouse.get("testNov"))) {
-                    Tekton t =grafika.tektonKeres(e.getScreenX(), e.getScreenY());
+                    Tekton t =grafika.tektonKeres(e.getX(), e.getY());
                     game.gtNov(t);
                     mouse.put("testNov",false);
                 }
                 else if(mouse.get("Sporaszor")){
-                    Gombatest gt=grafika.gombatestKeres(e.getScreenX(), e.getScreenY());
+                    Gombatest gt=grafika.gombatestKeres(e.getX(), e.getY());
                     game.sporaszor(gt);
                     mouse.put("Sporaszor",false);
                 }
                 else if(mouse.get("FonalNov")){
                     if(!elsokattintas){
                         elsokattintas=true;
-                        elsoTekton=grafika.tektonKeres(e.getScreenX(),e.getScreenY());
+                        elsoTekton=grafika.tektonKeres(e.getX(),e.getY());
                     } 
                     else{
                         elsokattintas=false;
-                        Tekton t2=grafika.tektonKeres(e.getScreenX(),e.getScreenY());
-                        game.gfNov(elsoTekton,t2);
+                        Tekton t2=grafika.tektonKeres(e.getX(),e.getY());
+                        game.gfnov(elsoTekton,t2);
                        mouse.put("FonalNov",false);
                     }
                 }
                 else if( mouse.get("Rovareves")){
-                    Rovar r=grafika.rovarKeres(e.getScreenX(),e.getScreenY());
+                    Rovar r=grafika.rovarKeres(e.getX(),e.getY());
                     game.rovart_eszik(r);
                     mouse.put("Rovareves", false);
                 }
                 else if(mouse.get("Maszik")){
                     if(!elsokattintas){
                         elsokattintas=true;
-                        rovarKiv=grafika.rovarKeres(e.getScreenX(), e.getScreenY());
+                        rovarKiv=grafika.rovarKeres(e.getX(), e.getY());
                     }
                     else{
                         elsokattintas=false;
-                        Tekton t=grafika.tektonKeres(e.getScreenX(),e.getScreenY());
+                        Tekton t=grafika.tektonKeres(e.getX(),e.getY());
                         game.maszik(rovarKiv, t);
                         rovarKiv=null;
                         mouse.put("Maszik",false);
@@ -187,11 +191,11 @@ public class JatekAblak extends JFrame {
                 else if(mouse.get("Vag")){
                     if(!elsokattintas){
                         elsokattintas=true;
-                        rovarKiv=grafika.rovarKeres(e.getScreenX(), e.getScreenY());
+                        rovarKiv=grafika.rovarKeres(e.getX(), e.getY());
                     }
                     else{
                         elsokattintas=false;
-                        Gombafonal gf=grafika.fonalKeres(e.getScreenX(),e.getScreenY());
+                        Gombafonal gf=grafika.fonalKeres(e.getX(),e.getY());
                         game.vag(rovarKiv, gf);
                         rovarKiv=null;
                         mouse.put("Vag",false);
@@ -200,11 +204,11 @@ public class JatekAblak extends JFrame {
                 else if(mouse.get("Eszik")){
                     if(!elsokattintas){
                         elsokattintas=true;
-                        rovarKiv=grafika.rovarKeres(e.getScreenX(), e.getScreenY());
+                        rovarKiv=grafika.rovarKeres(e.getX(), e.getY());
                     }
                     else{
                         elsokattintas=false;
-                        Spora sp=grafika.sporaKeres(e.getScreenX(),e.getScreenY());
+                        Spora sp=grafika.sporaKeres(e.getX(),e.getY());
                         game.eszik(rovarKiv,sp);
                         rovarKiv=null;
                          mouse.put("Eszik",false);
@@ -241,9 +245,9 @@ public class JatekAblak extends JFrame {
         foGombaszPanel.add(grafika);
         foGombaszPanel.add(gombaszGombok,BorderLayout.SOUTH);
 
-        foRovaraszPanel.add();
-        foRovaraszPanel.add();
-        foRovaraszPanel.add();
+        foRovaraszPanel.add(jatekosInfo,BorderLayout.NORTH);
+        foRovaraszPanel.add(grafika);
+        foRovaraszPanel.add(rovaraszGombok,BorderLayout.SOUTH);
         add(foGombaszPanel);
 
     }

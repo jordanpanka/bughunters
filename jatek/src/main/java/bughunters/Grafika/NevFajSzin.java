@@ -1,5 +1,6 @@
 package bughunters.Grafika;
 
+import java.awt.Color;
 import java.util.List;
 
 import javax.swing.Box;
@@ -15,13 +16,26 @@ import javax.swing.SwingUtilities;
 import bughunters.Egyeb.Jatek;
 import bughunters.Egyeb.Jatekos;
 import bughunters.Egyeb.Parancskezelok;
+import bughunters.Gombafaj.Gombafaj;
 
 public class NevFajSzin extends JFrame{
     private JButton kovetkezo;
     private JButton kiirjatekos;
     private JComboBox<String> gombafajKiv;
     private int gombaszokSzama;
+    public int getGombaszokSzama() {
+        return gombaszokSzama;
+    }
+    public void setGombaszokSzama(int gombaszokSzama) {
+        this.gombaszokSzama = gombaszokSzama;
+    }
     private int rovaraszokSzama;
+    public int getRovaraszokSzama() {
+        return rovaraszokSzama;
+    }
+    public void setRovaraszokSzama(int rovaraszokSzama) {
+        this.rovaraszokSzama = rovaraszokSzama;
+    }
     private Parancskezelok game;
     private JTextField jatekosNev;
     private JButton gombaInfo;
@@ -58,7 +72,7 @@ public class NevFajSzin extends JFrame{
         gombafajKiv=new JComboBox<>(gombafajoks);
 
 
-        String[] szinek=new String[]{"fekete","gesztenye barna","piszkos barna","terrakotta","arany"};
+        String[] szinek=new String[]{"piros","narancssárga","magenta","barna","viágos barna"};
         //szinKiv=new JComboBox<>(szinek);
 
         if(gombaszokSzama==0){
@@ -71,6 +85,31 @@ public class NevFajSzin extends JFrame{
             while(gombaszokSzama!=0){
 
                 gombaszokSzama--;
+                switch ((String)gombafajKiv.getSelectedItem()) {
+                    case "Lényölő galóca":
+                        Gombafaj g=game.createGombafajBySpora('b');
+                        game.gombaszFelvetel(jatekosNev.getText(),g);
+                        break;
+                    case "Vargánya gomba":
+                        Gombafaj g1=game.createGombafajBySpora('l');
+                        game.gombaszFelvetel(jatekosNev.getText(),g1);
+                        break;
+                    case "Csiperke gomba":
+                     Gombafaj g2=game.createGombafajBySpora('g');
+                        game.gombaszFelvetel(jatekosNev.getText(),g2);
+                        break;
+                    case "Szegfűgomba":
+                         Gombafaj g3=game.createGombafajBySpora('v');
+                        game.gombaszFelvetel(jatekosNev.getText(),g3);
+                        break;
+                    case "Foltos püffeteg":
+                         Gombafaj g4=game.createGombafajBySpora('o');
+                        game.gombaszFelvetel(jatekosNev.getText(),g4);
+                        break;
+                    default:
+                        break;
+                }
+                
                 SwingUtilities.invokeLater(() -> {
                 NevFajSzin nfsz = new NevFajSzin(game,gombaszokSzama,rovaraszokSzama,jatek); // példányosítás
                 nfsz.setVisible(true);            // megjelenítés
@@ -78,6 +117,29 @@ public class NevFajSzin extends JFrame{
             }
             while(gombaszokSzama==0 && rovaraszokSzama!=0){
                 rovaraszokSzama--;
+                switch((String)gombafajKiv.getSelectedItem()){
+                    case "piros": 
+                        Color uj=Color.RED;
+                        game.rovaraszFelvetel(jatekosNev.getSelectedText(),uj);
+                        break;
+                    case "narancssárga":
+                        game.rovaraszFelvetel(jatekosNev.getSelectedText(),Color.ORANGE);
+                        break;
+                    case "magenta":
+                        game.rovaraszFelvetel(jatekosNev.getSelectedText(),Color.MAGENTA);
+                        break;
+                    case "barna":
+                        Color uj2=new Color(121,87,53);
+                        game.rovaraszFelvetel(jatekosNev.getSelectedText(),uj2);
+                        break;
+                    case "világos barna":
+                        Color uj3=new Color(172,86,0);
+                        game.rovaraszFelvetel(jatekosNev.getSelectedText(),uj3);
+                        break;
+                    default: 
+                    break;
+                    
+                }
                 SwingUtilities.invokeLater(() -> {
                 NevFajSzin nfsz = new NevFajSzin(game,gombaszokSzama,rovaraszokSzama,jatek); // példányosítás
                 nfsz.setVisible(true);            // megjelenítés

@@ -12,7 +12,7 @@ import bughunters.Tekton.Tekton;
 public class GTekton extends Rajz {
     private Color szin;
 
-    public GTekton(int x, int y, Color szin, Tekton tekton)
+    public GTekton(int x, int y, Color szin)
     {
         super(x, y);
         this.szin=szin;
