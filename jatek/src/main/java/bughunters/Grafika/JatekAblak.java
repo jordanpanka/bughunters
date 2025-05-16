@@ -38,6 +38,8 @@ public class JatekAblak extends JFrame {
     private HashMap<String, Boolean> mouse;
     public JatekAblak(Parancskezelok pk, Jatek jatek){
         game=pk;
+        mouse=new HashMap<>();
+        grafika=new Grafika();
         mouse.put("testNov",false);
         mouse.put("Sporaszor",false);
         mouse.put("FonalNov",false);
