@@ -48,9 +48,10 @@ public class NevFajSzin extends JFrame{
 
         setTitle("Alapadatok megadása");
         setSize(600,700);
-        //setExtendedState(JFrame.MAXIMIZED_BOTH); 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
+
+
 
         game=pk;
         gombaszokSzama=gombaszSzam;
@@ -76,18 +77,12 @@ public class NevFajSzin extends JFrame{
         kiirjatekos.setFont(new Font("SansSerif", Font.ITALIC,20));
         jatekosNev.setSize(meret);
 
-
-
-
-
-        JLabel jatekosnevL=new JLabel("Játékos neve: ");
-        
+        JLabel jatekosnevL=new JLabel("Játékos neve: ");  
 
         JLabel gombafaj=new JLabel("Gombafaj: ");
 
         String[] gombafajoks=new String[]{"Lényölő galóca","Vargánya gomba", "Csiperke gomba","Szegfűgomba", "Foltos püffeteg"};
         gombafajKiv=new JComboBox<>(gombafajoks);
-
 
         String[] szinek=new String[]{"piros","narancssárga","magenta","barna","viágos barna"};
         //szinKiv=new JComboBox<>(szinek);
@@ -99,7 +94,7 @@ public class NevFajSzin extends JFrame{
         } 
 
         kovetkezo.addActionListener(e->{
-            while(gombaszokSzama!=0){
+            if(gombaszokSzama!=0){
 
                 gombaszokSzama--;
                 switch ((String)gombafajKiv.getSelectedItem()) {
@@ -126,13 +121,13 @@ public class NevFajSzin extends JFrame{
                     default:
                         break;
                 }
-                
+                setVisible(false);
                 SwingUtilities.invokeLater(() -> {
                 NevFajSzin nfsz = new NevFajSzin(game,gombaszokSzama,rovaraszokSzama,jatek); // példányosítás
                 nfsz.setVisible(true);            // megjelenítés
                 });
             }
-            while(gombaszokSzama==0 && rovaraszokSzama!=0){
+            if(gombaszokSzama==0 && rovaraszokSzama!=0){
                 rovaraszokSzama--;
                 switch((String)gombafajKiv.getSelectedItem()){
                     case "piros": 
@@ -162,11 +157,14 @@ public class NevFajSzin extends JFrame{
                 nfsz.setVisible(true);            // megjelenítés
                 });
             }
-            SwingUtilities.invokeLater(() -> {
+            else{
+                SwingUtilities.invokeLater(() -> {
                  JatekAblak jAblak = new JatekAblak(game,jatek); // példányosítás
                 jAblak.setVisible(true);            // megjelenítés
                 });
-        });
+        }
+            }
+          );  
 
 
         JPanel jatekosnevp=new JPanel();
@@ -203,7 +201,7 @@ public class NevFajSzin extends JFrame{
         panel.add(gombPanel);
 
         add(panel);
-        setVisible(true);
+        
     }
 
     

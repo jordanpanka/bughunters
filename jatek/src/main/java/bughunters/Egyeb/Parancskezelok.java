@@ -30,6 +30,7 @@ import bughunters.Grafika.GSpora;
 import bughunters.Grafika.GTekton;
 import bughunters.Grafika.Grafika;
 import bughunters.Grafika.HibaAblak;
+import bughunters.Grafika.JatekInditasaAblak;
 import bughunters.Grafika.NevFajSzin;
 import bughunters.Rovar.Rovar;
 import bughunters.Rovar.rovarAllapot;
@@ -2730,11 +2731,19 @@ public class Parancskezelok {
             Parancskezelok pk=new Parancskezelok();
             Jatekter jatekter=new Jatekter();
             Jatek jt=new Jatek(pk,jatekter);
-            SwingUtilities.invokeLater(()->{
+            /*SwingUtilities.invokeLater(()->{
                 //JatekAblak jatek=new JatekAblak(pk,jt);
                 //jatek.setVisible(true);
                 NevFajSzin nfsz=new NevFajSzin(pk,2,3,jt);
                 nfsz.setVisible(true);
+            });*/
+            SwingUtilities.invokeLater(()->{
+                //JatekAblak jatek=new JatekAblak(pk,jt);
+                //jatek.setVisible(true);
+                //NevFajSzin nfsz=new NevFajSzin(pk,2,3,jt);
+                //nfsz.setVisible(true);
+                JatekInditasaAblak jti=new JatekInditasaAblak();
+                jti.setVisible(true);
             });
     }
 }

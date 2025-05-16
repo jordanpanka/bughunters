@@ -64,5 +64,6 @@ public class GombaInfo extends JFrame {
         
         JScrollPane scrollPane = new JScrollPane(adatok);
         add(scrollPane, BorderLayout.CENTER);
+        setVisible(true);
     }
 }

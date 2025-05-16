@@ -15,7 +15,7 @@ public class JatekInditasaAblak extends JFrame {
     private Parancskezelok game;
 
     public JatekInditasaAblak() {
-        JFrame jFrame = new JFrame();
+        /*JFrame jFrame = new JFrame();
         setTitle("Játék Indítása");
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setSize(300, 200);
@@ -26,6 +26,19 @@ public class JatekInditasaAblak extends JFrame {
         
         jFrame.add(UjJatek);
         jFrame.setLocationRelativeTo(null); // Középre igazítás
+        jFrame.setVisible(true);*/
+        //JFrame jFrame = new JFrame();
+        setTitle("Játék Indítása");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 200);
+        setLayout(new FlowLayout());
+
+        UjJatek = new JButton("Új játék indítása");
+        UjJatek.addActionListener(e -> koviAblak());
+        
+        add(UjJatek);
+        setLocationRelativeTo(null); // Középre igazítás
+        //setVisible(true);
     }
 
     private void koviAblak() {

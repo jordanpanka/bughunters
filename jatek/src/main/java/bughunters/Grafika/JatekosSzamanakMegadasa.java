@@ -60,6 +60,7 @@ public class JatekosSzamanakMegadasa extends JFrame {
         panel.add(kovetkezo);
 
         frame.add(panel);
+        frame.setVisible(true);
     }
 
     private void handleKovetkezo() {
