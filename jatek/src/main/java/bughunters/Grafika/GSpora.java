@@ -11,6 +11,11 @@ public class GSpora extends Rajz {
     {
         super();
     }
+    public GSpora(Color szin)
+    {
+        super();
+        this.szin=szin;
+    }
     public GSpora(Color szin, int x, int y)
     {
         super(x, y);

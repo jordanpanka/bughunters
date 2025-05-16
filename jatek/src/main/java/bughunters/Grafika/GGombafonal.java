@@ -24,6 +24,14 @@ public class GGombafonal extends Rajz {
         this.y1=y1;
         this.y2=y2;
     }
+    public GGombafonal(Color szin)
+    {
+        this.szin=szin;
+        this.x1=0;
+        this.x2=0;
+        this.y1=0;
+        this.y2=0;
+    }
     public GGombafonal()
     {
         this.x1=0;

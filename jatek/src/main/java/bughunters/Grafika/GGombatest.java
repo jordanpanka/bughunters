@@ -16,6 +16,11 @@ public class GGombatest extends Rajz{
      {
         super();
      }
+      public GGombatest(BufferedImage image)
+     {
+        super();
+        this.image=image;
+     }
      public GGombatest(BufferedImage image, int x, int y)
      {
         super(x, y);

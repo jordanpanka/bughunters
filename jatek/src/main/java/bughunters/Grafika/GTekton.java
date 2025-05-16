@@ -11,13 +11,17 @@ import bughunters.Tekton.Tekton;
  */
 public class GTekton extends Rajz {
     private Color szin;
-    private Tekton tekton;
 
     public GTekton(int x, int y, Color szin, Tekton tekton)
     {
         super(x, y);
         this.szin=szin;
-        this.tekton=tekton;
+    }
+    public GTekton(Color szin)
+    {
+        super();
+        this.szin=szin;
+       
     }
 
     /**
@@ -38,24 +42,6 @@ public class GTekton extends Rajz {
         return szin;
     }
 
-    /**
-     * Beállítja a tárolt tekton objektumot.
-     *
-     * @param tekton a tekton objektum
-     */
-    public void setTekton(Tekton tekton) {
-        this.tekton = tekton;
-    }
-
-    /**
-     * Visszaadja a tárolt tekton objektumot.
-     *
-     * @return a tekton objektum
-     */
-    public Tekton getTekton() {
-        return tekton;
-    }
-
 
      /**
      * Kirajzolja a tekton objektumot a pályára a megadott színnel.
@@ -65,9 +51,9 @@ public class GTekton extends Rajz {
      */
     @Override
     public void Draw(Graphics g) {
-        if (tekton != null && szin != null) {
+        
             g.setColor(szin);
             g.fillRect(x, y, 50, 50); 
-        }
+        
     }
 }

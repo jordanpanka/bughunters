@@ -13,6 +13,11 @@ public class GRovar extends Rajz {
     {
         super();
     }
+     public GRovar(BufferedImage image)
+    {
+        super();
+        this.image=image;
+    }
     public GRovar(BufferedImage image, int x, int y)
     {
         super(x, y);
