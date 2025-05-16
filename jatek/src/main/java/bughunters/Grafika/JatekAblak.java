@@ -118,6 +118,7 @@ public class JatekAblak extends JFrame {
         //gombok lenyomása
         korVege.addActionListener(e->{
             game.endTurn();
+             jatek.korEllenorzes();
         });
         TestNov.addActionListener(e->{
             mouse.put("testNov",true);
@@ -152,10 +153,11 @@ public class JatekAblak extends JFrame {
                     Tekton t =grafika.tektonKeres(e.getX(), e.getY());
                         try{
                             game.gtNov(t);
+                            jatek.korEllenorzes();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
-                  
+                        
                     
                     mouse.put("testNov",false);
                 }
@@ -164,6 +166,7 @@ public class JatekAblak extends JFrame {
                     
                     try{
                            game.sporaszor(gt);
+                            jatek.korEllenorzes();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
@@ -180,6 +183,7 @@ public class JatekAblak extends JFrame {
                         
                         try{
                            game.gfnov(elsoTekton,t2);
+                            jatek.korEllenorzes();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
@@ -191,6 +195,7 @@ public class JatekAblak extends JFrame {
                     
                     try{
                            game.rovart_eszik(r);
+                            jatek.korEllenorzes();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
@@ -207,6 +212,7 @@ public class JatekAblak extends JFrame {
                         
                         try{
                            game.maszik(rovarKiv, t);
+                            jatek.korEllenorzes();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
@@ -225,6 +231,7 @@ public class JatekAblak extends JFrame {
                         
                         try{
                            game.vag(rovarKiv, gf);
+                            jatek.korEllenorzes();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
@@ -243,6 +250,7 @@ public class JatekAblak extends JFrame {
                        
                         try{
                             game.eszik(rovarKiv,sp);
+                             jatek.korEllenorzes();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
