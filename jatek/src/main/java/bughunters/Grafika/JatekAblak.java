@@ -55,7 +55,7 @@ public class JatekAblak extends JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH); 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
-        setLayout(new BorderLayout());
+        //setLayout(new BorderLayout());
 
         //panelek létrehozása
         JPanel foGombaszPanel=new JPanel();
@@ -64,9 +64,10 @@ public class JatekAblak extends JFrame {
         JPanel gombaszGombok=new JPanel();
         JPanel rovaraszGombok=new JPanel();
 
-        JPanel jatekosInfo=new JPanel();
+         JPanel jatekosInfo=new JPanel();
         jatekosInfo.setLayout(new BoxLayout(jatekosInfo, BoxLayout.X_AXIS));
 
+       
         //jatekosok adatainak megjelenítése
         for(int i=0; i<game.getJatekosok().size(); i++){
             JPanel jatekos=new JPanel();
@@ -86,20 +87,23 @@ public class JatekAblak extends JFrame {
             jatekos.add(pontok);
             jatekos.add(Box.createVerticalStrut(10));
             System.out.println("hozzaadva.");
+            jatekos.setMaximumSize(new Dimension(150, 200));
+            jatekos.setPreferredSize(new Dimension(150, 200));
             jatekosInfo.add(jatekos);
-            jatekosInfo.add(Box.createHorizontalStrut(15));
+            //jatekosInfo.add(Box.createHorizontalStrut(5));
         }
         List<String> tekton=game.getTektonNevList();
         tektonok = new JComboBox<>();
-        tektonok.setPreferredSize(new Dimension(150,30));
+        tektonok.setPreferredSize(new Dimension(100,30));
         
         tekton.forEach((String s)->{
             System.out.println(s);
             tektonok.addItem(s);
         });
        
+        //gombokLetreHozasa();
+        megjelenit=new JButton("Megjelenít");
         gombokLetreHozasa();
-
         // kör és játékos
         JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+" Aktív játékos: "+game.getAktivJatekos().getNev());
 
@@ -107,9 +111,12 @@ public class JatekAblak extends JFrame {
         koradatokp.add(korAdatok);
 
         //tektonok kiválasztása
+        tektonok.setMaximumSize(new Dimension(50, 30));
+        megjelenit.setMaximumSize(new Dimension(10, 30));
+
         jatekosInfo.add(tektonok);
         jatekosInfo.add(Box.createHorizontalStrut(10));
-        megjelenit.setPreferredSize(new Dimension(50,50));
+        megjelenit.setPreferredSize(new Dimension(100,50));
         jatekosInfo.add(megjelenit);
 
         JPanel felsoPanel=new JPanel();
@@ -118,7 +125,7 @@ public class JatekAblak extends JFrame {
         felsoPanel.add(Box.createVerticalStrut(10));
         felsoPanel.add(koradatokp);
 
-        add(jatekosInfo);
+        add(felsoPanel);
 
         //rovarasz vagy gombasz gombok
         if(game.getGombaszok().contains(game.getAktivJatekos())){

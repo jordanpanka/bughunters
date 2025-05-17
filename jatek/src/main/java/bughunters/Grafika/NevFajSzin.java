@@ -170,8 +170,8 @@ public class NevFajSzin extends JFrame{
                 else{
                     game.setAktivJatekos(game.getGombaszok().get(0));
                 SwingUtilities.invokeLater(() -> {
-                 JatekAblak jAblak = new JatekAblak(game,jatek); // példányosítás
-                jAblak.setVisible(true);            // megjelenítés
+                 Proba proba = new Proba(game,jatek); // példányosítás
+                proba.setVisible(true);            // megjelenítés
                 });
                 }
                 
