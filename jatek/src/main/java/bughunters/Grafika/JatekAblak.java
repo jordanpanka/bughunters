@@ -158,7 +158,7 @@ public class JatekAblak extends JFrame {
 
         //rovarasz gombok
         rovaraszGombok.add(Maszik);
-        gombaszGombok.add(Box.createHorizontalStrut(10));
+        rovaraszGombok.add(Box.createHorizontalStrut(10));
         rovaraszGombok.add(Vag);
         gombaszGombok.add(Box.createHorizontalStrut(10));
         rovaraszGombok.add(Eszik);
