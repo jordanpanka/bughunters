@@ -2,9 +2,11 @@ package bughunters.Egyeb;
 
 import java.util.ArrayList;
 
-import bughunters.Gombafaj.*;
-import bughunters.Tekton.*;
-import bughunters.Rovar.*;
+import bughunters.Gombafaj.Gombafaj;
+import bughunters.Gombafaj.Gombafonal;
+import bughunters.Gombafaj.Gombatest;
+import bughunters.Rovar.Rovar;
+import bughunters.Tekton.Tekton;
 
 public class Gombasz extends Jatekos{
 
@@ -82,6 +84,14 @@ public class Gombasz extends Jatekos{
             gombafaj.testNovesztes(t, sporaval);
             akciopontCsokkentes(2);
             gyozelmiPontokNovelese(1);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public void JatekEleiTestNovesztes(Tekton t, boolean sporaval) throws Exception{
+        try {
+            gombafaj.testNovesztes(t, sporaval);
         } catch (Exception e) {
             throw e;
         }

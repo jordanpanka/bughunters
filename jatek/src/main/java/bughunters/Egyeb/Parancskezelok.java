@@ -265,8 +265,12 @@ public class Parancskezelok {
         //Felveszi a játékosok kezdő objektumait.
         for(Gombasz gombasz : gombaszokTestei.keySet()){
             try {
-                gombasz.testNovesztes(gombaszokTestei.get(gombasz), false);
+                gombasz.JatekEleiTestNovesztes(gombaszokTestei.get(gombasz), false);
             } catch (Exception e) {
+                //ha hiba van, töröljük az összes gombász gombatesteit amit felvehettünk már eddig.
+                for(Gombasz gombasz1 : gombaszok){
+                    gombasz1.getGombafaj().getGombaTestekList().clear();
+                }
                 throw new Exception("Nem sikerult gombatestet noveszteni");
             }
         }
@@ -286,7 +290,7 @@ public class Parancskezelok {
                 throw new Exception("Nem sikerult létrehozni a Rovart");
             }
         }
-
+        updateHashMaps();
         return true;
     }
 
