@@ -73,7 +73,7 @@ public class JatekAblak extends JFrame {
             JLabel fajta=new JLabel(game.getJatekosok().get(i).szerepKor());
             JLabel pontok=new JLabel("Pontok: "+game.getJatekosok().get(i).getGyozelmiPontok());
             
-            jatekos.add(jatekos);
+            jatekos.add(nev);
             jatekos.add(Box.createVerticalStrut(10));
             jatekos.add(akcio);
             jatekos.add(Box.createVerticalStrut(10));
