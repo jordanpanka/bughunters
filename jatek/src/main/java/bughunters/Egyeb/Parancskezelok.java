@@ -80,10 +80,12 @@ public class Parancskezelok {
         this.gombaszok = new ArrayList<>();
         this.rovaraszok = new ArrayList<>();
         this.jatekter = new Jatekter();
-        
+        this.allapot = parancsAllapot.Test;
     }
 
-    
+    public void setGrafika(Grafika grafika) {
+        this.grafika = grafika;
+    }
 
     /**
      * @brief Beállítja a parancskezelő állapotát
