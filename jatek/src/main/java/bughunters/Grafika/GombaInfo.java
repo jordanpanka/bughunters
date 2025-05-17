@@ -1,9 +1,16 @@
 package bughunters.Grafika;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
 public class GombaInfo extends JFrame {
@@ -12,11 +19,16 @@ public class GombaInfo extends JFrame {
     public GombaInfo() {
         setTitle("Gombafajok tulajdonságai");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(800, 600);
+        setLayout(new BorderLayout());
+
+        // Középre igazítás
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
 
         String[] oszlopNevek = {
-            "Kép", 
             "Fajnév", 
+            "Szín",
             "Hatás", 
             "Tapanyag", 
             "Spóra termelés", 
@@ -27,43 +39,67 @@ public class GombaInfo extends JFrame {
         };
 
         Object[][] sorAdatok = {
-            {"images/legy616_galoca.png", "Legy616 galoca", "bénítő", "x", "x kir", "6", "x szórást követően", "x szórást követően", "x sporabél"},
-            {"images/varganya.png", "Varganya gomba", "lassító", "x", "x kor", "x", "x szórást követően", "x szórást követően", "x spérabél"},
-            {"images/csiperke.png", "Csiperke gomba", "gyorsító", "x", "x", "16", "x szórást követően", "x szórást követően", "x spérabél"},
-            {"images/szegfu.png", "Szegfűgomba", "nem vág fonalat", "x", "x kér", "x", "x szórást követően", "x szórást követően", "x spérabél"},
-            {"images/piiffeteg.png", "Foltos piiffeteg", "osztódó", "x", "x kor", "16", "x szórást követően", "x szórást követően", "x spérabél"}
+            {"Legyölő galóca", "piros", "bénító", "30", "4 kör", "3", "2 szórást követően", "3 szórást követően", "3 spórából"},
+            {"Vargánya gomba", "kék", "lassító", "15", "2 kör", "2", "3 szórást követően", "6 szórást követően", "3 spórából"},
+            {"Csiperke gomba", "citromsárga", "gyorsító", "10", "2 kör", "2", "3 szórást követően", "6 szórást követően", "3 spórából"},
+            {"Szegfűgomba", "lila", "nem vág fonalat", "20", "3 kör", "2", "2 szórást követően", "4 szórást követően", "3 spórából"},
+            {"Foltos püffeteg", "rózsaszín", "osztódó", "10", "4 kör", "2", "2 szórást követően", "3 szórást követően", "3 spórából"}
         };
 
-        // Egyedi TableModel a képek kezeléséhez
-        DefaultTableModel model = new DefaultTableModel(sorAdatok, oszlopNevek) {
-            @Override
-            public Class<?> getColumnClass(int column) {
-                return column == 0 ? ImageIcon.class : Object.class;
-            }
-        };
+        DefaultTableModel model = new DefaultTableModel(sorAdatok, oszlopNevek);
 
         adatok = new JTable(model) {
-            // Egyedi renderer a képek megjelenítéséhez
+            // Fejléc középre igazítása
             @Override
-            public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
-                if (column == 0) {
-                    ImageIcon icon = (ImageIcon) getValueAt(row, column);
-                    JLabel label = new JLabel();
-                    if (icon != null) {
-                        label.setIcon(new ImageIcon(icon.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
-                    }
-                    return label;
-                }
-                return super.prepareRenderer(renderer, row, column);
+            protected JTableHeader createDefaultTableHeader() {
+                JTableHeader header = super.createDefaultTableHeader();
+                header.setDefaultRenderer(new CenterHeaderRenderer());
+                return header;
             }
         };
 
-        // Táblázat beállításai
-        adatok.setRowHeight(80); // Képek méretéhez igazítva
-        adatok.getColumnModel().getColumn(0).setPreferredWidth(100); // Kép oszlop szélessége
-        
+        // Minden oszlophoz középre igazítás beállítása
+        for(int i = 0; i < adatok.getColumnCount(); i++) {
+            adatok.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+
+        adatok.setRowHeight(50);
+        adatok.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        adatok.getColumnModel().getColumn(0).setPreferredWidth(150);
+        adatok.getColumnModel().getColumn(1).setPreferredWidth(100);
+        adatok.getColumnModel().getColumn(2).setPreferredWidth(100);
+        adatok.getColumnModel().getColumn(3).setPreferredWidth(100);
+        adatok.getColumnModel().getColumn(4).setPreferredWidth(100);
+        adatok.getColumnModel().getColumn(5).setPreferredWidth(100);
+        adatok.getColumnModel().getColumn(6).setPreferredWidth(150);
+        adatok.getColumnModel().getColumn(7).setPreferredWidth(150);
+        adatok.getColumnModel().getColumn(8).setPreferredWidth(100);
+
         JScrollPane scrollPane = new JScrollPane(adatok);
-        add(scrollPane, BorderLayout.CENTER);
+
+        scrollPane.setPreferredSize(new Dimension(
+            adatok.getPreferredScrollableViewportSize().width + 115,
+            adatok.getRowHeight() * (adatok.getRowCount() + 1)
+        ));
+
+        add(scrollPane);
+        pack();
+        setLocationRelativeTo(null);
+
+        setMinimumSize(new Dimension(
+            scrollPane.getPreferredSize().width + 500,
+            scrollPane.getPreferredSize().height + 50
+        ));
+    
         setVisible(true);
+    }
+
+     // Fejléc középre igazító osztály
+    private static class CenterHeaderRenderer extends DefaultTableCellRenderer {
+        public CenterHeaderRenderer() {
+            setHorizontalAlignment(SwingConstants.CENTER);
+            setVerticalAlignment(SwingConstants.CENTER);
+        }
     }
 }
