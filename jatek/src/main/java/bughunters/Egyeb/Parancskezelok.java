@@ -494,10 +494,13 @@ public class Parancskezelok {
             throw new Exception("Hibasan adta meg az adatokat");
         }
         if(gombaszok != null) {
-            for(Gombasz gombasz : gombaszok) {
-                if(gombasz.getNev().equals(nev)) {
+            for(Jatekos jatekos : jatekosok) {
+                if(jatekos.getNev().equals(nev)) {
                     throw new Exception("Mar van ilyen nevu jatekos");
-                }else if(gombasz.getGombafaj().getNev().equals(gf.getNev())) {
+                }
+            }
+            for(Gombasz gombasz : gombaszok) {
+                if(gombasz.getGombafaj().getNev().equals(gf.getNev())) {
                     throw new Exception("Mar van ilyen gombafaj");
                 }
             }
@@ -515,14 +518,21 @@ public class Parancskezelok {
 
     public void rovaraszFelvetel(String nev, Color szin) throws Exception {
         // Ellenőrzi, hogy ne legyen két azonos nevű játékos, illetve egy rovar szín csak egy játékoshoz tartozzon
-        if(nev== null || szin == null) {
-              throw new Exception("Hibasan adta meg az adatokat");
+        if( szin == null) {
+              throw new Exception("Hibasan adta meg az adatokat, szin null");
         }
+        if(nev== null ) {
+              throw new Exception("Hibasan adta meg az adatokat, nev null");
+        }
+
         if(rovaraszok != null) {
-            for(Rovarasz rovarasz : rovaraszok) {
-                if(rovarasz.getNev().equals(nev)) {
+            for(Jatekos jatekos : jatekosok) {
+                if(jatekos.getNev().equals(nev)) {
                       throw new Exception("Mar van ilyen nevu jatekos");
-                }else if(rovarasz.getSzin().equals(szin)) {
+                }
+            }
+            for(Rovarasz rovarasz : rovaraszok) {
+                if(rovarasz.getSzin().equals(szin)) {
                       throw new Exception("Mar van színű rovar");
                 }
             }
