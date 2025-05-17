@@ -261,7 +261,7 @@ public class Parancskezelok {
         return tektonNevek;
     }
 
-    public Boolean kezdetiRovarokGombak(HashMap<Gombasz, Tekton> gombaszokTestei, HashMap<Rovarasz, Tekton> rovaraszokRovarjai) throws Exception {
+    public void kezdetiRovarokGombak(HashMap<Gombasz, Tekton> gombaszokTestei, HashMap<Rovarasz, Tekton> rovaraszokRovarjai) throws Exception {
         //Felveszi a játékosok kezdő objektumait.
         for(Gombasz gombasz : gombaszokTestei.keySet()){
             try {
@@ -291,7 +291,6 @@ public class Parancskezelok {
             }
         }
         updateHashMaps();
-        return true;
     }
 
     /**
