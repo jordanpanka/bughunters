@@ -152,6 +152,7 @@ public class NevFajSzin extends JFrame{
                     break;
                     
                 }
+                setVisible(false);
                 SwingUtilities.invokeLater(() -> {
                 NevFajSzin nfsz = new NevFajSzin(game,gombaszokSzama,rovaraszokSzama,jatek); // példányosítás
                 nfsz.setVisible(true);            // megjelenítés
