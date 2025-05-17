@@ -221,7 +221,7 @@ public class Jatek {
                     System.err.println(e.getMessage());
                 }
 
-  
+        parancskezelo.updateHashMaps();
     }
 
      /***
