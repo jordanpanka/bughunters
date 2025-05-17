@@ -236,7 +236,9 @@ public class Parancskezelok {
      */
     public Tekton getTekton(String nev){
         try {
-            Tekton tekton = (Tekton)objektumok.get(nev);
+            
+            //Tekton tekton = (Tekton)objektumok.get(nev);
+            Tekton tekton = parancsTektonCast(nev.charAt(0), nev);
             if(tekton != null){
                 return tekton;
             }
