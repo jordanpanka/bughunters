@@ -17,7 +17,7 @@ import bughunters.Egyeb.Parancskezelok;
 import bughunters.Tekton.Tekton;
 
 public class JatekosSzamanakMegadasa extends JFrame {
-    JFrame frame;
+   
     private JComboBox<Integer> gombaszokSzama;
     private JComboBox<Integer> rovaraszokSzama;
     private Parancskezelok game;
@@ -28,12 +28,12 @@ public class JatekosSzamanakMegadasa extends JFrame {
 
     public JatekosSzamanakMegadasa(Parancskezelok g) { 
         game = g;
-        frame = new JFrame();
+        
 
-        frame.setTitle("Játékosok száma");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(300, 250);
-        frame.setLocationRelativeTo(null);
+        setTitle("Játékosok száma");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(300, 250);
+        setLocationRelativeTo(null);
 
         // Fő panel létrehozása
         panel = new JPanel();
@@ -59,8 +59,8 @@ public class JatekosSzamanakMegadasa extends JFrame {
         panel.add(rovaraszMegad);
         panel.add(kovetkezo);
 
-        frame.add(panel);
-        frame.setVisible(true);
+        add(panel);
+       //setVisible(true);
     }
 
     private void handleKovetkezo() {
