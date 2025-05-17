@@ -95,8 +95,8 @@ public class NevFajSzin extends JFrame{
 
         kovetkezo.addActionListener(e->{
             if(gombaszokSzama!=0){
-
-                gombaszokSzama--;
+                try{
+                    gombaszokSzama--;
                 switch ((String)gombafajKiv.getSelectedItem()) {
                     case "Lényölő galóca":
                         Gombafaj g=game.createGombafajBySpora('b');
@@ -126,8 +126,13 @@ public class NevFajSzin extends JFrame{
                 NevFajSzin nfsz = new NevFajSzin(game,gombaszokSzama,rovaraszokSzama,jatek); // példányosítás
                 nfsz.setVisible(true);            // megjelenítés
                 });
+                }catch(Exception ex){
+                    HibaAblak hb2=new HibaAblak(ex.getMessage());
+                }
+               
             }
             if(gombaszokSzama==0 && rovaraszokSzama!=0){
+                try{
                 rovaraszokSzama--;
                 switch((String)gombafajKiv.getSelectedItem()){
                     case "piros": 
@@ -157,6 +162,9 @@ public class NevFajSzin extends JFrame{
                 NevFajSzin nfsz = new NevFajSzin(game,gombaszokSzama,rovaraszokSzama,jatek); // példányosítás
                 nfsz.setVisible(true);            // megjelenítés
                 });
+                }catch(Exception ex){
+                    HibaAblak hb=new HibaAblak(ex.getMessage());
+                }
             }
             else{
                 SwingUtilities.invokeLater(() -> {

@@ -29,7 +29,6 @@ public class JatekosSzamanakMegadasa extends JFrame {
     public JatekosSzamanakMegadasa(Parancskezelok g) { 
         game = g;
         
-
         setTitle("Játékosok száma");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(300, 250);
