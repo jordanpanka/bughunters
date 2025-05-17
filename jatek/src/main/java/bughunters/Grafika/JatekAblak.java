@@ -55,15 +55,17 @@ public class JatekAblak extends JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH); 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
+        setLayout(new BorderLayout());
 
         //panelek létrehozása
         JPanel foGombaszPanel=new JPanel();
         JPanel foRovaraszPanel=new JPanel();
 
-        JPanel jatekosInfo=new JPanel();
-
         JPanel gombaszGombok=new JPanel();
         JPanel rovaraszGombok=new JPanel();
+
+        JPanel jatekosInfo=new JPanel();
+        jatekosInfo.setLayout(new BoxLayout(jatekosInfo, BoxLayout.X_AXIS));
 
         //jatekosok adatainak megjelenítése
         for(int i=0; i<game.getJatekosok().size(); i++){
@@ -83,16 +85,41 @@ public class JatekAblak extends JFrame {
             jatekos.add(Box.createVerticalStrut(10));
             jatekos.add(pontok);
             jatekos.add(Box.createVerticalStrut(10));
-            
+            System.out.println("hozzaadva.");
             jatekosInfo.add(jatekos);
+            jatekosInfo.add(Box.createHorizontalStrut(15));
         }
+        List<String> tekton=game.getTektonNevList();
+        tektonok = new JComboBox<>();
+        tektonok.setPreferredSize(new Dimension(150,30));
         
-        tektonok = new JComboBox<>(game.getObjektumok().keySet().toArray(new String[0]));
-
+        tekton.forEach((String s)->{
+            System.out.println(s);
+            tektonok.addItem(s);
+        });
+       
+        gombokLetreHozasa();
 
         // kör és játékos
-        JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+"Aktív játékos: "+game.getAktivJatekos().getNev());
-        
+        JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+" Aktív játékos: "+game.getAktivJatekos().getNev());
+
+        JPanel koradatokp=new JPanel();
+        koradatokp.add(korAdatok);
+
+        //tektonok kiválasztása
+        jatekosInfo.add(tektonok);
+        jatekosInfo.add(Box.createHorizontalStrut(10));
+        megjelenit.setPreferredSize(new Dimension(50,50));
+        jatekosInfo.add(megjelenit);
+
+        JPanel felsoPanel=new JPanel();
+        felsoPanel.setLayout(new BoxLayout(felsoPanel, BoxLayout.Y_AXIS)); 
+        felsoPanel.add(jatekosInfo);
+        felsoPanel.add(Box.createVerticalStrut(10));
+        felsoPanel.add(koradatokp);
+
+        add(jatekosInfo);
+
         //rovarasz vagy gombasz gombok
         if(game.getGombaszok().contains(game.getAktivJatekos())){
             isGombasz=true;
@@ -101,8 +128,7 @@ public class JatekAblak extends JFrame {
             isGombasz=false;
         }
 
-        gombokLetreHozasa();
-
+       
         Dimension gombMeret=new Dimension(100,50);
 
         //gombok lenyomása
@@ -148,7 +174,7 @@ public class JatekAblak extends JFrame {
         cardPanel.add(foRovaraszPanel, "Rovarasz");
 
         // Panel hozzáadása az ablakhoz
-        this.add(cardPanel);
+        //add(felsoPanel);
 
         // Aktív játékos alapján váltás
         Jatekos aktivJatekos = game.getAktivJatekos();
