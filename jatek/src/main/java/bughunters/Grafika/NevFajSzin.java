@@ -88,9 +88,9 @@ public class NevFajSzin extends JFrame{
         //szinKiv=new JComboBox<>(szinek);
 
         if(gombaszokSzama==0){
-                    kiirjatekos.setText("Rovarász");
-                    gombafaj.setText("Szín: ");
-                    gombafajKiv.setModel(new DefaultComboBoxModel<>(szinek));
+                kiirjatekos.setText("Rovarász");
+                gombafaj.setText("Szín: ");
+                gombafajKiv.setModel(new DefaultComboBoxModel<>(szinek));
         } 
 
         kovetkezo.addActionListener(e->{
@@ -138,21 +138,21 @@ public class NevFajSzin extends JFrame{
                 switch((String)gombafajKiv.getSelectedItem()){
                     case "piros": 
                         Color uj=Color.RED;
-                        game.rovaraszFelvetel(jatekosNev.getSelectedText(),uj);
+                        game.rovaraszFelvetel(jatekosNev.getText(),uj);
                         break;
                     case "narancssárga":
-                        game.rovaraszFelvetel(jatekosNev.getSelectedText(),Color.ORANGE);
+                        game.rovaraszFelvetel(jatekosNev.getText(),Color.ORANGE);
                         break;
                     case "magenta":
-                        game.rovaraszFelvetel(jatekosNev.getSelectedText(),Color.MAGENTA);
+                        game.rovaraszFelvetel(jatekosNev.getText(),Color.MAGENTA);
                         break;
                     case "barna":
                         Color uj2=new Color(121,87,53);
-                        game.rovaraszFelvetel(jatekosNev.getSelectedText(),uj2);
+                        game.rovaraszFelvetel(jatekosNev.getText(),uj2);
                         break;
                     case "világos barna":
                         Color uj3=new Color(172,86,0);
-                        game.rovaraszFelvetel(jatekosNev.getSelectedText(),uj3);
+                        game.rovaraszFelvetel(jatekosNev.getText(),uj3);
                         break;
                     default: 
                     break;
