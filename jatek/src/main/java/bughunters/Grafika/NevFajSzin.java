@@ -159,21 +159,34 @@ public class NevFajSzin extends JFrame{
                     
                 }
                 setVisible(false);
-                 rovaraszokSzama--;
-                SwingUtilities.invokeLater(() -> {
+                rovaraszokSzama--;
+                System.out.println(rovaraszokSzama);
+                if(rovaraszokSzama!=0){
+                    SwingUtilities.invokeLater(() -> {
                 NevFajSzin nfsz = new NevFajSzin(game,gombaszokSzama,rovaraszokSzama,jatek); // példányosítás
                 nfsz.setVisible(true);            // megjelenítés
                 });
-                }catch(Exception ex){
-                    HibaAblak hb=new HibaAblak(ex.getMessage());
                 }
-            }
-            else{
+                else{
+                    game.setAktivJatekos(game.getGombaszok().get(0));
                 SwingUtilities.invokeLater(() -> {
                  JatekAblak jAblak = new JatekAblak(game,jatek); // példányosítás
                 jAblak.setVisible(true);            // megjelenítés
                 });
-        }
+                }
+                
+                }catch(Exception ex){
+                    HibaAblak hb=new HibaAblak(ex.getMessage());
+                }
+            }
+            /*else{
+                setVisible(false);
+                game.setAktivJatekos(game.getGombaszok().get(0));
+                SwingUtilities.invokeLater(() -> {
+                 JatekAblak jAblak = new JatekAblak(game,jatek); // példányosítás
+                jAblak.setVisible(true);            // megjelenítés
+                });
+        }*/
             }
           );  
 
