@@ -90,27 +90,44 @@ public class Grafika extends JPanel {
             Map.Entry::getKey,
             Map.Entry::getValue
         ));
-        //EZ MÉG ÍGY NEM JÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓÓ
-        double elfordulasSzoges=Math.PI/(double)t.getSporak().size();
-        R=2;
-        tektonok.get(t.getSporak().get(0)).setX(elozoX);
-        tektonok.get(t.getSporak().get(0)).setY(elozoY);
-        for(int i=1; i<szurtSpora.size(); i++){
-            double iranySzog=Math.atan2(elozoY-cY,elozoX-cX);
-            double Szog=iranySzog+elfordulasSzoges;
-            elozoX=(int)(cX+R*Math.cos(Szog));
-            elozoY=(int) (cY+R*Math.cos(Szog));
-            tektonok.get(t.getSporak().get(0)).setX(elozoX);
-            tektonok.get(t.getSporak().get(0)).setY(elozoY);
-        }
-        ////////////////////////////////////////////////////////////////////////////////////
-        //rovar beállítása
+        
         Map<Rovar, GRovar> szurtRovar = rovarok.entrySet().stream()
         .filter(entry -> entry.getKey().getTartozkodas().equals(t)) // elérés a kulcs objektumhoz
         .collect(Collectors.toMap(
             Map.Entry::getKey,
             Map.Entry::getValue
         ));
+
+        int rovarSporaSzam=szurtSpora.size()+szurtRovar.size();
+        double elfordulasSzoges=Math.PI/(double)t.getSporak().size();
+        R=2;
+        if(szurtRovar!=null){
+            szurtRovar.get(0).setX(elozoX);
+            szurtRovar.get(0).setY(elozoY);
+            for(int i=1; i<szurtRovar.size();i++){
+                double iranySzog=Math.atan2(elozoY-cY,elozoX-cX);
+               double Szog=iranySzog+elfordulasSzoges;
+               elozoX=(int)(cX+R*Math.cos(Szog));
+               elozoY=(int) (cY+R*Math.cos(Szog));
+               szurtRovar.get(i).setX(elozoX);
+                szurtRovar.get(i).setY(elozoY);            
+            }
+
+        }
+        if(szurtSpora!=null){
+            szurtSpora.get(0).setX(elozoX);
+            szurtSpora.get(0).setY(elozoY);
+            for(int i=1; i<szurtSpora.size();i++){
+                double iranySzog=Math.atan2(elozoY-cY,elozoX-cX);
+               double Szog=iranySzog+elfordulasSzoges;
+               elozoX=(int)(cX+R*Math.cos(Szog));
+               elozoY=(int) (cY+R*Math.cos(Szog));
+               szurtSpora.get(i).setX(elozoX);
+                szurtSpora.get(i).setY(elozoY);            
+            }
+        }
+
+
 
         paintComponent(g);
        
