@@ -104,6 +104,9 @@ public class Parancskezelok {
     public Jatekter getJatekter() {
         return jatekter;
     }
+    public void setjatekter(Jatekter jatekter) {
+        this.jatekter = jatekter;
+    }
 
     public List<Jatekos> getJatekosok() {
         return jatekosok;

@@ -72,6 +72,7 @@ public class JatekosSzamanakMegadasa extends JFrame {
 
             dispose();
             Jatek jatek = new Jatek(game, jatekTer);
+            game.setjatekter(jatekTer);
             //jaték függvény: pálya alkotás
             jatek.jatekPalyaAlkotasa();
 
