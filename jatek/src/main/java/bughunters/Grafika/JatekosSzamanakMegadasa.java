@@ -1,7 +1,6 @@
 package bughunters.Grafika;
 
 import java.awt.FlowLayout;
-import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -14,7 +13,6 @@ import javax.swing.SwingUtilities;
 import bughunters.Egyeb.Jatek;
 import bughunters.Egyeb.Jatekter;
 import bughunters.Egyeb.Parancskezelok;
-import bughunters.Tekton.Tekton;
 
 public class JatekosSzamanakMegadasa extends JFrame {
    
@@ -68,14 +66,15 @@ public class JatekosSzamanakMegadasa extends JFrame {
             int gombaszok = (int)gombaszokSzama.getSelectedItem();
             int rovaraszok = (int)rovaraszokSzama.getSelectedItem();
 
-            game = new Parancskezelok();
-            ArrayList<Tekton> t = new ArrayList<Tekton>();
-            Jatekter jatekTer = new Jatekter(t);
-
-            //jaték függvény: pálya alkotás
+            //game = new Parancskezelok();
+           
+            Jatekter jatekTer = new Jatekter();
 
             dispose();
             Jatek jatek = new Jatek(game, jatekTer);
+            //jaték függvény: pálya alkotás
+            jatek.jatekPalyaAlkotasa();
+
             NevFajSzin kovi = new NevFajSzin(game, gombaszok, rovaraszok, jatek);
             kovi.setVisible(true);
         });
