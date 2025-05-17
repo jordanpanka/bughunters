@@ -179,14 +179,7 @@ public class NevFajSzin extends JFrame{
                     HibaAblak hb=new HibaAblak(ex.getMessage());
                 }
             }
-            /*else{
-                setVisible(false);
-                game.setAktivJatekos(game.getGombaszok().get(0));
-                SwingUtilities.invokeLater(() -> {
-                 JatekAblak jAblak = new JatekAblak(game,jatek); // példányosítás
-                jAblak.setVisible(true);            // megjelenítés
-                });
-        }*/
+           
             }
           );  
 
