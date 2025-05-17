@@ -29,9 +29,7 @@ import bughunters.Grafika.GRovar;
 import bughunters.Grafika.GSpora;
 import bughunters.Grafika.GTekton;
 import bughunters.Grafika.Grafika;
-import bughunters.Grafika.HibaAblak;
 import bughunters.Grafika.JatekInditasaAblak;
-import bughunters.Grafika.NevFajSzin;
 import bughunters.Rovar.Rovar;
 import bughunters.Rovar.rovarAllapot;
 import bughunters.Tekton.Disszolator;
@@ -490,20 +488,17 @@ public class Parancskezelok {
          aktivJatekos.korVege();
     }
 
-    public void gombaszFelvetel(String nev, Gombafaj gf) {
+    public void gombaszFelvetel(String nev, Gombafaj gf) throws Exception {
         // Ellenőrzi, hogy ne legyen két azonos nevű játékos, illetve egy gombafaj csak egy játékoshoz tartozzon
         if(nev== null || gf == null) {
-            HibaAblak uzenet = new HibaAblak("Hibasan adta meg az adatokat");
-            return;
+            throw new Exception("Hibasan adta meg az adatokat");
         }
         if(gombaszok != null) {
             for(Gombasz gombasz : gombaszok) {
                 if(gombasz.getNev().equals(nev)) {
-                    HibaAblak uzenet = new HibaAblak("Mar van ilyen nevu jatekos");
-                    return;
+                    throw new Exception("Mar van ilyen nevu jatekos");
                 }else if(gombasz.getGombafaj().getNev().equals(gf.getNev())) {
-                    HibaAblak uzenet = new HibaAblak("Mar van ilyen gombafaj");
-                    return;
+                    throw new Exception("Mar van ilyen gombafaj");
                 }
             }
         }
@@ -518,20 +513,17 @@ public class Parancskezelok {
         objektumokbolString.put(gombasz, nev); 
     }
 
-    public void rovaraszFelvetel(String nev, Color szin) {
+    public void rovaraszFelvetel(String nev, Color szin) throws Exception {
         // Ellenőrzi, hogy ne legyen két azonos nevű játékos, illetve egy rovar szín csak egy játékoshoz tartozzon
         if(nev== null || szin == null) {
-            HibaAblak uzenet = new HibaAblak("Hibasan adta meg az adatokat");
-            return;
+              throw new Exception("Hibasan adta meg az adatokat");
         }
         if(rovaraszok != null) {
             for(Rovarasz rovarasz : rovaraszok) {
                 if(rovarasz.getNev().equals(nev)) {
-                    HibaAblak uzenet = new HibaAblak("Mar van ilyen nevu jatekos");
-                    return;
+                      throw new Exception("Mar van ilyen nevu jatekos");
                 }else if(rovarasz.getSzin().equals(szin)) {
-                    HibaAblak uzenet = new HibaAblak("Mar van színű rovar");
-                    return;
+                      throw new Exception("Mar van színű rovar");
                 }
             }
         }
