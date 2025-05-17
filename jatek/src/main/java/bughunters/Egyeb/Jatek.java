@@ -191,17 +191,12 @@ public class Jatek {
      */
     public void jatekPalyaAlkotasa(){
             //végigfut a pálya txt-n, mindegyik során lefuttatja a parancskezelot.
-            Path palyaMappaPath = Paths.get("palya").toAbsolutePath();
-                
-            File palyaMappa = palyaMappaPath.toFile();
-            if (!palyaMappa.exists()) {
-                System.out.println("A palya mappa nem található.");
-                return;
-            }
-
-            File palyaFajl = new File(palyaMappa, "palya.txt"); 
+            Path palyaFajlPath = Paths.get("palya", "palya.txt").toAbsolutePath();
+            System.out.println("Fájl elérési út: " + palyaFajlPath); // Debug segéd
+    
+            File palyaFajl = palyaFajlPath.toFile();
             if (!palyaFajl.exists()) {
-                System.out.println("A palya.txt fájl nem található a palya mappában.");
+                System.out.println("A palya.txt fájl nem található a megadott helyen.");
                 return;
             }
                 try {
