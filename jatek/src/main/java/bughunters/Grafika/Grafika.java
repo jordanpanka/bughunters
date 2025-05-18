@@ -78,6 +78,9 @@ public class Grafika extends JPanel {
         System.out.println("Tekton középen: X=" + cX + ", Y=" + cY);
 
         // Szomszédok pozícióinak kiszámítása és beállítása
+
+        System.out.println("Gombateste száma: " + gombatestek.size());
+
         if (szomszedokSzama != 0) {
             System.out.println("Vannak szomszédok.");
             double szogLepes = 2 * Math.PI / szomszedokSzama;  // Egyenlő elosztás a kör mentén
@@ -118,6 +121,7 @@ public class Grafika extends JPanel {
                 gg.setX(cX);
                 gg.setY(cY);
                 gg.Draw(g);
+                System.out.println("Gombatest rajzolva X=" + cX + ", Y=" + cY +"nev: "+gombatest.getGombafaj().getNev());
             }
         });
         
