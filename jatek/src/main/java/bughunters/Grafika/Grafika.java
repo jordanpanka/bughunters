@@ -224,7 +224,6 @@ public class Grafika extends JPanel {
 
     // Kirajzolja a gombafonalakat a tektonok között
     public void gombafonalakRajzolasa(Tekton t, Graphics g) {
-<<<<<<< HEAD
         Set<Set<Tekton>> kirajzoltFonalak = new HashSet<>();
         List<Tekton> kirajzoltTektonok = t.getSzomszedok();
         kirajzoltTektonok.add(t);
@@ -268,7 +267,6 @@ public class Grafika extends JPanel {
                     fonal.Draw(g);
                     kirajzoltFonalak.add(par);
                 }
-=======
         GTekton g1 = tektonok.get(t);
         int x1 = g1.getX();
         int y1 = g1.getY();
@@ -307,7 +305,6 @@ public class Grafika extends JPanel {
                 System.out.println("Y1:"+y1);
                 System.out.println("X2:"+x2);
                 System.out.println("Y2:"+y2);
->>>>>>> e1b1d43496dd239a8d8aa49f165a13e567cfc4ee
             }
         }
     }
