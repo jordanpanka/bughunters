@@ -166,7 +166,7 @@ public class KezdoPozicioKivalaszt extends JFrame{
                 setVisible(false);
 
                 SwingUtilities.invokeLater(() -> {
-                    Proba jAblak = new Proba(game,jatek); // példányosítás
+                    JatekAblak jAblak = new JatekAblak(game,jatek); // példányosítás
                     jAblak.setVisible(true);            // megjelenítés
                 });
 
