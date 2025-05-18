@@ -132,6 +132,7 @@ public class JatekAblak  extends JFrame{
         add(felsoPanel,BorderLayout.NORTH);
         add(grafika, BorderLayout.CENTER);
         frissitPanel();
+        egerKattintasok();
         
     }
    
