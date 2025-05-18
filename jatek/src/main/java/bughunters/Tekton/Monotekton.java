@@ -40,6 +40,7 @@ public class Monotekton extends Tekton {
      * @return Ha tud növeszteni gombatestet, akkor azt adja vissza
      * @exception Exception akkor dobódik ha nem lehet ide gombatestet növeszteni
      */
+    /*
     @Override
     public Gombatest gombatestNov(Gombafaj gf, boolean sporaval) throws Exception {
         if (getFonalak().isEmpty()) {
@@ -77,6 +78,7 @@ public class Monotekton extends Tekton {
 
         return new Gombatest();
     }
+    */
 
     public Monotekton(List<Tekton> szomszed, List<Gombafonal> gombafonal, List<Spora> spora){
         super(szomszed, gombafonal, spora);
