@@ -1,11 +1,9 @@
 package bughunters.Grafika;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import javax.swing.JPanel;
 
@@ -97,7 +95,7 @@ public class Grafika extends JPanel {
                     gSzomszed.Draw(g);  // Azonnal ki is rajzoljuk
                     System.out.println("Szomszéd tekton rajzolva X=" + szomszedX + ", Y=" + szomszedY);
                     gombatestek.forEach((gombatest, gg) -> {
-                            if (gombatest.getTekton().equals(gSzomszed)) {
+                            if (gombatest.getTekton().equals(szomszed)) {
                                 gg.setX(szomszedX);
                                 gg.setY(szomszedY);
                                 gg.Draw(g);
