@@ -84,7 +84,7 @@ public class NevFajSzin extends JFrame{
         String[] gombafajoks=new String[]{"Lényölő galóca","Vargánya gomba", "Csiperke gomba","Szegfűgomba", "Foltos püffeteg"};
         gombafajKiv=new JComboBox<>(gombafajoks);
 
-        String[] szinek=new String[]{"piros","narancssárga","magenta","barna","viágos barna"};
+        String[] szinek=new String[]{"piros","narancssárga","magenta","barna","világos barna"};
         //szinKiv=new JComboBox<>(szinek);
 
         if(gombaszokSzama==0){
