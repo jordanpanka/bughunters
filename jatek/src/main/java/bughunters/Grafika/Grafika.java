@@ -355,8 +355,8 @@ public class Grafika extends JPanel {
         System.out.println("Képernyő"+x+y);
 
         for (Map.Entry<Gombatest, GGombatest> entry : gombatestek.entrySet()) {
-            double xC =(double) entry.getValue().getX()+50;
-            double yC = (double)entry.getValue().getY()+50;
+            double xC =(double) entry.getValue().getX()+25;
+            double yC = (double)entry.getValue().getY()+25;
             System.out.println("Aktuális tektin:"+xC+yC);
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
             if (d <=35) {
@@ -382,11 +382,13 @@ public class Grafika extends JPanel {
     public Rovar rovarKeres(int x, int y){
         //lehet nem jó
         y=y-230;
+        System.out.println("Képernyő"+x+y);
         for (Map.Entry<Rovar, GRovar> entry : rovarok.entrySet()) {
-            double xC = entry.getValue().getX();
-            double yC = entry.getValue().getY();
+            double xC = (double)entry.getValue().getX()+45;
+            double yC = (double)entry.getValue().getY()+45;
+            System.out.println("Aktuális tektin:"+xC+yC);
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
-            if (d < 1) {
+            if (d < 22) {
                 return entry.getKey(); // megtaláltuk
             }
         }
@@ -395,10 +397,10 @@ public class Grafika extends JPanel {
     public Spora sporaKeres(int x, int y){
         y=y-230;
          for (Map.Entry<Spora, GSpora> entry : sporak.entrySet()) {
-            double xC = entry.getValue().getX();
-            double yC = entry.getValue().getY();
+            double xC = (double)entry.getValue().getX()+3;
+            double yC = (double)entry.getValue().getY()+3;
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
-            if (d < 1) {
+            if (d <=3) {
                 return entry.getKey(); // megtaláltuk
             }
         }
