@@ -274,7 +274,17 @@ public class Parancskezelok {
         //Felveszi a játékosok kezdő objektumait.
         for(Gombasz gombasz : gombaszokTestei.keySet()){
             try {
-                //HibaAblak asd = new HibaAblak(gombaszokTestei.get(gombasz).getClass().getName());
+                 //egyéb gombatest a tektonon ellenőrzés
+                        ArrayList<Gombatest> gombatestek = new ArrayList<>();
+                        for(Gombasz egygombasz : gombaszok) {
+                            Gombafaj gombaszFaja = egygombasz.getGombafaj();
+                            gombatestek.addAll(gombaszFaja.getGombaTestekList());
+                        }
+                        for(Gombatest gombatest : gombatestek) {
+                            if(gombatest.getTekton().equals(gombaszokTestei.get(gombasz))) {
+                                throw new Exception("Mar van gombatest az adott tektonon");
+                            }
+                        }
                 gombasz.JatekEleiTestNovesztes(gombaszokTestei.get(gombasz), false);
             } catch (Exception e) {
                 //ha hiba van, töröljük az összes gombász gombatesteit amit felvehettünk már eddig.
