@@ -19,7 +19,7 @@ public class GombaInfo extends JFrame {
     public GombaInfo() {
         setTitle("Gombafajok tulajdonságai");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLayout(new BorderLayout()); 
+        setLayout(new BorderLayout());
 
         // Középre igazítás
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -28,7 +28,7 @@ public class GombaInfo extends JFrame {
 
         String[] oszlopNevek = {
             "Fajnév", 
-            "Kép",
+            "Szín",
             "Hatás", 
             "Tapanyag", 
             "Spóra termelés", 
