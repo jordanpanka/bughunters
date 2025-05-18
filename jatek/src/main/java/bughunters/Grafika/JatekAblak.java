@@ -210,6 +210,7 @@ public class JatekAblak  extends JFrame{
           this.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e) {
+                System.out.println("X: " + e.getX() + ", Y: " + e.getY());
                 if (Boolean.TRUE.equals(mouse.get("testNov"))) {
                     Tekton t =grafika.tektonKeres(e.getX(), e.getY());
                         try{
