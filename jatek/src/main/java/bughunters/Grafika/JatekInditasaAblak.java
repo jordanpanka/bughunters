@@ -2,7 +2,7 @@ package bughunters.Grafika;
 
 import bughunters.Egyeb.Parancskezelok;
 
-import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.jar.JarFile;
@@ -18,7 +18,7 @@ public class JatekInditasaAblak extends JFrame {
         setTitle("Játék Indítása");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 200);
-        setLayout(new FlowLayout());
+        setLayout(new GridBagLayout());
 
         UjJatek = new JButton("Új játék indítása");
         UjJatek.addActionListener(e -> koviAblak());
