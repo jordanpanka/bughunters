@@ -360,6 +360,9 @@ public class JatekAblak extends JFrame {
             
         );
     }
+    public void gombaszPanelBeall(){
+        
+    }
     /*public void frissitPanelt() {
     Jatekos aktivJatekos = game.getAktivJatekos();
     if (aktivJatekos != null && game.getGombaszok().contains(aktivJatekos)) {

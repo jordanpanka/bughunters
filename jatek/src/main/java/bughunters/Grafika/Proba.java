@@ -50,6 +50,8 @@ public class Proba  extends JFrame{
     private Tekton elsoTekton;
     private Rovar rovarKiv;
     private HashMap<String, Boolean> mouse;
+    private  JPanel gombaszGombok;
+    private JPanel rovaraszGombok;
    
 
     public Proba(Parancskezelok pk, Jatek jatek){
@@ -57,6 +59,13 @@ public class Proba  extends JFrame{
         game=pk;
         mouse=new HashMap<>();
         grafika=new Grafika();
+
+        if(game.getGombaszok().contains(game.getAktivJatekos())){
+            isGombasz=true;
+        }
+        else{
+            isGombasz=false;
+        }
 
         setTitle("Bughunters");
         setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -128,9 +137,9 @@ public class Proba  extends JFrame{
         felsoPanel.add(koradatokp);
         
          //gombasz gombok
-        JPanel gombaszGombok=new JPanel();
+        gombaszGombok=new JPanel();
         gombaszGombok.setLayout(new BoxLayout(gombaszGombok,BoxLayout.X_AXIS));
-        gombaszPanelBeall(gombaszGombok);
+        gombaszPanelBeall();
 
         /*TestNov.setPreferredSize(new Dimension(130,50));
         gombaszGombok.add(TestNov);
@@ -159,7 +168,7 @@ public class Proba  extends JFrame{
 
        
         //rovaraszgombok
-        JPanel rovaraszGombok=new JPanel();
+        rovaraszGombok=new JPanel();
         rovaraszGombok.setLayout(new BoxLayout(rovaraszGombok,BoxLayout.X_AXIS));
 
         //rovarasz gombok
@@ -346,7 +355,7 @@ public class Proba  extends JFrame{
             
         );
     }
-    public void gombaszPanelBeall(JPanel gombaszGombok){
+    public void gombaszPanelBeall(){
         TestNov.setPreferredSize(new Dimension(130,50));
         gombaszGombok.add(TestNov);
         gombaszGombok.add(Box.createHorizontalStrut(10));
@@ -371,6 +380,22 @@ public class Proba  extends JFrame{
         gombaszGombok.setBorder(BorderFactory.createEmptyBorder(20, 0, 50, 0));
 
         gombaszGombok.setLayout(new FlowLayout(FlowLayout.CENTER));
+    }
+    public void frissitPanel(){
+        //még nem teljes
+        if(game.getGombaszok().contains(game.getAktivJatekos())){
+            isGombasz=true;
+        }
+        else{
+            isGombasz=false;
+        }
+
+        if(isGombasz){
+            add(gombaszGombok,BorderLayout.SOUTH);
+        }
+        else{
+            add(rovaraszGombok,BorderLayout.SOUTH);
+        }
     }
 
 }
