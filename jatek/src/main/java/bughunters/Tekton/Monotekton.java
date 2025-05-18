@@ -1,8 +1,10 @@
 package bughunters.Tekton;
 
-import bughunters.Gombafaj.*;
-
 import java.util.List;
+
+import bughunters.Gombafaj.Gombafaj;
+import bughunters.Gombafaj.Gombafonal;
+import bughunters.Gombafaj.Spora;
 
 public class Monotekton extends Tekton {
     /***
@@ -32,6 +34,12 @@ public class Monotekton extends Tekton {
             }
             throw new Exception("Nem növeszthet ide gombafonalat.");
         }
+    }
+
+    @Override
+    public Monotekton cloneTekton(){
+        Monotekton ujTekton = new Monotekton();
+        return ujTekton;
     }
 
     /***

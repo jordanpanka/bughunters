@@ -1,9 +1,10 @@
 package bughunters.Tekton;
 
-import bughunters.Gombafaj.*;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import bughunters.Gombafaj.Gombafonal;
+import bughunters.Gombafaj.Spora;
 
 /***
  * @brief Ez az a típus, ahol egy idő után felszívódik a lerakott gombafonal.
@@ -30,6 +31,12 @@ public class Disszolator extends Tekton {
             torlendoFonal.vegpontTorles();
         }
     }   
+
+    @Override
+    public Disszolator cloneTekton(){
+        Disszolator ujTekton = new Disszolator();
+        return ujTekton;
+    }
 
     public Disszolator(List<Tekton> szomszed, List<Gombafonal> gombafonal, List<Spora> spora){
         super(szomszed,gombafonal,spora);
