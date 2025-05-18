@@ -1,5 +1,7 @@
 package bughunters.Egyeb;
 
+import java.awt.desktop.SystemEventListener;
+
 import bughunters.Tekton.*;
 import bughunters.Gombafaj.*;
 
@@ -95,23 +97,25 @@ public class Jatekter {
             for (int i = 0; i < darab; i++) {
                 int sorszam = 0;
 
+                
                 // Véletlenszerű index generálása a meglévő Tekton-okból
                 int index = random.nextInt(tektondb);
 
                 // Ha ez az index már ki lett választva, újra próbálkozunk
-                if (!sorszamok.contains(index)) {
-                    sorszamok.add(index);
-                    sorszam = index;
-                } else {
-                    i--; // visszalépés, mert ez az index már szerepelt
-                    continue;
+                while (sorszamok.contains(index)) { 
+                    index = random.nextInt(tektondb);
                 }
+                sorszamok.add(index);
+                sorszam = index;
+
+                //kivalasztott tekton
+                Tekton kivalasztottTekton = tektonok.get(sorszam);
 
                 // Új Tekton létrehozása
-                Tekton ujTekton = new Tekton();
+                Tekton ujTekton = kivalasztottTekton.cloneTekton();
 
                 // Az új Tekton-t szomszédként beállítjuk a kiválasztott régi Tekton-hoz
-                tektonok.get(sorszam).szomszedAllitas(ujTekton);
+                kivalasztottTekton.szomszedAllitas(ujTekton);
 
                 // Lekérjük a kiválasztott Tekton-hoz tartozó Gombafonalakat
                 List<Gombafonal> fonalak = tektonok.get(sorszam).gombafonalIgazitas();

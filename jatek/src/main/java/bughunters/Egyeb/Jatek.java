@@ -130,7 +130,7 @@ public class Jatek {
         Boolean jatekosvaltas = false;
         if (korSzam >=60) {
             Gombasz nyerGombasz = null;
-            int maxPontszamGomb = 0;
+            int maxPontszamGomb = -1;
             for (Gombasz gombasz : parancskezelo.getGombaszok()) {
                 if (gombasz.getGyozelmiPontok() > maxPontszamGomb) {
                     maxPontszamGomb = gombasz.getGyozelmiPontok();
@@ -139,7 +139,7 @@ public class Jatek {
             }
 
             Rovarasz nyerRovarasz = null;
-            int maxPontszamRovar = 0;
+            int maxPontszamRovar = -1;
             for (Rovarasz rovarasz : parancskezelo.getRovaraszok()) {
                 if (rovarasz.getGyozelmiPontok() > maxPontszamRovar) {
                     maxPontszamRovar = rovarasz.getGyozelmiPontok();
@@ -147,9 +147,10 @@ public class Jatek {
                 }
             }
             JatekVegeAblak jatekVegeAblak = new JatekVegeAblak(parancskezelo, nyerGombasz, nyerRovarasz);
-            jatekVegeAblak.setVisible(true);
+            
             jatekAblak.setVisible(false); // Játék ablak elrejtése
             jatekAblak.dispose(); // Játék ablak bezárása
+            jatekVegeAblak.setVisible(true);
             
         }
       
