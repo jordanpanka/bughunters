@@ -224,6 +224,49 @@ public class Grafika extends JPanel {
 
     // Kirajzolja a gombafonalakat a tektonok között
     public void gombafonalakRajzolasa(Tekton t, Graphics g) {
+        Set<Set<Tekton>> kirajzoltFonalak = new HashSet<>();
+        List<Tekton> kirajzoltTektonok = t.getSzomszedok();
+        kirajzoltTektonok.add(t);
+
+        for (Tekton t1 : kirajzoltTektonok) {
+            GTekton g1 = tektonok.get(t1);
+            int x1 = g1.getX();
+            int y1 = g1.getY();
+
+            List<Gombafonal> gombafonalak1 = t1.getFonalak();
+
+            for (Tekton t2 : t1.getSzomszedok()) {
+                // Elkerülés: ugyanaz a kapcsolat ne legyen kétszer kirajzolva
+                Set<Tekton> par = new HashSet<>(Arrays.asList(t1, t2));
+                if (kirajzoltFonalak.contains(par)) continue;
+
+                GTekton g2 = tektonok.get(t2);
+                if (g2 != null) {
+                    int x2 = g2.getX();
+                    int y2 = g2.getY();
+
+                    List<Gombafonal> gombafonalak2 = t2.getFonalak();
+
+                    Gombafonal gombafonal = null;
+
+                    for (Gombafonal gf1 : gombafonalak1) {
+                        for (Gombafonal gf2 : gombafonalak2) {
+                            if (gf1.equals(gf2)) {
+                                gombafonal = gf1;
+                                break;
+                            }
+                        }
+                        if (gombafonal != null) break;
+                    }
+
+                    GGombafonal fonal = gombafonalak.get(gombafonal);
+                    fonal.setX1(x1);
+                    fonal.setY1(y1);
+                    fonal.setX2(x2);
+                    fonal.setY2(y2);
+                    fonal.Draw(g);
+                    kirajzoltFonalak.add(par);
+                }
         GTekton g1 = tektonok.get(t);
         int x1 = g1.getX();
         int y1 = g1.getY();
@@ -269,12 +312,7 @@ public class Grafika extends JPanel {
 
     @Override
     public void paintComponent(Graphics g){
-        
-        //tektonok.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        //gombatestek.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        //gombafonalak.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        //rovarok.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        //sporak.forEach((kulcs, ertek)->{ertek.Draw(g);});
+
         System.out.println(tektonok.size());
         System.out.println(rovarok.size());
         System.out.println(gombatestek.size());
@@ -284,12 +322,12 @@ public class Grafika extends JPanel {
     public Gombafonal fonalKeres(int x, int y){
         y=y-230;
         for (Map.Entry<Gombafonal, GGombafonal> entry : gombafonalak.entrySet()) {
-            double X1=entry.getValue().getX();
-            double X2=entry.getValue().getX2();
-            double Y1=entry.getValue().getY();
-            double Y2=entry.getValue().getY2();
-            double dX=entry.getValue().getX()-entry.getValue().getX2();
-            double dY=entry.getValue().getY()-entry.getValue().getY2();
+            double X1=(double)entry.getValue().getX();
+            double X2=(double)entry.getValue().getX2();
+            double Y1=(double)entry.getValue().getY();
+            double Y2=(double)entry.getValue().getY2();
+            double dX=(double)entry.getValue().getX()-entry.getValue().getX2();
+            double dY=(double)entry.getValue().getY()-entry.getValue().getY2();
             double t=((x-X1)*dX+(y-Y1)*dY)/(dX*dX+dY*dY);
             t=Math.max(0,Math.min(1,t));
             double projX = X1 + t * dX;
