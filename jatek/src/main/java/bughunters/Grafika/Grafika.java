@@ -101,6 +101,7 @@ public class Grafika extends JPanel {
                                 gg.Draw(g);
                             }
                     });
+                    
                     sporaElhelyezesKorben(szomszed,g);
                 }
 
@@ -118,15 +119,31 @@ public class Grafika extends JPanel {
                 gg.Draw(g);
             }
         });
-        int i=0;
-        rovarok.forEach((rovar,gg)->{
-            if(rovar.getTartozkodas().equals(t)){
-                gg.setX(cX+i*10);
-                gg.setY(cY+i*10);
-                gg.Draw(g);
-                
-            }
-        });
+       long count = rovarok.keySet().stream()
+    .filter(rovar -> rovar.getTartozkodas().equals(t))
+    .count();
+
+if (count == 0) return;
+
+double angleStep = 2 * Math.PI / count;
+int radius = 30;  // dinamikus sugár
+int[] i = {0};
+
+rovarok.forEach((rovar, gg) -> {
+    if (rovar.getTartozkodas().equals(t)) {
+        double angle = i[0] * angleStep - Math.PI / 2; // fentről induljon
+
+        int x = (int)(cX + radius * Math.cos(angle));
+        int y = (int)(cY + radius * Math.sin(angle));
+
+        gg.setX(x);
+        gg.setY(y);
+        gg.Draw(g);
+
+        i[0]++;
+    }
+});
+
 /* 
       //rovarok szűrése
         if(rovarok==null)System.out.println("A rovarok null");
