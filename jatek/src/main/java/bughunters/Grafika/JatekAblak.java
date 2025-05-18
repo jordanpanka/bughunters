@@ -1,16 +1,20 @@
 package bughunters.Grafika;
 
-import javax.swing.*;
-
-//import org.w3c.dom.events.MouseEvent;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 import java.util.List;
+
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import bughunters.Egyeb.Jatek;
 import bughunters.Egyeb.Jatekos;
@@ -212,7 +216,7 @@ public class JatekAblak extends JFrame {
     public void gombokLenyomasa(Jatek jatek){
         korVege.addActionListener(e->{
             game.endTurn();
-            jatek.korEllenorzes();
+            jatek.korEllenorzes(this);
         });
         TestNov.addActionListener(e->{
             mouse.put("testNov",true);
@@ -249,7 +253,7 @@ public class JatekAblak extends JFrame {
                     Tekton t =grafika.tektonKeres(e.getX(), e.getY());
                         try{
                             game.gtNov(t);
-                            jatek.korEllenorzes();
+                            jatek.korEllenorzes(JatekAblak.this);
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
@@ -262,7 +266,7 @@ public class JatekAblak extends JFrame {
                     
                     try{
                            game.sporaszor(gt);
-                            jatek.korEllenorzes();
+                            jatek.korEllenorzes(JatekAblak.this);
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
@@ -279,7 +283,7 @@ public class JatekAblak extends JFrame {
                         
                         try{
                            game.gfnov(elsoTekton,t2);
-                            jatek.korEllenorzes();
+                            jatek.korEllenorzes(JatekAblak.this);
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
@@ -291,7 +295,7 @@ public class JatekAblak extends JFrame {
                     
                     try{
                            game.rovart_eszik(r);
-                            jatek.korEllenorzes();
+                            jatek.korEllenorzes(JatekAblak.this);
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
@@ -308,7 +312,7 @@ public class JatekAblak extends JFrame {
                         
                         try{
                            game.maszik(rovarKiv, t);
-                            jatek.korEllenorzes();
+                            jatek.korEllenorzes(JatekAblak.this);
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
@@ -327,7 +331,7 @@ public class JatekAblak extends JFrame {
                         
                         try{
                            game.vag(rovarKiv, gf);
-                            jatek.korEllenorzes();
+                            jatek.korEllenorzes(JatekAblak.this);
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
@@ -346,7 +350,7 @@ public class JatekAblak extends JFrame {
                        
                         try{
                             game.eszik(rovarKiv,sp);
-                             jatek.korEllenorzes();
+                             jatek.korEllenorzes(JatekAblak.this);
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
