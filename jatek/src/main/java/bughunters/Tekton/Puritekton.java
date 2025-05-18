@@ -25,4 +25,10 @@ public class Puritekton extends Tekton {
     }
 
     public Puritekton(){}
+
+    @Override
+    public Puritekton cloneTekton() {
+        Puritekton clonedTekton = new Puritekton();
+        return clonedTekton;
+    }
 }

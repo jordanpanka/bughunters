@@ -370,6 +370,7 @@ public class JatekAblak  extends JFrame{
         rovaraszGombok.setLayout(new FlowLayout(FlowLayout.CENTER));
     }
     public void tektonokJComboBox(JComboBox tektonok){
+        tektonok.removeAllItems();
         List<String> tekton=game.getTektonNevList();
         tektonok.setPreferredSize(new Dimension(130,50));
         tektonok.setMaximumSize(new Dimension(50, 30));
@@ -393,6 +394,9 @@ public class JatekAblak  extends JFrame{
         // Először eltávolítjuk a meglévő SOUTH panel(eke)t
         remove(gombaszGombok);
         remove(rovaraszGombok);
+
+        tektonokJComboBox(tektonokGombasz);
+        tektonokJComboBox(tektonokRovarasz);
 
         if(isGombasz){
             add(gombaszGombok,BorderLayout.SOUTH);

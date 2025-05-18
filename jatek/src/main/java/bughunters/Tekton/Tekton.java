@@ -62,6 +62,12 @@ public class Tekton implements FonalKezeles {
         sporak = ujsporak;
     }
 
+
+    public Tekton cloneTekton(){
+        Tekton ujTekton = new Tekton();
+        return ujTekton;
+    }
+
     /***
      * @brief Új szomszédot ad hozzá az aktuális tektonhoz
      * @param ujszomszed Tekton: új szomszéd
@@ -371,10 +377,20 @@ public class Tekton implements FonalKezeles {
         int fele = db / 2;
 
         //aktTektonból a szomszédok kitörlése, a másik tektonhoz pedig hozzáadás
+
+        //saját magát ne állíthassa be szomszédnak
+        List<Tekton> atrakandoSzomszedok = new ArrayList<Tekton>();
+
         for(int i = fele; i < db; i++){
-            t.addSzomszed(szomszedok.get(i));
-            szomszedok.remove(szomszedok.get(i));
+            atrakandoSzomszedok.add(szomszedok.get(i));
         }
+
+        atrakandoSzomszedok.remove(t);
+        for (Tekton tekton : atrakandoSzomszedok) {
+            t.addSzomszed(tekton);
+        }
+        szomszedok.removeAll(atrakandoSzomszedok);
+
     }
 
     /***
