@@ -60,12 +60,12 @@ public class JatekVegeAblak extends JFrame{
 
 
         kiirJatekVege=new JLabel("Játék vége!");
-        Dimension meret=new Dimension(200,70);
+        Dimension meret=new Dimension(210,75);
    
 
         //méretek beállítása
         kiirJatekVege.setSize(meret);
-        kiirJatekVege.setFont(new Font("SansSerif", Font.ITALIC,20));
+        kiirJatekVege.setFont(new Font("SansSerif", Font.ITALIC,40));
 
 
         List<Jatekos> jatekosok = game.getJatekosok();
@@ -87,12 +87,15 @@ public class JatekVegeAblak extends JFrame{
         panel.add(Box.createVerticalStrut(30));
         kiirJatekVege.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         panel.add(kiirJatekVege);
-        panel.add(Box.createVerticalStrut(40));
+        panel.add(Box.createVerticalStrut(70));
 
 
         JPanel row1_1 = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JLabel gyoztesGombasz = new JLabel("Győztes gombász:");
         JLabel gyoztesGombaszNev = new JLabel(gombasz.getNev());
+
+        gyoztesGombasz.setFont(new Font("SansSerif", Font.ITALIC, 30));
+        gyoztesGombaszNev.setFont(new Font("SansSerif", Font.ITALIC, 30));
 
         row1_1.add(gyoztesGombasz);
         row1_1.add(gyoztesGombaszNev);
@@ -102,6 +105,9 @@ public class JatekVegeAblak extends JFrame{
         JPanel row1_2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JLabel gyoztesRovarasz = new JLabel("Győztes rovarász:");
         JLabel gyoztesRovaraszNev = new JLabel(rovarasz.getNev());
+
+        gyoztesRovarasz.setFont(new Font("SansSerif", Font.ITALIC, 30));
+        gyoztesRovaraszNev.setFont(new Font("SansSerif", Font.ITALIC, 30));
 
         row1_2.add(gyoztesRovarasz);
         row1_2.add(gyoztesRovaraszNev);
@@ -128,9 +134,13 @@ public class JatekVegeAblak extends JFrame{
             row2.add(row);
         }
 
-         //add(panel);
+        //row2.setPreferredSize(new Dimension(500, 25 * jatekosokSzama));
+        row2.add(Box.createVerticalStrut(30));
+
+        //add(panel);
         JScrollPane scrollPane = new JScrollPane(row2);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setPreferredSize(new Dimension(550, 200)); // korlátozott magasság
 
         panel.add(scrollPane);
 
