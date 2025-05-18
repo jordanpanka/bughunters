@@ -63,64 +63,62 @@ public class Grafika extends JPanel {
     }
     public void Draw(Tekton t, Graphics g){
         super.paintComponent(g);
+        int szomszedokSzama = t.getSzomszedok().size();
+        System.out.println("Szomszédok száma: " + szomszedokSzama);
 
-        int szomszedokSzama=t.getSzomszedok().size();
-        System.out.println("Szomszédok száma: "+szomszedokSzama);
-        int R=100;
-        int cX=650;
-        int cY=300;
-        int elozoX=cX;
-        int elozoY=cY+R;
+        int R = 150;  // Kör sugara
+        int cX = 680; // Középpont X koordinátája
+        int cY = 250; // Középpont Y koordinátája
 
-        //középső tekton pozíciójának beállítása
+        // Középső tekton pozíció beállítása
         tektonok.get(t).setX(cX);
         tektonok.get(t).setY(cY);
-        System.out.println("Tkton x"+cX);
         
-        //szomszedok poziciójának beállítása
-        if(szomszedokSzama!=0){
-            System.out.println("Vannak szomszédok");
-            double elfordulasSzoge=Math.PI/(double)szomszedokSzama;
-            tektonok.get(t.getSzomszedok().get(0)).setX(elozoX);
-            tektonok.get(t.getSzomszedok().get(0)).setY(elozoY);
-            for(int i=1; i<t.getSzomszedok().size(); i++){
-                double iranySzog=Math.atan2(elozoY-cY,elozoX-cX);
-                double Szog=iranySzog+elfordulasSzoge;
-                elozoX=(int)(cX+R*Math.cos(Szog));
-                elozoY=(int) (cY+R*Math.cos(Szog));
-                tektonok.get(t.getSzomszedok().get(i)).setX(elozoX);
-                tektonok.get(t.getSzomszedok().get(i)).setY(elozoY);
-                Tekton aktualisSzomszed = t.getSzomszedok().get(i);
-                int finalElozoX = elozoX;
-                int finalElozoY = elozoY;
+        System.out.println("Tekton középen: X=" + cX + ", Y=" + cY);
 
-                /*gombatestek.forEach((gombatest, gg) -> {
-                    if (gombatest.getTekton().equals(aktualisSzomszed)) {
-                        gg.setX(finalElozoX);
-                        gg.setY(finalElozoY);
-                    }
-                });*/
+        // Szomszédok pozícióinak kiszámítása és beállítása
+        if (szomszedokSzama != 0) {
+            System.out.println("Vannak szomszédok.");
+            double szogLepes = 2 * Math.PI / szomszedokSzama;  // Egyenlő elosztás a kör mentén
 
-            } 
-            for(int i=0; i<t.getSzomszedok().size();i++){
-                Tekton aktualisSzomszed=t.getSzomszedok().get(i);
-                tektonok.forEach((tekton,gt)->{
-                    if(tekton.equals(aktualisSzomszed)){
-                        gt.Draw(g);
-                        System.out.println("szomszédot rajzolt");
-                    }
-                });
+            for (int i = 0; i < szomszedokSzama; i++) {
+                double szog = i * szogLepes;  // Minden szomszédnál léptetjük a szöget
+                int szomszedX = (int) (cX + R * Math.cos(szog));
+                int szomszedY = (int) (cY + R * Math.sin(szog));
+
+                Tekton szomszed = t.getSzomszedok().get(i);
+                GTekton gSzomszed = tektonok.get(szomszed);
+
+                if (gSzomszed != null) {
+                    gSzomszed.setX(szomszedX);
+                    gSzomszed.setY(szomszedY);
+                    gSzomszed.Draw(g);  // Azonnal ki is rajzoljuk
+                    System.out.println("Szomszéd tekton rajzolva X=" + szomszedX + ", Y=" + szomszedY);
+                    gombatestek.forEach((gombatest, gg) -> {
+                            if (gombatest.getTekton().equals(gSzomszed)) {
+                                gg.setX(szomszedX);
+                                gg.setY(szomszedY);
+                                gg.Draw(g);
+                            }
+                    });
+                    
+                }
+
             }
         }
+
+        // Végül a középső tekton kirajzolása
         tektonok.get(t).Draw(g);
+            
         //gombatestek beállítása csak a középső
-       /* gombatestek.forEach((gombatest,gg)->{
+        gombatestek.forEach((gombatest,gg)->{
             if(gombatest.getTekton().equals(t)){
                 gg.setX(cX);
                 gg.setY(cY);
+                gg.Draw(g);
             }
         });
-
+/* 
         //spórák beállítássa
         Map<Spora, GSpora> szurtSpora = sporak.entrySet().stream()
         .filter(entry -> t.getSporak().contains(entry.getKey())) // elérés a kulcs objektumhoz
@@ -129,7 +127,7 @@ public class Grafika extends JPanel {
             Map.Entry::getValue
         ));
 
-        //rovarok szűrése
+       //rovarok szűrése
         if(rovarok==null)System.out.println("A rovarok null");
         Map<Rovar, GRovar> szurtRovar = rovarok.entrySet().stream()
         .filter(entry -> entry.getKey().getTartozkodas().equals(t)) // elérés a kulcs objektumhoz
@@ -137,7 +135,7 @@ public class Grafika extends JPanel {
             Map.Entry::getKey,
             Map.Entry::getValue
         ));
-
+ 
         int rovarSporaSzam=szurtSpora.size()+szurtRovar.size();
         double elfordulasSzoges=Math.PI/(double)t.getSporak().size();
         R=5;
@@ -165,10 +163,10 @@ public class Grafika extends JPanel {
                szurtSpora.get(i).setX(elozoX);
                 szurtSpora.get(i).setY(elozoY);            
             }
-        }*/
+        }
 
         //repaint();
-
+*/
     }
     @Override
     public void paintComponent(Graphics g){
