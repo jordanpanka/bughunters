@@ -28,3 +28,6 @@
 /arrange -szomszed -t tekton1 -t tekton2
 /arrange -szomszed -t puritekton3 -t puritekton2
 /arrange -szomszed -t monotekton1 -t puritekton3
+/arrange -j Jani -g gyorsito
+/arrange -gf -t tekton2 -t monotekton1 -g gyorsito
+/arrange -s gyorsito -t tekton2 5
