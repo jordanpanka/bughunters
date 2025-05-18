@@ -14,6 +14,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Random;
 
+import bughunters.Grafika.JatekAblak;
 import bughunters.Grafika.JatekVegeAblak;
 import bughunters.Tekton.Tekton;
 
@@ -125,7 +126,7 @@ public class Jatek {
     }
 
 
-    public Boolean korEllenorzes(){
+    public Boolean korEllenorzes(JatekAblak jatekAblak) {
         Boolean jatekosvaltas = false;
         if (korSzam >=60) {
             Gombasz nyerGombasz = null;
@@ -147,6 +148,8 @@ public class Jatek {
             }
             JatekVegeAblak jatekVegeAblak = new JatekVegeAblak(parancskezelo, nyerGombasz, nyerRovarasz);
             jatekVegeAblak.setVisible(true);
+            jatekAblak.setVisible(false); // Játék ablak elrejtése
+            jatekAblak.dispose(); // Játék ablak bezárása
             
         }
       
