@@ -56,6 +56,7 @@ public class JatekAblak  extends JFrame{
     private  JPanel gombaszGombok;
     private JPanel rovaraszGombok;
     private Jatek jatek;
+    private JLabel korAdatok;
    
 
     public JatekAblak(Parancskezelok pk, Jatek jatek){
@@ -85,7 +86,7 @@ public class JatekAblak  extends JFrame{
         jatekosInfo.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         //jatekosok adatainak megjelenítése
-        JLabel korAdatok=new JLabel(" ");
+         korAdatok=new JLabel(" almy");
         jatekosAdatFrissit(jatekosInfo);
 
         //tektonok kiválasztása a ComboBoxból
@@ -429,6 +430,6 @@ public class JatekAblak  extends JFrame{
 
         
         }
-        JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+" Aktív játékos: "+game.getAktivJatekos().getNev());
+        korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+" Aktív játékos: "+game.getAktivJatekos().getNev());
     }
 }
