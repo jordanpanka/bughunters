@@ -522,6 +522,7 @@ public class Parancskezelok {
             }
         }
         Gombasz gombasz = new Gombasz(nev,gf);
+        gombasz.akciopontAlapbaallit();
 
         objektumok.put(gf.getNev(), gf);                               //gombafaj neve alapjan mentjuk el a gombafajt a Map-en
         objektumokbolString.put(gf, gf.getNev());
@@ -554,6 +555,7 @@ public class Parancskezelok {
             }
         }
         Rovarasz rovarasz = new Rovarasz(nev,szin);
+        rovarasz.akciopontAlapbaallit();
 
         rovaraszok.add(rovarasz);
         jatekosok.add(rovarasz);
