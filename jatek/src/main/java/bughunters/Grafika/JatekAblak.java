@@ -127,7 +127,7 @@ public class JatekAblak  extends JFrame{
         rovaraszGombok.setLayout(new BoxLayout(rovaraszGombok,BoxLayout.X_AXIS));
         rovaraszPanelBeall();
 
-        grafika=new Grafika();
+        grafika=game.getGrafika();
         grafika.setPreferredSize(new Dimension(800, 600)); // Beállíthatsz más méretet is
 
         //JFramehez panelek hozzáadása
