@@ -54,7 +54,7 @@ public class GGombatest extends Rajz{
     public void Draw( Graphics g) {
         if (image != null) {
             
-            g.drawImage(image, x, y, null);
+            g.drawImage(image, (x+25), (y+25),50, 50, null); //jobbra és le lett víve
             
         }
     }
