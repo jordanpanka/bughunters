@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,10 +36,12 @@ import bughunters.Tekton.Tekton;
 public class KezdoPozicioKivalaszt extends JFrame{
     private JButton kovetkezo;
     private JLabel kiirJatekosNev;
+    private static List<JComboBox<String>> comboBoxes = new ArrayList<>();
 
     private int gombaszokSzama;
     private int rovaraszokSzama;
-
+    private Parancskezelok game;
+    
 
     public int getGombaszokSzama() {
         return gombaszokSzama;
@@ -52,17 +57,13 @@ public class KezdoPozicioKivalaszt extends JFrame{
         this.rovaraszokSzama = rovaraszokSzama;
     }
 
-    private Parancskezelok game;
-
-    private static List<JComboBox<String>> comboBoxes = new ArrayList<>();
-
     
     public KezdoPozicioKivalaszt(Parancskezelok pk,  Jatek jatek){
-
         setTitle("Kezdőpozíció kiválasztása");
         setSize(600,700);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
+        setLocationRelativeTo(null);
 
 
         game=pk;
@@ -83,7 +84,21 @@ public class KezdoPozicioKivalaszt extends JFrame{
         List<Rovarasz> rovaraszok = game.getRovaraszok();
 
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel() {
+             @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
+                
+                // Színátmenet (pasztel lila árnyalatok)
+                GradientPaint gradient = new GradientPaint(
+                    0, 0, new Color(230, 230, 250),  // Lavender
+                    getWidth(), getHeight(), new Color(216, 191, 216)  // Thistle
+                );
+                g2d.setPaint(gradient);
+                g2d.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
         panel.add(Box.createVerticalStrut(30));
@@ -93,7 +108,21 @@ public class KezdoPozicioKivalaszt extends JFrame{
 
 
         for (int i = 0; i < gombaszokSzama; i++) {
-            JPanel row = new JPanel(new FlowLayout(FlowLayout.LEFT));
+            JPanel row = new JPanel(new FlowLayout(FlowLayout.LEFT)) {
+                @Override
+                protected void paintComponent(Graphics g) {
+                    super.paintComponent(g);
+                    Graphics2D g2d = (Graphics2D) g;
+                    
+                    // Színátmenet (pasztel lila árnyalatok)
+                    GradientPaint gradient = new GradientPaint(
+                        0, 0, new Color(230, 230, 250),  // Lavender
+                        getWidth(), getHeight(), new Color(216, 191, 216)  // Thistle
+                    );
+                    g2d.setPaint(gradient);
+                    g2d.fillRect(0, 0, getWidth(), getHeight());
+                }
+            };
             row.setBorder(BorderFactory.createEmptyBorder(15, 0, 15, 0));
             row.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
             JLabel label = new JLabel(gombaszok.get(i).getNev());
@@ -117,7 +146,21 @@ public class KezdoPozicioKivalaszt extends JFrame{
 
 
         for (int i = 0; i < rovaraszokSzama; i++) {
-            JPanel row = new JPanel(new FlowLayout(FlowLayout.LEFT));
+            JPanel row = new JPanel(new FlowLayout(FlowLayout.LEFT)) {
+                @Override
+                protected void paintComponent(Graphics g) {
+                    super.paintComponent(g);
+                    Graphics2D g2d = (Graphics2D) g;
+                    
+                    // Színátmenet (pasztel lila árnyalatok)
+                    GradientPaint gradient = new GradientPaint(
+                        0, 0, new Color(230, 230, 250),  // Lavender
+                        getWidth(), getHeight(), new Color(216, 191, 216)  // Thistle
+                    );
+                    g2d.setPaint(gradient);
+                    g2d.fillRect(0, 0, getWidth(), getHeight());
+                }
+            };
             row.setBorder(BorderFactory.createEmptyBorder(15, 0, 15, 0));
             row.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
             JLabel label = new JLabel(rovaraszok.get(i).getNev());
@@ -189,7 +232,21 @@ public class KezdoPozicioKivalaszt extends JFrame{
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
         // Gomb panel alulra
-        JPanel gombPanel = new JPanel();
+        JPanel gombPanel = new JPanel() {
+             @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
+                
+                // Színátmenet (pasztel lila árnyalatok)
+                GradientPaint gradient = new GradientPaint(
+                    0, 0, new Color(230, 230, 250),  // Lavender
+                    getWidth(), getHeight(), new Color(216, 191, 216)  // Thistle
+                );
+                g2d.setPaint(gradient);
+                g2d.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
         gombPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         gombPanel.add(kovetkezo);
 

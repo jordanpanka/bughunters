@@ -3,8 +3,14 @@ package bughunters.Grafika;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
@@ -50,15 +56,29 @@ public class NevFajSzin extends JFrame{
         setSize(600,700);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
-
-
+        setLocationRelativeTo(null);
 
         game=pk;
         gombaszokSzama=gombaszSzam;
         rovaraszokSzama=rovaraszokSzam;
-        JPanel panel=new JPanel();
-        
-        gombaInfo=new JButton("Gomba info");
+
+        JPanel panel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
+                
+                // Színátmenet (pasztel lila árnyalatok)
+                GradientPaint gradient = new GradientPaint(
+                    0, 0, new Color(230, 230, 250),  // Lavender
+                    getWidth(), getHeight(), new Color(216, 191, 216)  // Thistle
+                );
+                g2d.setPaint(gradient);
+                g2d.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
+    
+        gombaInfo = new JButton("Gomba info");
        
         gombaInfo.addActionListener(e -> {
             SwingUtilities.invokeLater(() -> {
@@ -67,21 +87,32 @@ public class NevFajSzin extends JFrame{
             });
         });
 
-        kovetkezo=new JButton("Következő");
-        kiirjatekos=new JLabel("Gombász");
-        Dimension meret=new Dimension(200,70);
-        jatekosNev=new JTextField();
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        kovetkezo = new JButton("Következő");
+        kiirjatekos = new JLabel("Gombász");
+        Dimension meret = new Dimension(200,70);
+        jatekosNev = new JTextField();
 
         //méretek beállítása
         kiirjatekos.setSize(meret);
-        kiirjatekos.setFont(new Font("SansSerif", Font.ITALIC,20));
+        kiirjatekos.setFont(new Font("Arial", Font.BOLD, 36));
+        kiirjatekos.setForeground(new Color(70, 50, 120));
+        gbc.gridy = 0;
+        panel.add(kiirjatekos, gbc);
+
         jatekosNev.setSize(meret);
 
-        JLabel jatekosnevL=new JLabel("Játékos neve: ");  
+        JLabel jatekosnevL = new JLabel("Játékos neve: ");  
+        jatekosnevL.setPreferredSize(new Dimension(300, 35));
+        jatekosnevL.setFont(new Font("Arial", Font.PLAIN, 18));
 
-        JLabel gombafaj=new JLabel("Gombafaj: ");
+        JLabel gombafaj = new JLabel("Gombafaj: ");
 
         String[] gombafajoks=new String[]{"Lényölő galóca","Vargánya gomba", "Csiperke gomba","Szegfűgomba", "Foltos püffeteg"};
+        
         gombafajKiv=new JComboBox<>(gombafajoks);
 
         String[] szinek=new String[]{"piros","narancssárga","magenta","barna","világos barna"};
@@ -160,12 +191,14 @@ public class NevFajSzin extends JFrame{
                 }
                 setVisible(false);
                 rovaraszokSzama--;
+
                 System.out.println(rovaraszokSzama);
-                if(rovaraszokSzama!=0){
+
+                if(rovaraszokSzama != 0){
                     SwingUtilities.invokeLater(() -> {
-                NevFajSzin nfsz = new NevFajSzin(game,gombaszokSzama,rovaraszokSzama,jatek); // példányosítás
-                nfsz.setVisible(true);            // megjelenítés
-                });
+                        NevFajSzin nfsz = new NevFajSzin(game,gombaszokSzama,rovaraszokSzama,jatek); // példányosítás
+                        nfsz.setVisible(true);            // megjelenítés
+                    });
                 }
                 else{
                     game.setAktivJatekos(game.getGombaszok().get(0));
@@ -173,9 +206,9 @@ public class NevFajSzin extends JFrame{
                     //Proba proba = new Proba(game,jatek); // példányosítás
                     //proba.setVisible(true);            // megjelenítés
 
-                    KezdoPozicioKivalaszt proba = new KezdoPozicioKivalaszt(game,jatek); // példányosítás
-                    proba.setVisible(true);            // megjelenítés
-                });
+                        KezdoPozicioKivalaszt proba = new KezdoPozicioKivalaszt(game,jatek); // példányosítás
+                        proba.setVisible(true);            // megjelenítés
+                    });
                 }
                 
                 }catch(Exception ex){
@@ -187,12 +220,42 @@ public class NevFajSzin extends JFrame{
           );  
 
 
-        JPanel jatekosnevp=new JPanel();
+        JPanel jatekosnevp=new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
+                
+                // Színátmenet (pasztel lila árnyalatok)
+                GradientPaint gradient = new GradientPaint(
+                    0, 0, new Color(230, 230, 250),  // Lavender
+                    getWidth(), getHeight(), new Color(216, 191, 216)  // Thistle
+                );
+                g2d.setPaint(gradient);
+                g2d.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
+
+        jatekosnevL.setPreferredSize(meret);
         jatekosnevp.add(jatekosnevL);
         jatekosNev.setPreferredSize(meret);
         jatekosnevp.add(jatekosNev);
     
-        JPanel kivPanel=new JPanel();
+        JPanel kivPanel=new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
+                
+                // Színátmenet (pasztel lila árnyalatok)
+                GradientPaint gradient = new GradientPaint(
+                    0, 0, new Color(230, 230, 250),  // Lavender
+                    getWidth(), getHeight(), new Color(216, 191, 216)  // Thistle
+                );
+                g2d.setPaint(gradient);
+                g2d.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
         gombafaj.setPreferredSize(meret);
         gombafaj.setFont(new Font("SansSerif",Font.PLAIN,20));
         kivPanel.add(gombafaj);
@@ -201,11 +264,37 @@ public class NevFajSzin extends JFrame{
         gombafajKiv.setFont(new Font("SansSerif",Font.PLAIN,20));
         kivPanel.add(gombafajKiv);
 
-        JPanel gombPanel=new JPanel();
+        JPanel gombPanel=new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
+                
+                // Színátmenet (pasztel lila árnyalatok)
+                GradientPaint gradient = new GradientPaint(
+                    0, 0, new Color(230, 230, 250),  // Lavender
+                    getWidth(), getHeight(), new Color(216, 191, 216)  // Thistle
+                );
+                g2d.setPaint(gradient);
+                g2d.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
+        
         gombaInfo.setPreferredSize(meret);
+        gombaInfo.setForeground(Color.WHITE);
+        gombaInfo.setBackground(new Color(135, 206, 250)); // Világoskék
+        gombaInfo.setFont(new Font("Arial", Font.BOLD, 13));
+        gombaInfo.setFocusPainted(false);
+
         gombPanel.add(gombaInfo);
         gombPanel.add(Box.createHorizontalStrut(10));
+
         kovetkezo.setPreferredSize(meret);
+        kovetkezo.setForeground(Color.WHITE);
+        kovetkezo.setBackground(new Color(135, 206, 250)); // Világoskék
+        kovetkezo.setFont(new Font("Arial", Font.BOLD, 13));
+        kovetkezo.setFocusPainted(false);
+
         gombPanel.add(kovetkezo);
 
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
