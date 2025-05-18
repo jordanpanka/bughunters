@@ -137,7 +137,7 @@ public class Proba  extends JFrame{
         felsoPanel.add(Box.createVerticalStrut(10));
         grafika.setPreferredSize(new Dimension(30,30));
         grafika.setMaximumSize(new Dimension(30,30));
-        felsoPanel.add(grafika);
+        //felsoPanel.add(grafika);
         add(felsoPanel);
 
 
