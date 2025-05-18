@@ -230,18 +230,18 @@ public class JatekAblak  extends JFrame{
                     
                     mouse.put("testNov",false);
                 }
-                else if(mouse.get("Sporaszor")){
+                else if(Boolean.TRUE.equals(mouse.get("Sporaszor"))){
                     Gombatest gt=grafika.gombatestKeres(e.getX(), e.getY());
                     
                     try{
-                           game.sporaszor(gt);
+                            game.sporaszor(gt);
                             jatek.korEllenorzes(JatekAblak.this);
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
                     mouse.put("Sporaszor",false);
                 }
-                else if(mouse.get("FonalNov")){
+                else if(Boolean.TRUE.equals(mouse.get("FonalNov"))){
                     if(!elsokattintas){
                         elsokattintas=true;
                         elsoTekton=grafika.tektonKeres(e.getX(),e.getY());
@@ -259,7 +259,7 @@ public class JatekAblak  extends JFrame{
                        mouse.put("FonalNov",false);
                     }
                 }
-                else if( mouse.get("Rovareves")){
+                else if(Boolean.TRUE.equals( mouse.get("Rovareves"))){
                     Rovar r=grafika.rovarKeres(e.getX(),e.getY());
                     
                     try{
@@ -270,7 +270,7 @@ public class JatekAblak  extends JFrame{
                         }
                     mouse.put("Rovareves", false);
                 }
-                else if(mouse.get("Maszik")){
+                else if(Boolean.TRUE.equals(mouse.get("Maszik"))){
                     if(!elsokattintas){
                         elsokattintas=true;
                         rovarKiv=grafika.rovarKeres(e.getX(), e.getY());
@@ -289,7 +289,7 @@ public class JatekAblak  extends JFrame{
                         mouse.put("Maszik",false);
                     }
                 }
-                else if(mouse.get("Vag")){
+                else if(Boolean.TRUE.equals(mouse.get("Vag"))){
                     if(!elsokattintas){
                         elsokattintas=true;
                         rovarKiv=grafika.rovarKeres(e.getX(), e.getY());
@@ -308,7 +308,7 @@ public class JatekAblak  extends JFrame{
                         mouse.put("Vag",false);
                     }
                 }
-                else if(mouse.get("Eszik")){
+                else if(Boolean.TRUE.equals(mouse.get("Eszik"))){
                     if(!elsokattintas){
                         elsokattintas=true;
                         rovarKiv=grafika.rovarKeres(e.getX(), e.getY());
