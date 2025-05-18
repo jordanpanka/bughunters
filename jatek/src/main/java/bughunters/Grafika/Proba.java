@@ -20,18 +20,9 @@ import bughunters.Gombafaj.Gombatest;
 import bughunters.Gombafaj.Spora;
 import bughunters.Rovar.Rovar;
 import bughunters.Tekton.Tekton;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+
 import java.util.HashMap;
 import java.util.List;
-
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import bughunters.Egyeb.Jatek;
 import bughunters.Egyeb.Parancskezelok;
@@ -73,8 +64,10 @@ public class Proba  extends JFrame{
         //setLayout(new BorderLayout());
         JPanel jatekosInfo=new JPanel();
         jatekosInfo.setLayout(new BoxLayout(jatekosInfo, BoxLayout.X_AXIS));
-
-       
+        //jatekosInfo.setMaximumSize(new Dimension(JFrame.WIDTH,250));
+        jatekosInfo.setMaximumSize(new Dimension(Integer.MAX_VALUE,150));
+        jatekosInfo.setPreferredSize(new Dimension(Integer.MAX_VALUE,150));
+        jatekosInfo.setLayout(new FlowLayout(FlowLayout.CENTER));
         //jatekosok adatainak megjelenítése
         for(int i=0; i<game.getJatekosok().size(); i++){
             JPanel jatekos=new JPanel();
@@ -97,11 +90,11 @@ public class Proba  extends JFrame{
             jatekos.setMaximumSize(new Dimension(150, 200));
             jatekos.setPreferredSize(new Dimension(150, 200));
             jatekosInfo.add(jatekos);
-            //jatekosInfo.add(Box.createHorizontalStrut(5));
+        
         }
         List<String> tekton=game.getTektonNevList();
         tektonok = new JComboBox<>();
-        tektonok.setPreferredSize(new Dimension(100,50));
+        tektonok.setPreferredSize(new Dimension(130,50));
         
         tekton.forEach((String s)->{
             System.out.println(s);
@@ -117,45 +110,54 @@ public class Proba  extends JFrame{
 
         JPanel koradatokp=new JPanel();
         koradatokp.add(korAdatok);
-        koradatokp.setPreferredSize(new Dimension(600,40));
-        koradatokp.setMaximumSize(new Dimension(600,40));
+        koradatokp.setPreferredSize(new Dimension(Integer.MAX_VALUE,30));
+        koradatokp.setMaximumSize(new Dimension(Integer.MAX_VALUE,30));
 
         //tektonok kiválasztása
         tektonok.setMaximumSize(new Dimension(50, 30));
         megjelenit.setMaximumSize(new Dimension(10, 30));
 
-        jatekosInfo.add(tektonok);
-        jatekosInfo.add(Box.createHorizontalStrut(10));
-        megjelenit.setPreferredSize(new Dimension(100,50));
-        jatekosInfo.add(megjelenit);
-
         JPanel felsoPanel=new JPanel();
         felsoPanel.setLayout(new BoxLayout(felsoPanel, BoxLayout.Y_AXIS)); 
         felsoPanel.add(jatekosInfo);
-        //felsoPanel.add(Box.createVerticalStrut(10));
         felsoPanel.add(koradatokp);
-        felsoPanel.add(Box.createVerticalStrut(10));
         grafika.setPreferredSize(new Dimension(30,30));
         grafika.setMaximumSize(new Dimension(30,30));
         //felsoPanel.add(grafika);
-        add(felsoPanel);
-
+        add(felsoPanel,BorderLayout.NORTH);
+        
 
         JPanel gombaszGombok=new JPanel();
         gombaszGombok.setLayout(new BoxLayout(gombaszGombok,BoxLayout.X_AXIS));
 
         //gombasz gombok
+        TestNov.setPreferredSize(new Dimension(130,50));
         gombaszGombok.add(TestNov);
         gombaszGombok.add(Box.createHorizontalStrut(10));
+        Sporaszor.setPreferredSize(new Dimension(130,50));
         gombaszGombok.add(Sporaszor);
         gombaszGombok.add(Box.createHorizontalStrut(10));
+        FonalNov.setPreferredSize(new Dimension(150,50));
         gombaszGombok.add(FonalNov);
         gombaszGombok.add(Box.createHorizontalStrut(10));
+        RovarEves.setPreferredSize(new Dimension(130,50));
         gombaszGombok.add(RovarEves);
         gombaszGombok.add(Box.createHorizontalStrut(10));
+        korVege.setPreferredSize(new Dimension(100,50));
         gombaszGombok.add(korVege);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
 
-        felsoPanel.add(gombaszGombok);
+        gombaszGombok.add(tektonok);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
+        megjelenit.setPreferredSize(new Dimension(100,50));
+        gombaszGombok.add(megjelenit);
+
+        gombaszGombok.setBorder(BorderFactory.createEmptyBorder(20, 0, 50, 0));
+
+        gombaszGombok.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+        add(gombaszGombok,BorderLayout.SOUTH);
+       // felsoPanel.add(gombaszGombok);
 
         JPanel rovaraszGombok=new JPanel();
         rovaraszGombok.setLayout(new BoxLayout(rovaraszGombok,BoxLayout.X_AXIS));
@@ -167,7 +169,7 @@ public class Proba  extends JFrame{
         rovaraszGombok.add(Box.createHorizontalStrut(10));
         rovaraszGombok.add(Eszik);
         rovaraszGombok.add(Box.createHorizontalStrut(10));
-        rovaraszGombok.add(korVege);
+        //rovaraszGombok.add(korVege);
 
     }
     public void gombokLetreHozasa(){
