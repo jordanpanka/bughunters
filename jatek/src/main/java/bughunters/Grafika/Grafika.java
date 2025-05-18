@@ -136,8 +136,6 @@ public class Grafika extends JPanel {
 
         if (count == 0) return;
 
-<<<<<<< HEAD
-=======
         double angleStep = 2 * Math.PI / count;
         int radius = 30;  // dinamikus sugár
         int[] i = {0};
@@ -145,7 +143,6 @@ public class Grafika extends JPanel {
         rovarok.forEach((rovar, gg) -> {
             if (rovar.getTartozkodas().equals(t)) {
                 double angle = i[0] * angleStep - Math.PI / 2; // fentről induljon
->>>>>>> a12eb9b27b68414b7c38814749f378d6e5463aec
 
                 int x = (int)(cX + radius * Math.cos(angle));
                 int y = (int)(cY + radius * Math.sin(angle));
@@ -304,7 +301,11 @@ public class Grafika extends JPanel {
 }
 
     // Kirajzolja a gombafonalakat a tektonok között
+<<<<<<< HEAD
    /*  public void gombafonalakRajzolasa(Tekton t, Graphics g) {
+=======
+    public void gombafonalakRajzolasa(Tekton t, Graphics g) {
+>>>>>>> c9a770f6362cd515695ba840230c2a7fda738f03
         Set<Set<Tekton>> kirajzoltFonalak = new HashSet<>();
         List<Tekton> kirajzoltTektonok = t.getSzomszedok();
         kirajzoltTektonok.add(t);
@@ -348,7 +349,10 @@ public class Grafika extends JPanel {
                     fonal.Draw(g);
                     kirajzoltFonalak.add(par);
                 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9a770f6362cd515695ba840230c2a7fda738f03
         GTekton g1 = tektonok.get(t);
         int x1 = g1.getX();
         int y1 = g1.getY();
@@ -387,7 +391,10 @@ public class Grafika extends JPanel {
                 System.out.println("Y1:"+y1);
                 System.out.println("X2:"+x2);
                 System.out.println("Y2:"+y2);
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9a770f6362cd515695ba840230c2a7fda738f03
             }
         }
     }*/
