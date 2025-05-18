@@ -145,7 +145,9 @@ public class Jatek {
                     nyerRovarasz = rovarasz;
                 }
             }
-            JatekVegeAblak jatekVegeAblak = new JatekVegeAblak(parancskezelo, this);
+            JatekVegeAblak jatekVegeAblak = new JatekVegeAblak(parancskezelo, nyerGombasz, nyerRovarasz);
+            jatekVegeAblak.setVisible(true);
+            
         }
       
         if (parancskezelo.getAktivJatekos().getakcioSzama() <=0) {
