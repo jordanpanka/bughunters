@@ -55,6 +55,7 @@ public class Proba  extends JFrame{
     private HashMap<String, Boolean> mouse;
     private  JPanel gombaszGombok;
     private JPanel rovaraszGombok;
+    private Jatek jatek;
    
 
     public Proba(Parancskezelok pk, Jatek jatek){
@@ -62,6 +63,7 @@ public class Proba  extends JFrame{
         game=pk;
         mouse=new HashMap<>();
         grafika=new Grafika();
+        this.jatek=jatek;
 
         if(game.getGombaszok().contains(game.getAktivJatekos())){
             isGombasz=true;
@@ -83,7 +85,8 @@ public class Proba  extends JFrame{
         jatekosInfo.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         //jatekosok adatainak megjelenítése
-        for(int i=0; i<game.getJatekosok().size(); i++){
+        JLabel korAdatok=new JLabel(" ");
+        /*for(int i=0; i<game.getJatekosok().size(); i++){
 
             JPanel jatekos=new JPanel();
             jatekos.setLayout(new BoxLayout(jatekos, BoxLayout.Y_AXIS)); 
@@ -106,7 +109,8 @@ public class Proba  extends JFrame{
             jatekos.setPreferredSize(new Dimension(150, 200));
             jatekosInfo.add(jatekos);
         
-        }
+        }*/
+        jatekosAdatFrissit(jatekosInfo);
 
         //tektonok kiválasztása a ComboBoxból
         tektonokGombasz=new JComboBox<>();
@@ -119,7 +123,7 @@ public class Proba  extends JFrame{
         gombokMeretekBeallitas();
 
         // kör és játékos
-        JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+" Aktív játékos: "+game.getAktivJatekos().getNev());
+        //JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+" Aktív játékos: "+game.getAktivJatekos().getNev());
 
         JPanel koradatokp=new JPanel();
         koradatokp.add(korAdatok);
@@ -423,7 +427,32 @@ public class Proba  extends JFrame{
                 frissitPanel();
             }
     }
-    public void jatekosAdatFrissit(){
+    public void jatekosAdatFrissit(JPanel jatekosInfo){
+        for(int i=0; i<game.getJatekosok().size(); i++){
+
+            JPanel jatekos=new JPanel();
+            jatekos.setLayout(new BoxLayout(jatekos, BoxLayout.Y_AXIS)); 
+
+            JLabel nev=new JLabel(game.getJatekosok().get(i).getNev());
+            JLabel akcio=new JLabel("Akciók: "+game.getJatekosok().get(i).getakcioSzama());
+            JLabel fajta=new JLabel(game.getJatekosok().get(i).szerepKor());
+            JLabel pontok=new JLabel("Pontok: "+game.getJatekosok().get(i).getGyozelmiPontok());
+            
+            jatekos.add(nev);
+            jatekos.add(Box.createVerticalStrut(10));
+            jatekos.add(akcio);
+            jatekos.add(Box.createVerticalStrut(10));
+            jatekos.add(fajta);
+            jatekos.add(Box.createVerticalStrut(10));
+            jatekos.add(pontok);
+            jatekos.add(Box.createVerticalStrut(10));
+            
+            jatekos.setMaximumSize(new Dimension(150, 200));
+            jatekos.setPreferredSize(new Dimension(150, 200));
+            jatekosInfo.add(jatekos);
+
         
+        }
+        JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+" Aktív játékos: "+game.getAktivJatekos().getNev());
     }
 }
