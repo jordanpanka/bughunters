@@ -28,6 +28,7 @@ public class JatekInditasaAblak extends JFrame {
         jFrame.setLocationRelativeTo(null); // Középre igazítás
         jFrame.setVisible(true);*/
         //JFrame jFrame = new JFrame();
+        
         setTitle("Játék Indítása");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 200);
