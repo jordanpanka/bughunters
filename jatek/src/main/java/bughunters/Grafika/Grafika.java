@@ -227,52 +227,44 @@ public class Grafika extends JPanel {
 
     // Kirajzolja a gombafonalakat a tektonok között
     public void gombafonalakRajzolasa(Tekton t, Graphics g) {
-        Set<Set<Tekton>> kirajzoltFonalak = new HashSet<>();
+        GTekton g1 = tektonok.get(t);
+        int x1 = g1.getX();
+        int y1 = g1.getY();
 
-        List<Tekton> kirajzoltTektonok = t.getSzomszedok();
+        List<Gombafonal> fonalak = t.getFonalak();
 
-        kirajzoltTektonok.add(t);
+        for (Gombafonal gombafonal : fonalak) {
+            if(gombafonal.getVegpont1().equals(t)){
+                GTekton g2 = tektonok.get(gombafonal.getVegpont2());
+                int x2 = g2.getX();
+                int y2 = g2.getY();
 
+                GGombafonal fonal = gombafonalak.get(gombafonal);
+                fonal.setX1(x1);
+                fonal.setY1(y1);
+                fonal.setX2(800);
+                fonal.setY2(350);
+                fonal.Draw(g);
+                System.out.println("X1:"+x1);
+                System.out.println("Y1:"+y1);
+                System.out.println("X2:"+x2);
+                System.out.println("Y2:"+y2);
+            }
+            else{
+                GTekton g2 = tektonok.get(gombafonal.getVegpont1());
+                int x2 = g2.getX();
+                int y2 = g2.getY();
 
-        for (Tekton t1 : kirajzoltTektonok) {
-            GTekton g1 = tektonok.get(t1);
-            int x1 = g1.getX();
-            int y1 = g1.getY();
-
-            List<Gombafonal> gombafonalak1 = t1.getFonalak();
-
-            for (Tekton t2 : t1.getSzomszedok()) {
-                // Elkerülés: ugyanaz a kapcsolat ne legyen kétszer kirajzolva
-                Set<Tekton> par = new HashSet<>(Arrays.asList(t1, t2));
-                if (kirajzoltFonalak.contains(par)) continue;
-
-                GTekton g2 = tektonok.get(t2);
-                if (g2 != null) {
-                    int x2 = g2.getX();
-                    int y2 = g2.getY();
-
-                    List<Gombafonal> gombafonalak2 = t2.getFonalak();
-
-                    Gombafonal gombafonal = null;
-
-                    for (Gombafonal gf1 : gombafonalak1) {
-                        for (Gombafonal gf2 : gombafonalak2) {
-                            if (gf1.equals(gf2)) {
-                                gombafonal = gf1;
-                                break;
-                            }
-                        }
-                        if (gombafonal != null) break;
-                    }
-
-                    GGombafonal fonal = gombafonalak.get(gombafonal);
-                    fonal.setX1(x1);
-                    fonal.setY1(y1);
-                    fonal.setX2(x2);
-                    fonal.setY2(y2);
-                    fonal.Draw(g);
-                    kirajzoltFonalak.add(par);
-                }
+                GGombafonal fonal = gombafonalak.get(gombafonal);
+                fonal.setX1(x1);
+                fonal.setY1(y1);
+                fonal.setX2(800);
+                fonal.setY2(350);
+                fonal.Draw(g);
+                System.out.println("X1:"+x1);
+                System.out.println("Y1:"+y1);
+                System.out.println("X2:"+x2);
+                System.out.println("Y2:"+y2);
             }
         }
     }
