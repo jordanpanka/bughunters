@@ -47,7 +47,7 @@ public class JatekVegeAblak extends JFrame{
     private Parancskezelok game;
 
     
-    public JatekVegeAblak(Parancskezelok pk, Jatek jatek){
+    public JatekVegeAblak(Parancskezelok pk, Gombasz gombasz, Rovarasz rovarasz) {
 
         setTitle("Játék vége ablak");
         setSize(600,700);
@@ -87,15 +87,25 @@ public class JatekVegeAblak extends JFrame{
         panel.add(Box.createVerticalStrut(30));
         kiirJatekVege.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         panel.add(kiirJatekVege);
+        panel.add(Box.createVerticalStrut(40));
 
 
-        JPanel row1 = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JLabel gyoztes = new JLabel("Győztes:");
-        JLabel gyoztesNev = new JLabel(rendezettLista.get(0).getKey().getNev());
+        JPanel row1_1 = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JLabel gyoztesGombasz = new JLabel("Győztes gombász:");
+        JLabel gyoztesGombaszNev = new JLabel(gombasz.getNev());
 
-        row1.add(gyoztes);
-        row1.add(gyoztesNev);
-        panel.add(row1);
+        row1_1.add(gyoztesGombasz);
+        row1_1.add(gyoztesGombaszNev);
+        panel.add(row1_1);
+
+
+        JPanel row1_2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JLabel gyoztesRovarasz = new JLabel("Győztes rovarász:");
+        JLabel gyoztesRovaraszNev = new JLabel(rovarasz.getNev());
+
+        row1_2.add(gyoztesRovarasz);
+        row1_2.add(gyoztesRovaraszNev);
+        panel.add(row1_2);
 
 
 
