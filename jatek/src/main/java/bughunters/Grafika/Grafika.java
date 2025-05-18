@@ -1,5 +1,6 @@
 package bughunters.Grafika;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.HashMap;
 import java.util.Map;
@@ -134,14 +135,18 @@ public class Grafika extends JPanel {
     }
     @Override
     public void paintComponent(Graphics g){
-        if(tektonok!=null){
+        /*if(tektonok!=null){
             tektonok.forEach((kulcs, ertek)->{ertek.Draw(g);});
         }
         
         gombatestek.forEach((kulcs, ertek)->{ertek.Draw(g);});
         gombafonalak.forEach((kulcs, ertek)->{ertek.Draw(g);});
         rovarok.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        sporak.forEach((kulcs, ertek)->{ertek.Draw(g);});
+        sporak.forEach((kulcs, ertek)->{ertek.Draw(g);});*/
+        super.paintComponent(g);
+        g.setColor(Color.RED);
+        g.fillRoundRect(60, 120, 500, 180, 30, 30);
+
     }
     public Gombafonal fonalKeres(int x, int y){
         for (Map.Entry<Gombafonal, GGombafonal> entry : gombafonalak.entrySet()) {

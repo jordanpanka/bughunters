@@ -53,6 +53,7 @@ public class Proba  extends JFrame{
    
 
     public Proba(Parancskezelok pk, Jatek jatek){
+
         game=pk;
         mouse=new HashMap<>();
         grafika=new Grafika();
@@ -61,17 +62,19 @@ public class Proba  extends JFrame{
         setExtendedState(JFrame.MAXIMIZED_BOTH); 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
-        //setLayout(new BorderLayout());
+        
+        //játékos infó panel beállítása
         JPanel jatekosInfo=new JPanel();
         jatekosInfo.setLayout(new BoxLayout(jatekosInfo, BoxLayout.X_AXIS));
-        //jatekosInfo.setMaximumSize(new Dimension(JFrame.WIDTH,250));
         jatekosInfo.setMaximumSize(new Dimension(Integer.MAX_VALUE,150));
         jatekosInfo.setPreferredSize(new Dimension(Integer.MAX_VALUE,150));
         jatekosInfo.setLayout(new FlowLayout(FlowLayout.CENTER));
+
         //jatekosok adatainak megjelenítése
         for(int i=0; i<game.getJatekosok().size(); i++){
+
             JPanel jatekos=new JPanel();
-             jatekos.setLayout(new BoxLayout(jatekos, BoxLayout.Y_AXIS)); 
+            jatekos.setLayout(new BoxLayout(jatekos, BoxLayout.Y_AXIS)); 
 
             JLabel nev=new JLabel(game.getJatekosok().get(i).getNev());
             JLabel akcio=new JLabel("Akciók: "+game.getJatekosok().get(i).getakcioSzama());
@@ -86,16 +89,19 @@ public class Proba  extends JFrame{
             jatekos.add(Box.createVerticalStrut(10));
             jatekos.add(pontok);
             jatekos.add(Box.createVerticalStrut(10));
-            System.out.println("hozzaadva.");
+            
             jatekos.setMaximumSize(new Dimension(150, 200));
             jatekos.setPreferredSize(new Dimension(150, 200));
             jatekosInfo.add(jatekos);
         
         }
+
+        //tektonok kiválasztása a ComboBoxból
         List<String> tekton=game.getTektonNevList();
         tektonok = new JComboBox<>();
         tektonok.setPreferredSize(new Dimension(130,50));
-        
+        tektonok.setMaximumSize(new Dimension(50, 30));
+
         tekton.forEach((String s)->{
             System.out.println(s);
             tektonok.addItem(s);
@@ -104,7 +110,6 @@ public class Proba  extends JFrame{
         //gombok létrehozása
         gombokLetreHozasa();
 
-        //megjelenit=new JButton("Megjelenít");
         // kör és játékos
         JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+" Aktív játékos: "+game.getAktivJatekos().getNev());
 
@@ -114,24 +119,20 @@ public class Proba  extends JFrame{
         koradatokp.setMaximumSize(new Dimension(Integer.MAX_VALUE,30));
 
         //tektonok kiválasztása
-        tektonok.setMaximumSize(new Dimension(50, 30));
         megjelenit.setMaximumSize(new Dimension(10, 30));
 
+        //felső panel jatkosinfo+aktuális kör és játékos
         JPanel felsoPanel=new JPanel();
         felsoPanel.setLayout(new BoxLayout(felsoPanel, BoxLayout.Y_AXIS)); 
         felsoPanel.add(jatekosInfo);
         felsoPanel.add(koradatokp);
-        grafika.setPreferredSize(new Dimension(30,30));
-        grafika.setMaximumSize(new Dimension(30,30));
-        //felsoPanel.add(grafika);
-        add(felsoPanel,BorderLayout.NORTH);
         
-
+         //gombasz gombok
         JPanel gombaszGombok=new JPanel();
         gombaszGombok.setLayout(new BoxLayout(gombaszGombok,BoxLayout.X_AXIS));
+        gombaszPanelBeall(gombaszGombok);
 
-        //gombasz gombok
-        TestNov.setPreferredSize(new Dimension(130,50));
+        /*TestNov.setPreferredSize(new Dimension(130,50));
         gombaszGombok.add(TestNov);
         gombaszGombok.add(Box.createHorizontalStrut(10));
         Sporaszor.setPreferredSize(new Dimension(130,50));
@@ -154,11 +155,10 @@ public class Proba  extends JFrame{
 
         gombaszGombok.setBorder(BorderFactory.createEmptyBorder(20, 0, 50, 0));
 
-        gombaszGombok.setLayout(new FlowLayout(FlowLayout.CENTER));
+        gombaszGombok.setLayout(new FlowLayout(FlowLayout.CENTER));*/
 
-        add(gombaszGombok,BorderLayout.SOUTH);
-       // felsoPanel.add(gombaszGombok);
-
+       
+        //rovaraszgombok
         JPanel rovaraszGombok=new JPanel();
         rovaraszGombok.setLayout(new BoxLayout(rovaraszGombok,BoxLayout.X_AXIS));
 
@@ -171,7 +171,18 @@ public class Proba  extends JFrame{
         rovaraszGombok.add(Box.createHorizontalStrut(10));
         //rovaraszGombok.add(korVege);
 
+
+        grafika=new Grafika();
+        grafika.setPreferredSize(new Dimension(800, 600)); // Beállíthatsz más méretet is
+
+
+        //JFramehez panelek hozzáadása
+
+        add(felsoPanel,BorderLayout.NORTH);
+        add(grafika, BorderLayout.CENTER);
+        add(gombaszGombok,BorderLayout.SOUTH);
     }
+   
     public void gombokLetreHozasa(){
         korVege=new JButton("Kör vége");
         TestNov=new JButton("Test növesztés");
@@ -334,6 +345,32 @@ public class Proba  extends JFrame{
         }
             
         );
+    }
+    public void gombaszPanelBeall(JPanel gombaszGombok){
+        TestNov.setPreferredSize(new Dimension(130,50));
+        gombaszGombok.add(TestNov);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
+        Sporaszor.setPreferredSize(new Dimension(130,50));
+        gombaszGombok.add(Sporaszor);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
+        FonalNov.setPreferredSize(new Dimension(150,50));
+        gombaszGombok.add(FonalNov);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
+        RovarEves.setPreferredSize(new Dimension(130,50));
+        gombaszGombok.add(RovarEves);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
+        korVege.setPreferredSize(new Dimension(100,50));
+        gombaszGombok.add(korVege);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
+
+        gombaszGombok.add(tektonok);
+        gombaszGombok.add(Box.createHorizontalStrut(10));
+        megjelenit.setPreferredSize(new Dimension(100,50));
+        gombaszGombok.add(megjelenit);
+
+        gombaszGombok.setBorder(BorderFactory.createEmptyBorder(20, 0, 50, 0));
+
+        gombaszGombok.setLayout(new FlowLayout(FlowLayout.CENTER));
     }
 
 }
