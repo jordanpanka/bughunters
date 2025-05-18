@@ -3,6 +3,7 @@ package bughunters.Grafika;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -73,6 +74,7 @@ public class Grafika extends JPanel {
         // Középső tekton pozíció beállítása
         tektonok.get(t).setX(cX);
         tektonok.get(t).setY(cY);
+        sporaElhelyezesKorben(t,g);
         
         System.out.println("Tekton középen: X=" + cX + ", Y=" + cY);
 
@@ -101,7 +103,7 @@ public class Grafika extends JPanel {
                                 gg.Draw(g);
                             }
                     });
-                    
+                    sporaElhelyezesKorben(szomszed,g);
                 }
 
             }
@@ -119,15 +121,7 @@ public class Grafika extends JPanel {
             }
         });
 /* 
-        //spórák beállítássa
-        Map<Spora, GSpora> szurtSpora = sporak.entrySet().stream()
-        .filter(entry -> t.getSporak().contains(entry.getKey())) // elérés a kulcs objektumhoz
-        .collect(Collectors.toMap(
-            Map.Entry::getKey,
-            Map.Entry::getValue
-        ));
-
-       //rovarok szűrése
+      //rovarok szűrése
         if(rovarok==null)System.out.println("A rovarok null");
         Map<Rovar, GRovar> szurtRovar = rovarok.entrySet().stream()
         .filter(entry -> entry.getKey().getTartozkodas().equals(t)) // elérés a kulcs objektumhoz
@@ -168,6 +162,34 @@ public class Grafika extends JPanel {
         //repaint();
 */
     }
+    public void sporaElhelyezesKorben(Tekton t, Graphics g) {
+        int sugar =50;
+        int cX=tektonok.get(t).getX();
+        int cY=tektonok.get(t).getY();
+    List<Spora> sporakList = t.getSporak();
+    int sporaSzam = sporakList.size();
+
+    if (sporaSzam == 0) return;  // Nincs mit elhelyezni
+
+    double szogLepes = 2 * Math.PI / sporaSzam;  // Egyenlő elosztás a kör mentén
+
+    for (int i = 0; i < sporaSzam; i++) {
+        double szog = i * szogLepes;
+        int sporaX = (int) (cX + sugar * Math.cos(szog));
+        int sporaY = (int) (cY + sugar * Math.sin(szog));
+
+        Spora spora = sporakList.get(i);
+        GSpora gSpora = sporak.get(spora);
+
+        if (gSpora != null) {
+            gSpora.setX(sporaX);
+            gSpora.setY(sporaY);
+            gSpora.Draw(g);  // Kirajzolás
+            System.out.println("Spóra rajzolva X=" + sporaX + ", Y=" + sporaY);
+        }
+        }
+    }
+
     @Override
     public void paintComponent(Graphics g){
         
