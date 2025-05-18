@@ -194,47 +194,7 @@ public class Grafika extends JPanel {
             }
         }
 
-/* 
-      //rovarok szűrése
-        if(rovarok==null)System.out.println("A rovarok null");
-        Map<Rovar, GRovar> szurtRovar = rovarok.entrySet().stream()
-        .filter(entry -> entry.getKey().getTartozkodas().equals(t)) // elérés a kulcs objektumhoz
-        .collect(Collectors.toMap(
-            Map.Entry::getKey,
-            Map.Entry::getValue
-        ));
- 
-        int rovarSporaSzam=szurtSpora.size()+szurtRovar.size();
-        double elfordulasSzoges=Math.PI/(double)t.getSporak().size();
-        R=5;
-        if(szurtRovar!=null){
-            szurtRovar.get(0).setX(elozoX);
-            szurtRovar.get(0).setY(elozoY);
-            for(int i=1; i<szurtRovar.size();i++){
-                double iranySzog=Math.atan2(elozoY-cY,elozoX-cX);
-               double Szog=iranySzog+elfordulasSzoges;
-               elozoX=(int)(cX+R*Math.cos(Szog));
-               elozoY=(int) (cY+R*Math.cos(Szog));
-               szurtRovar.get(i).setX(elozoX);
-                szurtRovar.get(i).setY(elozoY);            
-            }
 
-        }
-        if(szurtSpora!=null){
-            szurtSpora.get(0).setX(elozoX);
-            szurtSpora.get(0).setY(elozoY);
-            for(int i=1; i<szurtSpora.size();i++){
-                double iranySzog=Math.atan2(elozoY-cY,elozoX-cX);
-               double Szog=iranySzog+elfordulasSzoges;
-               elozoX=(int)(cX+R*Math.cos(Szog));
-               elozoY=(int) (cY+R*Math.cos(Szog));
-               szurtSpora.get(i).setX(elozoX);
-                szurtSpora.get(i).setY(elozoY);            
-            }
-        }
-
-        //repaint();
-*/
     }
     public void sporaElhelyezesKorben(Tekton t, Graphics g) {
         int sugar =50;
@@ -385,11 +345,13 @@ public class Grafika extends JPanel {
     public Rovar rovarKeres(int x, int y){
         //lehet nem jó
         y=y-230;
+        System.out.println("Képernyő"+x+y);
         for (Map.Entry<Rovar, GRovar> entry : rovarok.entrySet()) {
-            double xC = entry.getValue().getX();
-            double yC = entry.getValue().getY();
+            double xC = (double)entry.getValue().getX()+45;
+            double yC = (double)entry.getValue().getY()+45;
+            System.out.println("Aktuális tektin:"+xC+yC);
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
-            if (d < 1) {
+            if (d < 22) {
                 return entry.getKey(); // megtaláltuk
             }
         }
@@ -398,10 +360,10 @@ public class Grafika extends JPanel {
     public Spora sporaKeres(int x, int y){
         y=y-230;
          for (Map.Entry<Spora, GSpora> entry : sporak.entrySet()) {
-            double xC = entry.getValue().getX();
-            double yC = entry.getValue().getY();
+            double xC = (double)entry.getValue().getX()+3;
+            double yC = (double)entry.getValue().getY()+3;
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
-            if (d < 1) {
+            if (d <=3) {
                 return entry.getKey(); // megtaláltuk
             }
         }
