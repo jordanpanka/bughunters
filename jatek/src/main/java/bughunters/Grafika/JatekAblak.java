@@ -392,7 +392,9 @@ public class JatekAblak  extends JFrame{
             add(gombaszGombok,BorderLayout.SOUTH);
         }
         else{
-            add(rovaraszGombok,BorderLayout.SOUTH);
+           
+        add(rovaraszGombok,BorderLayout.SOUTH);
+
         }
        
     }
