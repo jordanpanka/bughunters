@@ -320,7 +320,6 @@ public class JatekAblak  extends JFrame{
 
             };
         }
-            
         );
     }
     public void gombaszPanelBeall(){
