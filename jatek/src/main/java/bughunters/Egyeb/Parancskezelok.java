@@ -2519,7 +2519,7 @@ public class Parancskezelok {
                             break;
 
                         case 'v':
-                            nev = " Szegfűgomba";
+                            nev = "Szegfűgomba";
                             termelesIdeje = 3;
                             eddigNovesztettTestekSzama = 0;
                             gombatestFejlettsegIdo = 2;
