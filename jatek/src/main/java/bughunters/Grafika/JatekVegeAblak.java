@@ -84,7 +84,7 @@ public class JatekVegeAblak extends JFrame{
 
         // ---------------------------
 
-        JPanel row1_1 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
+        JPanel row1_1 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
         row1_1.setOpaque(false);
 
         JLabel gyoztesGombasz = new JLabel("Győztes gombász:");
@@ -100,7 +100,7 @@ public class JatekVegeAblak extends JFrame{
 
         // ---------------------------
 
-        JPanel row1_2 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
+        JPanel row1_2 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
         row1_2.setOpaque(false);
 
         JLabel gyoztesRovarasz = new JLabel("Győztes rovarász:");
@@ -116,7 +116,7 @@ public class JatekVegeAblak extends JFrame{
 
         // ---------------------------
 
-        panel.add(Box.createVerticalStrut(30));
+        panel.add(Box.createVerticalStrut(20));
 
         JPanel row2 = new JPanel(new BorderLayout());
         row2.setOpaque(false);
@@ -139,8 +139,7 @@ public class JatekVegeAblak extends JFrame{
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setPreferredSize(new Dimension(550, 200)); // korlátozott magasság
 
-        row2.add(scrollPane, BorderLayout.CENTER);
-        panel.add(row2);
+        panel.add(scrollPane);
 
         panel.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
 
