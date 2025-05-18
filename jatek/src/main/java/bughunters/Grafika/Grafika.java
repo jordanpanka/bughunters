@@ -1,6 +1,7 @@
 package bughunters.Grafika;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -119,30 +120,69 @@ public class Grafika extends JPanel {
                 gg.Draw(g);
             }
         });
-       long count = rovarok.keySet().stream()
-    .filter(rovar -> rovar.getTartozkodas().equals(t))
-    .count();
+        
+        /*
+        long count = rovarok.keySet().stream()
+        .filter(rovar -> rovar.getTartozkodas().equals(t))
+        .count();
 
-if (count == 0) return;
+        if (count == 0) return;
 
-double angleStep = 2 * Math.PI / count;
-int radius = 30;  // dinamikus sugár
-int[] i = {0};
+        double angleStep = 2 * Math.PI / count;
+        int radius = 30;  // dinamikus sugár
+        int[] i = {0};
 
-rovarok.forEach((rovar, gg) -> {
-    if (rovar.getTartozkodas().equals(t)) {
-        double angle = i[0] * angleStep - Math.PI / 2; // fentről induljon
+        rovarok.forEach((rovar, gg) -> {
+            if (rovar.getTartozkodas().equals(t)) {
+                double angle = i[0] * angleStep - Math.PI / 2; // fentről induljon
 
-        int x = (int)(cX + radius * Math.cos(angle));
-        int y = (int)(cY + radius * Math.sin(angle));
+                int x = (int)(cX + radius * Math.cos(angle));
+                int y = (int)(cY + radius * Math.sin(angle));
 
-        gg.setX(x);
-        gg.setY(y);
-        gg.Draw(g);
+                gg.setX(x);
+                gg.setY(y);
+                gg.Draw(g);
 
-        i[0]++;
-    }
-});
+                i[0]++;
+            }
+        });
+        */
+
+        // Rovarok kirajzolása a középső és a szomszédos tektonokra is
+        List<Tekton> mindenRajzolando = new ArrayList<>();
+        mindenRajzolando.add(t); // középső
+        mindenRajzolando.addAll(t.getSzomszedok()); // szomszédok
+
+        for (Tekton tekton : mindenRajzolando) {
+            long count = rovarok.keySet().stream()
+                .filter(rovar -> rovar.getTartozkodas().equals(tekton))
+                .count();
+
+            if (count == 0) continue;
+
+            GTekton gTekton = tektonok.get(tekton);
+            int baseX = gTekton.getX();
+            int baseY = gTekton.getY();
+
+            double angleStep = 2 * Math.PI / count;
+            int radius = 30;
+            int i = 0;
+
+            for (Map.Entry<Rovar, GRovar> entry : rovarok.entrySet()) {
+                Rovar rovar = entry.getKey();
+                GRovar gg = entry.getValue();
+
+                if (rovar.getTartozkodas().equals(tekton)) {
+                    double angle = i * angleStep;
+                    int x = (int)(baseX + radius * Math.cos(angle));
+                    int y = (int)(baseY + radius * Math.sin(angle));
+                    gg.setX(x);
+                    gg.setY(y);
+                    gg.Draw(g);
+                    i++;
+                }
+            }
+        }
 
 /* 
       //rovarok szűrése
