@@ -3,6 +3,7 @@ package bughunters.Grafika;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
@@ -16,6 +17,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import bughunters.Egyeb.Jatek;
 import bughunters.Egyeb.Parancskezelok;
@@ -75,8 +77,8 @@ public class JatekAblak  extends JFrame{
         //játékos infó panel beállítása
         jatekosInfo=new JPanel();
         jatekosInfo.setLayout(new BoxLayout(jatekosInfo, BoxLayout.X_AXIS));
-        jatekosInfo.setMaximumSize(new Dimension(Integer.MAX_VALUE,150));
-        jatekosInfo.setPreferredSize(new Dimension(Integer.MAX_VALUE,150));
+        jatekosInfo.setMaximumSize(new Dimension(Integer.MAX_VALUE,200));
+        jatekosInfo.setPreferredSize(new Dimension(Integer.MAX_VALUE,200));
         jatekosInfo.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         //jatekosok adatainak megjelenítése
@@ -112,6 +114,8 @@ public class JatekAblak  extends JFrame{
         felsoPanel.setLayout(new BoxLayout(felsoPanel, BoxLayout.Y_AXIS)); 
         felsoPanel.add(jatekosInfo);
         felsoPanel.add(koradatokp);
+        felsoPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE,200));
+        felsoPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE,200));
         
         //gombasz gombok
         gombaszGombok=new JPanel();
@@ -125,11 +129,12 @@ public class JatekAblak  extends JFrame{
         
 
         grafika=game.getGrafika();
-        grafika.setPreferredSize(new Dimension(800, 600)); // Beállíthatsz más méretet is
+        grafika.setPreferredSize(new Dimension(Integer.MAX_VALUE, 600)); // Beállíthatsz más méretet is
 
         
 
         //JFramehez panelek hozzáadása
+        System.out.println("felso:"+felsoPanel.getHeight());
         add(felsoPanel,BorderLayout.NORTH);
         add(grafika, BorderLayout.CENTER);
         frissitPanel();
@@ -207,8 +212,11 @@ public class JatekAblak  extends JFrame{
     }
     public void egerKattintasok(){
           this.addMouseListener(new MouseAdapter(){
+           
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mouseClicked(MouseEvent e) { 
+                Point grafikaPont = SwingUtilities.convertPoint(JatekAblak.this, e.getPoint(), grafika);
+                System.out.println("Meghívódik a kttintás");
                 if (Boolean.TRUE.equals(mouse.get("testNov"))) {
                     Tekton t =grafika.tektonKeres(e.getX(), e.getY());
                         try{

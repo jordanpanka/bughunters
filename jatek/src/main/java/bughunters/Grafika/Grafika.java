@@ -328,6 +328,7 @@ public class Grafika extends JPanel {
 
     }
     public Gombafonal fonalKeres(int x, int y){
+        y=y-230;
         for (Map.Entry<Gombafonal, GGombafonal> entry : gombafonalak.entrySet()) {
             double X1=entry.getValue().getX();
             double X2=entry.getValue().getX2();
@@ -348,32 +349,37 @@ public class Grafika extends JPanel {
     }
    
     public Gombatest gombatestKeres(int x, int y) {
+        y=y-230;
+        System.out.println("Képernyő"+x+y);
+
         for (Map.Entry<Gombatest, GGombatest> entry : gombatestek.entrySet()) {
-            double xC = entry.getValue().getX();
-            double yC = entry.getValue().getY();
+            double xC =(double) entry.getValue().getX()+50;
+            double yC = (double)entry.getValue().getY()+50;
+            System.out.println("Aktuális tektin:"+xC+yC);
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
-            if (d < 1) {
+            if (d <=35) {
                 return entry.getKey(); // megtaláltuk
             }
         }
         return null; // nem találtuk meg
     }
     public Tekton tektonKeres(int x, int y){
-        System.out.println("Koordináták amire rákettintottam"+x+y);
+        y=y-230;
         for (Map.Entry<Tekton, GTekton> entry : tektonok.entrySet()) {
-            double xC = entry.getValue().getX();
-            double yC = entry.getValue().getY();
-            System.out.println("Aktuális tektin:"+x+y);
+            double xC = (double)entry.getValue().getX()+50;
+            double yC = (double)entry.getValue().getY()+50;
+            //System.out.println("Aktuális tektin:"+xC+yC);
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
+            //System.out.println("Táv:"+d);
             if (d <=50 ) {
                 return entry.getKey(); // megtaláltuk
             }
         }
-        System.out.println("Nem találjuk a tektont :(");
         return null; // nem találtuk meg
     }
     public Rovar rovarKeres(int x, int y){
         //lehet nem jó
+        y=y-230;
         for (Map.Entry<Rovar, GRovar> entry : rovarok.entrySet()) {
             double xC = entry.getValue().getX();
             double yC = entry.getValue().getY();
@@ -385,6 +391,7 @@ public class Grafika extends JPanel {
         return null; // nem találtuk meg
     }
     public Spora sporaKeres(int x, int y){
+        y=y-230;
          for (Map.Entry<Spora, GSpora> entry : sporak.entrySet()) {
             double xC = entry.getValue().getX();
             double yC = entry.getValue().getY();
