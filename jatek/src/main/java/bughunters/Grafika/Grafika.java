@@ -359,14 +359,17 @@ public class Grafika extends JPanel {
         return null; // nem találtuk meg
     }
     public Tekton tektonKeres(int x, int y){
+        System.out.println("Koordináták amire rákettintottam"+x+y);
         for (Map.Entry<Tekton, GTekton> entry : tektonok.entrySet()) {
             double xC = entry.getValue().getX();
             double yC = entry.getValue().getY();
+            System.out.println("Aktuális tektin:"+x+y);
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
-            if (d <= 10) {
+            if (d <=50 ) {
                 return entry.getKey(); // megtaláltuk
             }
         }
+        System.out.println("Nem találjuk a tektont :(");
         return null; // nem találtuk meg
     }
     public Rovar rovarKeres(int x, int y){
