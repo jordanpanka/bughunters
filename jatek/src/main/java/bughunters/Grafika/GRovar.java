@@ -51,7 +51,7 @@ public class GRovar extends Rajz {
     @Override
     public void Draw(Graphics g) {
         if (image != null) {
-            g.drawImage(image, x, y, null);
+            g.drawImage(image, x, y, 40, 40, null);
         }
     }
 }
