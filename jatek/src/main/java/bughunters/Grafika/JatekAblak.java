@@ -51,6 +51,7 @@ public class JatekAblak  extends JFrame{
     private Jatek jatek;
     private JLabel korAdatok;
    
+    JPanel jatekosInfo;
 
     public JatekAblak(Parancskezelok pk, Jatek jatek){
 
@@ -72,7 +73,7 @@ public class JatekAblak  extends JFrame{
         setResizable(false);
         
         //játékos infó panel beállítása
-        JPanel jatekosInfo=new JPanel();
+        jatekosInfo=new JPanel();
         jatekosInfo.setLayout(new BoxLayout(jatekosInfo, BoxLayout.X_AXIS));
         jatekosInfo.setMaximumSize(new Dimension(Integer.MAX_VALUE,150));
         jatekosInfo.setPreferredSize(new Dimension(Integer.MAX_VALUE,150));
@@ -384,21 +385,25 @@ public class JatekAblak  extends JFrame{
         else{
             isGombasz=false;
         }
-        isGombasz=false;
+        //isGombasz=false;
         if(isGombasz){
             add(gombaszGombok,BorderLayout.SOUTH);
         }
         else{
             add(rovaraszGombok,BorderLayout.SOUTH);
         }
+       
     }
     public void akcioVege(){
          boolean ujJatekos=jatek.korEllenorzes(this);
+         System.out.println("ujjatekos: "+game.getAktivJatekos().getNev());
+        jatekosAdatFrissit(jatekosInfo);
             if(ujJatekos){
                 frissitPanel();
             }
     }
     public void jatekosAdatFrissit(JPanel jatekosInfo){
+        jatekosInfo.removeAll();
         for(int i=0; i<game.getJatekosok().size(); i++){
 
             JPanel jatekos=new JPanel();
@@ -424,6 +429,11 @@ public class JatekAblak  extends JFrame{
 
         
         }
-        korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+" Aktív játékos: "+game.getAktivJatekos().getNev());
+
+        korAdatok.setText("Kör : "+jatek.getKorSzam()+" Aktív játékos: "+game.getAktivJatekos().getNev());
+
+        // Frissítés a grafikus felületen
+        jatekosInfo.revalidate();
+        jatekosInfo.repaint();
     }
 }
