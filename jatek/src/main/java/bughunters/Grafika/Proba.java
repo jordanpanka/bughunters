@@ -86,30 +86,6 @@ public class Proba  extends JFrame{
 
         //jatekosok adatainak megjelenítése
         JLabel korAdatok=new JLabel(" ");
-        /*for(int i=0; i<game.getJatekosok().size(); i++){
-
-            JPanel jatekos=new JPanel();
-            jatekos.setLayout(new BoxLayout(jatekos, BoxLayout.Y_AXIS)); 
-
-            JLabel nev=new JLabel(game.getJatekosok().get(i).getNev());
-            JLabel akcio=new JLabel("Akciók: "+game.getJatekosok().get(i).getakcioSzama());
-            JLabel fajta=new JLabel(game.getJatekosok().get(i).szerepKor());
-            JLabel pontok=new JLabel("Pontok: "+game.getJatekosok().get(i).getGyozelmiPontok());
-            
-            jatekos.add(nev);
-            jatekos.add(Box.createVerticalStrut(10));
-            jatekos.add(akcio);
-            jatekos.add(Box.createVerticalStrut(10));
-            jatekos.add(fajta);
-            jatekos.add(Box.createVerticalStrut(10));
-            jatekos.add(pontok);
-            jatekos.add(Box.createVerticalStrut(10));
-            
-            jatekos.setMaximumSize(new Dimension(150, 200));
-            jatekos.setPreferredSize(new Dimension(150, 200));
-            jatekosInfo.add(jatekos);
-        
-        }*/
         jatekosAdatFrissit(jatekosInfo);
 
         //tektonok kiválasztása a ComboBoxból
@@ -187,14 +163,14 @@ public class Proba  extends JFrame{
         korVegeRovarasz.setPreferredSize(new Dimension(100,50));
         megjelenitRovarasz.setPreferredSize(new Dimension(100,50));
     }
-    public void gombokLenyomasa(Jatek jatek){
+    public void gombokLenyomasa(){
         korVegeGombasz.addActionListener(e->{
             game.endTurn();
-            akcioVege(jatek);
+            akcioVege();
         });
          korVegeRovarasz.addActionListener(e->{
             game.endTurn();
-            akcioVege(jatek);
+            akcioVege();
             
         });
         TestNov.addActionListener(e->{
@@ -229,7 +205,7 @@ public class Proba  extends JFrame{
             grafika.Draw((Tekton)kiv,grafika.getGraphics());
         });
     }
-    public void egerKattintasok(Jatek jatek){
+    public void egerKattintasok(){
           this.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -421,7 +397,7 @@ public class Proba  extends JFrame{
             add(rovaraszGombok,BorderLayout.SOUTH);
         }
     }
-    public void akcioVege(Jatek jatek){
+    public void akcioVege(){
          boolean ujJatekos=jatek.korEllenorzes();
             if(ujJatekos){
                 frissitPanel();
