@@ -34,7 +34,8 @@ import bughunters.Tekton.Tekton;
 
 public class Proba  extends JFrame{
    private Parancskezelok game;
-   private JButton korVege;
+   private JButton korVegeGombasz;
+   private JButton korVegeRovarasz;
     private JButton TestNov;
     private JButton Sporaszor;
     private JButton FonalNov;
@@ -43,8 +44,10 @@ public class Proba  extends JFrame{
     private JButton Vag;
     private JButton Eszik;
     private Grafika grafika;
-    private JComboBox tektonok;
-    private JButton megjelenit;
+    private JComboBox tektonokGombasz;
+    private JComboBox tektonokRovarasz;
+    private JButton megjelenitGombasz;
+    private JButton megjelenitRovarasz;
     private boolean isGombasz;
     private boolean elsokattintas;
     private Tekton elsoTekton;
@@ -106,18 +109,14 @@ public class Proba  extends JFrame{
         }
 
         //tektonok kiválasztása a ComboBoxból
-        List<String> tekton=game.getTektonNevList();
-        tektonok = new JComboBox<>();
-        tektonok.setPreferredSize(new Dimension(130,50));
-        tektonok.setMaximumSize(new Dimension(50, 30));
-
-        tekton.forEach((String s)->{
-            System.out.println(s);
-            tektonok.addItem(s);
-        });
+        tektonokGombasz=new JComboBox<>();
+        tektonokRovarasz=new JComboBox<>();
+        tektonokJComboBox(tektonokGombasz);
+        tektonokJComboBox(tektonokRovarasz);
        
         //gombok létrehozása
         gombokLetreHozasa();
+        gombokMeretekBeallitas();
 
         // kör és játékos
         JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+" Aktív játékos: "+game.getAktivJatekos().getNev());
@@ -128,7 +127,8 @@ public class Proba  extends JFrame{
         koradatokp.setMaximumSize(new Dimension(Integer.MAX_VALUE,30));
 
         //tektonok kiválasztása
-        megjelenit.setMaximumSize(new Dimension(10, 30));
+        megjelenitGombasz.setMaximumSize(new Dimension(10, 30));
+        megjelenitRovarasz.setMaximumSize(new Dimension(10, 30));
 
         //felső panel jatkosinfo+aktuális kör és játékos
         JPanel felsoPanel=new JPanel();
@@ -136,64 +136,29 @@ public class Proba  extends JFrame{
         felsoPanel.add(jatekosInfo);
         felsoPanel.add(koradatokp);
         
-         //gombasz gombok
+        //gombasz gombok
         gombaszGombok=new JPanel();
         gombaszGombok.setLayout(new BoxLayout(gombaszGombok,BoxLayout.X_AXIS));
         gombaszPanelBeall();
-
-        /*TestNov.setPreferredSize(new Dimension(130,50));
-        gombaszGombok.add(TestNov);
-        gombaszGombok.add(Box.createHorizontalStrut(10));
-        Sporaszor.setPreferredSize(new Dimension(130,50));
-        gombaszGombok.add(Sporaszor);
-        gombaszGombok.add(Box.createHorizontalStrut(10));
-        FonalNov.setPreferredSize(new Dimension(150,50));
-        gombaszGombok.add(FonalNov);
-        gombaszGombok.add(Box.createHorizontalStrut(10));
-        RovarEves.setPreferredSize(new Dimension(130,50));
-        gombaszGombok.add(RovarEves);
-        gombaszGombok.add(Box.createHorizontalStrut(10));
-        korVege.setPreferredSize(new Dimension(100,50));
-        gombaszGombok.add(korVege);
-        gombaszGombok.add(Box.createHorizontalStrut(10));
-
-        gombaszGombok.add(tektonok);
-        gombaszGombok.add(Box.createHorizontalStrut(10));
-        megjelenit.setPreferredSize(new Dimension(100,50));
-        gombaszGombok.add(megjelenit);
-
-        gombaszGombok.setBorder(BorderFactory.createEmptyBorder(20, 0, 50, 0));
-
-        gombaszGombok.setLayout(new FlowLayout(FlowLayout.CENTER));*/
-
        
         //rovaraszgombok
         rovaraszGombok=new JPanel();
         rovaraszGombok.setLayout(new BoxLayout(rovaraszGombok,BoxLayout.X_AXIS));
-
-        //rovarasz gombok
-        rovaraszGombok.add(Maszik);
-        rovaraszGombok.add(Box.createHorizontalStrut(10));
-        rovaraszGombok.add(Vag);
-        rovaraszGombok.add(Box.createHorizontalStrut(10));
-        rovaraszGombok.add(Eszik);
-        rovaraszGombok.add(Box.createHorizontalStrut(10));
-        //rovaraszGombok.add(korVege);
-
+        rovaraszPanelBeall();
 
         grafika=new Grafika();
         grafika.setPreferredSize(new Dimension(800, 600)); // Beállíthatsz más méretet is
 
-
         //JFramehez panelek hozzáadása
-
         add(felsoPanel,BorderLayout.NORTH);
         add(grafika, BorderLayout.CENTER);
-        add(gombaszGombok,BorderLayout.SOUTH);
+        frissitPanel();
+        
     }
    
     public void gombokLetreHozasa(){
-        korVege=new JButton("Kör vége");
+        korVegeGombasz=new JButton("Kör vége");
+        korVegeRovarasz=new JButton("Kör vége");
         TestNov=new JButton("Test növesztés");
         Sporaszor=new JButton("Spóra szórás");
         FonalNov=new JButton("Fonal növesztése");
@@ -201,13 +166,37 @@ public class Proba  extends JFrame{
         Maszik=new JButton("Mászik");
         Vag=new JButton("Fonal vágása");
         Eszik=new JButton("Spóra evése");
-        megjelenit=new JButton("Megjelenít");
+        megjelenitGombasz=new JButton("Megjelenít");
+        megjelenitRovarasz=new JButton("Megjelenít");
 
     }
+    public void gombokMeretekBeallitas(){
+        TestNov.setPreferredSize(new Dimension(130,50));
+        Sporaszor.setPreferredSize(new Dimension(130,50));
+        FonalNov.setPreferredSize(new Dimension(150,50));
+        RovarEves.setPreferredSize(new Dimension(130,50));
+        korVegeGombasz.setPreferredSize(new Dimension(100,50));
+        megjelenitGombasz.setPreferredSize(new Dimension(100,50));
+        Maszik.setPreferredSize(new Dimension(130,50));
+        Vag.setPreferredSize(new Dimension(130,50));
+        Eszik.setPreferredSize(new Dimension(130,50));
+        korVegeRovarasz.setPreferredSize(new Dimension(100,50));
+        megjelenitRovarasz.setPreferredSize(new Dimension(100,50));
+    }
     public void gombokLenyomasa(Jatek jatek){
-        korVege.addActionListener(e->{
+        korVegeGombasz.addActionListener(e->{
             game.endTurn();
-            jatek.korEllenorzes();
+            boolean ujJatekos=jatek.korEllenorzes();
+            if(ujJatekos){
+                frissitPanel();
+            }
+        });
+         korVegeRovarasz.addActionListener(e->{
+            game.endTurn();
+            boolean ujJatekos=jatek.korEllenorzes();
+            if(ujJatekos){
+                frissitPanel();
+            }
         });
         TestNov.addActionListener(e->{
             mouse.put("testNov",true);
@@ -230,8 +219,13 @@ public class Proba  extends JFrame{
         Eszik.addActionListener(e->{
             mouse.put("Eszik",true);
         });
-        megjelenit.addActionListener(e->{
-            String kivalasztott=(String)tektonok.getSelectedItem();
+        megjelenitGombasz.addActionListener(e->{
+            String kivalasztott=(String)tektonokGombasz.getSelectedItem();
+            Object kiv =game.getObjektumok().get((Object)kivalasztott);
+            grafika.Draw((Tekton)kiv,grafika.getGraphics());
+        });
+         megjelenitRovarasz.addActionListener(e->{
+            String kivalasztott=(String)tektonokRovarasz.getSelectedItem();
             Object kiv =game.getObjektumok().get((Object)kivalasztott);
             grafika.Draw((Tekton)kiv,grafika.getGraphics());
         });
@@ -356,30 +350,61 @@ public class Proba  extends JFrame{
         );
     }
     public void gombaszPanelBeall(){
-        TestNov.setPreferredSize(new Dimension(130,50));
+        
         gombaszGombok.add(TestNov);
         gombaszGombok.add(Box.createHorizontalStrut(10));
-        Sporaszor.setPreferredSize(new Dimension(130,50));
+        
         gombaszGombok.add(Sporaszor);
         gombaszGombok.add(Box.createHorizontalStrut(10));
-        FonalNov.setPreferredSize(new Dimension(150,50));
+        
         gombaszGombok.add(FonalNov);
         gombaszGombok.add(Box.createHorizontalStrut(10));
-        RovarEves.setPreferredSize(new Dimension(130,50));
+       
         gombaszGombok.add(RovarEves);
         gombaszGombok.add(Box.createHorizontalStrut(10));
-        korVege.setPreferredSize(new Dimension(100,50));
-        gombaszGombok.add(korVege);
+        
+        gombaszGombok.add(korVegeGombasz);
         gombaszGombok.add(Box.createHorizontalStrut(10));
 
-        gombaszGombok.add(tektonok);
+        gombaszGombok.add(tektonokGombasz);
         gombaszGombok.add(Box.createHorizontalStrut(10));
-        megjelenit.setPreferredSize(new Dimension(100,50));
-        gombaszGombok.add(megjelenit);
+       
+        gombaszGombok.add(megjelenitGombasz);
 
         gombaszGombok.setBorder(BorderFactory.createEmptyBorder(20, 0, 50, 0));
-
         gombaszGombok.setLayout(new FlowLayout(FlowLayout.CENTER));
+    }
+    public void rovaraszPanelBeall(){
+        
+        rovaraszGombok.add(Maszik);
+        rovaraszGombok.add(Box.createHorizontalStrut(10));
+       
+        rovaraszGombok.add(Vag);
+        rovaraszGombok.add(Box.createHorizontalStrut(10));
+        
+        rovaraszGombok.add(Eszik);
+        rovaraszGombok.add(Box.createHorizontalStrut(10));
+       
+        rovaraszGombok.add(korVegeRovarasz);
+        rovaraszGombok.add(Box.createHorizontalStrut(10));
+
+        rovaraszGombok.add(tektonokRovarasz);
+        rovaraszGombok.add(Box.createHorizontalStrut(10));
+        
+        rovaraszGombok.add(megjelenitRovarasz);
+
+        rovaraszGombok.setBorder(BorderFactory.createEmptyBorder(20, 0, 50, 0));
+        rovaraszGombok.setLayout(new FlowLayout(FlowLayout.CENTER));
+    }
+    public void tektonokJComboBox(JComboBox tektonok){
+        List<String> tekton=game.getTektonNevList();
+        tektonok.setPreferredSize(new Dimension(130,50));
+        tektonok.setMaximumSize(new Dimension(50, 30));
+
+        tekton.forEach((String s)->{
+            System.out.println(s);
+            tektonok.addItem(s);
+        });
     }
     public void frissitPanel(){
         //még nem teljes
@@ -389,7 +414,7 @@ public class Proba  extends JFrame{
         else{
             isGombasz=false;
         }
-
+        isGombasz=false;
         if(isGombasz){
             add(gombaszGombok,BorderLayout.SOUTH);
         }

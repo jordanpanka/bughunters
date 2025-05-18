@@ -53,7 +53,13 @@ public class Grafika extends JPanel {
     public void setSporak(HashMap<Spora, GSpora> sporak) {
         this.sporak = sporak;
     }
-    public Grafika(){}
+    public Grafika(){
+        tektonok=new HashMap<>();
+        sporak=new HashMap<>();
+        rovarok=new HashMap<>();
+        gombafonalak=new HashMap<>();
+        gombatestek=new HashMap<>();
+    }
     public void Draw(Tekton t, Graphics g){
 
         int szomszedokSzama=t.getSzomszedok().size();

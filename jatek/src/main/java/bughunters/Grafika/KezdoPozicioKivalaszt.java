@@ -1,5 +1,6 @@
 package bughunters.Grafika;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -71,12 +72,11 @@ public class KezdoPozicioKivalaszt extends JFrame{
 
         kovetkezo=new JButton("Következő");
         kiirJatekosNev=new JLabel("Kezdő pozíciók");
-        Dimension meret=new Dimension(200,70);
    
 
         //méretek beállítása
-        kiirJatekosNev.setSize(meret);
-        kiirJatekosNev.setFont(new Font("SansSerif", Font.ITALIC,20));
+        kiirJatekosNev.setSize(new Dimension(200,70));
+        kiirJatekosNev.setFont(new Font("SansSerif", Font.ITALIC,30));
 
 
         List<Gombasz> gombaszok = game.getGombaszok();
@@ -89,10 +89,13 @@ public class KezdoPozicioKivalaszt extends JFrame{
         panel.add(Box.createVerticalStrut(30));
         kiirJatekosNev.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         panel.add(kiirJatekosNev);
+        panel.add(Box.createVerticalStrut(40)); // Ez ad egy kis helyet a cím alá
 
 
         for (int i = 0; i < gombaszokSzama; i++) {
             JPanel row = new JPanel(new FlowLayout(FlowLayout.LEFT));
+            row.setBorder(BorderFactory.createEmptyBorder(15, 0, 15, 0));
+            row.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
             JLabel label = new JLabel(gombaszok.get(i).getNev());
 
             JComboBox<String> comboBox = new JComboBox<>();
@@ -109,12 +112,14 @@ public class KezdoPozicioKivalaszt extends JFrame{
             row.add(label);
             row.add(comboBox);
             panel.add(row);
-            panel.add(Box.createVerticalStrut(10));
+            //panel.add(Box.createVerticalStrut(5));
         }
 
 
         for (int i = 0; i < rovaraszokSzama; i++) {
             JPanel row = new JPanel(new FlowLayout(FlowLayout.LEFT));
+            row.setBorder(BorderFactory.createEmptyBorder(15, 0, 15, 0));
+            row.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
             JLabel label = new JLabel(rovaraszok.get(i).getNev());
 
             JComboBox<String> comboBox = new JComboBox<>();
@@ -131,6 +136,7 @@ public class KezdoPozicioKivalaszt extends JFrame{
             row.add(label);
             row.add(comboBox);
             panel.add(row);
+            //panel.add(Box.createVerticalStrut(5));
         }
 
         
@@ -172,16 +178,24 @@ public class KezdoPozicioKivalaszt extends JFrame{
         );
 
 
-        kovetkezo.setPreferredSize(meret);
+        kovetkezo.setPreferredSize(new Dimension(200,50));
         kovetkezo.setAlignmentX(JButton.CENTER_ALIGNMENT);
-        panel.add(kovetkezo);
-
+        //panel.add(kovetkezo);
         panel.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
-
         //add(panel);
+
+        // Scrollozható fő tartalom
         JScrollPane scrollPane = new JScrollPane(panel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        add(scrollPane);
-    }
 
+        // Gomb panel alulra
+        JPanel gombPanel = new JPanel();
+        gombPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        gombPanel.add(kovetkezo);
+
+        // Ablak fő elrendezése
+        setLayout(new BorderLayout());
+        add(scrollPane, BorderLayout.CENTER);
+        add(gombPanel, BorderLayout.SOUTH);
+    }
 }
