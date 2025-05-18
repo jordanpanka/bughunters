@@ -1,140 +1,30 @@
 /arrange -t tekton
 /arrange -t tekton
 /arrange -t tekton
-/arrange -t tekton
-/arrange -t tekton
-/arrange -t tekton
-/arrange -t tekton
-/arrange -t tekton
-/arrange -t tekton
-/arrange -t tekton
-/arrange -t tekton
-/arrange -t tekton
-/arrange -t tekton
-/arrange -t tekton
-/arrange -t tekton
-/arrange -t tekton
-/arrange -t tekton
-/arrange -t tekton
-/arrange -t puritekton
-/arrange -t puritekton
-/arrange -t puritekton
-/arrange -t puritekton
-/arrange -t puritekton
-/arrange -t puritekton
 /arrange -t puritekton
 /arrange -t puritekton
 /arrange -t puritekton
 /arrange -t infinator
 /arrange -t infinator
 /arrange -t infinator
-/arrange -t infinator
-/arrange -t infinator
-/arrange -t infinator
-/arrange -t infinator
 /arrange -t monotekton
 /arrange -t monotekton
 /arrange -t monotekton
-/arrange -t monotekton
-/arrange -t monotekton
-/arrange -t monotekton
-/arrange -t monotekton
-/arrange -t monotekton
-/arrange -t disszolator
-/arrange -t disszolator
-/arrange -t disszolator
-/arrange -t disszolator
-/arrange -t disszolator
 /arrange -t disszolator
 /arrange -t disszolator
 /arrange -t disszolator
 /arrange -szomszed -t disszolator1 -t disszolator3
-/arrange -szomszed -t disszolator1 -t disszolator8
-/arrange -szomszed -t disszolator1 -t tekton13
-/arrange -szomszed -t disszolator1 -t tekton5
-/arrange -szomszed -t disszolator2 -t monotekton6
-/arrange -szomszed -t disszolator2 -t monotekton7
-/arrange -szomszed -t disszolator2 -t tekton9
 /arrange -szomszed -t disszolator3 -t puritekton2
-/arrange -szomszed -t disszolator3 -t tekton11
-/arrange -szomszed -t disszolator3 -t tekton7
-/arrange -szomszed -t disszolator4 -t infinator3
-/arrange -szomszed -t disszolator4 -t puritekton6
-/arrange -szomszed -t disszolator4 -t tekton16
-/arrange -szomszed -t disszolator5 -t infinator4
-/arrange -szomszed -t disszolator5 -t monotekton5
-/arrange -szomszed -t disszolator5 -t tekton17
-/arrange -szomszed -t disszolator6 -t puritekton5
-/arrange -szomszed -t disszolator6 -t tekton2
-/arrange -szomszed -t disszolator6 -t tekton14
-/arrange -szomszed -t disszolator7 -t monotekton2
-/arrange -szomszed -t disszolator7 -t puritekton4
-/arrange -szomszed -t disszolator7 -t tekton11
-/arrange -szomszed -t disszolator8 -t infinator7
-/arrange -szomszed -t disszolator8 -t monotekton4
-/arrange -szomszed -t disszolator8 -t tekton12
-/arrange -szomszed -t infinator1 -t puritekton9
 /arrange -szomszed -t infinator1 -t tekton1
-/arrange -szomszed -t infinator1 -t tekton8
-/arrange -szomszed -t infinator2 -t infinator5
 /arrange -szomszed -t infinator2 -t puritekton1
-/arrange -szomszed -t infinator2 -t tekton7
-/arrange -szomszed -t infinator3 -t infinator6
-/arrange -szomszed -t infinator3 -t tekton4
-/arrange -szomszed -t infinator4 -t infinator7
-/arrange -szomszed -t infinator4 -t tekton12
-/arrange -szomszed -t infinator5 -t monotekton8
-/arrange -szomszed -t infinator5 -t tekton17
-/arrange -szomszed -t infinator6 -t monotekton6
-/arrange -szomszed -t infinator6 -t tekton9
-/arrange -szomszed -t infinator7 -t tekton15
-/arrange -szomszed -t infinator7 -t tekton3
-/arrange -szomszed -t monotekton1 -t tekton16
-/arrange -szomszed -t monotekton1 -t tekton4
 /arrange -szomszed -t monotekton2 -t tekton2
-/arrange -szomszed -t monotekton2 -t tekton16
 /arrange -szomszed -t monotekton3 -t puritekton3
-/arrange -szomszed -t monotekton3 -t tekton6
-/arrange -szomszed -t monotekton3 -t tekton8
-/arrange -szomszed -t monotekton4 -t tekton10
-/arrange -szomszed -t monotekton4 -t tekton1
-/arrange -szomszed -t monotekton5 -t tekton16
-/arrange -szomszed -t monotekton5 -t tekton8
-/arrange -szomszed -t monotekton6 -t puritekton3
-/arrange -szomszed -t monotekton6 -t tekton14
-/arrange -szomszed -t monotekton7 -t tekton18
-/arrange -szomszed -t monotekton7 -t tekton6
-/arrange -szomszed -t monotekton8 -t tekton3
-/arrange -szomszed -t monotekton8 -t tekton2
-/arrange -szomszed -t puritekton1 -t tekton18
 /arrange -szomszed -t puritekton1 -t tekton3
 /arrange -szomszed -t puritekton2 -t tekton1
-/arrange -szomszed -t puritekton2 -t tekton11
-/arrange -szomszed -t puritekton3 -t tekton10
-/arrange -szomszed -t puritekton3 -t tekton8
-/arrange -szomszed -t puritekton4 -t tekton11
-/arrange -szomszed -t puritekton4 -t tekton17
-/arrange -szomszed -t puritekton5 -t tekton2
-/arrange -szomszed -t puritekton5 -t tekton18
-/arrange -szomszed -t puritekton6 -t tekton16
-/arrange -szomszed -t puritekton6 -t tekton5
-/arrange -szomszed -t puritekton7 -t tekton15
-/arrange -szomszed -t puritekton7 -t tekton16
-/arrange -szomszed -t puritekton8 -t tekton13
-/arrange -szomszed -t puritekton8 -t tekton4
-/arrange -szomszed -t puritekton9 -t tekton1
-/arrange -szomszed -t puritekton9 -t tekton15
-/arrange -szomszed -t tekton1 -t tekton4
-/arrange -szomszed -t tekton2 -t tekton18
-/arrange -szomszed -t tekton3 -t tekton5
-/arrange -szomszed -t tekton4 -t tekton6
-/arrange -szomszed -t tekton5 -t tekton7
-/arrange -szomszed -t tekton6 -t tekton14
-/arrange -szomszed -t tekton8 -t tekton10
-/arrange -szomszed -t tekton9 -t tekton11
-/arrange -szomszed -t tekton10 -t tekton12
-/arrange -szomszed -t tekton12 -t tekton13
-/arrange -szomszed -t tekton13 -t tekton14
-/arrange -szomszed -t tekton15 -t tekton17
-/arrange -szomszed -t tekton16 -t tekton2
-/arrange -szomszed -t tekton17 -t tekton18
+/arrange -szomszed -t tekton2 -t tekton3
+/arrange -szomszed -t disszolator2 -t disszolator1
+/arrange -szomszed -t monotekton1 -t monotekton2
+/arrange -szomszed -t infinator3 -t infinator1
+/arrange -szomszed -t tekton1 -t tekton2
+/arrange -szomszed -t puritekton3 -t puritekton2
+/arrange -szomszed -t monotekton1 -t puritekton3
