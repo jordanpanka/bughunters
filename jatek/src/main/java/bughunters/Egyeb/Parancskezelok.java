@@ -1847,7 +1847,7 @@ public class Parancskezelok {
                     grafika.getSporak().remove(hashmapSpora);
                 }
             }
-            System.out.println("Objektumok: " + objektumok.size() + "\n ObjektumokbolString: " + objektumokbolString.size() +"\n jatekter: " + jatekter.getTektonok().size() + "\n Rovaraszok: " + rovaraszok.size() + "\n Gombaszok: " + gombaszok.size() +"\n jatekosok: "+jatekosok.size() +"\n grafTekton: " + grafika.getTektonok().size());
+            //System.out.println("Objektumok: " + objektumok.size() + "\n ObjektumokbolString: " + objektumokbolString.size() +"\n jatekter: " + jatekter.getTektonok().size() + "\n Rovaraszok: " + rovaraszok.size() + "\n Gombaszok: " + gombaszok.size() +"\n jatekosok: "+jatekosok.size() +"\n grafTekton: " + grafika.getTektonok().size());
     }
 
     /**
