@@ -120,6 +120,13 @@ public class Grafika extends JPanel {
                 gg.Draw(g);
             }
         });
+        rovarok.forEach((rovar,gg)->{
+            if(rovar.getTartozkodas().equals(t)){
+                gg.setX(cX);
+                gg.setY(cY);
+                gg.Draw(g);
+            }
+        });
 /* 
       //rovarok szűrése
         if(rovarok==null)System.out.println("A rovarok null");

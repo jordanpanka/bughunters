@@ -126,6 +126,8 @@ public class JatekAblak  extends JFrame{
         grafika=game.getGrafika();
         grafika.setPreferredSize(new Dimension(800, 600)); // Beállíthatsz más méretet is
 
+        
+
         //JFramehez panelek hozzáadása
         add(felsoPanel,BorderLayout.NORTH);
         add(grafika, BorderLayout.CENTER);
