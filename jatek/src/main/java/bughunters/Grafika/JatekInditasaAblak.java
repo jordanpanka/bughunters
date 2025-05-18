@@ -31,10 +31,10 @@ public class JatekInditasaAblak extends JFrame {
                 super.paintComponent(g);
                 Graphics2D g2d = (Graphics2D) g;
                 
-                // Színátmenet beállítása (kék -> lila)
+                // Színátmenet (pasztel lila árnyalatok)
                 GradientPaint gradient = new GradientPaint(
-                    0, 0, new Color(70, 130, 180),   // Kezdőszín (Acélkék)
-                    getWidth(), getHeight(), new Color(147, 112, 219)  // Végszín (Lila)
+                    0, 0, new Color(230, 230, 250),  // Lavender
+                    getWidth(), getHeight(), new Color(216, 191, 216)  // Thistle
                 );
                 g2d.setPaint(gradient);
                 g2d.fillRect(0, 0, getWidth(), getHeight());
@@ -45,17 +45,16 @@ public class JatekInditasaAblak extends JFrame {
         // Üdvözlő szöveg
         JLabel udvozol = new JLabel("Üdvözöljük!");
         udvozol.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 24));
-        udvozol.setForeground(Color.WHITE);
+        udvozol.setForeground(Color.BLACK);
         udvozol.setOpaque(false);  // Átlátszó háttér
 
         // Gomb stílusa
         UjJatek = new JButton("Új játék indítása");
         UjJatek.addActionListener(e -> koviAblak());
         UjJatek.setForeground(Color.WHITE);
-        UjJatek.setBackground(new Color(46, 139, 87));  // Tengerzöld háttér
-        UjJatek.setFocusPainted(false);  // Fókusz keret eltüntetése
-        UjJatek.setFont(new Font("Arial", Font.BOLD, 14));
-        UjJatek.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 25, 10, 25));  // Padding
+        UjJatek.setBackground(new Color(135, 206, 250)); // Világoskék
+        UjJatek.setFont(new Font("Arial", Font.BOLD, 13));
+        UjJatek.setFocusPainted(false);
 
         // Layout beállítások
         GridBagConstraints gbc = new GridBagConstraints();
