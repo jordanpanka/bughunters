@@ -14,6 +14,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Random;
 
+import bughunters.Grafika.JatekVegeAblak;
 import bughunters.Tekton.Tekton;
 
 public class Jatek {
@@ -124,10 +125,27 @@ public class Jatek {
     }
 
 
-    public void korEllenorzes(){
+    public Boolean korEllenorzes(){
+        Boolean jatekosvaltas = false;
         if (korSzam >=60) {
-            //jatek véget ér, győzteseket hirdetünk.
-            return;
+            Gombasz nyerGombasz = null;
+            int maxPontszamGomb = 0;
+            for (Gombasz gombasz : parancskezelo.getGombaszok()) {
+                if (gombasz.getGyozelmiPontok() > maxPontszamGomb) {
+                    maxPontszamGomb = gombasz.getGyozelmiPontok();
+                    nyerGombasz = gombasz;
+                }
+            }
+
+            Rovarasz nyerRovarasz = null;
+            int maxPontszamRovar = 0;
+            for (Rovarasz rovarasz : parancskezelo.getRovaraszok()) {
+                if (rovarasz.getGyozelmiPontok() > maxPontszamRovar) {
+                    maxPontszamRovar = rovarasz.getGyozelmiPontok();
+                    nyerRovarasz = rovarasz;
+                }
+            }
+            JatekVegeAblak jatekVegeAblak = new JatekVegeAblak(parancskezelo, this);
         }
       
         if (parancskezelo.getAktivJatekos().getakcioSzama() <=0) {
@@ -137,11 +155,14 @@ public class Jatek {
             if (sorszam == jatekosok.size() - 1) {
                 korVegiCselekedetek(jatekosok, parancskezelo.getGombaszok(), parancskezelo.getRovaraszok());
                 parancskezelo.setAktivJatekos(jatekosok.get(0)); // Első játékosra váltás
+                jatekosvaltas = true;
             }else{
                 parancskezelo.setAktivJatekos(jatekosok.get(sorszam + 1)); // Következő játékosra váltás
+                jatekosvaltas = true;
             }
         }
         parancskezelo.updateHashMaps();
+        return jatekosvaltas;
     }
 
      /***

@@ -171,15 +171,15 @@ public class Parancskezelok {
         Color LIGHTBROWN = new Color(172, 86, 0);
         try {
             if (szin == Color.RED) {
-                return ImageIO.read(new File("kepek\rovar4.PNG"));
+                return ImageIO.read(new File("kepek/rovar4.PNG"));
             } else if (szin == Color.ORANGE) {
-                return ImageIO.read(new File("kepek\rovar1.PNG"));
+                return ImageIO.read(new File("kepek/rovar1.PNG")); 
             } else if (szin == Color.MAGENTA) {
-                return ImageIO.read(new File("kepek\rovar5.PNG"));
+                return ImageIO.read(new File("kepek/rovar5.PNG"));
             } else if (szin.equals(BROWN)) {
-                return ImageIO.read(new File("kepek\rovar3.PNG"));
+                return ImageIO.read(new File("kepek/rovar3.PNG"));
             }else if (szin.equals(LIGHTBROWN)) {
-                return ImageIO.read(new File("kepek\rovar2.PNG"));
+                return ImageIO.read(new File("kepek/rovar2.PNG"));
             }
         } catch (Exception e) {
             System.out.println("Nem sikerult betolteni a kepeket");
@@ -279,7 +279,7 @@ public class Parancskezelok {
                 for(Gombasz gombasz1 : gombaszok){
                     gombasz1.getGombafaj().getGombaTestekList().clear();
                 }
-                throw new Exception("Nem sikerult gombatestet noveszteni");
+                throw new Exception("Nem sikerult gombatestet noveszteni "+e.getMessage());
             }
         }
         for(Rovarasz rovarasz : rovaraszokRovarjai.keySet()){
@@ -295,7 +295,7 @@ public class Parancskezelok {
                 //GRAFIKA HASHMAP BERAKÁSA
                 grafika.getRovarok().put(rovar, grafRovar);
             } catch (Exception e) {
-                throw new Exception("Nem sikerult létrehozni a Rovart");
+                throw new Exception("Nem sikerult létrehozni a Rovart " + e.getMessage());
             }
         }
         updateHashMaps();
