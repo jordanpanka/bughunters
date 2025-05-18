@@ -29,7 +29,6 @@ import bughunters.Grafika.GRovar;
 import bughunters.Grafika.GSpora;
 import bughunters.Grafika.GTekton;
 import bughunters.Grafika.Grafika;
-import bughunters.Grafika.HibaAblak;
 import bughunters.Grafika.JatekInditasaAblak;
 import bughunters.Rovar.Rovar;
 import bughunters.Rovar.rovarAllapot;
@@ -274,7 +273,7 @@ public class Parancskezelok {
         //Felveszi a játékosok kezdő objektumait.
         for(Gombasz gombasz : gombaszokTestei.keySet()){
             try {
-                HibaAblak asd = new HibaAblak(gombaszokTestei.get(gombasz).getClass().getName());
+                //HibaAblak asd = new HibaAblak(gombaszokTestei.get(gombasz).getClass().getName());
                 gombasz.JatekEleiTestNovesztes(gombaszokTestei.get(gombasz), false);
             } catch (Exception e) {
                 //ha hiba van, töröljük az összes gombász gombatesteit amit felvehettünk már eddig.
