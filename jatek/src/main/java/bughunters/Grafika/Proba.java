@@ -172,14 +172,7 @@ public class Proba  extends JFrame{
         rovaraszGombok.setLayout(new BoxLayout(rovaraszGombok,BoxLayout.X_AXIS));
 
         //rovarasz gombok
-        rovaraszGombok.add(Maszik);
-        rovaraszGombok.add(Box.createHorizontalStrut(10));
-        rovaraszGombok.add(Vag);
-        rovaraszGombok.add(Box.createHorizontalStrut(10));
-        rovaraszGombok.add(Eszik);
-        rovaraszGombok.add(Box.createHorizontalStrut(10));
-        //rovaraszGombok.add(korVege);
-
+        rovaraszPanelBeall();
 
         grafika=new Grafika();
         grafika.setPreferredSize(new Dimension(800, 600)); // Beállíthatsz más méretet is
@@ -379,17 +372,21 @@ public class Proba  extends JFrame{
         gombaszGombok.add(megjelenit);
 
         gombaszGombok.setBorder(BorderFactory.createEmptyBorder(20, 0, 50, 0));
-
         gombaszGombok.setLayout(new FlowLayout(FlowLayout.CENTER));
     }
     public void rovaraszPanelBeall(){
         Maszik.setPreferredSize(new Dimension(130,50));
         rovaraszGombok.add(Maszik);
         rovaraszGombok.add(Box.createHorizontalStrut(10));
+        Vag.setPreferredSize(new Dimension(130,50));
         rovaraszGombok.add(Vag);
         rovaraszGombok.add(Box.createHorizontalStrut(10));
+        Eszik.setPreferredSize(new Dimension(130,50));
         rovaraszGombok.add(Eszik);
         rovaraszGombok.add(Box.createHorizontalStrut(10));
+        
+        rovaraszGombok.setBorder(BorderFactory.createEmptyBorder(20, 0, 50, 0));
+        rovaraszGombok.setLayout(new FlowLayout(FlowLayout.CENTER));
     }
     public void frissitPanel(){
         //még nem teljes
