@@ -1,8 +1,10 @@
 package bughunters.Tekton;
 
-import bughunters.Gombafaj.*;
-
 import java.util.List;
+
+import bughunters.Gombafaj.Gombafonal;
+import bughunters.Gombafaj.Spora;
+import bughunters.Gombafaj.fonalAllapot;
 
 public class Infinator extends Tekton{
 
@@ -21,4 +23,10 @@ public class Infinator extends Tekton{
     }
 
     public Infinator(){}
+
+    @Override
+    public Infinator cloneTekton(){
+        Infinator ujTekton = new Infinator();
+        return ujTekton;
+    }
 }
