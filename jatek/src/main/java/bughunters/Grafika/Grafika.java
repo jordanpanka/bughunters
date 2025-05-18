@@ -53,6 +53,7 @@ public class Grafika extends JPanel {
     public void setSporak(HashMap<Spora, GSpora> sporak) {
         this.sporak = sporak;
     }
+   
     public Grafika(){
         tektonok=new HashMap<>();
         sporak=new HashMap<>();
@@ -63,34 +64,50 @@ public class Grafika extends JPanel {
     public void Draw(Tekton t, Graphics g){
 
         int szomszedokSzama=t.getSzomszedok().size();
-        int R=8;
-        int cX=2;
-        int cY=3;
+        int R=20;
+        int cX=150;
+        int cY=300;
         int elozoX=cX;
         int elozoY=cY+R;
+
         //középső tekton pozíciójának beállítása
-        tektonok.get(t).setX(2);
-        tektonok.get(t).setY(3);
+        tektonok.get(t).setX(cX);
+        tektonok.get(t).setY(cY);
         
         //szomszedok poziciójának beállítása
-        double elfordulasSzoge=Math.PI/(double)szomszedokSzama;
-        tektonok.get(t.getSzomszedok().get(0)).setX(elozoX);
-        tektonok.get(t.getSzomszedok().get(0)).setY(elozoY);
-        for(int i=1; i<t.getSzomszedok().size(); i++){
-            double iranySzog=Math.atan2(elozoY-cY,elozoX-cX);
-            double Szog=iranySzog+elfordulasSzoge;
-            elozoX=(int)(cX+R*Math.cos(Szog));
-            elozoY=(int) (cY+R*Math.cos(Szog));
-            tektonok.get(t.getSzomszedok().get(i)).setX(elozoX);
-            tektonok.get(t.getSzomszedok().get(i)).setY(elozoY);
+        if(szomszedokSzama!=0){
+            double elfordulasSzoge=Math.PI/(double)szomszedokSzama;
+            tektonok.get(t.getSzomszedok().get(0)).setX(elozoX);
+            tektonok.get(t.getSzomszedok().get(0)).setY(elozoY);
+            for(int i=1; i<t.getSzomszedok().size(); i++){
+                double iranySzog=Math.atan2(elozoY-cY,elozoX-cX);
+                double Szog=iranySzog+elfordulasSzoge;
+                elozoX=(int)(cX+R*Math.cos(Szog));
+                elozoY=(int) (cY+R*Math.cos(Szog));
+                tektonok.get(t.getSzomszedok().get(i)).setX(elozoX);
+                tektonok.get(t.getSzomszedok().get(i)).setY(elozoY);
+                Tekton aktualisSzomszed = t.getSzomszedok().get(i);
+                int finalElozoX = elozoX;
+                int finalElozoY = elozoY;
+
+                gombatestek.forEach((gombatest, gg) -> {
+                    if (gombatest.getTekton().equals(aktualisSzomszed)) {
+                        gg.setX(finalElozoX);
+                        gg.setY(finalElozoY);
+                    }
+                });
+
+            } 
         }
-        //gombatestek beállítása
+       
+        //gombatestek beállítása csak a középső
         gombatestek.forEach((gombatest,gg)->{
             if(gombatest.getTekton().equals(t)){
                 gg.setX(cX);
                 gg.setY(cY);
             }
         });
+
         //spórák beállítássa
         Map<Spora, GSpora> szurtSpora = sporak.entrySet().stream()
         .filter(entry -> t.getSporak().contains(entry.getKey())) // elérés a kulcs objektumhoz
@@ -98,7 +115,8 @@ public class Grafika extends JPanel {
             Map.Entry::getKey,
             Map.Entry::getValue
         ));
-        
+
+        //rovarok szűrése
         Map<Rovar, GRovar> szurtRovar = rovarok.entrySet().stream()
         .filter(entry -> entry.getKey().getTartozkodas().equals(t)) // elérés a kulcs objektumhoz
         .collect(Collectors.toMap(
@@ -108,7 +126,7 @@ public class Grafika extends JPanel {
 
         int rovarSporaSzam=szurtSpora.size()+szurtRovar.size();
         double elfordulasSzoges=Math.PI/(double)t.getSporak().size();
-        R=2;
+        R=5;
         if(szurtRovar!=null){
             szurtRovar.get(0).setX(elozoX);
             szurtRovar.get(0).setY(elozoY);
@@ -135,23 +153,20 @@ public class Grafika extends JPanel {
             }
         }
 
-        repaint();
+        //repaint();
 
     }
     @Override
     public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        if(tektonok!=null){
-            tektonok.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        }
         
+        tektonok.forEach((kulcs, ertek)->{ertek.Draw(g);});
         gombatestek.forEach((kulcs, ertek)->{ertek.Draw(g);});
         gombafonalak.forEach((kulcs, ertek)->{ertek.Draw(g);});
         rovarok.forEach((kulcs, ertek)->{ertek.Draw(g);});
         sporak.forEach((kulcs, ertek)->{ertek.Draw(g);});
         System.out.println(tektonok.size());
-        System.out.println(sporak.size());
-        System.out.println(gombafonalak.size());
+        System.out.println(rovarok.size());
+        System.out.println(gombatestek.size());
         
 
     }
