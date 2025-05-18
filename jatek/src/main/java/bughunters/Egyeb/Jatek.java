@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Random;
 
-import bughunters.Grafika.JatekAblak1;
+import bughunters.Grafika.JatekAblak;
 import bughunters.Grafika.JatekVegeAblak;
 import bughunters.Tekton.Tekton;
 
