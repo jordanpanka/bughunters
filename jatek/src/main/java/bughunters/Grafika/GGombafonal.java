@@ -18,6 +18,7 @@ public class GGombafonal extends Rajz {
 
     public GGombafonal(Color szin, int x1, int y1, int x2, int y2)
     {
+        super();
         this.szin= szin;
         this.x1=x1;
         this.x2=x2;
