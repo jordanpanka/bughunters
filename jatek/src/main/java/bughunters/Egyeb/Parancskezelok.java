@@ -194,10 +194,10 @@ public class Parancskezelok {
         Color szin = null;
         switch(gf.getNev()) {
             case "Csiperke gomba":
-                szin = Color.PINK;
+                szin =  Color.YELLOW;
                 break;
             case "Foltos püffeteg":
-                szin = new Color(157, 64, 210);
+                szin =  Color.PINK;
                 break;
             case "Vargánya gomba":
                 szin = Color.BLUE;
@@ -206,7 +206,7 @@ public class Parancskezelok {
                 szin = Color.RED;
                 break;
             case "Szegfűgomba":
-                szin = Color.YELLOW;
+                szin = new Color(157, 64, 210);
                 break;
             default:
         }
@@ -1005,6 +1005,9 @@ public class Parancskezelok {
                         objektumok.put(ujNev, ujGombafonal);
                         objektumokbolString.put(ujGombafonal, ujNev);
 
+                        GGombafonal gGombafonal = new GGombafonal(getColorKepByFaj(gf));
+                        grafika.getGombafonalak().put(ujGombafonal, gGombafonal);
+                        
                         output.println("Hozzaadva " + ujNev);
                     }
                     if(action.matches("/arrange -s \\S+ -t \\S+ \\d+")){
