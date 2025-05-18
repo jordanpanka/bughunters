@@ -186,17 +186,12 @@ public class Proba  extends JFrame{
     public void gombokLenyomasa(Jatek jatek){
         korVegeGombasz.addActionListener(e->{
             game.endTurn();
-            boolean ujJatekos=jatek.korEllenorzes();
-            if(ujJatekos){
-                frissitPanel();
-            }
+            akcioVege(jatek);
         });
          korVegeRovarasz.addActionListener(e->{
             game.endTurn();
-            boolean ujJatekos=jatek.korEllenorzes();
-            if(ujJatekos){
-                frissitPanel();
-            }
+            akcioVege(jatek);
+            
         });
         TestNov.addActionListener(e->{
             mouse.put("testNov",true);
@@ -422,5 +417,13 @@ public class Proba  extends JFrame{
             add(rovaraszGombok,BorderLayout.SOUTH);
         }
     }
-
+    public void akcioVege(Jatek jatek){
+         boolean ujJatekos=jatek.korEllenorzes();
+            if(ujJatekos){
+                frissitPanel();
+            }
+    }
+    public void jatekosAdatFrissit(){
+        
+    }
 }
