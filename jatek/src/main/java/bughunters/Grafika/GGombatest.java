@@ -54,7 +54,7 @@ public class GGombatest extends Rajz{
     public void Draw( Graphics g) {
         if (image != null) {
             
-            g.drawImage(image, x, y, null);
+            g.drawImage(image, x, y,50, 50, null);
             
         }
     }
