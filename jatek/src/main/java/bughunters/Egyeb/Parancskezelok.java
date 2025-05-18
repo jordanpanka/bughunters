@@ -169,23 +169,24 @@ public class Parancskezelok {
     public BufferedImage getRovarKepByColor(Color szin){
         Color BROWN = new Color(121, 87, 53);
         Color LIGHTBROWN = new Color(172, 86, 0);
+        BufferedImage img = null;
         try {
             if (szin == Color.RED) {
-                return ImageIO.read(new File("kepek/rovar4.PNG"));
+                img= ImageIO.read(new File("kepek/rovar4.PNG"));
             } else if (szin == Color.ORANGE) {
-                return ImageIO.read(new File("kepek/rovar1.PNG")); 
+                img = ImageIO.read(new File("kepek/rovar1.PNG")); 
             } else if (szin == Color.MAGENTA) {
-                return ImageIO.read(new File("kepek/rovar5.PNG"));
+                img = ImageIO.read(new File("kepek/rovar5.PNG"));
             } else if (szin.equals(BROWN)) {
-                return ImageIO.read(new File("kepek/rovar3.PNG"));
+                img = ImageIO.read(new File("kepek/rovar3.PNG"));
             }else if (szin.equals(LIGHTBROWN)) {
-                return ImageIO.read(new File("kepek/rovar2.PNG"));
+                img = ImageIO.read(new File("kepek/rovar2.PNG"));
             }
         } catch (Exception e) {
             System.out.println("Nem sikerult betolteni a kepeket");
             e.printStackTrace();
         }
-        return null;
+        return img;
     }
 
 
