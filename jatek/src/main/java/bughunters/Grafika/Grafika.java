@@ -2,9 +2,12 @@ package bughunters.Grafika;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.swing.JPanel;
 
@@ -256,6 +259,55 @@ public class Grafika extends JPanel {
         }
         }
     }
+
+
+    // Kirajzolja a gombafonalakat a tektonok között
+    public void gombafonalakRajzolasa(Graphics g) {
+        Set<Set<Tekton>> kirajzoltFonalak = new HashSet<>();
+
+        for (Tekton t1 : tektonok.keySet()) {
+            GTekton g1 = tektonok.get(t1);
+            int x1 = g1.getX();
+            int y1 = g1.getY();
+
+            List<Gombafonal> gombafonalak1 = t1.getFonalak();
+
+            for (Tekton t2 : t1.getSzomszedok()) {
+                // Elkerülés: ugyanaz a kapcsolat ne legyen kétszer kirajzolva
+                Set<Tekton> par = new HashSet<>(Arrays.asList(t1, t2));
+                if (kirajzoltFonalak.contains(par)) continue;
+
+                GTekton g2 = tektonok.get(t2);
+                if (g2 != null) {
+                    int x2 = g2.getX();
+                    int y2 = g2.getY();
+
+                    List<Gombafonal> gombafonalak2 = t2.getFonalak();
+
+                    Gombafonal gombafonal = null;
+
+                    for (Gombafonal gf1 : gombafonalak1) {
+                        for (Gombafonal gf2 : gombafonalak2) {
+                            if (gf1.equals(gf2)) {
+                                gombafonal = gf1;
+                                break;
+                            }
+                        }
+                        if (gombafonal != null) break;
+                    }
+
+                    GGombafonal fonal = gombafonalak.get(gombafonal);
+                    fonal.setX1(x1);
+                    fonal.setY1(y1);
+                    fonal.setX2(x2);
+                    fonal.setY2(y2);
+                    fonal.Draw(g);
+                    kirajzoltFonalak.add(par);
+                }
+            }
+        }
+    }
+
 
     @Override
     public void paintComponent(Graphics g){
