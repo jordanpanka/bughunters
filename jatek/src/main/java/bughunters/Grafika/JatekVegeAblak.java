@@ -1,26 +1,12 @@
 package bughunters.Grafika;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 import bughunters.Egyeb.Gombasz;
 import bughunters.Egyeb.Jatek;
@@ -32,9 +18,8 @@ import bughunters.Tekton.Tekton;
 
 public class JatekVegeAblak extends JFrame{
     private JLabel kiirJatekVege;
-
     private int jatekosokSzama;
-
+    private Parancskezelok game;
 
     public int getJatekosokSzama() {
         return jatekosokSzama;
@@ -43,12 +28,7 @@ public class JatekVegeAblak extends JFrame{
         this.jatekosokSzama = jatekosokSzama;
     }
 
-
-    private Parancskezelok game;
-
-    
     public JatekVegeAblak(Parancskezelok pk, Gombasz gombasz, Rovarasz rovarasz) {
-
         setTitle("Játék vége ablak");
         setSize(600,700);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -58,18 +38,15 @@ public class JatekVegeAblak extends JFrame{
         game=pk;
         this.jatekosokSzama = game.getJatekosok().size();
 
-
         kiirJatekVege=new JLabel("Játék vége!");
         Dimension meret=new Dimension(210,75);
    
-
         //méretek beállítása
         kiirJatekVege.setSize(meret);
         kiirJatekVege.setFont(new Font("SansSerif", Font.ITALIC,40));
 
 
         List<Jatekos> jatekosok = game.getJatekosok();
-
         HashMap<Jatekos, Integer> pontszamok = new HashMap<>();
 
         for(Jatekos jatekos : jatekosok){
@@ -77,67 +54,87 @@ public class JatekVegeAblak extends JFrame{
         }
 
         List<Map.Entry<Jatekos, Integer>> rendezettLista = new ArrayList<>(pontszamok.entrySet());
-
         rendezettLista.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue())); // Csökkenő sorrend
 
+        // -----------------------------
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel()  {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
+                
+                // Színátmenet (pasztel lila árnyalatok)
+                GradientPaint gradient = new GradientPaint(
+                    0, 0, new Color(230, 230, 250),  // Lavender
+                    getWidth(), getHeight(), new Color(216, 191, 216)  // Thistle
+                );
+                g2d.setPaint(gradient);
+                g2d.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(Box.createVerticalStrut(20));
 
-        panel.add(Box.createVerticalStrut(30));
-        kiirJatekVege.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+        kiirJatekVege.setFont(new Font("SansSerif", Font.BOLD, 36));
+        kiirJatekVege.setAlignmentX(CENTER_ALIGNMENT);
+
         panel.add(kiirJatekVege);
-        panel.add(Box.createVerticalStrut(70));
+        panel.add(Box.createVerticalStrut(40));
 
+        // ---------------------------
 
-        JPanel row1_1 = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JPanel row1_1 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
+        row1_1.setOpaque(false);
+
         JLabel gyoztesGombasz = new JLabel("Győztes gombász:");
-        JLabel gyoztesGombaszNev = new JLabel(gombasz.getNev());
+        gyoztesGombasz.setFont(new Font("SansSerif", Font.BOLD, 24));
 
-        gyoztesGombasz.setFont(new Font("SansSerif", Font.ITALIC, 30));
-        gyoztesGombaszNev.setFont(new Font("SansSerif", Font.ITALIC, 30));
+        JLabel gyoztesGombaszNev = new JLabel(gombasz.getNev());
+        gyoztesGombaszNev.setFont(new Font("SansSerif", Font.BOLD, 24));
+        gyoztesGombaszNev.setForeground(new Color(0, 100, 0)); // Sötétzöld
 
         row1_1.add(gyoztesGombasz);
         row1_1.add(gyoztesGombaszNev);
         panel.add(row1_1);
 
+        // ---------------------------
 
-        JPanel row1_2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JPanel row1_2 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
+        row1_2.setOpaque(false);
+
         JLabel gyoztesRovarasz = new JLabel("Győztes rovarász:");
-        JLabel gyoztesRovaraszNev = new JLabel(rovarasz.getNev());
+        gyoztesRovarasz.setFont(new Font("SansSerif", Font.BOLD, 24));
 
-        gyoztesRovarasz.setFont(new Font("SansSerif", Font.ITALIC, 30));
-        gyoztesRovaraszNev.setFont(new Font("SansSerif", Font.ITALIC, 30));
+        JLabel gyoztesRovaraszNev = new JLabel(rovarasz.getNev());
+        gyoztesRovaraszNev.setFont(new Font("SansSerif", Font.BOLD, 24));
+        gyoztesRovaraszNev.setForeground(new Color(0, 100, 0)); // Sötétzöld
 
         row1_2.add(gyoztesRovarasz);
         row1_2.add(gyoztesRovaraszNev);
         panel.add(row1_2);
 
+        // ---------------------------
 
+        panel.add(Box.createVerticalStrut(20));
 
-        JPanel row2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        row2.setLayout(new BoxLayout(row2, BoxLayout.Y_AXIS));
+        JPanel row2 = new JPanel(new BorderLayout());
+        row2.setOpaque(false);
+
+        String[] oszlopNevek = {"Név", "Pontszám"};
+        Object[][] adatok = new Object[jatekosokSzama][2];
 
         for (int i = 0; i < jatekosokSzama; i++) {
-            JPanel row = new JPanel(new FlowLayout(FlowLayout.LEFT));
-
-            JLabel labelNev = new JLabel(rendezettLista.get(i).getKey().getNev());
-
-            JLabel labelPontszam = new JLabel(rendezettLista.get(i).getValue().toString());
-            
-            labelNev.setPreferredSize(new Dimension(150, 25));
-            labelPontszam.setPreferredSize(new Dimension(100, 25));
-
-            row.add(labelNev);
-            row.add(labelPontszam);
-            
-            row2.add(row);
+            adatok[i][0] = rendezettLista.get(i).getKey().getNev();
+            adatok[i][1] = rendezettLista.get(i).getValue();
         }
 
-        //row2.setPreferredSize(new Dimension(500, 25 * jatekosokSzama));
-        row2.add(Box.createVerticalStrut(30));
+        JTable tabla = new JTable(adatok, oszlopNevek);
+        tabla.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        tabla.setRowHeight(30);
+        tabla.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));
+        tabla.setEnabled(false); // Csak megjelenítés
 
-        //add(panel);
         JScrollPane scrollPane = new JScrollPane(row2);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setPreferredSize(new Dimension(550, 200)); // korlátozott magasság
