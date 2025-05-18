@@ -126,12 +126,12 @@ public class Grafika extends JPanel {
 if (count == 0) return;
 
 double angleStep = 2 * Math.PI / count;
-int radius = 30;  // dinamikus sugár
+int radius = 30;  
 int[] i = {0};
 
 rovarok.forEach((rovar, gg) -> {
     if (rovar.getTartozkodas().equals(t)) {
-        double angle = i[0] * angleStep - Math.PI / 2; // fentről induljon
+        double angle = i[0] * angleStep - Math.PI / 2; 
 
         int x = (int)(cX + radius * Math.cos(angle));
         int y = (int)(cY + radius * Math.sin(angle));
