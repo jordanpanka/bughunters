@@ -197,13 +197,14 @@ public class JatekAblak  extends JFrame{
         });
         megjelenitGombasz.addActionListener(e->{
             String kivalasztott=(String)tektonokGombasz.getSelectedItem();
-            Object kiv =game.getObjektumok().get((Object)kivalasztott);
-            grafika.Draw((Tekton)kiv,grafika.getGraphics());
+            Tekton kiv=game.getTekton(kivalasztott);
+            grafika.Draw(kiv,grafika.getGraphics());
         });
          megjelenitRovarasz.addActionListener(e->{
             String kivalasztott=(String)tektonokRovarasz.getSelectedItem();
-            Object kiv =game.getObjektumok().get((Object)kivalasztott);
-            grafika.Draw((Tekton)kiv,grafika.getGraphics());
+            System.out.println("Meghívódik az actionListener");
+            Tekton kiv=game.getTekton(kivalasztott);
+            grafika.Draw(kiv,grafika.getGraphics());
         });
     }
     public void egerKattintasok(){
@@ -397,6 +398,8 @@ public class JatekAblak  extends JFrame{
         else{
             add(rovaraszGombok,BorderLayout.SOUTH);
         }
+        revalidate();
+        repaint();
     }
     public void akcioVege(){
          boolean ujJatekos=jatek.korEllenorzes(this);

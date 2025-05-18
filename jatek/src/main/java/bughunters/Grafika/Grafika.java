@@ -64,6 +64,7 @@ public class Grafika extends JPanel {
     public void Draw(Tekton t, Graphics g){
 
         int szomszedokSzama=t.getSzomszedok().size();
+        System.out.println("Szomszédok száma: "+szomszedokSzama);
         int R=20;
         int cX=150;
         int cY=300;
@@ -160,10 +161,10 @@ public class Grafika extends JPanel {
     public void paintComponent(Graphics g){
         
         tektonok.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        gombatestek.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        gombafonalak.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        rovarok.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        sporak.forEach((kulcs, ertek)->{ertek.Draw(g);});
+        //gombatestek.forEach((kulcs, ertek)->{ertek.Draw(g);});
+        //gombafonalak.forEach((kulcs, ertek)->{ertek.Draw(g);});
+        //rovarok.forEach((kulcs, ertek)->{ertek.Draw(g);});
+        //sporak.forEach((kulcs, ertek)->{ertek.Draw(g);});
         System.out.println(tektonok.size());
         System.out.println(rovarok.size());
         System.out.println(gombatestek.size());
