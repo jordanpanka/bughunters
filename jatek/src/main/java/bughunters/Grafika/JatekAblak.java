@@ -1,28 +1,21 @@
 package bughunters.Grafika;
 
-import javax.swing.*;
-
-//import org.w3c.dom.events.MouseEvent;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.List;
-
-import bughunters.Egyeb.Jatek;
-import bughunters.Egyeb.Jatekos;
-import bughunters.Egyeb.Parancskezelok;
-import bughunters.Gombafaj.Gombafonal;
-import bughunters.Gombafaj.Gombatest;
-import bughunters.Gombafaj.Spora;
-import bughunters.Rovar.Rovar;
-import bughunters.Tekton.Tekton;
-
 import java.util.HashMap;
 import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import bughunters.Egyeb.Jatek;
 import bughunters.Egyeb.Parancskezelok;
@@ -198,14 +191,13 @@ public class JatekAblak  extends JFrame{
         });
         megjelenitGombasz.addActionListener(e->{
             String kivalasztott=(String)tektonokGombasz.getSelectedItem();
-            Tekton kiv=game.getTekton(kivalasztott);
-            grafika.Draw(kiv,grafika.getGraphics());
+            Object kiv =game.getObjektumok().get((Object)kivalasztott);
+            grafika.Draw((Tekton)kiv,grafika.getGraphics());
         });
          megjelenitRovarasz.addActionListener(e->{
             String kivalasztott=(String)tektonokRovarasz.getSelectedItem();
-            System.out.println("Meghívódik az actionListener");
-            Tekton kiv=game.getTekton(kivalasztott);
-            grafika.Draw(kiv,grafika.getGraphics());
+            Object kiv =game.getObjektumok().get((Object)kivalasztott);
+            grafika.Draw((Tekton)kiv,grafika.getGraphics());
         });
     }
     public void egerKattintasok(){
@@ -399,8 +391,6 @@ public class JatekAblak  extends JFrame{
         else{
             add(rovaraszGombok,BorderLayout.SOUTH);
         }
-        revalidate();
-        repaint();
     }
     public void akcioVege(){
          boolean ujJatekos=jatek.korEllenorzes(this);

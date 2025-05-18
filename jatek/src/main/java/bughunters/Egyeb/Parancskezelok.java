@@ -143,24 +143,24 @@ public class Parancskezelok {
         try {
             switch(gf.getNev()) {
                 case "Csiperke gomba":
-                    img = ImageIO.read(new File("kepek/gyorsito.PNG"));
+                    img = ImageIO.read(new File("../../Resources/kepek/gyorsito_csiperke.PNG"));
                     break;
                 case "Foltos püffeteg":
-                    img = ImageIO.read(new File("kepek/osztodo.PNG"));
+                    img = ImageIO.read(new File("../../Resources/kepek/osztodo_foltos.PNG"));
                     break;
                 case "Vargánya gomba":
-                    img = ImageIO.read(new File("kepek/lassito.PNG"));
+                    img = ImageIO.read(new File("../../Resources/kepek/lassito_varganya.PNG"));
                     break;
                 case "Légyölő galóca":
-                    img = ImageIO.read(new File("kepek/benito.PNG"));
+                    img = ImageIO.read(new File("../../Resources/kepek/benito_legyolo.PNG"));
                     break;
                 case "Szegfűgomba":
-                    img = ImageIO.read(new File("kepek/vagasGatlo.PNG"));
+                    img = ImageIO.read(new File("../../Resources/kepek/vagasGatlo_szegfu.PNG"));
                     break;
                 default:
             }
         } catch (Exception e) {
-            System.out.println("Nem sikerult betolteni a kepeket");
+            System.out.println("Nem sikerult betolteni a Resources/kepeket");
             e.printStackTrace();
         }   
         return img;
@@ -172,18 +172,18 @@ public class Parancskezelok {
         BufferedImage img = null;
         try {
             if (szin == Color.RED) {
-                img= ImageIO.read(new File("kepek/rovar4.PNG"));
+                img= ImageIO.read(new File("../../Resources/kepek/rovar4.PNG"));
             } else if (szin == Color.ORANGE) {
-                img = ImageIO.read(new File("kepek/rovar1.PNG")); 
+                img = ImageIO.read(new File("../../Resources/kepek/rovar1.PNG")); 
             } else if (szin == Color.MAGENTA) {
-                img = ImageIO.read(new File("kepek/rovar5.PNG"));
+                img = ImageIO.read(new File("../../Resources/kepek/rovar5.PNG"));
             } else if (szin.equals(BROWN)) {
-                img = ImageIO.read(new File("kepek/rovar3.PNG"));
+                img = ImageIO.read(new File("../../Resources/kepek/rovar3.PNG"));
             }else if (szin.equals(LIGHTBROWN)) {
-                img = ImageIO.read(new File("kepek/rovar2.PNG"));
+                img = ImageIO.read(new File("../../Resources/kepek/rovar2.PNG"));
             }
         } catch (Exception e) {
-            System.out.println("Nem sikerult betolteni a kepeket");
+            System.out.println("Nem sikerult betolteni a Resources/kepeket");
             e.printStackTrace();
         }
         return img;
