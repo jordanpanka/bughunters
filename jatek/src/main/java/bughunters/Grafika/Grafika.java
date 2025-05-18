@@ -228,11 +228,8 @@ public class Grafika extends JPanel {
     // Kirajzolja a gombafonalakat a tektonok között
     public void gombafonalakRajzolasa(Tekton t, Graphics g) {
         Set<Set<Tekton>> kirajzoltFonalak = new HashSet<>();
-
         List<Tekton> kirajzoltTektonok = t.getSzomszedok();
-
         kirajzoltTektonok.add(t);
-
 
         for (Tekton t1 : kirajzoltTektonok) {
             GTekton g1 = tektonok.get(t1);
@@ -280,12 +277,7 @@ public class Grafika extends JPanel {
 
     @Override
     public void paintComponent(Graphics g){
-        
-        //tektonok.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        //gombatestek.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        //gombafonalak.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        //rovarok.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        //sporak.forEach((kulcs, ertek)->{ertek.Draw(g);});
+
         System.out.println(tektonok.size());
         System.out.println(rovarok.size());
         System.out.println(gombatestek.size());
@@ -295,12 +287,12 @@ public class Grafika extends JPanel {
     public Gombafonal fonalKeres(int x, int y){
         y=y-230;
         for (Map.Entry<Gombafonal, GGombafonal> entry : gombafonalak.entrySet()) {
-            double X1=entry.getValue().getX();
-            double X2=entry.getValue().getX2();
-            double Y1=entry.getValue().getY();
-            double Y2=entry.getValue().getY2();
-            double dX=entry.getValue().getX()-entry.getValue().getX2();
-            double dY=entry.getValue().getY()-entry.getValue().getY2();
+            double X1=(double)entry.getValue().getX();
+            double X2=(double)entry.getValue().getX2();
+            double Y1=(double)entry.getValue().getY();
+            double Y2=(double)entry.getValue().getY2();
+            double dX=(double)entry.getValue().getX()-entry.getValue().getX2();
+            double dY=(double)entry.getValue().getY()-entry.getValue().getY2();
             double t=((x-X1)*dX+(y-Y1)*dY)/(dX*dX+dY*dY);
             t=Math.max(0,Math.min(1,t));
             double projX = X1 + t * dX;
