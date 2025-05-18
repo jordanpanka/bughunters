@@ -318,8 +318,8 @@ public class Grafika extends JPanel {
         System.out.println("Képernyő"+x+y);
 
         for (Map.Entry<Gombatest, GGombatest> entry : gombatestek.entrySet()) {
-            double xC =(double) entry.getValue().getX()+25;
-            double yC = (double)entry.getValue().getY()+25;
+            double xC =(double) entry.getValue().getX()+50;
+            double yC = (double)entry.getValue().getY()+50;
             System.out.println("Aktuális tektin:"+xC+yC);
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
             if (d <=35) {
