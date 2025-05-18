@@ -269,9 +269,10 @@ public class Grafika extends JPanel {
     for (Gombafonal fonal : fonalak2) {
         Tekton t1 = fonal.getVegpont1();
         Tekton t2 = fonal.getVegpont2();
-
+        if(tektonok2.contains(t1) && tektonok2.contains(t2))System.out.println("Benne van");
         GTekton g1 = tektonok.get(t2);
         GTekton g2 = tektonok.get(t1);
+
         if(t2.equals(t))System.out.println("JAj");
 
         if (g1 == null || g2 == null) {
@@ -301,7 +302,7 @@ public class Grafika extends JPanel {
 }
 
     // Kirajzolja a gombafonalakat a tektonok között
-<<<<<<< HEAD
+
    /*  public void gombafonalakRajzolasa(Tekton t, Graphics g) {
 =======
     public void gombafonalakRajzolasa(Tekton t, Graphics g) {
