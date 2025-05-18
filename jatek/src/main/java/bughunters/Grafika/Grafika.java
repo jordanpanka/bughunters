@@ -62,11 +62,12 @@ public class Grafika extends JPanel {
         gombatestek=new HashMap<>();
     }
     public void Draw(Tekton t, Graphics g){
+        super.paintComponent(g);
 
         int szomszedokSzama=t.getSzomszedok().size();
         System.out.println("Szomszédok száma: "+szomszedokSzama);
-        int R=20;
-        int cX=150;
+        int R=100;
+        int cX=650;
         int cY=300;
         int elozoX=cX;
         int elozoY=cY+R;
@@ -74,9 +75,11 @@ public class Grafika extends JPanel {
         //középső tekton pozíciójának beállítása
         tektonok.get(t).setX(cX);
         tektonok.get(t).setY(cY);
+        System.out.println("Tkton x"+cX);
         
         //szomszedok poziciójának beállítása
         if(szomszedokSzama!=0){
+            System.out.println("Vannak szomszédok");
             double elfordulasSzoge=Math.PI/(double)szomszedokSzama;
             tektonok.get(t.getSzomszedok().get(0)).setX(elozoX);
             tektonok.get(t.getSzomszedok().get(0)).setY(elozoY);
@@ -91,18 +94,27 @@ public class Grafika extends JPanel {
                 int finalElozoX = elozoX;
                 int finalElozoY = elozoY;
 
-                gombatestek.forEach((gombatest, gg) -> {
+                /*gombatestek.forEach((gombatest, gg) -> {
                     if (gombatest.getTekton().equals(aktualisSzomszed)) {
                         gg.setX(finalElozoX);
                         gg.setY(finalElozoY);
                     }
-                });
+                });*/
 
             } 
+            for(int i=0; i<t.getSzomszedok().size();i++){
+                Tekton aktualisSzomszed=t.getSzomszedok().get(i);
+                tektonok.forEach((tekton,gt)->{
+                    if(tekton.equals(aktualisSzomszed)){
+                        gt.Draw(g);
+                        System.out.println("szomszédot rajzolt");
+                    }
+                });
+            }
         }
-       
+        tektonok.get(t).Draw(g);
         //gombatestek beállítása csak a középső
-        gombatestek.forEach((gombatest,gg)->{
+       /* gombatestek.forEach((gombatest,gg)->{
             if(gombatest.getTekton().equals(t)){
                 gg.setX(cX);
                 gg.setY(cY);
@@ -118,6 +130,7 @@ public class Grafika extends JPanel {
         ));
 
         //rovarok szűrése
+        if(rovarok==null)System.out.println("A rovarok null");
         Map<Rovar, GRovar> szurtRovar = rovarok.entrySet().stream()
         .filter(entry -> entry.getKey().getTartozkodas().equals(t)) // elérés a kulcs objektumhoz
         .collect(Collectors.toMap(
@@ -152,7 +165,7 @@ public class Grafika extends JPanel {
                szurtSpora.get(i).setX(elozoX);
                 szurtSpora.get(i).setY(elozoY);            
             }
-        }
+        }*/
 
         //repaint();
 
@@ -160,7 +173,7 @@ public class Grafika extends JPanel {
     @Override
     public void paintComponent(Graphics g){
         
-        tektonok.forEach((kulcs, ertek)->{ertek.Draw(g);});
+        //tektonok.forEach((kulcs, ertek)->{ertek.Draw(g);});
         //gombatestek.forEach((kulcs, ertek)->{ertek.Draw(g);});
         //gombafonalak.forEach((kulcs, ertek)->{ertek.Draw(g);});
         //rovarok.forEach((kulcs, ertek)->{ertek.Draw(g);});

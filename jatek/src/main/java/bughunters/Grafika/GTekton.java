@@ -53,7 +53,7 @@ public class GTekton extends Rajz {
     public void Draw(Graphics g) {
         
             g.setColor(szin);
-            g.fillRect(x, y, 50, 50); 
+            g.fillOval(x, y, 50, 50); 
         
     }
 }

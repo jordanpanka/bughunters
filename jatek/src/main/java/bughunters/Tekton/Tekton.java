@@ -115,33 +115,39 @@ public class Tekton implements FonalKezeles {
      * @return Ha tud növeszteni gombatestet, akkor azt adja vissza
      * @throws Exception ha nem tud gombatestet növeszteni vagy nem megfelelő feladatnál lett hívva
      */
+    // fonalvizsgálat, saját típus
     public Gombatest gombatestNov(Gombafaj gf,boolean sporaval) throws Exception{
-        //System.out.println("Meghívódik a Tekton gombatestNov metódusa.");
         try{
             for (Gombatest gombatest : gf.getGombaTestek()) {
-                if(gombatest.getTekton() == this){
+                if(gombatest.getTekton() == this) {
                     throw new Exception("Már van gombatest ezen a tektonon.");
                 }
             }
             
-            if(sporaval){
-                boolean elfogyott=false;
+            boolean vanFonal = false;
 
-                if(sporak!=null){
-                    for(Spora sp:sporak){
+            for (Gombafonal gombafonal : gombafonalak) {
+                if(gombafonal.getGombafaj().equals(gf)) {
+                    vanFonal = true;
+                }
+            }
+
+            if(sporaval && vanFonal){
+                boolean elfogyott = false; 
+
+                if(sporak != null) {
+                    for(Spora sp : sporak) {
                         if(sp.getGombafaj().equals(gf)) {
                             sp.fogyaszt(3);
-                            if(sp.getMennyiseg()==0){
+                            if(sp.getMennyiseg() == 0) {
                                 elfogyott=true;
                             }                                                    
-                            if(elfogyott){
+                            if(elfogyott) {
                                 torlesSpora(sporak.get(0));
                             }
                         }
                     }
                 }
-                //sporak.get(0).fogyaszt(3);
-                //boolean valasz=Skeleton.getInstance().Kerdes("Elfogyott a spóra a növesztés által?");
 
                 Gombatest gt1 = new Gombatest(gf,this);
                 return gt1;

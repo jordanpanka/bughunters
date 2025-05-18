@@ -91,6 +91,7 @@ public class JatekAblak  extends JFrame{
         //gombok létrehozása
         gombokLetreHozasa();
         gombokMeretekBeallitas();
+        gombokLenyomasa();
 
         // kör és játékos
         //JLabel korAdatok=new JLabel("Kör : "+jatek.getKorSzam()+" Aktív játékos: "+game.getAktivJatekos().getNev());
