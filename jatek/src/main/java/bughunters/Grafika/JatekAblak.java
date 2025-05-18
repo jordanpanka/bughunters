@@ -388,15 +388,23 @@ public class JatekAblak  extends JFrame{
             isGombasz=false;
         }
         //isGombasz=false;
+
+        // Először eltávolítjuk a meglévő SOUTH panel(eke)t
+        remove(gombaszGombok);
+        remove(rovaraszGombok);
+
         if(isGombasz){
             add(gombaszGombok,BorderLayout.SOUTH);
+
         }
         else{
            
         add(rovaraszGombok,BorderLayout.SOUTH);
 
         }
-       
+        // Frissítjük a nézetet
+        revalidate();
+        repaint();
     }
     public void akcioVege(){
          boolean ujJatekos=jatek.korEllenorzes(this);
