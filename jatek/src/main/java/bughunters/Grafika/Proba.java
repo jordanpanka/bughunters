@@ -186,11 +186,17 @@ public class Proba  extends JFrame{
     public void gombokLenyomasa(Jatek jatek){
         korVegeGombasz.addActionListener(e->{
             game.endTurn();
-            jatek.korEllenorzes();
+            boolean ujJatekos=jatek.korEllenorzes();
+            if(ujJatekos){
+                frissitPanel();
+            }
         });
          korVegeRovarasz.addActionListener(e->{
             game.endTurn();
-            jatek.korEllenorzes();
+            boolean ujJatekos=jatek.korEllenorzes();
+            if(ujJatekos){
+                frissitPanel();
+            }
         });
         TestNov.addActionListener(e->{
             mouse.put("testNov",true);
