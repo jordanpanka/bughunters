@@ -120,6 +120,7 @@ public class JatekAblak  extends JFrame{
         rovaraszGombok=new JPanel();
         rovaraszGombok.setLayout(new BoxLayout(rovaraszGombok,BoxLayout.X_AXIS));
         rovaraszPanelBeall();
+        
 
         grafika=game.getGrafika();
         grafika.setPreferredSize(new Dimension(800, 600)); // Beállíthatsz más méretet is
@@ -376,6 +377,7 @@ public class JatekAblak  extends JFrame{
             tektonok.addItem(s);
         });
     }
+    
     public void frissitPanel(){
         //még nem teljes
         if(game.getGombaszok().contains(game.getAktivJatekos())){
@@ -384,7 +386,7 @@ public class JatekAblak  extends JFrame{
         else{
             isGombasz=false;
         }
-        isGombasz=false;
+        //isGombasz=false;
         if(isGombasz){
             add(gombaszGombok,BorderLayout.SOUTH);
         }
