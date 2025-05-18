@@ -15,7 +15,7 @@ import bughunters.Rovar.Rovar;
 import bughunters.Tekton.Tekton;
 
 public class Grafika extends JPanel {
-    //private HashMap<Object,Rajz> grafikusElemek;
+    
     private HashMap<Tekton, GTekton> tektonok;
 
     public HashMap<Tekton, GTekton> getTektonok() {
@@ -81,8 +81,8 @@ public class Grafika extends JPanel {
             double Szog=iranySzog+elfordulasSzoge;
             elozoX=(int)(cX+R*Math.cos(Szog));
             elozoY=(int) (cY+R*Math.cos(Szog));
-            tektonok.get(t.getSzomszedok().get(0)).setX(elozoX);
-            tektonok.get(t.getSzomszedok().get(0)).setY(elozoY);
+            tektonok.get(t.getSzomszedok().get(i)).setX(elozoX);
+            tektonok.get(t.getSzomszedok().get(i)).setY(elozoY);
         }
         //gombatestek beállítása
         gombatestek.forEach((gombatest,gg)->{
@@ -135,24 +135,24 @@ public class Grafika extends JPanel {
             }
         }
 
+        repaint();
 
-
-        paintComponent(g);
-       
     }
     @Override
     public void paintComponent(Graphics g){
-        /*if(tektonok!=null){
+        super.paintComponent(g);
+        if(tektonok!=null){
             tektonok.forEach((kulcs, ertek)->{ertek.Draw(g);});
         }
         
         gombatestek.forEach((kulcs, ertek)->{ertek.Draw(g);});
         gombafonalak.forEach((kulcs, ertek)->{ertek.Draw(g);});
         rovarok.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        sporak.forEach((kulcs, ertek)->{ertek.Draw(g);});*/
-        super.paintComponent(g);
-        g.setColor(Color.RED);
-        g.fillRoundRect(60, 120, 500, 180, 30, 30);
+        sporak.forEach((kulcs, ertek)->{ertek.Draw(g);});
+        System.out.println(tektonok.size());
+        System.out.println(sporak.size());
+        System.out.println(gombafonalak.size());
+        
 
     }
     public Gombafonal fonalKeres(int x, int y){
