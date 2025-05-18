@@ -56,7 +56,7 @@ public class KezdoPozicioKivalaszt extends JFrame{
     private static List<JComboBox<String>> comboBoxes = new ArrayList<>();
 
     
-    public KezdoPozicioKivalaszt(Parancskezelok pk, int gombaszokSzama, int rovaraszokSzama, Jatek jatek){
+    public KezdoPozicioKivalaszt(Parancskezelok pk,  Jatek jatek){
 
         setTitle("Kezdőpozíció kiválasztása");
         setSize(600,700);
@@ -65,8 +65,8 @@ public class KezdoPozicioKivalaszt extends JFrame{
 
 
         game=pk;
-        this.gombaszokSzama = gombaszokSzama;
-        this.rovaraszokSzama = rovaraszokSzama;
+        this.gombaszokSzama = game.getGombaszok().size();
+        this.rovaraszokSzama = game.getRovaraszok().size();
 
 
         kovetkezo=new JButton("Következő");
