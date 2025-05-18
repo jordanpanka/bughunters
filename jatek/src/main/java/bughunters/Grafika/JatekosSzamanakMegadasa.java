@@ -1,21 +1,14 @@
 package bughunters.Grafika;
 
-import java.awt.FlowLayout;
-
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
 import bughunters.Egyeb.Jatek;
 import bughunters.Egyeb.Jatekter;
 import bughunters.Egyeb.Parancskezelok;
 
+import java.awt.*;
+import javax.swing.*;
+
 public class JatekosSzamanakMegadasa extends JFrame {
-   
+    
     private JComboBox<Integer> gombaszokSzama;
     private JComboBox<Integer> rovaraszokSzama;
     private Parancskezelok game;
@@ -24,7 +17,7 @@ public class JatekosSzamanakMegadasa extends JFrame {
     private JPanel rovaraszMegad;
     private JButton kovetkezo;
 
-    public JatekosSzamanakMegadasa(Parancskezelok g) { 
+     public JatekosSzamanakMegadasa(Parancskezelok g) { 
         game = g;
         
         setTitle("Játékosok száma");
@@ -32,48 +25,97 @@ public class JatekosSzamanakMegadasa extends JFrame {
         setSize(300, 250);
         setLocationRelativeTo(null);
 
-        // Fő panel létrehozása
-        panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        //------------------------------
+
+        // Pasztel háttér
+        panel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
+                
+                // Színátmenet (pasztel lila árnyalatok)
+                GradientPaint gradient = new GradientPaint(
+                    0, 0, new Color(230, 230, 250),  // Lavender
+                    getWidth(), getHeight(), new Color(216, 191, 216)  // Thistle
+                );
+                g2d.setPaint(gradient);
+                g2d.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
+        panel.setLayout(new GridBagLayout());
+        setContentPane(panel);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 0, 5, 0); // Kisebb térköz
+        gbc.anchor = GridBagConstraints.CENTER; // Középre igazítás
+
+        // -------------------------------
 
         // Gombász panel
-        gombaszMegad = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        gombaszMegad.add(new JLabel("Gombász játékosok száma:"));
-        gombaszokSzama = new JComboBox<>(new Integer[]{2, 3, 4, 5});
+        gbc.gridy = 0;
+        gombaszMegad = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5)); // Középre igazítás, kisebb térköz
+        panel.setOpaque(false);
+
+        JLabel label = new JLabel("Gombász játékosok száma: ");
+        label.setForeground(new Color(64, 64, 64)); // Szürke szöveg
+        label.setFont(new Font("Arial", Font.PLAIN, 12));
+        gombaszMegad.add(label);
+
+        gombaszokSzama = new JComboBox<>(new Integer[]{2,3,4,5});
+        gombaszokSzama.setBackground(new Color(255, 255, 255, 200)); // Átlátszóbb fehér
+        gombaszokSzama.setFont(new Font("Arial", Font.PLAIN, 12));
         gombaszMegad.add(gombaszokSzama);
 
+        panel.add(gombaszMegad, gbc);
+
+        // ----------------------------------
+
         // Rovarász panel
-        rovaraszMegad = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        rovaraszMegad.add(new JLabel("Rovarász játékosok száma:"));
-        rovaraszokSzama = new JComboBox<>(new Integer[]{2, 3, 4, 5});
+        gbc.gridy = 1;
+        rovaraszMegad = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
+        panel.setOpaque(false);
+
+        JLabel label2 = new JLabel("Rovarász játékosok száma: ");
+        label2.setForeground(new Color(64, 64, 64)); // Szürke szöveg
+        label2.setFont(new Font("Arial", Font.PLAIN, 12));
+        rovaraszMegad.add(label2);
+
+        rovaraszokSzama = new JComboBox<>(new Integer[]{2,3,4,5});
+        rovaraszokSzama.setBackground(new Color(255, 255, 255, 200)); // Átlátszóbb fehér
+        rovaraszokSzama.setFont(new Font("Arial", Font.PLAIN, 12));
         rovaraszMegad.add(rovaraszokSzama);
 
+        panel.add(rovaraszMegad, gbc);
+
+        // -----------------------------------
+
         // Gomb
+        gbc.gridy = 2;
+        gbc.insets = new Insets(15, 0, 0, 0); // Kicsit több tér a gomb felett
         kovetkezo = new JButton("Következő");
         kovetkezo.addActionListener(e -> handleKovetkezo());
+        styleButton(kovetkezo);
+        panel.add(kovetkezo, gbc);
+    }
 
-        panel.add(gombaszMegad);
-        panel.add(rovaraszMegad);
-        panel.add(kovetkezo);
-
-        add(panel);
-       //setVisible(true);
+    private void styleButton(JButton button) {
+        button.setForeground(Color.WHITE);
+        button.setBackground(new Color(135, 206, 250)); // Világoskék
+        button.setFont(new Font("Arial", Font.BOLD, 13));
+        button.setFocusPainted(false);
     }
 
     private void handleKovetkezo() {
         SwingUtilities.invokeLater(() -> {
+            int gombaszok = (int) gombaszokSzama.getSelectedItem();
+            int rovaraszok = (int) rovaraszokSzama.getSelectedItem();
 
-            int gombaszok = (int)gombaszokSzama.getSelectedItem();
-            int rovaraszok = (int)rovaraszokSzama.getSelectedItem();
-
-            //game = new Parancskezelok();
-           
             Jatekter jatekTer = new Jatekter();
-
             dispose();
+            
             Jatek jatek = new Jatek(game, jatekTer);
             game.setjatekter(jatekTer);
-            //jaték függvény: pálya alkotás
             jatek.jatekPalyaAlkotasa();
 
             NevFajSzin kovi = new NevFajSzin(game, gombaszok, rovaraszok, jatek);
