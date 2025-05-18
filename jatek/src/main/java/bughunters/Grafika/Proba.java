@@ -189,7 +189,8 @@ public class Proba  extends JFrame{
 
         add(felsoPanel,BorderLayout.NORTH);
         add(grafika, BorderLayout.CENTER);
-        add(gombaszGombok,BorderLayout.SOUTH);
+        frissitPanel();
+        //add(gombaszGombok,BorderLayout.SOUTH);
     }
    
     public void gombokLetreHozasa(){
@@ -381,6 +382,15 @@ public class Proba  extends JFrame{
 
         gombaszGombok.setLayout(new FlowLayout(FlowLayout.CENTER));
     }
+    public void rovaraszPanelBeall(){
+        Maszik.setPreferredSize(new Dimension(130,50));
+        rovaraszGombok.add(Maszik);
+        rovaraszGombok.add(Box.createHorizontalStrut(10));
+        rovaraszGombok.add(Vag);
+        rovaraszGombok.add(Box.createHorizontalStrut(10));
+        rovaraszGombok.add(Eszik);
+        rovaraszGombok.add(Box.createHorizontalStrut(10));
+    }
     public void frissitPanel(){
         //még nem teljes
         if(game.getGombaszok().contains(game.getAktivJatekos())){
@@ -389,7 +399,7 @@ public class Proba  extends JFrame{
         else{
             isGombasz=false;
         }
-
+        isGombasz=false;
         if(isGombasz){
             add(gombaszGombok,BorderLayout.SOUTH);
         }
