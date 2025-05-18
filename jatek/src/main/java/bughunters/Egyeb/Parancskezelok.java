@@ -81,10 +81,16 @@ public class Parancskezelok {
         this.rovaraszok = new ArrayList<>();
         this.jatekter = new Jatekter();
         this.allapot = parancsAllapot.Test;
+
+        this.grafika = new Grafika();
     }
 
     public void setGrafika(Grafika grafika) {
         this.grafika = grafika;
+    }
+
+    public Grafika getGrafika() {
+        return grafika;
     }
 
     /**
