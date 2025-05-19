@@ -20,12 +20,12 @@ import bughunters.Tekton.Tekton;
 public class Grafika extends JPanel {
     
     /**
-     * A Tekton és a hozzá tartozó grafikus reprezentáció (GTekton) párosításait tároló HashMap.
+     * @brief A Tekton és a hozzá tartozó grafikus reprezentáció (GTekton) párosításait tároló HashMap.
      */
     private HashMap<Tekton, GTekton> tektonok;
 
     /**
-     * Visszaadja a Tekton és GTekton objektumok párosításait tartalmazó térképet.
+     * @brief Visszaadja a Tekton és GTekton objektumok párosításait tartalmazó térképet.
      *
      * @return a Tekton–GTekton párosításokat tartalmazó HashMap
      */
@@ -34,7 +34,7 @@ public class Grafika extends JPanel {
     }
 
     /**
-     * Beállítja a Tekton és GTekton objektumok párosításait.
+     * @brief Beállítja a Tekton és GTekton objektumok párosításait.
      *
      * @param tektonok a Tekton–GTekton párosításokat tartalmazó HashMap
      */
@@ -42,12 +42,12 @@ public class Grafika extends JPanel {
         this.tektonok = tektonok;
     }
     /**
-     * A Gombatest és a hozzá tartozó grafikus reprezentáció (GGombatest) párosításait tároló HashMap.
+     * @brief A Gombatest és a hozzá tartozó grafikus reprezentáció (GGombatest) párosításait tároló HashMap.
      */
     private HashMap<Gombatest,GGombatest> gombatestek;
 
     /**
-     * Visszaadja a Gombatest és GGombatest objektumok párosításait tartalmazó térképet.
+     * @brief Visszaadja a Gombatest és GGombatest objektumok párosításait tartalmazó térképet.
      *
      * @return a Gombatest–GGombatest párosításokat tartalmazó HashMap
      */
@@ -56,7 +56,7 @@ public class Grafika extends JPanel {
     }
 
     /**
-     * Beállítja a Gombatest és GGombatest objektumok párosításait.
+     * @brief Beállítja a Gombatest és GGombatest objektumok párosításait.
      *
      * @param gombatestek a Gombatest–GGombatest párosításokat tartalmazó HashMap
      */
@@ -65,12 +65,12 @@ public class Grafika extends JPanel {
     }
 
     /**
-     * A Gombafonal és a hozzá tartozó grafikus reprezentáció (GGombafonal) párosításait tároló HashMap.
+     * @brief A Gombafonal és a hozzá tartozó grafikus reprezentáció (GGombafonal) párosításait tároló HashMap.
      */
     private HashMap<Gombafonal,GGombafonal> gombafonalak;
 
     /**
-     * Visszaadja a Gombafonal és GGombafonal objektumok párosításait tartalmazó térképet.
+     * @brief Visszaadja a Gombafonal és GGombafonal objektumok párosításait tartalmazó térképet.
      *
      * @return a Gombafonal–GGombafonal párosításokat tartalmazó HashMap
      */
@@ -79,7 +79,7 @@ public class Grafika extends JPanel {
     }
 
     /**
-     * Beállítja a Gombafonal és GGombafonal objektumok párosításait.
+     * @brief Beállítja a Gombafonal és GGombafonal objektumok párosításait.
      *
      * @param gombafonalak a Gombafonal–GGombafonal párosításokat tartalmazó HashMap
      */
@@ -88,12 +88,12 @@ public class Grafika extends JPanel {
     }
 
     /**
-     * A Rovar és a hozzá tartozó grafikus reprezentáció (GRovar) párosításait tároló HashMap.
+     * @brief A Rovar és a hozzá tartozó grafikus reprezentáció (GRovar) párosításait tároló HashMap.
      */
     private HashMap<Rovar, GRovar> rovarok;
 
     /**
-     * Visszaadja a Rovar és GRovar objektumok párosításait tartalmazó térképet.
+     * @brief Visszaadja a Rovar és GRovar objektumok párosításait tartalmazó térképet.
      *
      * @return a Rovar–GRovar párosításokat tartalmazó HashMap
      */
@@ -102,7 +102,7 @@ public class Grafika extends JPanel {
     }
 
     /**
-     * Beállítja a Rovar és GRovar objektumok párosításait.
+     * @brief Beállítja a Rovar és GRovar objektumok párosításait.
      *
      * @param rovarok a Rovar–GRovar párosításokat tartalmazó HashMap
      */
@@ -111,12 +111,12 @@ public class Grafika extends JPanel {
     }
 
     /**
-     * A Spóra és a hozzá tartozó grafikus reprezentáció (GSpora) párosításait tároló HashMap.
+     * @brief A Spóra és a hozzá tartozó grafikus reprezentáció (GSpora) párosításait tároló HashMap.
      */
     private HashMap<Spora,GSpora> sporak;
 
     /**
-     * Visszaadja a Spora és GSpora objektumok párosításait tartalmazó térképet.
+     * @brief Visszaadja a Spora és GSpora objektumok párosításait tartalmazó térképet.
      *
      * @return a Spora–GSpora párosításokat tartalmazó HashMap
      */
@@ -125,7 +125,7 @@ public class Grafika extends JPanel {
     }
 
     /**
-     * Beállítja a Spora és GSpora objektumok párosításait.
+     * @brief Beállítja a Spora és GSpora objektumok párosításait.
      *
      * @param sporak a Spora–GSpora párosításokat tartalmazó HashMap
      */
@@ -134,7 +134,7 @@ public class Grafika extends JPanel {
     }
    
     /**
-     * Létrehozza a {@code Grafika} objektumot, és inicializálja az összes entitás grafikus reprezentációját
+     * @brief Létrehozza a {@code Grafika} objektumot, és inicializálja az összes entitás grafikus reprezentációját
      * tartalmazó HashMap-et üres példányokkal.
      */
     public Grafika(){
@@ -146,7 +146,7 @@ public class Grafika extends JPanel {
     }
 
     /**
-     * Visszaállítja az összes grafikus elem (Tekton, Gombatest, Gombafonal, Rovar, Spóra) koordinátáit (-1, -1) értékre.
+     * @brief Visszaállítja az összes grafikus elem (Tekton, Gombatest, Gombafonal, Rovar, Spóra) koordinátáit (-1, -1) értékre.
      * Ez a metódus egy adott Tekton objektum kirajzolásának előkészítéséhez használható, de jelenleg
      * nem hajt végre tényleges kirajzolást.
      *
@@ -301,7 +301,7 @@ public class Grafika extends JPanel {
 
 
     /**
-     * A megadott Tektonhoz tartozó spórákat egyenletesen elhelyezi egy képzeletbeli kör mentén,
+     * @brief A megadott Tektonhoz tartozó spórákat egyenletesen elhelyezi egy képzeletbeli kör mentén,
      * a Tekton középpontjától számított sugárral. Minden spóra grafikus reprezentációja (GSpora)
      * kirajzolásra kerül, valamint megjelenik a spóra mennyisége is.
      *
@@ -343,7 +343,7 @@ public class Grafika extends JPanel {
     
     
     /**
-     * A megadott Tekton-hoz tartozó gombafonalakat kirajzolja a képernyőre. A rajzolás során
+     * @brief A megadott Tekton-hoz tartozó gombafonalakat kirajzolja a képernyőre. A rajzolás során
      * figyelembe veszi a szomszédos Tektonokat is, és minden gombafonalat a hozzá tartozó
      * gombafaj szerint eltolt vonallal jelenít meg. Azok a fonalak, amelyek csak az egyik végpontban
      * kapcsolódnak a vizsgált Tektonhoz vagy szomszédaihoz, kifelé mutató, körszerűen elhelyezett
@@ -474,7 +474,7 @@ public class Grafika extends JPanel {
 
 
     /**
-     * Megkeresi és visszaadja azt a Gombafonal objektumot, amelyikhez tartozó grafikus vonal
+     * @brief Megkeresi és visszaadja azt a Gombafonal objektumot, amelyikhez tartozó grafikus vonal
      * közel van a megadott (x, y) koordinátához. A keresés során a függvény figyelembe veszi,
      * hogy a koordináta y értékéből 230 egységet levon, valószínűleg az eltolás miatt a
      * megjelenítés vagy konténer miatt.
@@ -506,7 +506,7 @@ public class Grafika extends JPanel {
 
 
     /**
-     * Ellenőrzi, hogy a megadott pont (px, py) elég közel van-e az (x1, y1)-(x2, y2) vonalszakaszhoz.
+     * @brief Ellenőrzi, hogy a megadott pont (px, py) elég közel van-e az (x1, y1)-(x2, y2) vonalszakaszhoz.
      * A közeliség egy előre definiált küszöbértéken (jelen esetben 10 pixel) alapul.
      *
      * @param px a pont x koordinátája
@@ -525,7 +525,7 @@ public class Grafika extends JPanel {
 
 
     /**
-     * Kiszámítja a pont (px, py) és az (x1, y1)-(x2, y2) vonalszakasz közötti legkisebb távolságot.
+     * @brief Kiszámítja a pont (px, py) és az (x1, y1)-(x2, y2) vonalszakasz közötti legkisebb távolságot.
      * Ha a vonalszakasz hossza 0 (pont), akkor a pont és a vonal kezdőpontja közti távolságot adja vissza.
      *
      * @param px a pont x koordinátája
@@ -563,7 +563,7 @@ public class Grafika extends JPanel {
 
 
     /**
-     * Keres egy Gombatest objektumot a megadott (x, y) koordináta közelében.
+     * @brief Keres egy Gombatest objektumot a megadott (x, y) koordináta közelében.
      * A keresésnél a y koordinátát 230 pixellel csökkenti (valószínűleg az eltolás miatt).
      * 
      * A keresés úgy történik, hogy minden Gombatesthez tartozó GGombatest középpontját
@@ -591,7 +591,7 @@ public class Grafika extends JPanel {
     }
 
     /**
-     * Keres egy Tekton objektumot a megadott (x, y) koordináta közelében.
+     * @brief Keres egy Tekton objektumot a megadott (x, y) koordináta közelében.
      * A y koordinátát 230 pixellel csökkenti (eltolás miatt).
      * 
      * Minden Tektonhoz tartozó GTekton pozíciójához hozzáad 50-et (offset),
@@ -619,7 +619,7 @@ public class Grafika extends JPanel {
 
 
     /**
-     * Keres egy Rovar objektumot a megadott (x, y) koordináta környékén.
+     * @brief Keres egy Rovar objektumot a megadott (x, y) koordináta környékén.
      * A y koordinátát 230 pixellel eltolja (pl. GUI elhelyezkedés miatt).
      * A Rovar pozíciójához 45 pixeles offsetet ad hozzá mindkét koordinátára.
      * Ha a távolság a pont és a Rovar középpontja között kisebb, mint 22 pixel,
@@ -647,7 +647,7 @@ public class Grafika extends JPanel {
 
 
     /**
-     * Keres egy Spóra objektumot a megadott (x, y) koordináta közelében.
+     * @brief Keres egy Spóra objektumot a megadott (x, y) koordináta közelében.
      * A y koordinátát 230 pixellel csökkenti (eltolás miatt).
      * 
      * Minden Spóra pozíciójához hozzáad 12-et (offset),
