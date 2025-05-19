@@ -300,16 +300,18 @@ public class Grafika extends JPanel {
         for (Gombafonal fonal : fonalak2) {
             Tekton t1 = fonal.getVegpont1();
             Tekton t2 = fonal.getVegpont2();
-            if(!tektonok2.contains(t1) || tektonok2.contains(t2)){
+            if(tektonok2.contains(t1) || tektonok2.contains(t2)){
                 totalLines++;
             }
         }
 
+        System.out.println("Fonalak száma: " + totalLines);
 
 
         // Fonalak kirajzolása
         for (Gombafonal fonal : fonalak2) {
             double angle = 2 * Math.PI * index / totalLines;
+            System.out.println("Szog: " + angle);
 
             Tekton t1 = fonal.getVegpont1();
             Tekton t2 = fonal.getVegpont2();
