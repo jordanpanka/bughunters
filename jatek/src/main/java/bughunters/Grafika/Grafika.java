@@ -95,13 +95,47 @@ public class Grafika extends JPanel {
                 if (gSzomszed != null) {
                     gSzomszed.setX(szomszedX);
                     gSzomszed.setY(szomszedY);
-                    gSzomszed.Draw(g);  // Azonnal ki is rajzoljuk
+                    //gSzomszed.Draw(g);  // Azonnal ki is rajzoljuk
                     System.out.println("Szomszéd tekton rajzolva X=" + szomszedX + ", Y=" + szomszedY);
 
                     gombatestek.forEach((gombatest, gg) -> {
                             if (gombatest.getTekton().equals(szomszed)) {
                                 gg.setX(szomszedX);
                                 gg.setY(szomszedY);
+                               // gg.Draw(g);
+                            }
+                    });
+                    
+                    //sporaElhelyezesKorben(szomszed,g);
+                }
+
+            }
+        }
+        //tektonok.forEach((tekton,gtekton)->{System.out.println(" X"+gtekton.getX());});
+        // Végül a középső tekton kirajzolása
+        fonalrajzol(t,g);
+        tektonok.get(t).Draw(g);
+         if (szomszedokSzama != 0) {
+            //System.out.println("Vannak szomszédok.");
+            //double szogLepes = 2 * Math.PI / szomszedokSzama;  // Egyenlő elosztás a kör mentén
+
+            for (int i = 0; i < szomszedokSzama; i++) {
+                //double szog = i * szogLepes;  // Minden szomszédnál léptetjük a szöget
+                //int szomszedX = (int) (cX + R * Math.cos(szog));
+                //int szomszedY = (int) (cY + R * Math.sin(szog));
+
+                Tekton szomszed = t.getSzomszedok().get(i);
+                GTekton gSzomszed = tektonok.get(szomszed);
+
+                if (gSzomszed != null) {
+                   // gSzomszed.setX(szomszedX);
+                   // gSzomszed.setY(szomszedY);
+                    gSzomszed.Draw(g);  // Azonnal ki is rajzoljuk
+                    //System.out.println("Szomszéd tekton rajzolva X=" + szomszedX + ", Y=" + szomszedY);
+                    gombatestek.forEach((gombatest, gg) -> {
+                            if (gombatest.getTekton().equals(szomszed)) {
+                                //gg.setX(szomszedX);
+                                //gg.setY(szomszedY);
                                 gg.Draw(g);
                             }
                     });
@@ -113,10 +147,7 @@ public class Grafika extends JPanel {
             }
         }
 
-
-        // Végül a középső tekton kirajzolása
-        tektonok.get(t).Draw(g);
-            
+        //fonalrajzol(t,g);
         //gombatestek beállítása csak a középső
         gombatestek.forEach((gombatest,gg)->{
             if(gombatest.getTekton().equals(t)){
@@ -126,34 +157,7 @@ public class Grafika extends JPanel {
                 System.out.println("Gombatest rajzolva X=" + cX + ", Y=" + cY +"nev: "+gombatest.getGombafaj().getNev());
             }
         });
-        sporaElhelyezesKorben(t,g);
-
-        /*
-        long count = rovarok.keySet().stream()
-        .filter(rovar -> rovar.getTartozkodas().equals(t))
-        .count();
-
-        if (count == 0) return;
-
-        double angleStep = 2 * Math.PI / count;
-        int radius = 30;  // dinamikus sugár
-        int[] i = {0};
-
-        rovarok.forEach((rovar, gg) -> {
-            if (rovar.getTartozkodas().equals(t)) {
-                double angle = i[0] * angleStep - Math.PI / 2; // fentről induljon
-
-                int x = (int)(cX + radius * Math.cos(angle));
-                int y = (int)(cY + radius * Math.sin(angle));
-
-                gg.setX(x);
-                gg.setY(y);
-                gg.Draw(g);
-
-                i[0]++;
-            }
-        });
-        */
+        
 
         // Rovarok kirajzolása a középső és a szomszédos tektonokra is
         List<Tekton> mindenRajzolando = new ArrayList<>();
@@ -190,50 +194,8 @@ public class Grafika extends JPanel {
                 }
             }
         }
-
-       // gombafonalakRajzolasa(t, g);
-
-/* 
-      //rovarok szűrése
-        if(rovarok==null)System.out.println("A rovarok null");
-        Map<Rovar, GRovar> szurtRovar = rovarok.entrySet().stream()
-        .filter(entry -> entry.getKey().getTartozkodas().equals(t)) // elérés a kulcs objektumhoz
-        .collect(Collectors.toMap(
-            Map.Entry::getKey,
-            Map.Entry::getValue
-        ));
- 
-        int rovarSporaSzam=szurtSpora.size()+szurtRovar.size();
-        double elfordulasSzoges=Math.PI/(double)t.getSporak().size();
-        R=5;
-        if(szurtRovar!=null){
-            szurtRovar.get(0).setX(elozoX);
-            szurtRovar.get(0).setY(elozoY);
-            for(int i=1; i<szurtRovar.size();i++){
-                double iranySzog=Math.atan2(elozoY-cY,elozoX-cX);
-               double Szog=iranySzog+elfordulasSzoges;
-               elozoX=(int)(cX+R*Math.cos(Szog));
-               elozoY=(int) (cY+R*Math.cos(Szog));
-               szurtRovar.get(i).setX(elozoX);
-                szurtRovar.get(i).setY(elozoY);            
-            }
-
-        }
-        if(szurtSpora!=null){
-            szurtSpora.get(0).setX(elozoX);
-            szurtSpora.get(0).setY(elozoY);
-            for(int i=1; i<szurtSpora.size();i++){
-                double iranySzog=Math.atan2(elozoY-cY,elozoX-cX);
-               double Szog=iranySzog+elfordulasSzoges;
-               elozoX=(int)(cX+R*Math.cos(Szog));
-               elozoY=(int) (cY+R*Math.cos(Szog));
-               szurtSpora.get(i).setX(elozoX);
-                szurtSpora.get(i).setY(elozoY);            
-            }
-        }
-
-        //repaint();
-*/
+        //fonalrajzol(t,g);
+        //tektonok.forEach((tekton,gtekton)->{System.out.println(" X"+gtekton.getX());});
     }
 
 
@@ -268,22 +230,63 @@ public class Grafika extends JPanel {
 
         
     }
+    
+            
+    public void fonalrajzol(Tekton t, Graphics g) {
+    System.out.println("fonalrajzol");
 
+    List<Tekton> tektonok2 = new ArrayList<>(t.getSzomszedok());
+    tektonok2.add(t);
 
-    // Kirajzolja a gombafonalakat a tektonok között
-    public void gombafonalakRajzolasa(Tekton t, Graphics g) {
-        
+    List<Gombafonal> fonalak2 = t.getFonalak();
+    for(int i=0; i<t.getSzomszedok().size();i++){
+        Tekton t1=t.getSzomszedok().get(i);
+        for(int j=0; j<t1.getFonalak().size();j++){
+            fonalak2.add(t1.getFonalak().get(j));
+        }
+    }
+    System.out.println("grafika: " + gombafonalak.size());
+
+    for (Gombafonal fonal : fonalak2) {
+        Tekton t1 = fonal.getVegpont1();
+        Tekton t2 = fonal.getVegpont2();
+        if(tektonok2.contains(t1) && tektonok2.contains(t2)){System.out.println("Benne van");
+        //else{System.out.println("Az élet szép");}
+        GTekton g1 = tektonok.get(t2);
+        GTekton g2 = tektonok.get(t1);
+
+        //if(t2.equals(t))System.out.println("JAj");
+
+       /*  if (g1 == null || g2 == null) {
+            continue; // Nincs grafikai információ az egyik végpontról, kihagyjuk
+        }*/
+
+        int x1 = g1.getX();
+        //System.out.println(g1.getX());
+        int y1 = g1.getY();
+        //System.out.println(g1.getY());
+        int x2 = g2.getX();
+        //System.out.println(tektonok.get(t1).getX());
+        int y2 = g2.getY();
+        //System.out.println(g2.getY());
+        GGombafonal gFonal = gombafonalak.get(fonal);
+        if (gFonal != null) {
+            gFonal.setX1(x1+50);
+            gFonal.setY1(y1+50);
+            gFonal.setX2(x2+50);
+            gFonal.setY2(y2+50);
+
+           // System.out.println("Fonal koordináták: (" + x1 + "," + y1 + ") -> (" + x2 + "," + y2 + ")");
+            
+            gFonal.Draw(g);
+        }
+    }}
     }
 
 
     @Override
     public void paintComponent(Graphics g){
-        
-        //tektonok.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        //gombatestek.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        //gombafonalak.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        //rovarok.forEach((kulcs, ertek)->{ertek.Draw(g);});
-        //sporak.forEach((kulcs, ertek)->{ertek.Draw(g);});
+
         System.out.println(tektonok.size());
         System.out.println(rovarok.size());
         System.out.println(gombatestek.size());
@@ -291,13 +294,14 @@ public class Grafika extends JPanel {
 
     }
     public Gombafonal fonalKeres(int x, int y){
+        y=y-230;
         for (Map.Entry<Gombafonal, GGombafonal> entry : gombafonalak.entrySet()) {
-            double X1=entry.getValue().getX();
-            double X2=entry.getValue().getX2();
-            double Y1=entry.getValue().getY();
-            double Y2=entry.getValue().getY2();
-            double dX=entry.getValue().getX()-entry.getValue().getX2();
-            double dY=entry.getValue().getY()-entry.getValue().getY2();
+            double X1=(double)entry.getValue().getX();
+            double X2=(double)entry.getValue().getX2();
+            double Y1=(double)entry.getValue().getY();
+            double Y2=(double)entry.getValue().getY2();
+            double dX=(double)entry.getValue().getX()-entry.getValue().getX2();
+            double dY=(double)entry.getValue().getY()-entry.getValue().getY2();
             double t=((x-X1)*dX+(y-Y1)*dY)/(dX*dX+dY*dY);
             t=Math.max(0,Math.min(1,t));
             double projX = X1 + t * dX;
@@ -311,48 +315,56 @@ public class Grafika extends JPanel {
     }
    
     public Gombatest gombatestKeres(int x, int y) {
+        y=y-230;
+        System.out.println("Képernyő"+x+y);
+
         for (Map.Entry<Gombatest, GGombatest> entry : gombatestek.entrySet()) {
-            double xC = entry.getValue().getX();
-            double yC = entry.getValue().getY();
+            double xC =(double) entry.getValue().getX()+50;
+            double yC = (double)entry.getValue().getY()+50;
+            System.out.println("Aktuális tektin:"+xC+yC);
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
-            if (d < 1) {
+            if (d <=35) {
                 return entry.getKey(); // megtaláltuk
             }
         }
         return null; // nem találtuk meg
     }
     public Tekton tektonKeres(int x, int y){
-        System.out.println("Koordináták amire rákettintottam"+x+y);
+        y=y-230;
         for (Map.Entry<Tekton, GTekton> entry : tektonok.entrySet()) {
-            double xC = entry.getValue().getX();
-            double yC = entry.getValue().getY();
-            System.out.println("Aktuális tektin:"+x+y);
+            double xC = (double)entry.getValue().getX()+50;
+            double yC = (double)entry.getValue().getY()+50;
+            //System.out.println("Aktuális tektin:"+xC+yC);
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
+            //System.out.println("Táv:"+d);
             if (d <=50 ) {
                 return entry.getKey(); // megtaláltuk
             }
         }
-        System.out.println("Nem találjuk a tektont :(");
         return null; // nem találtuk meg
     }
     public Rovar rovarKeres(int x, int y){
         //lehet nem jó
+        y=y-230;
+        System.out.println("Képernyő"+x+y);
         for (Map.Entry<Rovar, GRovar> entry : rovarok.entrySet()) {
-            double xC = entry.getValue().getX();
-            double yC = entry.getValue().getY();
+            double xC = (double)entry.getValue().getX()+45;
+            double yC = (double)entry.getValue().getY()+45;
+            System.out.println("Aktuális tektin:"+xC+yC);
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
-            if (d < 1) {
+            if (d < 22) {
                 return entry.getKey(); // megtaláltuk
             }
         }
         return null; // nem találtuk meg
     }
     public Spora sporaKeres(int x, int y){
+        y=y-230;
          for (Map.Entry<Spora, GSpora> entry : sporak.entrySet()) {
-            double xC = entry.getValue().getX();
-            double yC = entry.getValue().getY();
+            double xC = (double)entry.getValue().getX()+3;
+            double yC = (double)entry.getValue().getY()+3;
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
-            if (d < 1) {
+            if (d <=3) {
                 return entry.getKey(); // megtaláltuk
             }
         }
