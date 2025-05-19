@@ -251,11 +251,11 @@ public class Grafika extends JPanel {
 
     
     HashMap<Gombafaj,Integer> fajok=new HashMap<>();
-    if(gombafajLista!=null) fajok.put(gombafajLista.get(0),50);
+    if(gombafajLista.size()!=0) fajok.put(gombafajLista.get(0),50);
    
     for(int i=1; i<gombafajok.size(); i++){
         if(i%2==0)fajok.put(gombafajLista.get(i),50-i*10);
-        else fajok.put(gombafajLista.get(i),50+i*10);
+        else fajok.put(gombafajLista.get(i),50+i*15);
     }
     for(int i=0; i<t.getSzomszedok().size();i++){
         Tekton t1=t.getSzomszedok().get(i);
