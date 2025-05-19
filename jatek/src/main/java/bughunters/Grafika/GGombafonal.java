@@ -1,8 +1,10 @@
 package bughunters.Grafika;
 
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 /**
  * A GGombafonal osztály egy gombafonal grafikus megjelenítéséért felel.
@@ -139,7 +141,9 @@ public class GGombafonal extends Rajz {
    @Override
     public void Draw(Graphics g) {
         if (szin != null) {
-            g.setColor(szin);
+         Graphics2D g2 = (Graphics2D) g;  // Átalakítás Graphics2D-re
+        g2.setColor(szin);               // Szín beállítása
+        g2.setStroke(new BasicStroke(5));
             g.drawLine(x1, y1, x2, y2);
         }
     }
