@@ -223,6 +223,7 @@ public class Gombafaj implements FonalKezeles{
         try{
             Gombatest uj=t.gombatestNov(this,sporaval);
             addTest(uj);
+            System.out.println("gombatest: "+uj + "honnan: "+uj.getTekton() + "faj: "+uj.getGombafaj().getNev());
             eddigNovesztettTestekSzama++;
         }catch(Exception e)
         {

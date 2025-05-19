@@ -207,7 +207,7 @@ public class Tekton implements FonalKezeles {
 
             if(sporaval && vanFonal){
                 boolean elfogyott = false; 
-
+                List<Spora> torlesSporak = new ArrayList<>();
                 if(sporak != null) {
                     for(Spora sp : sporak) {
                         if(sp.getGombafaj().equals(gf)) {
@@ -216,10 +216,12 @@ public class Tekton implements FonalKezeles {
                                 elfogyott=true;
                             }                                                    
                             if(elfogyott) {
-                                torlesSpora(sporak.get(0));
+                                torlesSporak.add(sp);
+                                //torlesSpora(sp);
                             }
                         }
                     }
+                    sporak.removeAll(torlesSporak);
                 }
 
                 Gombatest gt1 = new Gombatest(gf,this);
