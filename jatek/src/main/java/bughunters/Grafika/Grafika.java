@@ -1,7 +1,6 @@
 package bughunters.Grafika;
 
 import java.awt.Graphics;
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -77,6 +76,10 @@ public class Grafika extends JPanel {
         gombafonalak.forEach((tek,gtek)->{
             gtek.setX(-1);
             gtek.setY(-1);
+            gtek.setX1(-1);
+            gtek.setY1(-1);
+            gtek.setX2(-1);
+            gtek.setY2(-1);
         });
         rovarok.forEach((tek,gtek)->{
             gtek.setX(-1);
@@ -114,6 +117,7 @@ public class Grafika extends JPanel {
                 int szomszedY = (int) (cY + R * Math.sin(szog));
 
                 Tekton szomszed = t.getSzomszedok().get(i);
+                System.out.println("Szomszéd tekton: " + szomszed);
                 GTekton gSzomszed = tektonok.get(szomszed);
 
                 if (gSzomszed != null) {
@@ -174,6 +178,7 @@ public class Grafika extends JPanel {
         //gombatestek beállítása csak a középső
         gombatestek.forEach((gombatest,gg)->{
             if(gombatest.getTekton().equals(t)){
+                System.out.println("kozepso tekton: "+t + "\n");
                 gg.setX(cX);
                 gg.setY(cY);
                 gg.Draw(g);
@@ -255,61 +260,132 @@ public class Grafika extends JPanel {
     
             
     public void fonalrajzol(Tekton t, Graphics g) {
-    //System.out.println("fonalrajzol");
+        // Tektonok listája a vizsgált és szomszédos elemekkel 
+        List<Tekton> tektonok2 = new ArrayList<>(t.getSzomszedok());
+        tektonok2.add(t);
 
-    List<Tekton> tektonok2 = new ArrayList<>(t.getSzomszedok());
-    tektonok2.add(t);
+        // Egyedi Gombafonal objektumok gyűjtése Set-be
+        Set<Gombafonal> fonalak2 = new HashSet<>(t.getFonalak());
 
-    List<Gombafonal> fonalak2 = t.getFonalak();
-    Set<Gombafaj> gombafajok = new HashSet<>();
-    fonalak2.forEach((fon)->{
-        gombafajok.add(fon.getGombafaj());
-    });
-    
-    List<Gombafaj> gombafajLista = new ArrayList<>(gombafajok);
-
-    
-    HashMap<Gombafaj,Integer> fajok=new HashMap<>();
-    if(gombafajLista.size()!=0) fajok.put(gombafajLista.get(0),50);
-   
-    for(int i=1; i<gombafajok.size(); i++){
-        if(i%2==0)fajok.put(gombafajLista.get(i),50-i*10);
-        else fajok.put(gombafajLista.get(i),50+i*16);
-    }
-    for(int i=0; i<t.getSzomszedok().size();i++){
-        Tekton t1=t.getSzomszedok().get(i);
-        for(int j=0; j<t1.getFonalak().size();j++){
-            fonalak2.add(t1.getFonalak().get(j));
+        for (Tekton szomszed : t.getSzomszedok()) {
+            fonalak2.addAll(szomszed.getFonalak());
         }
-    }
-    //System.out.println("grafika: " + gombafonalak.size());
 
-    for (Gombafonal fonal : fonalak2) {
-        Tekton t1 = fonal.getVegpont1();
-        Tekton t2 = fonal.getVegpont2();
-        if(tektonok2.contains(t1) && tektonok2.contains(t2)){//System.out.println("Benne van");
-        //else{System.out.println("Az élet szép");}
-        GTekton g1 = tektonok.get(t2);
-        GTekton g2 = tektonok.get(t1);
-
-        int x1 = g1.getX();
-        //System.out.println(g1.getX());
-        int y1 = g1.getY();
-        //System.out.println(g1.getY());
-        int x2 = g2.getX();
-        //System.out.println(tektonok.get(t1).getX());
-        int y2 = g2.getY();
-        //System.out.println(g2.getY());
-        GGombafonal gFonal = gombafonalak.get(fonal);
-        if (gFonal != null) {
-            gFonal.setX1(x1+fajok.get(fonal.getGombafaj()));
-            gFonal.setY1(y1+fajok.get(fonal.getGombafaj()));
-            gFonal.setX2(x2+fajok.get(fonal.getGombafaj()));
-            gFonal.setY2(y2+fajok.get(fonal.getGombafaj()));
-            
-            gFonal.Draw(g);
+        // Gombafajok kigyűjtése
+        Set<Gombafaj> gombafajok = new HashSet<>();
+        for (Gombafonal fon : fonalak2) {
+            gombafajok.add(fon.getGombafaj());
         }
-    }}
+
+        List<Gombafaj> gombafajLista = new ArrayList<>(gombafajok);
+
+        // Pozíció offset-ek létrehozása gombafajonként
+        HashMap<Gombafaj, Integer> fajok = new HashMap<>();
+        if (!gombafajLista.isEmpty()) fajok.put(gombafajLista.get(0), 50);
+
+        for (int i = 1; i < gombafajLista.size(); i++) {
+            if (i % 2 == 0)
+                fajok.put(gombafajLista.get(i), 50 - i * 10);
+            else
+                fajok.put(gombafajLista.get(i), 50 + i * 16);
+        }
+
+
+
+        int totalLines = 0; // vagy ahány gombafonal van
+        int index = 0; // az aktuális vonal indexe
+        int radius = 60; // hossza a vonalaknak, mehet nagyobbra is
+
+        for (Gombafonal fonal : fonalak2) {
+            Tekton t1 = fonal.getVegpont1();
+            Tekton t2 = fonal.getVegpont2();
+            if(!tektonok2.contains(t1) || tektonok2.contains(t2)){
+                totalLines++;
+            }
+        }
+
+
+
+        // Fonalak kirajzolása
+        for (Gombafonal fonal : fonalak2) {
+            double angle = 2 * Math.PI * index / totalLines;
+
+            Tekton t1 = fonal.getVegpont1();
+            Tekton t2 = fonal.getVegpont2();
+
+            if (tektonok2.contains(t1) && tektonok2.contains(t2)) {
+                GTekton g1 = tektonok.get(t2);
+                GTekton g2 = tektonok.get(t1);
+
+                int x1 = g1.getX();
+                int y1 = g1.getY();
+                int x2 = g2.getX();
+                int y2 = g2.getY();
+
+                GGombafonal gFonal = gombafonalak.get(fonal);
+                if (gFonal != null) {
+                    int offset = fajok.get(fonal.getGombafaj());
+                    gFonal.setX1(x1 + offset);
+                    gFonal.setY1(y1 + offset);
+                    gFonal.setX2(x2 + offset);
+                    gFonal.setY2(y2 + offset);
+
+                    gFonal.Draw(g);
+                }
+            }
+            else{
+                if(tektonok2.contains(t1)){
+                    GTekton g1 = tektonok.get(t1);
+                    int x1 = g1.getX();
+                    //System.out.println(g1.getX());
+                    int y1 = g1.getY();
+                    //System.out.println(g1.getY());
+                    GGombafonal gFonal = gombafonalak.get(fonal);
+                    if (gFonal != null) {
+                        int x_1 = x1+50;
+                        int y_1 = y1+50;
+                        int x_2 = (int)(x_1 + Math.cos(angle) * radius);
+                        int y_2 = (int)(y_1 + Math.sin(angle) * radius);
+                        System.out.println("X1: "+x_1);
+                        System.out.println("Y1: "+y_1);
+                        System.out.println("X2: "+x_2);
+                        System.out.println("Y2: "+y_2);
+                        gFonal.setX1(x_1);
+                        gFonal.setY1(y_1);
+                        gFonal.setX2(x_2);
+                        gFonal.setY2(y_2);
+                        
+                        gFonal.Draw(g);
+                        index++;
+                    }
+                }
+                else{
+                    GTekton g2 = tektonok.get(t2);
+                    int x2 = g2.getX();
+                    //System.out.println(g1.getX());
+                    int y2 = g2.getY();
+                    //System.out.println(g1.getY());
+                    GGombafonal gFonal = gombafonalak.get(fonal);
+                    if (gFonal != null) {
+                        int x_1 = x2+50;
+                        int y_1 = y2+50;
+                        int x_2 = (int)(x_1 + Math.cos(angle) * radius);
+                        int y_2 = (int)(y_1 + Math.sin(angle) * radius);
+                        System.out.println("X1: "+x_1);
+                        System.out.println("Y1: "+y_1);
+                        System.out.println("X2: "+x_2);
+                        System.out.println("Y2: "+y_2);
+                        gFonal.setX1(x_1);
+                        gFonal.setY1(y_1);
+                        gFonal.setX2(x_2);
+                        gFonal.setY2(y_2);
+                        
+                        gFonal.Draw(g);
+                        index++;
+                    }
+                }
+            }
+        }
     }
 
     public Gombafonal fonalKeres(int x, int y){

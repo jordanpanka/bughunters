@@ -61,7 +61,7 @@ public class Gombasz extends Jatekos{
                 throw new Exception("Nincs elegendő akciópont.");
             }
 
-            gombafaj.fonalNov(t1, t2); 
+            gombafaj.fonalNov(t1, t2);
             
             akciopontCsokkentes(1);
         } catch (Exception e) {
@@ -126,13 +126,13 @@ public class Gombasz extends Jatekos{
      * @param rovar A cél rovar
      * @throws Exception Ha nincs elég akciópont
      */
-    public void rovarEves(Rovar rovar) throws Exception{
+    public void rovarEves(Rovar rovar, Boolean testnovesztessel) throws Exception{
         try {
             if (getakcioSzama() < 1) {
                 throw new Exception("Nincs elegendő akciópont.");
             }
 
-            gombafaj.rovarEves(rovar);
+            gombafaj.rovarEves(rovar, testnovesztessel);
             akciopontCsokkentes(1);
         } catch (Exception e) {
             throw e;

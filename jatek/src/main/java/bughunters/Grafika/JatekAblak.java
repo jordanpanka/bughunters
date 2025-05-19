@@ -259,7 +259,7 @@ public class JatekAblak  extends JFrame{
                         Tekton t2=grafika.tektonKeres(e.getX(),e.getY());
                         
                         try{
-                           game.gfnov(elsoTekton,t2); 
+                           game.gfnov(elsoTekton,t2);
                            if(jatek.korEllenorzes(JatekAblak.this)){
                                 frissitPanel();
                             }
