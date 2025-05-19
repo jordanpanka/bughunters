@@ -392,9 +392,6 @@ public class Parancskezelok {
             throw new Exception("parancskezelok eszik() spora null");
         }
         Tekton t=r.getTartozkodas();
-        if(!t.getSporak().contains(t)){
-            throw new Exception("A rovar nem a megadott tektonon tartozkodik");
-        }
 
         List<Spora> sporak = t.getSporak();
 
@@ -501,9 +498,12 @@ public class Parancskezelok {
             throw new Exception("parancskezelok sporaszor() gombatest null");
         }
 
+
+        System.out.println("sporaszor() gombatest gombafaja: "+gt.getGombafaj());
         Tekton tartozkodas = gt.getTekton();
         try {
             Gombasz gombasz = (Gombasz)aktivJatekos;
+
             gombasz.sporaSzoras(tartozkodas, gt);
         } catch (Exception e) {
             //throw new Exception("Nem sikerult sporat szorni");
