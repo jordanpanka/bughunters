@@ -33,6 +33,7 @@ public class JatekVegeAblak extends JFrame{
         setSize(600,700);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
+        setLocationRelativeTo(null);
 
 
         game=pk;
@@ -135,7 +136,7 @@ public class JatekVegeAblak extends JFrame{
         tabla.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));
         tabla.setEnabled(false); // Csak megjelenítés
 
-        JScrollPane scrollPane = new JScrollPane(row2);
+        JScrollPane scrollPane = new JScrollPane(tabla);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setPreferredSize(new Dimension(550, 200)); // korlátozott magasság
 

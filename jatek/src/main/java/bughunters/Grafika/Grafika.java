@@ -305,13 +305,13 @@ public class Grafika extends JPanel {
             }
         }
 
-        System.out.println("Fonalak száma: " + totalLines);
+        //System.out.println("Fonalak száma: " + totalLines);
 
 
         // Fonalak kirajzolása
         for (Gombafonal fonal : fonalak2) {
             double angle = 2 * Math.PI * index / totalLines;
-            System.out.println("Szog: " + angle);
+            //System.out.println("Szog: " + angle);
 
             Tekton t1 = fonal.getVegpont1();
             Tekton t2 = fonal.getVegpont2();
@@ -337,6 +337,7 @@ public class Grafika extends JPanel {
                 }
             }
             else{
+                //System.out.println("angle: "+angle + "radius: "+radius);
                 if(tektonok2.contains(t1)){
                     GTekton g1 = tektonok.get(t1);
                     int x1 = g1.getX();
@@ -357,7 +358,7 @@ public class Grafika extends JPanel {
                         gFonal.setY1(y_1);
                         gFonal.setX2(x_2);
                         gFonal.setY2(y_2);
-                        
+
                         gFonal.Draw(g);
                         index++;
                     }
@@ -382,7 +383,7 @@ public class Grafika extends JPanel {
                         gFonal.setY1(y_1);
                         gFonal.setX2(x_2);
                         gFonal.setY2(y_2);
-                        
+
                         gFonal.Draw(g);
                         index++;
                     }

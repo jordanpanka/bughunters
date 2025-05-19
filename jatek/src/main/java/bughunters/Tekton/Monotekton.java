@@ -25,13 +25,13 @@ public class Monotekton extends Tekton {
             throw new Exception("A két tekton nem szomszédos.");
         }
 
-        // 2. Már létező fonal ellenőrzése
-        for (Gombafonal gfonal : gombafonalak) {
-            if ((gfonal.getVegpont1().equals(this) && gfonal.getVegpont2().equals(honnan)) ||
-                (gfonal.getVegpont1().equals(honnan) && gfonal.getVegpont2().equals(this))) {
-                throw new Exception("Már van ilyen fonal.");
+        // 2. Van-e már ilyen fonal?
+            for (Gombafonal gfonal : gombafonalak) {
+                if ((gfonal.getVegpont1().equals(this) && gfonal.getVegpont2().equals(honnan)) && gfonal.getGombafaj().equals(g) ||
+                    (gfonal.getVegpont1().equals(honnan) && gfonal.getVegpont2().equals(this)) && gfonal.getGombafaj().equals(g)) {
+                    throw new Exception("Már van ilyen fonal.");
+                }
             }
-        }
 
         // 3. Monotekton speciális szabályai:
         //    - Csak ugyanaz a gombafaj lehet rajta (test vagy fonal formájában)
