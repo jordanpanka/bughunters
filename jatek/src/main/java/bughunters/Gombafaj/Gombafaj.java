@@ -3,8 +3,8 @@ package bughunters.Gombafaj;
 import bughunters.Tekton.*;
 import bughunters.Rovar.*;
 
-
 import java.util.ArrayList;
+import java.util.List;
 /**
  * @brief A Gombafaj osztály a gombafajokat reprezentálja, és kezeli azok növekedését,
  * fonalhálózatát, valamint a spóraszórás és a haldoklás folyamatait.
@@ -169,15 +169,24 @@ public class Gombafaj implements FonalKezeles{
      * @param honnan  A kiindulási Tekton.
      * @throws Exception Ha nem lehetséges a fonal növesztése.
      */
-    public void  fonalNov(Tekton honnan, Tekton hova)throws Exception{
+    public void  fonalNov(Tekton honnan, List<Gombafaj> t1fajok, Tekton hova, List<Gombafaj> t2fajok)throws Exception{
         //System.out.println("Meghívódik a Gombafaj fonalNov metódusa.");
         try{
-            Gombafonal uj= hova.gombafonalAdd(this,honnan);
+            System.out.println("Fonal növesztés inditasa------------------------");
+            Gombafonal uj= hova.gombafonalAdd(this,t2fajok, honnan);
+            //Ez azért kell, hogy ha Monotektonra nő a fonal, akkor csak a Tekton gombafonalAdd metódusát hívja meg, 
+            //így nem ellenőrzi le a monotektonos részt. Ezzel leelenőrzi. Ha mindkettő Exception nélküli akkor mind1 melyik fonal lesz hasznalva.
+            Gombafonal uj2 = honnan.gombafonalAdd(this, t1fajok, hova);
+            
+            System.out.println("uj fonal: "+uj + "honnan: "+uj.getVegpont1() + "hova: "+uj.getVegpont2());
+            System.out.println("Szomszedosak? "+honnan.getSzomszedok().contains(hova));
             addFonal(uj);
             honnan.addFonal(uj);
+            hova.addFonal(uj);
+            System.out.println("Fonal növesztés sikeres ------------------------");
         }catch(Exception e)
         {
-            throw new Exception("Nem nőhet fonal.");
+            throw new Exception("Nem nőhet fonal.------------------------");
         } 
     }
      /**

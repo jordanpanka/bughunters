@@ -4,6 +4,7 @@ import java.util.List;
 
 import bughunters.Gombafaj.Gombafaj;
 import bughunters.Gombafaj.Gombafonal;
+import bughunters.Gombafaj.Gombatest;
 import bughunters.Gombafaj.Spora;
 
 public class Monotekton extends Tekton {
@@ -15,9 +16,10 @@ public class Monotekton extends Tekton {
      * @exception Exception akkor dobódik ha nem tud oda növeszteni fonalat
      */
     @Override
-    public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan) throws Exception{
+    public Gombafonal gombafonalAdd(Gombafaj g, List<Gombafaj> erintofajok, Tekton honnan) throws Exception{
         //System.out.println("Meghívódik a Monotekton gombafonalAdd metódusa.");
-        
+        //Különbség a tektontól: NEM nőhet fonal rá, hogyha rajta van már egy MÁSIK gombafaj gombafonala vagy teste
+        /*
         if(getFonalak().isEmpty()){
             Gombafonal gf2 = new Gombafonal(gf,this,honnan);
             addFonal(gf2);
@@ -34,6 +36,73 @@ public class Monotekton extends Tekton {
             }
             throw new Exception("Nem növeszthet ide gombafonalat.");
         }
+        */
+        if(!szomszedok.contains(honnan)){ throw new Exception("Nem lehet fonalat növeszteni.");}
+
+            //1.rajta lévő FAJ kikeresése, és ellenőrzése ki szeretne RÁ fonalat rakni.
+            if(erintofajok != null && !erintofajok.isEmpty()) {
+                Gombafaj gfaj = erintofajok.get(0);
+                if (!gfaj.equals(g)) {
+                    throw new Exception("Nem lehet fonalat növeszteni, mert más gombafaj van rajta.");
+                }
+            }
+            
+            if(gombafonalak != null) {
+                Gombafaj gfaj = gombafonalak.get(0).getGombafaj();
+                if (!gfaj.equals(g)) {
+                    throw new Exception("Nem lehet fonalat növeszteni, mert más gombafaj van rajta.");
+                }
+            }
+
+            // 2. Van-e már ilyen fonal?
+            for (Gombafonal gfonal : gombafonalak) {
+                if ((gfonal.getVegpont1().equals(this) && gfonal.getVegpont2().equals(honnan)) ||
+                    (gfonal.getVegpont1().equals(honnan) && gfonal.getVegpont2().equals(this))) {
+                    throw new Exception("Már van ilyen fonal.");
+                }
+            }
+
+            // tektonok ahol gombatestek vannak
+            //List<Tekton> gombatestekHelye = new ArrayList<>();   
+            Boolean noveszthetTestMiatt = false;
+
+            List<Gombatest> gombaTestek = g.getGombaTestekList();
+            if (gombaTestek != null) {
+                for (Gombatest gt : gombaTestek) {
+                    //gombatestekHelye.add(gt.getTekton());
+                    if( gt.getTekton().equals(honnan) || gt.getTekton().equals(this)) {
+                        noveszthetTestMiatt = true; 
+                    }
+                }
+            }
+
+                // 4. Van-e a saját gombafajból fonal valamelyik tektonon?
+                boolean noveszthetFonalMiatt = false;
+
+                for (Gombafonal gfonal : gombafonalak) {
+                    if (gfonal.getGombafaj().equals(g)) {
+                        noveszthetFonalMiatt = true;
+                        break;
+                    }
+                }
+                for (Gombafonal gfonal : honnan.getFonalak()) {
+                    if (gfonal.getGombafaj().equals(g)) {
+                        noveszthetFonalMiatt = true;
+                        break;
+                    }
+                }
+
+            
+            System.out.println("--------------\nKIVUL Növeszthető fonal miatt: "+ noveszthetFonalMiatt + " Növeszthető test miatt: "+ noveszthetTestMiatt+"\n--------------");
+
+            if(noveszthetFonalMiatt || noveszthetTestMiatt) {
+                System.out.println("Növeszthető fonal miatt: "+ noveszthetFonalMiatt + " Növeszthető test miatt: "+ noveszthetTestMiatt);
+                return new Gombafonal(g, this, honnan);
+            }
+            else {
+                throw new Exception("Nem lehet fonalat növeszteni.");
+            }
+
     }
 
     @Override

@@ -501,12 +501,41 @@ public class Parancskezelok {
             }
            
             try {
+                List<Gombafaj> gombafajokt1 = getGombafajokOnTektonBy_Fonalak_Testek(t1);
+                List<Gombafaj> gombafajokt2 = getGombafajokOnTektonBy_Fonalak_Testek(t2);
+
                 Gombasz gombasz = (Gombasz)aktivJatekos;
                 System.out.println("megkapott tektonok: t1: "+t1+" t2: "+t2 ); //!!!!!!!
-                gombasz.fonalNov(t1, t2); 
+                gombasz.fonalNov(t1, gombafajokt1, t2,gombafajokt2); 
             } catch (Exception e) {
                 throw new Exception("Nem sikerult gombafonalat noveszteni");
             }
+    }
+
+    public List<Gombafaj> getGombafajokOnTektonBy_Fonalak_Testek(Tekton t){
+        List<Gombafaj> gombafajok = new ArrayList<>();
+        List<Gombafonal> gombafonalak = t.getFonalak();
+
+        for (Gombafonal fonal : gombafonalak) {
+            Gombafaj gombafaj = fonal.getGombafaj();
+            if (!gombafajok.contains(gombafaj)) {
+                gombafajok.add(gombafaj);           
+            }
+        }
+        for(Gombasz gombasz : gombaszok) {
+            Gombafaj gombafaj = gombasz.getGombafaj();
+            List<Gombatest> gombatestek = gombafaj.getGombaTestekList();
+           for(Gombatest test : gombatestek) {
+               if(test.getTekton().equals(t)) {
+                   if (!gombafajok.contains(gombafaj)) {
+                       gombafajok.add(gombafaj);
+                       break;
+                   }
+               }
+           }
+        }
+
+        return gombafajok;
     }
 
     public void sporaszor(Gombatest gt) throws Exception {
@@ -870,9 +899,11 @@ public class Parancskezelok {
 
                         try {
                             //gf.fonalNov(Tekton1, Tekton2);
+                            List<Gombafaj> gombafajok1 = getGombafajokOnTektonBy_Fonalak_Testek(Tekton1);
+                            List<Gombafaj> gombafajok2 = getGombafajokOnTektonBy_Fonalak_Testek(Tekton2);
 
                             Gombasz gombasz = (Gombasz)aktivJatekos;
-                            gombasz.fonalNov(Tekton1, Tekton2);
+                            gombasz.fonalNov(Tekton1,gombafajok1, Tekton2, gombafajok2);
                         } catch (Exception e) {
                             output.println("Nem sikerult gombafonalat noveszteni");
                             return;
@@ -1364,7 +1395,10 @@ public class Parancskezelok {
                         }*/
 
                         try {
-                            gf.fonalNov(Tekton1, Tekton2);
+                            List<Gombafaj> gombafajok1 = getGombafajokOnTektonBy_Fonalak_Testek(Tekton1);
+                            List<Gombafaj> gombafajok2 = getGombafajokOnTektonBy_Fonalak_Testek(Tekton2);
+
+                            gf.fonalNov(Tekton1,gombafajok1, Tekton2, gombafajok2);
                         } catch (Exception e) {
                             output.println("Nem sikerult gombafonalat noveszteni");
                             return;

@@ -284,11 +284,15 @@ public class Grafika extends JPanel {
     for(int i=0; i<t.getSzomszedok().size();i++){
         Tekton t1=t.getSzomszedok().get(i);
         for(int j=0; j<t1.getFonalak().size();j++){
-            fonalak2.add(t1.getFonalak().get(j));
+            Gombafonal fonal=t1.getFonalak().get(j);
+            if(!fonalak2.contains(fonal)){
+                 fonalak2.add(fonal);
+            }
         }
     }
-    //System.out.println("grafika: " + gombafonalak.size());
 
+    System.out.println("grafika fonalak: " + gombafonalak.size());
+    System.out.println("Fonalak2 száma: " + fonalak2.size());
     for (Gombafonal fonal : fonalak2) {
         Tekton t1 = fonal.getVegpont1();
         Tekton t2 = fonal.getVegpont2();
