@@ -66,6 +66,26 @@ public class Grafika extends JPanel {
         gombatestek=new HashMap<>();
     }
     public void Draw(Tekton t, Graphics g){
+        tektonok.forEach((tek,gtek)->{
+            gtek.setX(-1);
+            gtek.setY(-1);
+        });
+        gombatestek.forEach((tek,gtek)->{
+            gtek.setX(-1);
+            gtek.setY(-1);
+        });
+        gombafonalak.forEach((tek,gtek)->{
+            gtek.setX(-1);
+            gtek.setY(-1);
+        });
+        rovarok.forEach((tek,gtek)->{
+            gtek.setX(-1);
+            gtek.setY(-1);
+        });
+        sporak.forEach((tek,gtek)->{
+            gtek.setX(-1);
+            gtek.setY(-1);
+        });
         super.paintComponent(g);
         int szomszedokSzama = t.getSzomszedok().size();
         ////System.out.println("Szomszédok száma: " + szomszedokSzama);
