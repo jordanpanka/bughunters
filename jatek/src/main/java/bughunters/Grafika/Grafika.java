@@ -299,13 +299,9 @@ public class Grafika extends JPanel {
         }
     }
 }
-
+/* 
     // Kirajzolja a gombafonalakat a tektonok között
-<<<<<<< HEAD
-   /*  public void gombafonalakRajzolasa(Tekton t, Graphics g) {
-=======
     public void gombafonalakRajzolasa(Tekton t, Graphics g) {
->>>>>>> c9a770f6362cd515695ba840230c2a7fda738f03
         Set<Set<Tekton>> kirajzoltFonalak = new HashSet<>();
         List<Tekton> kirajzoltTektonok = t.getSzomszedok();
         kirajzoltTektonok.add(t);
@@ -349,10 +345,6 @@ public class Grafika extends JPanel {
                     fonal.Draw(g);
                     kirajzoltFonalak.add(par);
                 }
-<<<<<<< HEAD
-
-=======
->>>>>>> c9a770f6362cd515695ba840230c2a7fda738f03
         GTekton g1 = tektonok.get(t);
         int x1 = g1.getX();
         int y1 = g1.getY();
@@ -391,10 +383,6 @@ public class Grafika extends JPanel {
                 System.out.println("Y1:"+y1);
                 System.out.println("X2:"+x2);
                 System.out.println("Y2:"+y2);
-<<<<<<< HEAD
-
-=======
->>>>>>> c9a770f6362cd515695ba840230c2a7fda738f03
             }
         }
     }*/
