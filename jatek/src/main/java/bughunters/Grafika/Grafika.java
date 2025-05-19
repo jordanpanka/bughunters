@@ -12,6 +12,7 @@ import java.util.Set;
 
 import javax.swing.JPanel;
 
+import bughunters.Gombafaj.Gombafaj;
 import bughunters.Gombafaj.Gombafonal;
 import bughunters.Gombafaj.Gombatest;
 import bughunters.Gombafaj.Spora;
@@ -235,6 +236,18 @@ public class Grafika extends JPanel {
     tektonok2.add(t);
 
     List<Gombafonal> fonalak2 = t.getFonalak();
+    Set<Gombafaj> gombafajok = new HashSet<>();
+    List<Gombafaj> gombafajLista = new ArrayList<>(gombafajok);
+
+    fonalak2.forEach((fon)->{
+        gombafajok.add(fon.getGombafaj());
+    });
+    HashMap<Gombafaj,Integer> fajok=new HashMap<>();
+    fajok.put(gombafajLista.get(0),50);
+    for(int i=1; i<gombafajok.size(); i++){
+        if(i%2==0)fajok.put(gombafajLista.get(i),50-i*5);
+        else fajok.put(gombafajLista.get(i),50+i*5);
+    }
     for(int i=0; i<t.getSzomszedok().size();i++){
         Tekton t1=t.getSzomszedok().get(i);
         for(int j=0; j<t1.getFonalak().size();j++){
@@ -251,12 +264,6 @@ public class Grafika extends JPanel {
         GTekton g1 = tektonok.get(t2);
         GTekton g2 = tektonok.get(t1);
 
-        //if(t2.equals(t))System.out.println("JAj");
-
-       /*  if (g1 == null || g2 == null) {
-            continue; // Nincs grafikai információ az egyik végpontról, kihagyjuk
-        }*/
-
         int x1 = g1.getX();
         //System.out.println(g1.getX());
         int y1 = g1.getY();
@@ -267,10 +274,10 @@ public class Grafika extends JPanel {
         //System.out.println(g2.getY());
         GGombafonal gFonal = gombafonalak.get(fonal);
         if (gFonal != null) {
-            gFonal.setX1(x1+50);
-            gFonal.setY1(y1+50);
-            gFonal.setX2(x2+50);
-            gFonal.setY2(y2+50);
+            gFonal.setX1(x1+fajok.get(fonal.getGombafaj()));
+            gFonal.setY1(y1+fajok.get(fonal.getGombafaj()));
+            gFonal.setX2(x2+fajok.get(fonal.getGombafaj()));
+            gFonal.setY2(y2+fajok.get(fonal.getGombafaj()));
 
            // System.out.println("Fonal koordináták: (" + x1 + "," + y1 + ") -> (" + x2 + "," + y2 + ")");
             
