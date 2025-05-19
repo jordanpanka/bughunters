@@ -149,7 +149,7 @@ public class Grafika extends JPanel {
 
             }
         }
-
+        sporaElhelyezesKorben(t,g);
         //fonalrajzol(t,g);
         //gombatestek beállítása csak a középső
         gombatestek.forEach((gombatest,gg)->{
@@ -206,29 +206,29 @@ public class Grafika extends JPanel {
         int sugar =50;
         int cX=tektonok.get(t).getX();
         int cY=tektonok.get(t).getY();
-    List<Spora> sporakList = t.getSporak();
-    int sporaSzam = sporakList.size();
+        List<Spora> sporakList = t.getSporak();
+        int sporaSzam = sporakList.size();
 
-    System.out.println("Spórák száma: " + sporaSzam);
+        System.out.println("Spórák száma: " + sporaSzam);
 
-    if (sporaSzam == 0) return;  // Nincs mit elhelyezni
+        if (sporaSzam == 0) return;  // Nincs mit elhelyezni
 
-    double szogLepes = 2 * Math.PI / sporaSzam;  // Egyenlő elosztás a kör mentén
+        double szogLepes = 2 * Math.PI / sporaSzam;  // Egyenlő elosztás a kör mentén
 
-    for (int i = 0; i < sporaSzam; i++) {
-        double szog = i * szogLepes;
-        int sporaX = (int) (cX + sugar * Math.cos(szog));
-        int sporaY = (int) (cY + sugar * Math.sin(szog));
+        for (int i = 0; i < sporaSzam; i++) {
+            double szog = i * szogLepes;
+            int sporaX = (int) (cX + sugar * Math.cos(szog));
+            int sporaY = (int) (cY + sugar * Math.sin(szog));
 
-        Spora spora = sporakList.get(i);
-        GSpora gSpora = sporak.get(spora);
+            Spora spora = sporakList.get(i);
+            GSpora gSpora = sporak.get(spora);
 
-        if (gSpora != null) {
-            gSpora.setX(sporaX);
-            gSpora.setY(sporaY);
-            gSpora.Draw(g);  // Kirajzolás
-            System.out.println("Spóra rajzolva X=" + sporaX + ", Y=" + sporaY);
-        }
+            if (gSpora != null) {
+                gSpora.setX(sporaX);
+                gSpora.setY(sporaY);
+                gSpora.Draw(g);  // Kirajzolás
+                System.out.println("Spóra rajzolva X=" + sporaX + ", Y=" + sporaY);
+            }
         }
 
         
@@ -255,7 +255,7 @@ public class Grafika extends JPanel {
    
     for(int i=1; i<gombafajok.size(); i++){
         if(i%2==0)fajok.put(gombafajLista.get(i),50-i*10);
-        else fajok.put(gombafajLista.get(i),50+i*15);
+        else fajok.put(gombafajLista.get(i),50+i*16);
     }
     for(int i=0; i<t.getSzomszedok().size();i++){
         Tekton t1=t.getSzomszedok().get(i);
