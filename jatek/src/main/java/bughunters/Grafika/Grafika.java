@@ -1,6 +1,7 @@
 package bughunters.Grafika;
 
 import java.awt.Graphics;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -137,8 +138,7 @@ public class Grafika extends JPanel {
                     //System.out.println("Szomszéd tekton rajzolva X=" + szomszedX + ", Y=" + szomszedY);
                     gombatestek.forEach((gombatest, gg) -> {
                             if (gombatest.getTekton().equals(szomszed)) {
-                                //gg.setX(szomszedX);
-                                //gg.setY(szomszedY);
+                    
                                 gg.Draw(g);
                             }
                     });
@@ -292,14 +292,15 @@ public class Grafika extends JPanel {
     }}
     }
 
-    public Gombafonal fonalKeres(int x, int y){
+  /*  public Gombafonal fonalKeres(int x, int y){
         y=y-230;
         System.out.println("fonalkeres");
         for (Map.Entry<Gombafonal, GGombafonal> entry : gombafonalak.entrySet()) {
-            double X1=(double)entry.getValue().getX();
+            double X1=(double)entry.getValue().getX1();
             double X2=(double)entry.getValue().getX2();
-            double Y1=(double)entry.getValue().getY();
+            double Y1=(double)entry.getValue().getY1();
             double Y2=(double)entry.getValue().getY2();
+            System.out.println("Koordináták: "+X1+","+","+Y1+","+X2+","+Y2);
             double dX=(double)entry.getValue().getX()-entry.getValue().getX2();
             double dY=(double)entry.getValue().getY()-entry.getValue().getY2();
             double t=((x-X1)*dX+(y-Y1)*dY)/(dX*dX+dY*dY);
@@ -312,8 +313,16 @@ public class Grafika extends JPanel {
             }
         }
         return null; // nem találtuk meg
-    }
-   
+    }*/
+  /*  public Gombafonal fonalKeres(int x, int y){
+        y=y-230;
+
+
+   }*/
+   /*public double ponTav(Point point1,Point point2){
+        return Math.sqrt((point1.x - point2.x) * (point1.x - point2.x) + (point1.y - point2.y) * (point1.y - point2.y));
+   }*/
+
     public Gombatest gombatestKeres(int x, int y) {
         y=y-230;
         //System.out.println("Képernyő"+x+y);
