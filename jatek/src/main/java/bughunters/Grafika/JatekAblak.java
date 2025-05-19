@@ -55,6 +55,8 @@ public class JatekAblak  extends JFrame{
    
     JPanel jatekosInfo;
 
+    Object kiv;
+
     public JatekAblak(Parancskezelok pk, Jatek jatek){
 
         game=pk;
@@ -203,12 +205,12 @@ public class JatekAblak  extends JFrame{
         });
         megjelenitGombasz.addActionListener(e->{
             String kivalasztott=(String)tektonokGombasz.getSelectedItem();
-            Object kiv =game.getObjektumok().get((Object)kivalasztott);
+             kiv =game.getObjektumok().get((Object)kivalasztott);
             grafika.Draw((Tekton)kiv,grafika.getGraphics());
         });
          megjelenitRovarasz.addActionListener(e->{
             String kivalasztott=(String)tektonokRovarasz.getSelectedItem();
-            Object kiv =game.getObjektumok().get((Object)kivalasztott);
+             kiv =game.getObjektumok().get((Object)kivalasztott);
             grafika.Draw((Tekton)kiv,grafika.getGraphics());
         });
     }
@@ -333,6 +335,8 @@ public class JatekAblak  extends JFrame{
                 }
 
                 jatekosAdatFrissit(jatekosInfo);
+                grafika.Draw((Tekton)kiv,grafika.getGraphics());
+
             };
              
         }

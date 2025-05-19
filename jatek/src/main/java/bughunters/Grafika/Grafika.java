@@ -201,7 +201,7 @@ public class Grafika extends JPanel {
 
 
     public void sporaElhelyezesKorben(Tekton t, Graphics g) {
-        int sugar =50;
+        int sugar =45;
         int cX=tektonok.get(t).getX();
         int cY=tektonok.get(t).getY();
         List<Spora> sporakList = t.getSporak();
@@ -222,8 +222,8 @@ public class Grafika extends JPanel {
             GSpora gSpora = sporak.get(spora);
 
             if (gSpora != null) {
-                gSpora.setX(sporaX);
-                gSpora.setY(sporaY);
+                gSpora.setX(sporaX+44);
+                gSpora.setY(sporaY+44);
                 gSpora.Draw(g);  // Kirajzolás
                 //System.out.println("Spóra rajzolva X=" + sporaX + ", Y=" + sporaY);
             }
