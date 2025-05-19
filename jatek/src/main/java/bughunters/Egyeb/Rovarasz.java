@@ -160,8 +160,12 @@ public class Rovarasz extends Jatekos {
      */
     public void rovarokAllapotIdejenekNovelese(){
         for (Rovar rovar : rovarok) {
-            int ideiglenes = rovar.getAllapotIdeje();
-            rovar.setAllapotIdeje(ideiglenes++);
+            System.out.println("Rovar neve: "+rovar + " Allapot ideje: "+rovar.getAllapotIdeje());
+            int ideiglenes = rovar.getAllapotIdeje() +1;
+
+            rovar.setAllapotIdeje(ideiglenes);
+            System.out.println("Rovar neve: "+rovar + " Allapot ideje változtatas utan: "+rovar.getAllapotIdeje());
+
         }
     }
 
@@ -171,6 +175,7 @@ public class Rovarasz extends Jatekos {
     public void rovarokAlapallapotbaHelyezese(){
         for (Rovar rovar : rovarok) {
             if(rovar.getAllapotIdeje()>=1){
+                System.out.println("Rovar neve: "+rovar +" Rovar allapota: " +rovar.getAllapot()+" Allapot ideje: "+rovar.getAllapotIdeje());
                 rovar.alapAllapot();
             }
         }

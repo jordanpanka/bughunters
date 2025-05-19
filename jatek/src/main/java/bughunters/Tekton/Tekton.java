@@ -357,13 +357,19 @@ public class Tekton implements FonalKezeles {
         for (Spora spora : sporak) {
             //ha az a sporatipus benne van már a listában, csak növeljük a mennyiséget
             if (spora.getGombafaj().equals(sp.getGombafaj())) {
+                System.out.println("Spora mar letezett: "+sp.getGombafaj().getNev() + " mennyiseg elötte: "+sp.getMennyiseg());
+
                 spora.szorasTortent();
+                System.out.print(" mennyiseg utana: "+spora.getMennyiseg());
                 return;
             }
         }
 
         //ha nincs benne a listában, akkor hozzáadjuk
+        sp.szorasTortent();
         sporak.add(sp);
+        System.out.println("Új spora keletkezett: "+sp.getGombafaj().getNev() + " mennyiseg: "+sp.getMennyiseg());
+
     }
 
     /***
