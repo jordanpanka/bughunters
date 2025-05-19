@@ -281,7 +281,7 @@ public class Grafika extends JPanel {
         GTekton g1 = tektonok.get(t2);
         GTekton g2 = tektonok.get(t1);
 
-        if(t2.equals(t))System.out.println("JAj");
+        //if(t2.equals(t))System.out.println("JAj");
 
        /*  if (g1 == null || g2 == null) {
             continue; // Nincs grafikai információ az egyik végpontról, kihagyjuk
@@ -290,11 +290,11 @@ public class Grafika extends JPanel {
         int x1 = g1.getX();
         System.out.println(g1.getX());
         int y1 = g1.getY();
-         System.out.println(g1.getY());
+        System.out.println(g1.getY());
         int x2 = g2.getX();
-         System.out.println(tektonok.get(t1).getX());
+        System.out.println(tektonok.get(t1).getX());
         int y2 = g2.getY();
-         System.out.println(g2.getY());
+        System.out.println(g2.getY());
         GGombafonal gFonal = gombafonalak.get(fonal);
         if (gFonal != null) {
             gFonal.setX1(x1);
