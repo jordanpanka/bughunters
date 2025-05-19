@@ -19,24 +19,11 @@ public class Monotekton extends Tekton {
     public Gombafonal gombafonalAdd(Gombafaj g, List<Gombafaj> erintofajok, Tekton honnan) throws Exception{
         //System.out.println("Meghívódik a Monotekton gombafonalAdd metódusa.");
         //Különbség a tektontól: NEM nőhet fonal rá, hogyha rajta van már egy MÁSIK gombafaj gombafonala vagy teste
-        /*
-        if(getFonalak().isEmpty()){
-            Gombafonal gf2 = new Gombafonal(gf,this,honnan);
-            addFonal(gf2);
-            return gf2;
+       
+        for(Gombafaj gfaj : erintofajok) {
+            System.out.println("MONOTEKTON Erintofaj: "+gfaj.getNev());
         }
-        else {
-            for (Gombafonal gombafonal : getFonalak()) {
-                if(gombafonal.getGombafaj() == gf && 
-                (gombafonal.getVegpont1() == this || gombafonal.getVegpont2() == this)){
-                    Gombafonal gf2 = new Gombafonal(gf,this,honnan);
-                    addFonal(gf2);
-                    return gf2;
-                }
-            }
-            throw new Exception("Nem növeszthet ide gombafonalat.");
-        }
-        */
+
         if(!szomszedok.contains(honnan)){ throw new Exception("Nem lehet fonalat növeszteni.");}
 
             //1.rajta lévő FAJ kikeresése, és ellenőrzése ki szeretne RÁ fonalat rakni.
