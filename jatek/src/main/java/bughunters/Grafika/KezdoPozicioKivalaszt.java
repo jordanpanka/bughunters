@@ -33,6 +33,11 @@ import bughunters.Egyeb.Rovarasz;
 import bughunters.Gombafaj.Gombafaj;
 import bughunters.Tekton.Tekton;
 
+
+/**
+ * A játékban résztvevő játékosok kezdőpozícióit megjelenítő ablak.
+ * A játékosok kiválaszthatják a kezdő pozíciókat a gombászok és rovarászok számára.
+ */
 public class KezdoPozicioKivalaszt extends JFrame{
     private JButton kovetkezo;
     private JLabel kiirJatekosNev;
@@ -43,22 +48,52 @@ public class KezdoPozicioKivalaszt extends JFrame{
     private Parancskezelok game;
     
 
+    /**
+    * Visszaadja a gombászok számát.
+    *
+    * @return a gombászok száma
+    */
     public int getGombaszokSzama() {
         return gombaszokSzama;
     }
+
+    /**
+     * Beállítja a gombászok számát.
+     *
+     * @param gombaszokSzama a beállítandó gombászok száma
+     */
     public void setGombaszokSzama(int gombaszokSzama) {
         this.gombaszokSzama = gombaszokSzama;
     }
 
+    /**
+     * Visszaadja a rovarászok számát.
+     *
+     * @return a rovarászok száma
+     */
     public int getRovaraszokSzama() {
         return rovaraszokSzama;
     }
+
+    /**
+     * Beállítja a rovarászok számát.
+     *
+     * @param rovaraszokSzama a beállítandó rovarászok száma
+     */
     public void setRovaraszokSzama(int rovaraszokSzama) {
         this.rovaraszokSzama = rovaraszokSzama;
     }
 
     
+    /**
+     * Konstruktor, amely létrehozza a kezdőpozíció kiválasztó ablakot.
+     * Ezen az ablakon keresztül tudják a játékosok kiválasztani a kezdő pozíciókat.
+     *
+     * @param pk    A játékhoz tartozó parancskezelő objektum
+     * @param jatek A játék logikát reprezentáló objektum
+     */
     public KezdoPozicioKivalaszt(Parancskezelok pk,  Jatek jatek){
+        // Ablak beállítások
         setTitle("Kezdőpozíció kiválasztása");
         setSize(600,700);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -66,24 +101,28 @@ public class KezdoPozicioKivalaszt extends JFrame{
         setLocationRelativeTo(null);
 
 
+        // Játék objektum mentése és játékosok számának lekérdezése
         game=pk;
         this.gombaszokSzama = game.getGombaszok().size();
         this.rovaraszokSzama = game.getRovaraszok().size();
 
 
+        // GUI komponensek létrehozása
         kovetkezo=new JButton("Következő");
         kiirJatekosNev=new JLabel("Kezdő pozíciók");
    
 
-        //méretek beállítása
+        // Cím címke formázása
         kiirJatekosNev.setSize(new Dimension(200,70));
         kiirJatekosNev.setFont(new Font("SansSerif", Font.ITALIC,30));
 
 
+        // Játékosok lekérdezése
         List<Gombasz> gombaszok = game.getGombaszok();
         List<Rovarasz> rovaraszok = game.getRovaraszok();
 
 
+        // Fő panel egyedi háttérrel (pasztel színátmenet)
         JPanel panel = new JPanel() {
              @Override
             protected void paintComponent(Graphics g) {
@@ -101,12 +140,14 @@ public class KezdoPozicioKivalaszt extends JFrame{
         };
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
+        // Cím hozzáadása
         panel.add(Box.createVerticalStrut(30));
         kiirJatekosNev.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         panel.add(kiirJatekosNev);
         panel.add(Box.createVerticalStrut(40)); // Ez ad egy kis helyet a cím alá
 
 
+        // Gombász játékosokhoz beviteli sorok létrehozása
         for (int i = 0; i < gombaszokSzama; i++) {
             JPanel row = new JPanel(new FlowLayout(FlowLayout.LEFT)) {
                 @Override
@@ -127,6 +168,7 @@ public class KezdoPozicioKivalaszt extends JFrame{
             row.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
             JLabel label = new JLabel(gombaszok.get(i).getNev());
 
+            // Tekton helyek feltöltése a combobox-ba
             JComboBox<String> comboBox = new JComboBox<>();
             comboBoxes.add(comboBox);
 
@@ -141,10 +183,10 @@ public class KezdoPozicioKivalaszt extends JFrame{
             row.add(label);
             row.add(comboBox);
             panel.add(row);
-            //panel.add(Box.createVerticalStrut(5));
         }
 
 
+        // Rovarász játékosokhoz beviteli sorok létrehozása
         for (int i = 0; i < rovaraszokSzama; i++) {
             JPanel row = new JPanel(new FlowLayout(FlowLayout.LEFT)) {
                 @Override
@@ -179,10 +221,10 @@ public class KezdoPozicioKivalaszt extends JFrame{
             row.add(label);
             row.add(comboBox);
             panel.add(row);
-            //panel.add(Box.createVerticalStrut(5));
         }
 
         
+        // "Következő" gomb eseménykezelője
         kovetkezo.addActionListener(e->{
             try{
                 HashMap<Gombasz, Tekton> gombaszokTestei = new HashMap<Gombasz, Tekton>();
@@ -190,12 +232,14 @@ public class KezdoPozicioKivalaszt extends JFrame{
 
                 int i = 0;
 
+                // Gombászok választásainak lekérdezése
                 for(Gombasz gombasz : gombaszok){
                     Tekton valasztott = game.getTekton((String)comboBoxes.get(i).getSelectedItem());
                     gombaszokTestei.put(gombasz, valasztott);
                     i++;
                 }
                 
+                // Rovarászok választásainak lekérdezése
                 for(Rovarasz rovarasz : rovaraszok){
                     Tekton valasztott = game.getTekton((String)comboBoxes.get(i).getSelectedItem());
                     rovaraszokRovarai.put(rovarasz, valasztott);
@@ -203,9 +247,11 @@ public class KezdoPozicioKivalaszt extends JFrame{
                 }
 
 
+                // Játék inicializálása a választások alapján
                 game.kezdetiRovarokGombak(gombaszokTestei, rovaraszokRovarai);
 
 
+                // Ablak bezárása és játékablak megnyitása
                 setVisible(false);
 
                 SwingUtilities.invokeLater(() -> {
@@ -221,17 +267,16 @@ public class KezdoPozicioKivalaszt extends JFrame{
         );
 
 
+        // Következő gomb formázása
         kovetkezo.setPreferredSize(new Dimension(200,50));
         kovetkezo.setAlignmentX(JButton.CENTER_ALIGNMENT);
-        //panel.add(kovetkezo);
         panel.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
-        //add(panel);
 
-        // Scrollozható fő tartalom
+        // Scrollozható tartalom létrehozása
         JScrollPane scrollPane = new JScrollPane(panel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-        // Gomb panel alulra
+        // Alsó gombpanel saját háttérrel
         JPanel gombPanel = new JPanel() {
              @Override
             protected void paintComponent(Graphics g) {
@@ -250,7 +295,7 @@ public class KezdoPozicioKivalaszt extends JFrame{
         gombPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         gombPanel.add(kovetkezo);
 
-        // Ablak fő elrendezése
+        /// Az ablak végső elrendezése
         setLayout(new BorderLayout());
         add(scrollPane, BorderLayout.CENTER);
         add(gombPanel, BorderLayout.SOUTH);
