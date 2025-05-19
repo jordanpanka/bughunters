@@ -315,10 +315,12 @@ public class Gombafaj implements FonalKezeles{
     }
     
     //VÁLTOZTATAS: r.torolRovar(), kitörli a rovart a rovarasz listából
-    public void rovarEves(Rovar r)throws Exception{
+    public void rovarEves(Rovar r, Boolean testnovesztessel)throws Exception{
         try{
             if(r.getAllapot() == rovarAllapot.Benitott){
-                testNovesztes(r.getTartozkodas(), false);
+                if (testnovesztessel) {
+                    testNovesztes(r.getTartozkodas(), false);
+                }
                 r.torolRovar();
             }
             else
