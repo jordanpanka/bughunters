@@ -177,6 +177,7 @@ public class Rovarasz extends Jatekos {
             if(rovar.getAllapotIdeje()>=1){
                 System.out.println("Rovar neve: "+rovar +" Rovar allapota: " +rovar.getAllapot()+" Allapot ideje: "+rovar.getAllapotIdeje());
                 rovar.alapAllapot();
+                System.out.println("Alap állapotba került.");
             }
         }
     }

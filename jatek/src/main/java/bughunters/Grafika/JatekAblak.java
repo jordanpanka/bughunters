@@ -321,7 +321,7 @@ public class JatekAblak  extends JFrame{
                     else{
                         elsokattintas=false;
                         Spora sp=grafika.sporaKeres(e.getX(),e.getY());
-                       
+                        System.out.println("Mennyiség:"+sp.getMennyiseg());
                         try{
                             game.eszik(rovarKiv,sp);
                              jatek.korEllenorzes(JatekAblak.this);
