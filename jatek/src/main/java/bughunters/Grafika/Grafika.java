@@ -67,7 +67,7 @@ public class Grafika extends JPanel {
     public void Draw(Tekton t, Graphics g){
         super.paintComponent(g);
         int szomszedokSzama = t.getSzomszedok().size();
-        System.out.println("Szomszédok száma: " + szomszedokSzama);
+        //System.out.println("Szomszédok száma: " + szomszedokSzama);
 
         int R = 150;  // Kör sugara
         int cX = 680; // Középpont X koordinátája
@@ -77,14 +77,14 @@ public class Grafika extends JPanel {
         tektonok.get(t).setX(cX);
         tektonok.get(t).setY(cY);
         
-        System.out.println("Tekton középen: X=" + cX + ", Y=" + cY);
+       // System.out.println("Tekton középen: X=" + cX + ", Y=" + cY);
 
         // Szomszédok pozícióinak kiszámítása és beállítása
 
-        System.out.println("Gombateste száma: " + gombatestek.size());
+        //System.out.println("Gombateste száma: " + gombatestek.size());
 
         if (szomszedokSzama != 0) {
-            System.out.println("Vannak szomszédok.");
+            //System.out.println("Vannak szomszédok.");
             double szogLepes = 2 * Math.PI / szomszedokSzama;  // Egyenlő elosztás a kör mentén
 
             for (int i = 0; i < szomszedokSzama; i++) {
@@ -99,7 +99,7 @@ public class Grafika extends JPanel {
                     gSzomszed.setX(szomszedX);
                     gSzomszed.setY(szomszedY);
                     //gSzomszed.Draw(g);  // Azonnal ki is rajzoljuk
-                    System.out.println("Szomszéd tekton rajzolva X=" + szomszedX + ", Y=" + szomszedY);
+                    //System.out.println("Szomszéd tekton rajzolva X=" + szomszedX + ", Y=" + szomszedY);
 
                     gombatestek.forEach((gombatest, gg) -> {
                             if (gombatest.getTekton().equals(szomszed)) {
@@ -150,14 +150,13 @@ public class Grafika extends JPanel {
             }
         }
         sporaElhelyezesKorben(t,g);
-        //fonalrajzol(t,g);
+       
         //gombatestek beállítása csak a középső
         gombatestek.forEach((gombatest,gg)->{
             if(gombatest.getTekton().equals(t)){
                 gg.setX(cX);
                 gg.setY(cY);
                 gg.Draw(g);
-                System.out.println("Gombatest rajzolva X=" + cX + ", Y=" + cY +"nev: "+gombatest.getGombafaj().getNev());
             }
         });
         
@@ -197,8 +196,7 @@ public class Grafika extends JPanel {
                 }
             }
         }
-        //fonalrajzol(t,g);
-        //tektonok.forEach((tekton,gtekton)->{System.out.println(" X"+gtekton.getX());});
+        
     }
 
 
@@ -209,7 +207,7 @@ public class Grafika extends JPanel {
         List<Spora> sporakList = t.getSporak();
         int sporaSzam = sporakList.size();
 
-        System.out.println("Spórák száma: " + sporaSzam);
+       // System.out.println("Spórák száma: " + sporaSzam);
 
         if (sporaSzam == 0) return;  // Nincs mit elhelyezni
 
@@ -227,7 +225,7 @@ public class Grafika extends JPanel {
                 gSpora.setX(sporaX);
                 gSpora.setY(sporaY);
                 gSpora.Draw(g);  // Kirajzolás
-                System.out.println("Spóra rajzolva X=" + sporaX + ", Y=" + sporaY);
+                //System.out.println("Spóra rajzolva X=" + sporaX + ", Y=" + sporaY);
             }
         }
 
@@ -236,7 +234,7 @@ public class Grafika extends JPanel {
     
             
     public void fonalrajzol(Tekton t, Graphics g) {
-    System.out.println("fonalrajzol");
+    //System.out.println("fonalrajzol");
 
     List<Tekton> tektonok2 = new ArrayList<>(t.getSzomszedok());
     tektonok2.add(t);
@@ -263,12 +261,12 @@ public class Grafika extends JPanel {
             fonalak2.add(t1.getFonalak().get(j));
         }
     }
-    System.out.println("grafika: " + gombafonalak.size());
+    //System.out.println("grafika: " + gombafonalak.size());
 
     for (Gombafonal fonal : fonalak2) {
         Tekton t1 = fonal.getVegpont1();
         Tekton t2 = fonal.getVegpont2();
-        if(tektonok2.contains(t1) && tektonok2.contains(t2)){System.out.println("Benne van");
+        if(tektonok2.contains(t1) && tektonok2.contains(t2)){//System.out.println("Benne van");
         //else{System.out.println("Az élet szép");}
         GTekton g1 = tektonok.get(t2);
         GTekton g2 = tektonok.get(t1);
@@ -287,26 +285,15 @@ public class Grafika extends JPanel {
             gFonal.setY1(y1+fajok.get(fonal.getGombafaj()));
             gFonal.setX2(x2+fajok.get(fonal.getGombafaj()));
             gFonal.setY2(y2+fajok.get(fonal.getGombafaj()));
-
-           // System.out.println("Fonal koordináták: (" + x1 + "," + y1 + ") -> (" + x2 + "," + y2 + ")");
             
             gFonal.Draw(g);
         }
     }}
     }
 
-
-    @Override
-    public void paintComponent(Graphics g){
-
-        System.out.println(tektonok.size());
-        System.out.println(rovarok.size());
-        System.out.println(gombatestek.size());
-        
-
-    }
     public Gombafonal fonalKeres(int x, int y){
         y=y-230;
+        System.out.println("fonalkeres");
         for (Map.Entry<Gombafonal, GGombafonal> entry : gombafonalak.entrySet()) {
             double X1=(double)entry.getValue().getX();
             double X2=(double)entry.getValue().getX2();
@@ -319,7 +306,7 @@ public class Grafika extends JPanel {
             double projX = X1 + t * dX;
             double projY = Y1 + t * dY;
             double tav=Math.hypot(x - projX, y - projY);
-            if(tav<=0.5){
+            if(tav<=5){
                 return entry.getKey();
             }
         }
@@ -328,12 +315,12 @@ public class Grafika extends JPanel {
    
     public Gombatest gombatestKeres(int x, int y) {
         y=y-230;
-        System.out.println("Képernyő"+x+y);
+        //System.out.println("Képernyő"+x+y);
 
         for (Map.Entry<Gombatest, GGombatest> entry : gombatestek.entrySet()) {
             double xC =(double) entry.getValue().getX()+50;
             double yC = (double)entry.getValue().getY()+50;
-            System.out.println("Aktuális tektin:"+xC+yC);
+            //System.out.println("Aktuális tektin:"+xC+yC);
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
             if (d <=35) {
                 return entry.getKey(); // megtaláltuk
@@ -358,11 +345,11 @@ public class Grafika extends JPanel {
     public Rovar rovarKeres(int x, int y){
         //lehet nem jó
         y=y-230;
-        System.out.println("Képernyő"+x+y);
+        System.out.println("Rovarkeres"+x+y);
         for (Map.Entry<Rovar, GRovar> entry : rovarok.entrySet()) {
             double xC = (double)entry.getValue().getX()+45;
             double yC = (double)entry.getValue().getY()+45;
-            System.out.println("Aktuális tektin:"+xC+yC);
+            //System.out.println("Aktuális tektin:"+xC+yC);
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
             if (d < 22) {
                 return entry.getKey(); // megtaláltuk

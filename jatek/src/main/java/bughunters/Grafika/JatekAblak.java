@@ -44,7 +44,7 @@ public class JatekAblak  extends JFrame{
     private JButton megjelenitGombasz;
     private JButton megjelenitRovarasz;
     private boolean isGombasz;
-    private boolean elsokattintas;
+    private boolean elsokattintas=false;
     private Tekton elsoTekton;
     private Rovar rovarKiv;
     private HashMap<String, Boolean> mouse;
@@ -196,6 +196,7 @@ public class JatekAblak  extends JFrame{
         });
         Vag.addActionListener(e->{
             mouse.put("Vag",true);
+            if(elsokattintas)System.out.println("elso");
         });
         Eszik.addActionListener(e->{
             mouse.put("Eszik",true);
@@ -216,7 +217,8 @@ public class JatekAblak  extends JFrame{
            
             @Override
             public void mouseClicked(MouseEvent e) { 
-                Point grafikaPont = SwingUtilities.convertPoint(JatekAblak.this, e.getPoint(), grafika);
+                //if (e.getClickCount() != 1) return; 
+                //Point grafikaPont = SwingUtilities.convertPoint(JatekAblak.this, e.getPoint(), grafika);
                 System.out.println("Meghívódik a kttintás");
                 if (Boolean.TRUE.equals(mouse.get("testNov"))) {
                     Tekton t =grafika.tektonKeres(e.getX(), e.getY());
@@ -293,11 +295,13 @@ public class JatekAblak  extends JFrame{
                     if(!elsokattintas){
                         elsokattintas=true;
                         rovarKiv=grafika.rovarKeres(e.getX(), e.getY());
+                        System.out.println("elso kett.");
+                        return;
                     }
                     else{
                         elsokattintas=false;
                         Gombafonal gf=grafika.fonalKeres(e.getX(),e.getY());
-                        
+                        System.out.println("masodik kett.");
                         try{
                            game.vag(rovarKiv, gf);
                             jatek.korEllenorzes(JatekAblak.this);
