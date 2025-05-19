@@ -51,12 +51,19 @@ public class Parancskezelok {
     private List<Gombasz> gombaszok;
     private List<Rovarasz> rovaraszok;
     private HashMap<String, Object> objektumok;
+    /**
+     * @brief Visszaadja az objektumok HashMap-et amely a játékban lévő objektumokat tárolja név szerint
+     * @return Az objektumok HashMap-e
+     */
     public HashMap<String, Object> getObjektumok() {
         return objektumok;
     }
 
 
-
+    /**
+     * @brief Beállítja az objektumok HashMap-et
+     * @param objektumok Az új HashMap amivel felülírjuk a jelenlegit
+     */
     public void setObjektumok(HashMap<String, Object> objektumok) {
         this.objektumok = objektumok;
     }
@@ -107,6 +114,10 @@ public class Parancskezelok {
         return allapot;
     }
 
+    /**
+     * @brief Visszaadja a jatekter objektumot
+     * @return A játékhoz tartozó Jatekter objektum
+     */
     public Jatekter getJatekter() {
         return jatekter;
     }
@@ -114,27 +125,59 @@ public class Parancskezelok {
         this.jatekter = jatekter;
     }
 
+    /**
+     * @brief Visszaadja a jatekosok listáját
+     * @return A játékhoz tartozó Jatekosok listája
+     */
     public List<Jatekos> getJatekosok() {
         return jatekosok;
     }
+    
+    /**
+     * @brief Visszaadja a rovaraszok listáját
+     * @return A játékhoz tartozó Rovaraszok listája
+     */
     public List<Rovarasz> getRovaraszok() {
         return rovaraszok;
     }
+
+    /**
+     * @brief Visszaadja a gombászok listáját
+     * @return A játékhoz tartozó Gombaszok listája
+     */
     public List<Gombasz> getGombaszok() {
         return gombaszok;
     }
+
+    /**
+     * @brief Beállítja a jatekosok listáját a kapott listára
+     * @param jatekosok Az új Jatekos lista amivel felülírjuk a jelenlegit
+     */
     public void setJatekosok(List<Jatekos> jatekosok) {
         this.jatekosok = jatekosok;
     }
 
+    /**
+     * @brief Beállítja a jatekosok közül az aktív játékost.
+     * @param aktivJatekos Az aktív játékos beállítása
+     */
     public void setAktivJatekos(Jatekos aktivJatekos) {
         this.aktivJatekos = aktivJatekos;
     }
+    
+    /**
+     * @brief Visszaadja az aktív játékost
+     * @return A jelenlegi aktív játékos
+     */
     public Jatekos getAktivJatekos() {
         return aktivJatekos;
     }
 
-
+    /**
+     * @brief Betölti a megadott gombafajhoz tartozó képet
+     * @param gf A gombafaj aminek a képét keressük
+     * @return A gombafajhoz tartozó BufferedImage vagy null ha hiba történt
+     */
     public BufferedImage getGombatestKepByFaj(Gombafaj gf){
         BufferedImage img = null;
         try {
@@ -163,6 +206,11 @@ public class Parancskezelok {
         return img;
     }
 
+    /**
+     * @brief Betölti a megadott színű rovar képét
+     * @param szin A rovar színe ami meghatározza a képet
+     * @return A rovarhoz tartozó BufferedImage vagy null ha hiba történt
+     */
     public BufferedImage getRovarKepByColor(Color szin){
         Color BROWN = new Color(121, 87, 53);
         Color LIGHTBROWN = new Color(172, 86, 0);
@@ -186,6 +234,11 @@ public class Parancskezelok {
         return img;
     }
 
+    /**
+     * @brief Visszaadja a játékos színét szövegként
+     * @param jatekos A vizsgált játékos
+     * @return A szín szöveges reprezentációja vagy null ha nem található
+     */
     public String getColorStringByJatekos(Jatekos jatekos){
         String szin = null;
         try {
@@ -229,6 +282,11 @@ public class Parancskezelok {
         return szin;
     }
 
+    /**
+     * @brief Visszaadja a gombafajhoz tartozó színt
+     * @param gf A vizsgált gombafaj
+     * @return A gombafaj színe vagy null ha ismeretlen faj
+     */
     public Color getColorKepByFaj(Gombafaj gf){
         Color szin = null;
         switch(gf.getNev()) {
@@ -252,6 +310,11 @@ public class Parancskezelok {
         return szin;
     }
 
+    /**
+     * @brief Visszaadja a tekton típusának megfelelő színt
+     * @param tektonNev A tekton típusának kezdőbetűje
+     * @return A tektonhoz tartozó szín vagy null ha ismeretlen típus
+     */
     public Color getColorTektonByName(char tektonNev){
         Color szin = null;
         switch(tektonNev) {
@@ -309,6 +372,12 @@ public class Parancskezelok {
         return tektonNevek;
     }
 
+    /**
+     * @brief Kezdeti rovarkészlet és gombatestek létrehozása
+     * @param gombaszokTestei Gombaszok és kezdő tektons kapcsolata
+     * @param rovaraszokRovarjai Rovaraszok és kezdő tektons kapcsolata
+     * @throws Exception Ha valamelyik objektumot nem sikerült létrehozni
+     */
     public void kezdetiRovarokGombak(HashMap<Gombasz, Tekton> gombaszokTestei, HashMap<Rovarasz, Tekton> rovaraszokRovarjai) throws Exception {
         //Felveszi a játékosok kezdő objektumait.
         for(Gombasz gombasz : gombaszokTestei.keySet()){
@@ -379,6 +448,12 @@ public class Parancskezelok {
         objektumokbolString.put(gs, gs.getNev());
     }
 
+    /**
+     * @brief Egy rovar megeszik egy spóra egy részét
+     * @param r A evő rovar
+     * @param s A cél spóra
+     * @throws Exception Ha: A rovar vagy spóra nem létezik. A spóra nem található a rovar aktuális tektonján. A rovar benitott állapotban van
+     */
     public void eszik(Rovar r, Spora s) throws Exception { 
         // A paraméterben megadott Rovar megeszi a Gombafaj egyik spóráját a megadott Tektonról
 
@@ -408,6 +483,12 @@ public class Parancskezelok {
         
     }
 
+    /**
+     * @brief Egy rovar elvág egy gombafonalat
+     * @param r A vágó rovar
+     * @param gf A cél gombafonal
+     * @throws Exception Ha: A rovar vagy gombafonal nem létezik. A rovar benitott vagy vágásképtelen állapotban van. A fonal már nem létezik
+     */
     public void vag(Rovar r, Gombafonal gf) throws Exception {
         // A paraméterben megadott rovar elvágja a megadott gombafonalat
                         if(r == null){
@@ -432,6 +513,12 @@ public class Parancskezelok {
                         }
     }
 
+    /**
+     * @brief Egy rovar átmozgását kezeli egy másik tektonra
+     * @param r A mozgó rovar
+     * @param t A céltekton
+     * @throws Exception Ha: A rovar vagy tekton nem létezik. A rovar benitott állapotban van. A mozgás nem lehetséges (pl. nem szomszédos tektons)
+     */
     public void maszik(Rovar r, Tekton t) throws Exception {
         // A paraméterben megadott rovar átmászik a megadott tektonra a parancs hatására
                         if(r == null){
@@ -452,6 +539,11 @@ public class Parancskezelok {
                         }
     }
 
+    /**
+     * @brief Rovar megevését végző metódus
+     * @param r A megenni kívánt rovar
+     * @throws Exception Ha a rovar nincs lebenítva vagy más hiba történik
+     */
     public void rovart_eszik(Rovar r) throws Exception {
         // A gombasz jatekos megeszi a paraméterben kapott rovart
             if(r == null){
@@ -475,6 +567,10 @@ public class Parancskezelok {
             }
     }
 
+    /**
+     * @brief Összegyűjti az összes gombatest tartózkodási helyét
+     * @return Lista a gombatesteket tartalmazó tektonsokról
+     */
     public List<Tekton> getTestekTartozkodas(){
             List<Tekton> testek = new ArrayList<>();
 
@@ -487,6 +583,13 @@ public class Parancskezelok {
             return testek;
     }
 
+    
+    /**
+     * @brief Gombafonalat növeszt két tekton között
+     * @param t1 Az első tekton
+     * @param t2 A második tekton
+     * @throws Exception Ha valamelyik tekton null vagy a művelet sikertelen
+     */
     public void gfnov(Tekton t1, Tekton t2) throws Exception {
         // A megadott gombafaj gombafonalat húz a megadott két tekton közé
             
@@ -536,6 +639,11 @@ public class Parancskezelok {
         return gombafajok;
     }
 
+    /**
+     * @brief Spóraszórást végző metódus
+     * @param gt A spóraszórást végző gombatest
+     * @throws Exception Ha a gombatest null vagy a művelet sikertelen
+     */
     public void sporaszor(Gombatest gt) throws Exception {
         // A megadott gombatest sporat szor
 
@@ -556,6 +664,11 @@ public class Parancskezelok {
         }
     }
 
+    /**
+     * @brief Új gombatestet növeszt a megadott tektonra
+     * @param t1 A céltekton
+     * @throws Exception Ha nincs elég spóra vagy más hiba történik
+     */
     public void gtNov(Tekton t1) throws Exception {
         // A megadott Tektonra gombatestet növeszt
                         if(t1 == null){
@@ -604,6 +717,12 @@ public class Parancskezelok {
          aktivJatekos.korVege();
     }
 
+    /**
+     * @brief Új gombász felvétele
+     * @param nev A gombasz neve
+     * @param gf A gombasz Gombafaja
+     * @throws Exception Ha nem sikerül a gombasz felvétele.
+     */
     public void gombaszFelvetel(String nev, Gombafaj gf) throws Exception {
         // Ellenőrzi, hogy ne legyen két azonos nevű játékos, illetve egy gombafaj csak egy játékoshoz tartozzon
         if(nev== null || gf == null) {
@@ -633,6 +752,12 @@ public class Parancskezelok {
         objektumokbolString.put(gombasz, nev); 
     }
 
+    /**
+     * @brief Új rovarász felvétele
+     * @param nev A rovarász neve
+     * @param szin A rovarok színei
+     * @throws Exception Ha nem sikerül a rovarasz felvétele.
+     */
     public void rovaraszFelvetel(String nev, Color szin) throws Exception {
         // Ellenőrzi, hogy ne legyen két azonos nevű játékos, illetve egy rovar szín csak egy játékoshoz tartozzon
         if( szin == null) {
