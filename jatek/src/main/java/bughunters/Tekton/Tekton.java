@@ -101,13 +101,13 @@ public class Tekton implements FonalKezeles {
             //fonalak: ha a honnan vagy hova-n van fonal a saját gombafajból
             //HA már van közötte gombafonal a fajtából akkor NEM lehet növeszteni !!!!!
 
-            if(!szomszedok.contains(honnan)){ throw new Exception("Nem lehet fonalat növeszteni.");}
+            if(!szomszedok.contains(honnan)){ throw new Exception("Nem lehet fonalat növeszteni. (Nem szomszedok)");}
 
             
             // 2. Van-e már ilyen fonal?
             for (Gombafonal gfonal : gombafonalak) {
-                if ((gfonal.getVegpont1().equals(this) && gfonal.getVegpont2().equals(honnan)) ||
-                    (gfonal.getVegpont1().equals(honnan) && gfonal.getVegpont2().equals(this))) {
+                if ((gfonal.getVegpont1().equals(this) && gfonal.getVegpont2().equals(honnan)) && gfonal.getGombafaj().equals(g) ||
+                    (gfonal.getVegpont1().equals(honnan) && gfonal.getVegpont2().equals(this)) && gfonal.getGombafaj().equals(g)) {
                     throw new Exception("Már van ilyen fonal.");
                 }
             }
@@ -150,7 +150,7 @@ public class Tekton implements FonalKezeles {
                 return new Gombafonal(g, this, honnan);
             }
             else {
-                throw new Exception("Nem lehet fonalat növeszteni.");
+                throw new Exception("Nem lehet fonalat növeszteni. (nincs gombafonal vagy gombatest)");
             }
 
             /*

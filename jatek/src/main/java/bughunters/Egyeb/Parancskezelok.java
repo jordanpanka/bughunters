@@ -508,7 +508,8 @@ public class Parancskezelok {
                 //System.out.println("megkapott tektonok: t1: "+t1+" t2: "+t2 ); //!!!!!!!
                 gombasz.fonalNov(t1, gombafajokt1, t2,gombafajokt2); 
             } catch (Exception e) {
-                throw new Exception("Nem sikerult gombafonalat noveszteni");
+                throw e;
+                //throw new Exception("Nem sikerult gombafonalat noveszteni");
             }
     }
 

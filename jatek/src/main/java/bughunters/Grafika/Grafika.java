@@ -335,6 +335,7 @@ public class Grafika extends JPanel {
                 }
             }
             else{
+                System.out.println("angle: "+angle + "radius: "+radius);
                 if(tektonok2.contains(t1)){
                     GTekton g1 = tektonok.get(t1);
                     int x1 = g1.getX();
@@ -355,7 +356,7 @@ public class Grafika extends JPanel {
                         gFonal.setY1(y_1);
                         gFonal.setX2(x_2);
                         gFonal.setY2(y_2);
-                        
+                        System.out.println("X1: "+x_1 + "Y1: "+y_1 + "X2: "+x_2 + "Y2: "+y_2);
                         gFonal.Draw(g);
                         index++;
                     }
@@ -380,7 +381,8 @@ public class Grafika extends JPanel {
                         gFonal.setY1(y_1);
                         gFonal.setX2(x_2);
                         gFonal.setY2(y_2);
-                        
+                        System.out.println("X1: "+x_1 + "Y1: "+y_1 + "X2: "+x_2 + "Y2: "+y_2);
+
                         gFonal.Draw(g);
                         index++;
                     }
