@@ -106,12 +106,14 @@ public class Tekton implements FonalKezeles {
             
             for(Gombafonal gfonal : honnan.getFonalak())
             {
+                
                 gombatestekHelye.add(gfonal.getVegpont1());
                 gombatestekHelye.add(gfonal.getVegpont2());
             }
             //debuggolás
             if(gombatestekHelye.contains(honnan)){ 
                 //System.out.println("Van odavezető fonal.");  
+                
                 Gombafonal gf2 = new Gombafonal(g,this,honnan);
                 addFonal(gf2);
                 return gf2;

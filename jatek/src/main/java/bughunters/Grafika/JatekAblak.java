@@ -217,8 +217,7 @@ public class JatekAblak  extends JFrame{
            
             @Override
             public void mouseClicked(MouseEvent e) { 
-                //if (e.getClickCount() != 1) return; 
-                //Point grafikaPont = SwingUtilities.convertPoint(JatekAblak.this, e.getPoint(), grafika);
+                
                 System.out.println("Meghívódik a kttintás");
                 if (Boolean.TRUE.equals(mouse.get("testNov"))) {
                     Tekton t =grafika.tektonKeres(e.getX(), e.getY());
