@@ -485,7 +485,7 @@ public class Parancskezelok {
            
             try {
                 Gombasz gombasz = (Gombasz)aktivJatekos;
-                gombasz.fonalNov(t1, t2); 
+                gombasz.fonalNov(t1, t2);
             } catch (Exception e) {
                 throw new Exception("Nem sikerult gombafonalat noveszteni");
             }

@@ -172,7 +172,7 @@ public class Gombafaj implements FonalKezeles{
     public void  fonalNov(Tekton honnan, Tekton hova)throws Exception{
         //System.out.println("Meghívódik a Gombafaj fonalNov metódusa.");
         try{
-            Gombafonal uj= hova.gombafonalAdd(this,honnan); 
+            Gombafonal uj= hova.gombafonalAdd(this,honnan);
             addFonal(uj);
             honnan.addFonal(uj);
         }catch(Exception e)
