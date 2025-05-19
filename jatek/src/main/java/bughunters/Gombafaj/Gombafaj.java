@@ -245,7 +245,9 @@ public class Gombafaj implements FonalKezeles{
         try
         {
             g.urit();
+            System.out.println("sporaSzoras urit() megtortent");
             t.sporaSzor(this);
+
             boolean valasz=false;
             if(g.getKor()==gombatestEletSzama)
             {

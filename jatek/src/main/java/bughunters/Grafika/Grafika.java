@@ -67,7 +67,7 @@ public class Grafika extends JPanel {
     public void Draw(Tekton t, Graphics g){
         super.paintComponent(g);
         int szomszedokSzama = t.getSzomszedok().size();
-        //System.out.println("Szomszédok száma: " + szomszedokSzama);
+        ////System.out.println("Szomszédok száma: " + szomszedokSzama);
 
         int R = 150;  // Kör sugara
         int cX = 680; // Középpont X koordinátája
