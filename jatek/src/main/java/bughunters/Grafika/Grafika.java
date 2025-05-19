@@ -243,17 +243,19 @@ public class Grafika extends JPanel {
 
     List<Gombafonal> fonalak2 = t.getFonalak();
     Set<Gombafaj> gombafajok = new HashSet<>();
-    List<Gombafaj> gombafajLista = new ArrayList<>(gombafajok);
-
     fonalak2.forEach((fon)->{
         gombafajok.add(fon.getGombafaj());
     });
+    
+    List<Gombafaj> gombafajLista = new ArrayList<>(gombafajok);
+
+    
     HashMap<Gombafaj,Integer> fajok=new HashMap<>();
     if(gombafajLista!=null) fajok.put(gombafajLista.get(0),50);
    
     for(int i=1; i<gombafajok.size(); i++){
-        if(i%2==0)fajok.put(gombafajLista.get(i),50-i*5);
-        else fajok.put(gombafajLista.get(i),50+i*5);
+        if(i%2==0)fajok.put(gombafajLista.get(i),50-i*10);
+        else fajok.put(gombafajLista.get(i),50+i*10);
     }
     for(int i=0; i<t.getSzomszedok().size();i++){
         Tekton t1=t.getSzomszedok().get(i);
