@@ -33,4 +33,9 @@ public class GSpora extends Rajz {
         g.setColor(szin);
         g.fillOval(x, y,12, 12);   
     }
+    public void szamKiir(Graphics g,int szam){
+        Color uj=new Color(255-szin.getRed(),255-szin.getGreen(),255-szin.getBlue());
+        g.setColor(uj);
+        g.drawString(String.valueOf(szam),x+4,y+10);
+    }
 }
