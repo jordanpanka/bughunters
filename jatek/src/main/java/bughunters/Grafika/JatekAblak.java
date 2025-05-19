@@ -3,7 +3,6 @@ package bughunters.Grafika;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
@@ -17,7 +16,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 import bughunters.Egyeb.Jatek;
 import bughunters.Egyeb.Parancskezelok;
@@ -238,6 +236,7 @@ public class JatekAblak  extends JFrame{
                     Gombatest gt=grafika.gombatestKeres(e.getX(), e.getY());
                     
                     try{
+                            System.out.println("Gomb sporaraktár: "+gt.getSporaRaktar());
                             game.sporaszor(gt);
                             jatek.korEllenorzes(JatekAblak.this);
                         }catch(Exception ex){

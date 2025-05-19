@@ -109,7 +109,7 @@ public class Gombatest {
      * @brief A gombatest a körök végén spórát gyűjt.
      */
     public void sporaGyujtes(){
-        //System.out.println("Meghívódik a Gombatest sporaGyujtes metodusa.");
+        System.out.println("Meghívódik sporaGyujtes. Gombafaj: "+gombafaj.getNev()+ " sporaRaktar: "+sporaRaktar);
         sporaRaktar++;
     }
     

@@ -84,7 +84,6 @@ public class Jatekter {
             tektonAdd(ujTekton);
         }
         else{
-
             // Eltároljuk a jelenlegi Tekton-ok számát
             int tektondb = tektonok.size();
 
