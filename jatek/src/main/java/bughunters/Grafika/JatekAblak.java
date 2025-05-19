@@ -328,7 +328,9 @@ public class JatekAblak  extends JFrame{
                     }
                 }
 
+                jatekosAdatFrissit(jatekosInfo);
             };
+             
         }
         );
     }

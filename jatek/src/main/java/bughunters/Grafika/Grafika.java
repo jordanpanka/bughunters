@@ -1,14 +1,10 @@
 package bughunters.Grafika;
 
 import java.awt.Graphics;
-import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.swing.JPanel;
 
@@ -78,7 +74,6 @@ public class Grafika extends JPanel {
         // Középső tekton pozíció beállítása
         tektonok.get(t).setX(cX);
         tektonok.get(t).setY(cY);
-        sporaElhelyezesKorben(t,g);
         
         System.out.println("Tekton középen: X=" + cX + ", Y=" + cY);
 
@@ -103,6 +98,7 @@ public class Grafika extends JPanel {
                     gSzomszed.setY(szomszedY);
                     //gSzomszed.Draw(g);  // Azonnal ki is rajzoljuk
                     System.out.println("Szomszéd tekton rajzolva X=" + szomszedX + ", Y=" + szomszedY);
+
                     gombatestek.forEach((gombatest, gg) -> {
                             if (gombatest.getTekton().equals(szomszed)) {
                                 gg.setX(szomszedX);
@@ -146,10 +142,12 @@ public class Grafika extends JPanel {
                     });
                     
                     sporaElhelyezesKorben(szomszed,g);
+
                 }
 
             }
         }
+
         //fonalrajzol(t,g);
         //gombatestek beállítása csak a középső
         gombatestek.forEach((gombatest,gg)->{
@@ -200,12 +198,16 @@ public class Grafika extends JPanel {
         //fonalrajzol(t,g);
         //tektonok.forEach((tekton,gtekton)->{System.out.println(" X"+gtekton.getX());});
     }
+
+
     public void sporaElhelyezesKorben(Tekton t, Graphics g) {
         int sugar =50;
         int cX=tektonok.get(t).getX();
         int cY=tektonok.get(t).getY();
     List<Spora> sporakList = t.getSporak();
     int sporaSzam = sporakList.size();
+
+    System.out.println("Spórák száma: " + sporaSzam);
 
     if (sporaSzam == 0) return;  // Nincs mit elhelyezni
 
@@ -226,6 +228,8 @@ public class Grafika extends JPanel {
             System.out.println("Spóra rajzolva X=" + sporaX + ", Y=" + sporaY);
         }
         }
+
+        
     }
     
             

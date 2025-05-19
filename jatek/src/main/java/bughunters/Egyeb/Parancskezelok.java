@@ -946,9 +946,11 @@ public class Parancskezelok {
                         String tekton1 = action.split(" ")[3];
                         String tekton2 = action.split(" ")[5];
 
-                        Tekton Tekton1 = (Tekton)objektumok.get(tekton1);
-                        Tekton Tekton2 = (Tekton)objektumok.get(tekton2);
-
+                        //Tekton Tekton1 = (Tekton)objektumok.get(tekton1);
+                        //Tekton Tekton2 = (Tekton)objektumok.get(tekton2);
+                        Tekton Tekton1 = parancsTektonCast(tekton1.charAt(0), tekton1);
+                        Tekton Tekton2 = parancsTektonCast(tekton2.charAt(0), tekton2);
+                        
                         if(Tekton1 == null){
                             output.println("Nem letezik: " + tekton1);
                             return;
@@ -1007,7 +1009,7 @@ public class Parancskezelok {
 
                         GGombafonal gGombafonal = new GGombafonal(getColorKepByFaj(gf));
                         grafika.getGombafonalak().put(ujGombafonal, gGombafonal);
-                        
+
                         output.println("Hozzaadva " + ujNev);
                     }
                     if(action.matches("/arrange -s \\S+ -t \\S+ \\d+")){
@@ -1021,9 +1023,10 @@ public class Parancskezelok {
                         }
 
                         String tekton1 = action.split(" ")[4];
-                        Tekton Tekton1 = (Tekton)objektumok.get(tekton1);
+                        //Tekton Tekton1 = (Tekton)objektumok.get(tekton1);
+                        Tekton proba = parancsTektonCast(tekton1.charAt(0), tekton1);
 
-                        if(Tekton1 == null){
+                        if(proba == null){
                             output.println("Nem letezik: " + tekton1);
                             return;
                         }
@@ -1037,10 +1040,13 @@ public class Parancskezelok {
                         }
 
                         Spora ujSpora = sporaLetrehoz(sporaTip, gf, szam);
-                        Tekton1.addSpora(ujSpora);
+                        proba.addSpora(ujSpora);
                         String ujNev = ujSporaNev(sporaTip);
                         objektumok.put(ujNev, ujSpora);
                         objektumokbolString.put(ujSpora, ujNev);
+
+                        GSpora gSpora = new GSpora(getColorKepByFaj(gf));
+                        grafika.getSporak().put(ujSpora, gSpora);
 
                         output.println("Hozzaadva " + ujNev + " spora");
                     }
@@ -2766,9 +2772,10 @@ public class Parancskezelok {
                 }
         }
             */
-            Parancskezelok pk=new Parancskezelok();
-            Jatekter jatekter=new Jatekter();
-            Jatek jt=new Jatek(pk,jatekter);
+            //Parancskezelok pk=new Parancskezelok();
+            //Jatekter jatekter=new Jatekter();
+            //Jatek jt=new Jatek(pk,jatekter);
+            
             /*SwingUtilities.invokeLater(()->{
                 //JatekAblak jatek=new JatekAblak(pk,jt);
                 //jatek.setVisible(true);
