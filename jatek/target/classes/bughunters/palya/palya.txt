@@ -33,6 +33,7 @@
 /arrange -j Pista -g benito
 /arrange -j XY -g lassito
 /arrange -gf -t tekton1 -t monotekton1 -g gyorsito
+/arrange -gf -t tekton1 -t infinator1 -g gyorsito
 /arrange -gf -t tekton1 -t monotekton1 -g benito
 /arrange -gf -t tekton1 -t monotekton1 -g lassito
 /arrange -gt gombatest1 -sr 10
