@@ -18,9 +18,9 @@ import java.util.stream.Collectors;
  * tulajdonságainak/függvényeinek meghatározása
  */
 public class Tekton implements FonalKezeles {
-    private List<Tekton> szomszedok; //melyik tektonok a szomszédjai
-    private List<Gombafonal> gombafonalak; //megtalálható gombafonalak listája
-    private List<Spora> sporak; //megtalálható spórák listája
+    protected List<Tekton> szomszedok; //melyik tektonok a szomszédjai
+    protected List<Gombafonal> gombafonalak; //megtalálható gombafonalak listája
+    protected List<Spora> sporak; //megtalálható spórák listája
 
     public Tekton() {
         szomszedok = new ArrayList<>();
@@ -93,27 +93,75 @@ public class Tekton implements FonalKezeles {
      * @return növesztett gombafonalat adja vissza
      * @throws Exception ha nem tud gombafonalat növeszteni vagy rossz feladatnál lett hívva
      */
-    public Gombafonal gombafonalAdd(Gombafaj g, Tekton honnan) throws Exception {
+    public Gombafonal gombafonalAdd(Gombafaj g, List<Gombafaj> erintofajok, Tekton honnan) throws Exception {
         //System.out.println("Meghívódik a Tekton gombafonalAdd metódusa.");
         //ellenőrizni hogy létezik e már ilyen gombafonal
-        if(getSzomszedok().contains(honnan)){
+        
             //testek: ha a honnan vagy hova-n van test a saját gombafajból
             //fonalak: ha a honnan vagy hova-n van fonal a saját gombafajból
+            //HA már van közötte gombafonal a fajtából akkor NEM lehet növeszteni !!!!!
 
+            if(!szomszedok.contains(honnan)){ throw new Exception("Nem lehet fonalat növeszteni.");}
 
-            List<Tekton> gombatestekHelye = new ArrayList<Tekton>();
-
-            // tektonok ahol gombatestek vannak
-            List<Gombatest> gombaTestek = g.getGombaTestek();
-            if (gombaTestek != null) {
-                for (Gombatest gt : gombaTestek) {
-                    gombatestekHelye.add(gt.getTekton());
+            
+            // 2. Van-e már ilyen fonal?
+            for (Gombafonal gfonal : gombafonalak) {
+                if ((gfonal.getVegpont1().equals(this) && gfonal.getVegpont2().equals(honnan)) ||
+                    (gfonal.getVegpont1().equals(honnan) && gfonal.getVegpont2().equals(this))) {
+                    throw new Exception("Már van ilyen fonal.");
                 }
             }
+
+            // tektonok ahol gombatestek vannak
+            //List<Tekton> gombatestekHelye = new ArrayList<>();   
+            Boolean noveszthetTestMiatt = false;
+
+            List<Gombatest> gombaTestek = g.getGombaTestekList();
+            if (gombaTestek != null) {
+                for (Gombatest gt : gombaTestek) {
+                    //gombatestekHelye.add(gt.getTekton());
+                    if( gt.getTekton().equals(honnan) || gt.getTekton().equals(this)) {
+                        noveszthetTestMiatt = true; 
+                    }
+                }
+            }
+
+                // 4. Van-e a saját gombafajból fonal valamelyik tektonon?
+                boolean noveszthetFonalMiatt = false;
+
+                for (Gombafonal gfonal : gombafonalak) {
+                    if (gfonal.getGombafaj().equals(g)) {
+                        noveszthetFonalMiatt = true;
+                        break;
+                    }
+                }
+                for (Gombafonal gfonal : honnan.getFonalak()) {
+                    if (gfonal.getGombafaj().equals(g)) {
+                        noveszthetFonalMiatt = true;
+                        break;
+                    }
+                }
+
             
+            System.out.println("--------------\nKIVUL Növeszthető fonal miatt: "+ noveszthetFonalMiatt + " Növeszthető test miatt: "+ noveszthetTestMiatt+"\n--------------");
+
+            if(noveszthetFonalMiatt || noveszthetTestMiatt) {
+                System.out.println("Növeszthető fonal miatt: "+ noveszthetFonalMiatt + " Növeszthető test miatt: "+ noveszthetTestMiatt);
+                return new Gombafonal(g, this, honnan);
+            }
+            else {
+                throw new Exception("Nem lehet fonalat növeszteni.");
+            }
+
+            /*
             // tektonok ahol fonalak vannak
             for(Gombafonal gfonal : honnan.getFonalak())
             {
+<<<<<<< HEAD
+                gombatestekHelye.add(gfonal.getVegpont1());
+                gombatestekHelye.add(gfonal.getVegpont2());
+=======
+>>>>>>> 0a2c4557f24253a64facf798f4177642fef11989
                 if(gfonal.getGombafaj().equals(g)) {
                     gombatestekHelye.add(gfonal.getVegpont1());
                     gombatestekHelye.add(gfonal.getVegpont2());
@@ -129,10 +177,8 @@ public class Tekton implements FonalKezeles {
                 return gf2;
             }
             throw new Exception("Nem lehet fonalat növeszteni.");
-        }
-        else{
-            throw new Exception("Nem lehet fonalat növeszteni.");
-        }
+            */
+        
        
     }
 
