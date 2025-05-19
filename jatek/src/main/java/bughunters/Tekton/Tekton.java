@@ -78,6 +78,15 @@ public class Tekton implements FonalKezeles {
     }
 
     /***
+     * @brief Szomszédot töröl az aktuális tektontól
+     * @param t Tekton: törölt szomszéd
+     */
+    public void removeSzomszed(Tekton t){
+        //System.out.println("Meghívódik a Tekton removeSzomszed metódusa.");
+        szomszedok.remove(t);
+    }
+
+    /***
      * @brief Gombafonalat ad hozzá a Tektonhoz
      * @param gf Gombafaj: Aktuális gombafaj
      * @param honnan Tekton: Vizsgáljuk hogy erről a tektonról vezet e fonal az aktuálisra
@@ -398,6 +407,8 @@ public class Tekton implements FonalKezeles {
         atrakandoSzomszedok.remove(t);
         for (Tekton tekton : atrakandoSzomszedok) {
             t.addSzomszed(tekton);
+            tekton.addSzomszed(t);
+            tekton.removeSzomszed(this);
         }
         szomszedok.removeAll(atrakandoSzomszedok);
 
