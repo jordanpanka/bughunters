@@ -292,7 +292,7 @@ public class Grafika extends JPanel {
     }}
     }
 
-  /*  public Gombafonal fonalKeres(int x, int y){
+    public Gombafonal fonalKeres(int x, int y){
         y=y-230;
         System.out.println("fonalkeres");
         for (Map.Entry<Gombafonal, GGombafonal> entry : gombafonalak.entrySet()) {
@@ -300,28 +300,50 @@ public class Grafika extends JPanel {
             double X2=(double)entry.getValue().getX2();
             double Y1=(double)entry.getValue().getY1();
             double Y2=(double)entry.getValue().getY2();
-            System.out.println("Koordináták: "+X1+","+","+Y1+","+X2+","+Y2);
-            double dX=(double)entry.getValue().getX()-entry.getValue().getX2();
-            double dY=(double)entry.getValue().getY()-entry.getValue().getY2();
-            double t=((x-X1)*dX+(y-Y1)*dY)/(dX*dX+dY*dY);
-            t=Math.max(0,Math.min(1,t));
-            double projX = X1 + t * dX;
-            double projY = Y1 + t * dY;
-            double tav=Math.hypot(x - projX, y - projY);
-            if(tav<=5){
+            /*
+            System.out.println("X1:"+X1);
+            System.out.println("X2:"+X2);
+            System.out.println("Y1:"+Y1);
+            System.out.println("Y2:"+Y2);
+            System.out.println("x:"+x);
+            System.out.println("y:"+y);
+            */
+            boolean kozelVan = isPointNearLine(x, y, X1, Y1, X2, Y2);
+            if(kozelVan){
                 return entry.getKey();
             }
         }
         return null; // nem találtuk meg
-    }*/
-  /*  public Gombafonal fonalKeres(int x, int y){
-        y=y-230;
+    }
 
+    boolean isPointNearLine(double px, double py, double x1, double y1, double x2, double y2) {
+        double distance = distanceToLine(px, py, x1, y1, x2, y2);
+        //System.out.println("Táv: "+distance);
+        return distance < 10; // Küszöb távolság: ha elég közel van, akkor igaz
+    }
 
-   }*/
-   /*public double ponTav(Point point1,Point point2){
-        return Math.sqrt((point1.x - point2.x) * (point1.x - point2.x) + (point1.y - point2.y) * (point1.y - point2.y));
-   }*/
+    double distanceToLine(double px, double py, double x1, double y1, double x2, double y2) {
+        double dx = x2 - x1;
+        double dy = y2 - y1;
+        double lengthSquared = dx * dx + dy * dy;
+
+        // Ha a szakasz hossza közel nulla, a távolság a kezdőponttól értendő
+        if (lengthSquared == 0.0) {
+            double dxp = px - x1;
+            double dyp = py - y1;
+            return Math.sqrt(dxp * dxp + dyp * dyp);
+        }
+
+        double t = ((px - x1) * dx + (py - y1) * dy) / lengthSquared;
+
+        double closestX = x1 + t * dx;
+        double closestY = y1 + t * dy;
+
+        double dxp = px - closestX;
+        double dyp = py - closestY;
+
+        return Math.sqrt(dxp * dxp + dyp * dyp);
+    }
 
     public Gombatest gombatestKeres(int x, int y) {
         y=y-230;
