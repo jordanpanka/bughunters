@@ -160,10 +160,10 @@ public class Rovarasz extends Jatekos {
      */
     public void rovarokAllapotIdejenekNovelese(){
         for (Rovar rovar : rovarok) {
-            int ideiglenes = rovar.getAllapotIdeje();
-             System.out.println("Állapotidő0: "+ideiglenes);
-            rovar.setAllapotIdeje(ideiglenes++);
-            System.out.println("Állapotidő: "+ideiglenes);
+            int ideiglenes = rovar.getAllapotIdeje() +1;
+
+            rovar.setAllapotIdeje(ideiglenes);
+
         }
     }
 
@@ -174,7 +174,6 @@ public class Rovarasz extends Jatekos {
         for (Rovar rovar : rovarok) {
             if(rovar.getAllapotIdeje()>=1){
                 rovar.alapAllapot();
-                System.out.println("Alap állapotba került.");
             }
         }
     }

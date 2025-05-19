@@ -78,6 +78,15 @@ public class Tekton implements FonalKezeles {
     }
 
     /***
+     * @brief Szomszédot töröl az aktuális tektontól
+     * @param t Tekton: törölt szomszéd
+     */
+    public void removeSzomszed(Tekton t){
+        //System.out.println("Meghívódik a Tekton removeSzomszed metódusa.");
+        szomszedok.remove(t);
+    }
+
+    /***
      * @brief Gombafonalat ad hozzá a Tektonhoz
      * @param gf Gombafaj: Aktuális gombafaj
      * @param honnan Tekton: Vizsgáljuk hogy erről a tektonról vezet e fonal az aktuálisra
@@ -357,13 +366,19 @@ public class Tekton implements FonalKezeles {
         for (Spora spora : sporak) {
             //ha az a sporatipus benne van már a listában, csak növeljük a mennyiséget
             if (spora.getGombafaj().equals(sp.getGombafaj())) {
+                System.out.println("Spora mar letezett: "+sp.getGombafaj().getNev() + " mennyiseg elötte: "+sp.getMennyiseg());
+
                 spora.szorasTortent();
+                System.out.print(" mennyiseg utana: "+spora.getMennyiseg());
                 return;
             }
         }
 
         //ha nincs benne a listában, akkor hozzáadjuk
+        sp.szorasTortent();
         sporak.add(sp);
+        System.out.println("Új spora keletkezett: "+sp.getGombafaj().getNev() + " mennyiseg: "+sp.getMennyiseg());
+
     }
 
     /***
@@ -392,6 +407,8 @@ public class Tekton implements FonalKezeles {
         atrakandoSzomszedok.remove(t);
         for (Tekton tekton : atrakandoSzomszedok) {
             t.addSzomszed(tekton);
+            tekton.addSzomszed(t);
+            tekton.removeSzomszed(this);
         }
         szomszedok.removeAll(atrakandoSzomszedok);
          
