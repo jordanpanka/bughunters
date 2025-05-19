@@ -83,7 +83,7 @@ public class GGombafonal extends Rajz {
      * @param x a második végpont X koordinátája
      */
     public void setX2(int x) {
-        this.x2 = x;
+        x2 = x;
     }
 
     /**

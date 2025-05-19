@@ -29,6 +29,6 @@
 /arrange -szomszed -t puritekton3 -t puritekton2
 /arrange -szomszed -t monotekton1 -t puritekton3
 /arrange -j Jani -g gyorsito
-/arrange -gf -t tekton1 -t monotekton1 -g gyorsito
+/arrange -gf -t tekton1 -t tekton2 -g gyorsito
 /arrange -s gyorsito -t tekton1 5
 /arrange -gt gombatest1 -sr 10
