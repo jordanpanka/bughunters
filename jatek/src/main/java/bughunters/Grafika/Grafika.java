@@ -100,12 +100,46 @@ public class Grafika extends JPanel {
                 if (gSzomszed != null) {
                     gSzomszed.setX(szomszedX);
                     gSzomszed.setY(szomszedY);
-                    gSzomszed.Draw(g);  // Azonnal ki is rajzoljuk
+                    //gSzomszed.Draw(g);  // Azonnal ki is rajzoljuk
                     System.out.println("Szomszéd tekton rajzolva X=" + szomszedX + ", Y=" + szomszedY);
                     gombatestek.forEach((gombatest, gg) -> {
                             if (gombatest.getTekton().equals(szomszed)) {
                                 gg.setX(szomszedX);
                                 gg.setY(szomszedY);
+                               // gg.Draw(g);
+                            }
+                    });
+                    
+                    //sporaElhelyezesKorben(szomszed,g);
+                }
+
+            }
+        }
+        //tektonok.forEach((tekton,gtekton)->{System.out.println(" X"+gtekton.getX());});
+        // Végül a középső tekton kirajzolása
+        fonalrajzol(t,g);
+        tektonok.get(t).Draw(g);
+         if (szomszedokSzama != 0) {
+            //System.out.println("Vannak szomszédok.");
+            //double szogLepes = 2 * Math.PI / szomszedokSzama;  // Egyenlő elosztás a kör mentén
+
+            for (int i = 0; i < szomszedokSzama; i++) {
+                //double szog = i * szogLepes;  // Minden szomszédnál léptetjük a szöget
+                //int szomszedX = (int) (cX + R * Math.cos(szog));
+                //int szomszedY = (int) (cY + R * Math.sin(szog));
+
+                Tekton szomszed = t.getSzomszedok().get(i);
+                GTekton gSzomszed = tektonok.get(szomszed);
+
+                if (gSzomszed != null) {
+                   // gSzomszed.setX(szomszedX);
+                   // gSzomszed.setY(szomszedY);
+                    gSzomszed.Draw(g);  // Azonnal ki is rajzoljuk
+                    //System.out.println("Szomszéd tekton rajzolva X=" + szomszedX + ", Y=" + szomszedY);
+                    gombatestek.forEach((gombatest, gg) -> {
+                            if (gombatest.getTekton().equals(szomszed)) {
+                                //gg.setX(szomszedX);
+                                //gg.setY(szomszedY);
                                 gg.Draw(g);
                             }
                     });
@@ -115,10 +149,7 @@ public class Grafika extends JPanel {
 
             }
         }
-        tektonok.forEach((tekton,gtekton)->{System.out.println(" X"+gtekton.getX());});
-        // Végül a középső tekton kirajzolása
-        tektonok.get(t).Draw(g);
-        fonalrajzol(t,g);
+        //fonalrajzol(t,g);
         //gombatestek beállítása csak a középső
         gombatestek.forEach((gombatest,gg)->{
             if(gombatest.getTekton().equals(t)){
@@ -129,32 +160,6 @@ public class Grafika extends JPanel {
             }
         });
         
-        /*
-        long count = rovarok.keySet().stream()
-        .filter(rovar -> rovar.getTartozkodas().equals(t))
-        .count();
-
-        if (count == 0) return;
-
-        double angleStep = 2 * Math.PI / count;
-        int radius = 30;  // dinamikus sugár
-        int[] i = {0};
-
-        rovarok.forEach((rovar, gg) -> {
-            if (rovar.getTartozkodas().equals(t)) {
-                double angle = i[0] * angleStep - Math.PI / 2; // fentről induljon
-
-                int x = (int)(cX + radius * Math.cos(angle));
-                int y = (int)(cY + radius * Math.sin(angle));
-
-                gg.setX(x);
-                gg.setY(y);
-                gg.Draw(g);
-
-                i[0]++;
-            }
-        });
-        */
 
         // Rovarok kirajzolása a középső és a szomszédos tektonokra is
         List<Tekton> mindenRajzolando = new ArrayList<>();
@@ -191,8 +196,8 @@ public class Grafika extends JPanel {
                 }
             }
         }
-        fonalrajzol(t,g);
-        tektonok.forEach((tekton,gtekton)->{System.out.println(" X"+gtekton.getX());});
+        //fonalrajzol(t,g);
+        //tektonok.forEach((tekton,gtekton)->{System.out.println(" X"+gtekton.getX());});
     }
     public void sporaElhelyezesKorben(Tekton t, Graphics g) {
         int sugar =50;
@@ -221,43 +226,8 @@ public class Grafika extends JPanel {
         }
         }
     }
-    /*public void fonalrajzol(Tekton t, Graphics g){
-        System.out.println("fonalrajzol");
-        List<Tekton>tektonok2=t.getSzomszedok();
-        tektonok2.add(t);
-        int x1;
-            int x2;
-            int y1;
-            int y2;
-        List<Gombafonal>fonalak2=t.getFonalak();
-        System.out.println("grafika"+gombafonalak.size());
-        for(int i=0; i<fonalak2.size(); i++){
-            Tekton t1=fonalak2.get(i).getVegpont1();
-            Tekton t2=fonalak2.get(i).getVegpont2();
-            Point t1p=new Point();
-            Point t2p=new Point();
-           
+    
             
-            tektonok.forEach((tekton,gtekton)->{
-                if(tekton.equals(t1)){
-                    x1=gtekton.getX();
-                    y1=gtekton.getY();
-                }
-                if(tekton.equals(t2)){
-                    x2=gtekton.getX();
-                    y2=gtekton.getY();
-                }
-            });
-            gombafonalak.get(fonalak2.get(i)).setX1(x1);
-            System.out.println( gombafonalak.get(fonalak2.get(i)).getX1());
-            gombafonalak.get(fonalak2.get(i)).setX2(x2);
-             System.out.println( gombafonalak.get(fonalak2.get(i)).getY1());
-            gombafonalak.get(fonalak2.get(i)).setY1(y1);
-            System.out.println( gombafonalak.get(fonalak2.get(i)).getX2());
-            gombafonalak.get(fonalak2.get(i)).setY2(y2);
-            gombafonalak.get(fonalak2.get(i)).Draw(g);
-        }
-    }*/
     public void fonalrajzol(Tekton t, Graphics g) {
     System.out.println("fonalrajzol");
 
@@ -288,116 +258,26 @@ public class Grafika extends JPanel {
         }*/
 
         int x1 = g1.getX();
-        System.out.println(g1.getX());
+        //System.out.println(g1.getX());
         int y1 = g1.getY();
-        System.out.println(g1.getY());
+        //System.out.println(g1.getY());
         int x2 = g2.getX();
-        System.out.println(tektonok.get(t1).getX());
+        //System.out.println(tektonok.get(t1).getX());
         int y2 = g2.getY();
-        System.out.println(g2.getY());
+        //System.out.println(g2.getY());
         GGombafonal gFonal = gombafonalak.get(fonal);
         if (gFonal != null) {
-            gFonal.setX1(x1);
-            gFonal.setY1(y1);
-            gFonal.setX2(x2);
-            gFonal.setY2(y2);
+            gFonal.setX1(x1+50);
+            gFonal.setY1(y1+50);
+            gFonal.setX2(x2+50);
+            gFonal.setY2(y2+50);
 
-            System.out.println("Fonal koordináták: (" + x1 + "," + y1 + ") -> (" + x2 + "," + y2 + ")");
+           // System.out.println("Fonal koordináták: (" + x1 + "," + y1 + ") -> (" + x2 + "," + y2 + ")");
             
             gFonal.Draw(g);
         }
     }}
-}
-/* 
-    // Kirajzolja a gombafonalakat a tektonok között
-
-   /*  public void gombafonalakRajzolasa(Tekton t, Graphics g) {
-=======
-    public void gombafonalakRajzolasa(Tekton t, Graphics g) {
-        Set<Set<Tekton>> kirajzoltFonalak = new HashSet<>();
-        List<Tekton> kirajzoltTektonok = t.getSzomszedok();
-        kirajzoltTektonok.add(t);
-
-        for (Tekton t1 : kirajzoltTektonok) {
-            GTekton g1 = tektonok.get(t1);
-            int x1 = g1.getX();
-            int y1 = g1.getY();
-
-            List<Gombafonal> gombafonalak1 = t1.getFonalak();
-
-            for (Tekton t2 : t1.getSzomszedok()) {
-                // Elkerülés: ugyanaz a kapcsolat ne legyen kétszer kirajzolva
-                Set<Tekton> par = new HashSet<>(Arrays.asList(t1, t2));
-                if (kirajzoltFonalak.contains(par)) continue;
-
-                GTekton g2 = tektonok.get(t2);
-                if (g2 != null) {
-                    int x2 = g2.getX();
-                    int y2 = g2.getY();
-
-                    List<Gombafonal> gombafonalak2 = t2.getFonalak();
-
-                    Gombafonal gombafonal = null;
-
-                    for (Gombafonal gf1 : gombafonalak1) {
-                        for (Gombafonal gf2 : gombafonalak2) {
-                            if (gf1.equals(gf2)) {
-                                gombafonal = gf1;
-                                break;
-                            }
-                        }
-                        if (gombafonal != null) break;
-                    }
-
-                    GGombafonal fonal = gombafonalak.get(gombafonal);
-                    fonal.setX1(x1);
-                    fonal.setY1(y1);
-                    fonal.setX2(x2);
-                    fonal.setY2(y2);
-                    fonal.Draw(g);
-                    kirajzoltFonalak.add(par);
-                }
-        GTekton g1 = tektonok.get(t);
-        int x1 = g1.getX();
-        int y1 = g1.getY();
-
-        List<Gombafonal> fonalak = t.getFonalak();
-
-        for (Gombafonal gombafonal : fonalak) {
-            if(gombafonal.getVegpont1().equals(t)){
-                GTekton g2 = tektonok.get(gombafonal.getVegpont2());
-                int x2 = g2.getX();
-                int y2 = g2.getY();
-
-                GGombafonal fonal = gombafonalak.get(gombafonal);
-                fonal.setX1(x1);
-                fonal.setY1(y1);
-                fonal.setX2(800);
-                fonal.setY2(350);
-                fonal.Draw(g);
-                System.out.println("X1:"+x1);
-                System.out.println("Y1:"+y1);
-                System.out.println("X2:"+x2);
-                System.out.println("Y2:"+y2);
-            }
-            else{
-                GTekton g2 = tektonok.get(gombafonal.getVegpont1());
-                int x2 = g2.getX();
-                int y2 = g2.getY();
-
-                GGombafonal fonal = gombafonalak.get(gombafonal);
-                fonal.setX1(x1);
-                fonal.setY1(y1);
-                fonal.setX2(800);
-                fonal.setY2(350);
-                fonal.Draw(g);
-                System.out.println("X1:"+x1);
-                System.out.println("Y1:"+y1);
-                System.out.println("X2:"+x2);
-                System.out.println("Y2:"+y2);
-            }
-        }
-    }*/
+    }
 
 
     @Override
