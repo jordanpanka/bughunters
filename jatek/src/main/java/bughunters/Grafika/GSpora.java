@@ -7,6 +7,7 @@ public class GSpora extends Rajz {
 
     Color szin;
     
+    
     public GSpora()
     {
         super();
