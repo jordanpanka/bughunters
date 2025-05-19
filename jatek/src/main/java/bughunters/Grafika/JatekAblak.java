@@ -442,7 +442,8 @@ public class JatekAblak  extends JFrame{
             JLabel akcio=new JLabel("Akciók: "+game.getJatekosok().get(i).getakcioSzama());
             JLabel fajta=new JLabel(game.getJatekosok().get(i).szerepKor());
             JLabel pontok=new JLabel("Pontok: "+game.getJatekosok().get(i).getGyozelmiPontok());
-            
+            JLabel szin = new JLabel("Szin: "+game.getColorStringByJatekos(game.getJatekosok().get(i)));
+
             jatekos.add(nev);
             jatekos.add(Box.createVerticalStrut(10));
             jatekos.add(akcio);
@@ -451,7 +452,9 @@ public class JatekAblak  extends JFrame{
             jatekos.add(Box.createVerticalStrut(10));
             jatekos.add(pontok);
             jatekos.add(Box.createVerticalStrut(10));
-            
+            jatekos.add(szin);
+            jatekos.add(Box.createVerticalStrut(10));
+
             jatekos.setMaximumSize(new Dimension(150, 200));
             jatekos.setPreferredSize(new Dimension(150, 200));
             jatekosInfo.add(jatekos);
