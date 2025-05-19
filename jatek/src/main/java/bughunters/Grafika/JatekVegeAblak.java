@@ -16,19 +16,36 @@ import bughunters.Egyeb.Rovarasz;
 import bughunters.Gombafaj.Gombafaj;
 import bughunters.Tekton.Tekton;
 
+
+/**
+ * A játék végét jelző ablak, amely megjeleníti a játékosok eredményeit, 
+ * valamint a győztes gombászt és rovarászt.
+ */
 public class JatekVegeAblak extends JFrame{
     private JLabel kiirJatekVege;
     private int jatekosokSzama;
     private Parancskezelok game;
 
+    // Visszaadja a játékosok számát
     public int getJatekosokSzama() {
         return jatekosokSzama;
     }
+
+    // Beállítja a játékosok számát
     public void setJatekosokSzama(int jatekosokSzama) {
         this.jatekosokSzama = jatekosokSzama;
     }
 
+
+    /**
+     * Létrehozza és megjeleníti a játék végét jelző ablakot az eredményekkel.
+     *
+     * @param pk        A játék vezérlő osztálya, amely tartalmazza a játékosokat.
+     * @param gombasz   A győztes gombász.
+     * @param rovarasz  A győztes rovarász.
+     */
     public JatekVegeAblak(Parancskezelok pk, Gombasz gombasz, Rovarasz rovarasz) {
+        // Ablak alapbeállításai
         setTitle("Játék vége ablak");
         setSize(600,700);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -39,6 +56,7 @@ public class JatekVegeAblak extends JFrame{
         game=pk;
         this.jatekosokSzama = game.getJatekosok().size();
 
+        // Cím létrehozása
         kiirJatekVege=new JLabel("Játék vége!");
         Dimension meret=new Dimension(210,75);
    
@@ -47,6 +65,7 @@ public class JatekVegeAblak extends JFrame{
         kiirJatekVege.setFont(new Font("SansSerif", Font.ITALIC,40));
 
 
+        // Játékosok és pontszámok lekérdezése, rendezése
         List<Jatekos> jatekosok = game.getJatekosok();
         HashMap<Jatekos, Integer> pontszamok = new HashMap<>();
 
@@ -54,11 +73,12 @@ public class JatekVegeAblak extends JFrame{
             pontszamok.put(jatekos, jatekos.getGyozelmiPontok());
         }
 
+        // Pontszámok rendezése csökkenő sorrendbe
         List<Map.Entry<Jatekos, Integer>> rendezettLista = new ArrayList<>(pontszamok.entrySet());
         rendezettLista.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue())); // Csökkenő sorrend
 
-        // -----------------------------
 
+        // Háttér panel beállítása színátmenettel
         JPanel panel = new JPanel()  {
             @Override
             protected void paintComponent(Graphics g) {
@@ -77,14 +97,15 @@ public class JatekVegeAblak extends JFrame{
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.add(Box.createVerticalStrut(20));
 
+        // Cím formázása
         kiirJatekVege.setFont(new Font("SansSerif", Font.BOLD, 36));
         kiirJatekVege.setAlignmentX(CENTER_ALIGNMENT);
 
         panel.add(kiirJatekVege);
         panel.add(Box.createVerticalStrut(40));
 
-        // ---------------------------
 
+        // Győztes gombász megjelenítése
         JPanel row1_1 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
         row1_1.setOpaque(false);
 
@@ -99,8 +120,8 @@ public class JatekVegeAblak extends JFrame{
         row1_1.add(gyoztesGombaszNev);
         panel.add(row1_1);
 
-        // ---------------------------
 
+        // Győztes rovarász megjelenítése
         JPanel row1_2 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
         row1_2.setOpaque(false);
 
@@ -115,10 +136,10 @@ public class JatekVegeAblak extends JFrame{
         row1_2.add(gyoztesRovaraszNev);
         panel.add(row1_2);
 
-        // ---------------------------
 
         panel.add(Box.createVerticalStrut(20));
 
+        // Ponttáblázat létrehozása
         JPanel row2 = new JPanel(new BorderLayout());
         row2.setOpaque(false);
 
@@ -142,6 +163,7 @@ public class JatekVegeAblak extends JFrame{
 
         panel.add(scrollPane);
 
+        // Panel margók és hozzáadás az ablakhoz
         panel.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
 
         add(panel);
