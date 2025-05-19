@@ -157,6 +157,11 @@ public class Tekton implements FonalKezeles {
             // tektonok ahol fonalak vannak
             for(Gombafonal gfonal : honnan.getFonalak())
             {
+<<<<<<< HEAD
+                gombatestekHelye.add(gfonal.getVegpont1());
+                gombatestekHelye.add(gfonal.getVegpont2());
+=======
+>>>>>>> 0a2c4557f24253a64facf798f4177642fef11989
                 if(gfonal.getGombafaj().equals(g)) {
                     gombatestekHelye.add(gfonal.getVegpont1());
                     gombatestekHelye.add(gfonal.getVegpont2());
