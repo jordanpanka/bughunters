@@ -110,7 +110,7 @@ public class Gombasz extends Jatekos{
                 throw new Exception("Nincs elegendő akciópont.");
             }
 
-            System.out.println("kapott gombafaj: "+gt.getGombafaj().getNev() +"\n gombasz gombafaja: "+gombafaj.getNev());
+            //System.out.println("kapott gombafaj: "+gt.getGombafaj().getNev() +"\n gombasz gombafaja: "+gombafaj.getNev());
             if (!gt.getGombafaj().equals(gombafaj)) {
                 throw new Exception("A kivalasztott test nem hozzad tartozik.");
             }

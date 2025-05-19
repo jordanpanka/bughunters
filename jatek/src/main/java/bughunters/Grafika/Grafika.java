@@ -390,7 +390,7 @@ public class Grafika extends JPanel {
 
     public Gombafonal fonalKeres(int x, int y){
         y=y-230;
-        System.out.println("fonalkeres");
+        //System.out.println("fonalkeres");
         for (Map.Entry<Gombafonal, GGombafonal> entry : gombafonalak.entrySet()) {
             double X1=(double)entry.getValue().getX1();
             double X2=(double)entry.getValue().getX2();
@@ -473,7 +473,7 @@ public class Grafika extends JPanel {
     public Rovar rovarKeres(int x, int y){
         //lehet nem jó
         y=y-230;
-        System.out.println("Rovarkeres"+x+y);
+        //System.out.println("Rovarkeres"+x+y);
         for (Map.Entry<Rovar, GRovar> entry : rovarok.entrySet()) {
             double xC = (double)entry.getValue().getX()+45;
             double yC = (double)entry.getValue().getY()+45;

@@ -172,18 +172,18 @@ public class Gombafaj implements FonalKezeles{
     public void  fonalNov(Tekton honnan, List<Gombafaj> t1fajok, Tekton hova, List<Gombafaj> t2fajok)throws Exception{
         //System.out.println("Meghívódik a Gombafaj fonalNov metódusa.");
         try{
-            System.out.println("Fonal növesztés inditasa------------------------");
+            //System.out.println("Fonal növesztés inditasa------------------------");
             Gombafonal uj= hova.gombafonalAdd(this,t2fajok, honnan);
             //Ez azért kell, hogy ha Monotektonra nő a fonal, akkor csak a Tekton gombafonalAdd metódusát hívja meg, 
             //így nem ellenőrzi le a monotektonos részt. Ezzel leelenőrzi. Ha mindkettő Exception nélküli akkor mind1 melyik fonal lesz hasznalva.
             Gombafonal uj2 = honnan.gombafonalAdd(this, t1fajok, hova);
             
-            System.out.println("uj fonal: "+uj + "honnan: "+uj.getVegpont1() + "hova: "+uj.getVegpont2());
-            System.out.println("Szomszedosak? "+honnan.getSzomszedok().contains(hova));
+            //System.out.println("uj fonal: "+uj + "honnan: "+uj.getVegpont1() + "hova: "+uj.getVegpont2());
+            //System.out.println("Szomszedosak? "+honnan.getSzomszedok().contains(hova));
             addFonal(uj);
             honnan.addFonal(uj);
             hova.addFonal(uj);
-            System.out.println("Fonal növesztés sikeres ------------------------");
+            //System.out.println("Fonal növesztés sikeres ------------------------");
         }catch(Exception e)
         {
             throw e;
@@ -254,11 +254,11 @@ public class Gombafaj implements FonalKezeles{
         //System.out.println("Meghívódik a Gombafaj sporaSzoras metodusa.");
         try
         {
-            System.out.println("---------------------------------\nsporaSzoras urit() ELKELZDŐDIK");
+            //System.out.println("---------------------------------\nsporaSzoras urit() ELKELZDŐDIK");
             g.urit();
-            System.out.println("sporaSzoras urit() megtortent\n--------------------------------");
+            //System.out.println("sporaSzoras urit() megtortent\n--------------------------------");
             t.sporaSzor(this);
-            System.out.println("sporaSzoras sporaszor() megtortent\n--------------------------------");
+            //System.out.println("sporaSzoras sporaszor() megtortent\n--------------------------------");
 
             boolean valasz=false;
             if(g.getKor()==gombatestEletSzama)

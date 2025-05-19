@@ -192,7 +192,7 @@ public class NevFajSzin extends JFrame{
                 setVisible(false);
                 rovaraszokSzama--;
 
-                System.out.println(rovaraszokSzama);
+                //System.out.println(rovaraszokSzama);
 
                 if(rovaraszokSzama != 0){
                     SwingUtilities.invokeLater(() -> {

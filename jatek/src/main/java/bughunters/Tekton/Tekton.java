@@ -143,10 +143,10 @@ public class Tekton implements FonalKezeles {
                 }
 
             
-            System.out.println("--------------\nKIVUL Növeszthető fonal miatt: "+ noveszthetFonalMiatt + " Növeszthető test miatt: "+ noveszthetTestMiatt+"\n--------------");
+            //System.out.println("--------------\nKIVUL Növeszthető fonal miatt: "+ noveszthetFonalMiatt + " Növeszthető test miatt: "+ noveszthetTestMiatt+"\n--------------");
 
             if(noveszthetFonalMiatt || noveszthetTestMiatt) {
-                System.out.println("Növeszthető fonal miatt: "+ noveszthetFonalMiatt + " Növeszthető test miatt: "+ noveszthetTestMiatt);
+                //System.out.println("Növeszthető fonal miatt: "+ noveszthetFonalMiatt + " Növeszthető test miatt: "+ noveszthetTestMiatt);
                 return new Gombafonal(g, this, honnan);
             }
             else {
@@ -424,10 +424,10 @@ public class Tekton implements FonalKezeles {
         for (Spora spora : sporak) {
             //ha az a sporatipus benne van már a listában, csak növeljük a mennyiséget
             if (spora.getGombafaj().equals(sp.getGombafaj())) {
-                System.out.println("Spora mar letezett: "+sp.getGombafaj().getNev() + " mennyiseg elötte: "+sp.getMennyiseg());
+                //System.out.println("Spora mar letezett: "+sp.getGombafaj().getNev() + " mennyiseg elötte: "+sp.getMennyiseg());
 
                 spora.szorasTortent();
-                System.out.print(" mennyiseg utana: "+spora.getMennyiseg());
+                //System.out.print(" mennyiseg utana: "+spora.getMennyiseg());
                 return;
             }
         }
@@ -435,7 +435,7 @@ public class Tekton implements FonalKezeles {
         //ha nincs benne a listában, akkor hozzáadjuk
         sp.szorasTortent();
         sporak.add(sp);
-        System.out.println("Új spora keletkezett: "+sp.getGombafaj().getNev() + " mennyiseg: "+sp.getMennyiseg());
+        //System.out.println("Új spora keletkezett: "+sp.getGombafaj().getNev() + " mennyiseg: "+sp.getMennyiseg());
 
     }
 

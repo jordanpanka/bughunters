@@ -191,7 +191,7 @@ public class Jatek {
                 //Jatekos köre, amíg van akciópontja
                 while(jatekos.getakcioSzama() > 0){
                     try {
-                        System.out.println("Aktiv játékos: " + jatekos.getNev() + " | Kör: " + korSzam + " | Akciópont: " + jatekos.getakcioSzama());
+                        //System.out.println("Aktiv játékos: " + jatekos.getNev() + " | Kör: " + korSzam + " | Akciópont: " + jatekos.getakcioSzama());
 
                         parancs = r.readLine();
                         

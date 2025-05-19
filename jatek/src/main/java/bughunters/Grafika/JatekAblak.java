@@ -134,7 +134,7 @@ public class JatekAblak  extends JFrame{
         
 
         //JFramehez panelek hozzáadása
-        System.out.println("felso:"+felsoPanel.getHeight());
+        //System.out.println("felso:"+felsoPanel.getHeight());
         add(felsoPanel,BorderLayout.NORTH);
         add(grafika, BorderLayout.CENTER);
         frissitPanel();
@@ -196,7 +196,7 @@ public class JatekAblak  extends JFrame{
         });
         Vag.addActionListener(e->{
             mouse.put("Vag",true);
-            if(elsokattintas)System.out.println("elso");
+            //if(elsokattintas)System.out.println("elso");
         });
         Eszik.addActionListener(e->{
             mouse.put("Eszik",true);
@@ -218,7 +218,7 @@ public class JatekAblak  extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) { 
                 
-                System.out.println("Meghívódik a kttintás");
+                //System.out.println("Meghívódik a kttintás");
                 if (Boolean.TRUE.equals(mouse.get("testNov"))) {
                     Tekton t =grafika.tektonKeres(e.getX(), e.getY());
                         try{
@@ -313,13 +313,13 @@ public class JatekAblak  extends JFrame{
                     if(!elsokattintas){
                         elsokattintas=true;
                         rovarKiv=grafika.rovarKeres(e.getX(), e.getY());
-                        System.out.println("elso kett.");
+                        //System.out.println("elso kett.");
                         return;
                     }
                     else{
                         elsokattintas=false;
                         Gombafonal gf=grafika.fonalKeres(e.getX(),e.getY());
-                        System.out.println("masodik kett.");
+                        //System.out.println("masodik kett.");
                         try{
                            game.vag(rovarKiv, gf);
                             if(jatek.korEllenorzes(JatekAblak.this)){
@@ -461,7 +461,7 @@ public class JatekAblak  extends JFrame{
     }
     public void akcioVege(){
          boolean ujJatekos=jatek.korEllenorzes(this);
-         System.out.println("ujjatekos: "+game.getAktivJatekos().getNev());
+         //System.out.println("ujjatekos: "+game.getAktivJatekos().getNev());
         jatekosAdatFrissit(jatekosInfo);
             if(ujJatekos){
                 frissitPanel();
