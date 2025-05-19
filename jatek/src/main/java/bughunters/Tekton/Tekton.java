@@ -201,6 +201,10 @@ public class Tekton implements FonalKezeles {
                 }
             }
 
+            if (!vanFonal && sporaval) {
+                throw new Exception("Nincsen fonalad a tektonon.");
+            }
+
             if(sporaval && vanFonal){
                 boolean elfogyott = false; 
 

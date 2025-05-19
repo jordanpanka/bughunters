@@ -226,7 +226,8 @@ public class Gombafaj implements FonalKezeles{
             eddigNovesztettTestekSzama++;
         }catch(Exception e)
         {
-            throw new Exception("Nem nőhet gombatest.");
+            throw e;
+            //throw new Exception("Nem nőhet gombatest.");
         }
     }
 
