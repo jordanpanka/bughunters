@@ -78,6 +78,15 @@ public class Tekton implements FonalKezeles {
     }
 
     /***
+     * @brief Szomszédot töröl az aktuális tektontól
+     * @param t Tekton: törölt szomszéd
+     */
+    public void removeSzomszed(Tekton t){
+        //System.out.println("Meghívódik a Tekton removeSzomszed metódusa.");
+        szomszedok.remove(t);
+    }
+
+    /***
      * @brief Gombafonalat ad hozzá a Tektonhoz
      * @param gf Gombafaj: Aktuális gombafaj
      * @param honnan Tekton: Vizsgáljuk hogy erről a tektonról vezet e fonal az aktuálisra
@@ -232,42 +241,37 @@ public class Tekton implements FonalKezeles {
             List<Gombatest> szurtLista = gf.getGombaTestek().stream().filter(gt -> gt.getTekton().equals(this)).collect(Collectors.toList());
 
             //fejlett
-            if(gf.getGombatestFejlettsegIdo() <= szurtLista.get(0).getKor())
+            if(gf.getGombatestFejlettsegIdo() < szurtLista.get(0).getKor())
             {
                 for (Tekton tekton : szomszedok) {
 
                     if(gf.getNev().equalsIgnoreCase("Légyölő galóca")){
                         Benito b2 = new Benito();
                         b2.setGombafaj(gf);
-                        b2.szorasTortent();
                         tekton.addSpora(b2);
                     }
                     else if(gf.getNev().equalsIgnoreCase("Vargánya gomba")){
                         //spora = (Lassito)spora;
                         Lassito l = new Lassito();
                         l.setGombafaj(gf);
-                        l.szorasTortent();
                         tekton.addSpora(l);
                     }
                     else if(gf.getNev().equalsIgnoreCase("Foltos püffeteg")){
                         Osztodo o = new Osztodo();
                         //spora = (Osztodo)spora;
                         o.setGombafaj(gf);
-                        o.szorasTortent();
                         tekton.addSpora(o);
                     }
                     else if(gf.getNev().equalsIgnoreCase("Szegfűgomba")){
                         VagasKeptelenito v = new VagasKeptelenito();
                         //spora = (VagasKeptelenito)spora;
                         v.setGombafaj(gf);
-                        v.szorasTortent();
                         tekton.addSpora(v);
                     }
                     else if(gf.getNev().equalsIgnoreCase("Csiperke gomba")){
                         Gyorsito gy = new Gyorsito();
                         //spora = (Gyorsito)spora;
                         gy.setGombafaj(gf);
-                        gy.szorasTortent();
                         tekton.addSpora(gy);
                     }
                     
@@ -276,35 +280,30 @@ public class Tekton implements FonalKezeles {
                             if(gf.getNev().equalsIgnoreCase("Légyölő galóca")){
                                 Benito b2 = new Benito();
                                 b2.setGombafaj(gf);
-                                b2.szorasTortent();
                                 tektonszomszed.addSpora(b2);
                             }
                             else if(gf.getNev().equalsIgnoreCase("Vargánya gomba")){
                                 //spora = (Lassito)spora;
                                 Lassito l = new Lassito();
                                 l.setGombafaj(gf);
-                                l.szorasTortent();
                                 tektonszomszed.addSpora(l);
                             }
                             else if(gf.getNev().equalsIgnoreCase("Foltos püffeteg")){
                                 Osztodo o = new Osztodo();
                                 //spora = (Osztodo)spora;
                                 o.setGombafaj(gf);
-                                o.szorasTortent();
                                 tektonszomszed.addSpora(o);
                             }
                             else if(gf.getNev().equalsIgnoreCase("Szegfűgomba")){
                                 VagasKeptelenito v = new VagasKeptelenito();
                                 //spora = (VagasKeptelenito)spora;
                                 v.setGombafaj(gf);
-                                v.szorasTortent();
                                 tektonszomszed.addSpora(v);
                             }
                             else if(gf.getNev().equalsIgnoreCase("Csiperke gomba")){
                                 Gyorsito gy = new Gyorsito();
                                 //spora = (Gyorsito)spora;
                                 gy.setGombafaj(gf);
-                                gy.szorasTortent();
                                 tektonszomszed.addSpora(gy);
                             }
                         }
@@ -367,13 +366,19 @@ public class Tekton implements FonalKezeles {
         for (Spora spora : sporak) {
             //ha az a sporatipus benne van már a listában, csak növeljük a mennyiséget
             if (spora.getGombafaj().equals(sp.getGombafaj())) {
+                System.out.println("Spora mar letezett: "+sp.getGombafaj().getNev() + " mennyiseg elötte: "+sp.getMennyiseg());
+
                 spora.szorasTortent();
+                System.out.print(" mennyiseg utana: "+spora.getMennyiseg());
                 return;
             }
         }
 
         //ha nincs benne a listában, akkor hozzáadjuk
+        sp.szorasTortent();
         sporak.add(sp);
+        System.out.println("Új spora keletkezett: "+sp.getGombafaj().getNev() + " mennyiseg: "+sp.getMennyiseg());
+
     }
 
     /***
@@ -402,9 +407,11 @@ public class Tekton implements FonalKezeles {
         atrakandoSzomszedok.remove(t);
         for (Tekton tekton : atrakandoSzomszedok) {
             t.addSzomszed(tekton);
+            tekton.addSzomszed(t);
+            tekton.removeSzomszed(this);
         }
         szomszedok.removeAll(atrakandoSzomszedok);
-
+         
     }
 
     /***

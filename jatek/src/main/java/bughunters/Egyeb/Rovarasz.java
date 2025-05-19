@@ -160,8 +160,10 @@ public class Rovarasz extends Jatekos {
      */
     public void rovarokAllapotIdejenekNovelese(){
         for (Rovar rovar : rovarok) {
-            int ideiglenes = rovar.getAllapotIdeje();
-            rovar.setAllapotIdeje(ideiglenes++);
+            int ideiglenes = rovar.getAllapotIdeje() +1;
+
+            rovar.setAllapotIdeje(ideiglenes);
+
         }
     }
 
