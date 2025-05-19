@@ -1,6 +1,7 @@
 package bughunters.Grafika;
 
 import java.awt.Graphics;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -137,8 +138,7 @@ public class Grafika extends JPanel {
                     //System.out.println("Szomszéd tekton rajzolva X=" + szomszedX + ", Y=" + szomszedY);
                     gombatestek.forEach((gombatest, gg) -> {
                             if (gombatest.getTekton().equals(szomszed)) {
-                                //gg.setX(szomszedX);
-                                //gg.setY(szomszedY);
+                    
                                 gg.Draw(g);
                             }
                     });
@@ -296,24 +296,55 @@ public class Grafika extends JPanel {
         y=y-230;
         System.out.println("fonalkeres");
         for (Map.Entry<Gombafonal, GGombafonal> entry : gombafonalak.entrySet()) {
-            double X1=(double)entry.getValue().getX();
+            double X1=(double)entry.getValue().getX1();
             double X2=(double)entry.getValue().getX2();
-            double Y1=(double)entry.getValue().getY();
+            double Y1=(double)entry.getValue().getY1();
             double Y2=(double)entry.getValue().getY2();
-            double dX=(double)entry.getValue().getX()-entry.getValue().getX2();
-            double dY=(double)entry.getValue().getY()-entry.getValue().getY2();
-            double t=((x-X1)*dX+(y-Y1)*dY)/(dX*dX+dY*dY);
-            t=Math.max(0,Math.min(1,t));
-            double projX = X1 + t * dX;
-            double projY = Y1 + t * dY;
-            double tav=Math.hypot(x - projX, y - projY);
-            if(tav<=5){
+            /*
+            System.out.println("X1:"+X1);
+            System.out.println("X2:"+X2);
+            System.out.println("Y1:"+Y1);
+            System.out.println("Y2:"+Y2);
+            System.out.println("x:"+x);
+            System.out.println("y:"+y);
+            */
+            boolean kozelVan = isPointNearLine(x, y, X1, Y1, X2, Y2);
+            if(kozelVan){
                 return entry.getKey();
             }
         }
         return null; // nem találtuk meg
     }
-   
+
+    boolean isPointNearLine(double px, double py, double x1, double y1, double x2, double y2) {
+        double distance = distanceToLine(px, py, x1, y1, x2, y2);
+        //System.out.println("Táv: "+distance);
+        return distance < 10; // Küszöb távolság: ha elég közel van, akkor igaz
+    }
+
+    double distanceToLine(double px, double py, double x1, double y1, double x2, double y2) {
+        double dx = x2 - x1;
+        double dy = y2 - y1;
+        double lengthSquared = dx * dx + dy * dy;
+
+        // Ha a szakasz hossza közel nulla, a távolság a kezdőponttól értendő
+        if (lengthSquared == 0.0) {
+            double dxp = px - x1;
+            double dyp = py - y1;
+            return Math.sqrt(dxp * dxp + dyp * dyp);
+        }
+
+        double t = ((px - x1) * dx + (py - y1) * dy) / lengthSquared;
+
+        double closestX = x1 + t * dx;
+        double closestY = y1 + t * dy;
+
+        double dxp = px - closestX;
+        double dyp = py - closestY;
+
+        return Math.sqrt(dxp * dxp + dyp * dyp);
+    }
+
     public Gombatest gombatestKeres(int x, int y) {
         y=y-230;
         //System.out.println("Képernyő"+x+y);
@@ -361,10 +392,10 @@ public class Grafika extends JPanel {
     public Spora sporaKeres(int x, int y){
         y=y-230;
          for (Map.Entry<Spora, GSpora> entry : sporak.entrySet()) {
-            double xC = (double)entry.getValue().getX()+3;
-            double yC = (double)entry.getValue().getY()+3;
+            double xC = (double)entry.getValue().getX()+12;
+            double yC = (double)entry.getValue().getY()+12;
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
-            if (d <=3) {
+            if (d <=12) {
                 return entry.getKey(); // megtaláltuk
             }
         }
