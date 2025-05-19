@@ -394,7 +394,7 @@ public class Tekton implements FonalKezeles {
             t.addSzomszed(tekton);
         }
         szomszedok.removeAll(atrakandoSzomszedok);
-
+         
     }
 
     /***
