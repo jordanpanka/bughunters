@@ -506,7 +506,8 @@ public class Parancskezelok {
             Gombasz gombasz = (Gombasz)aktivJatekos;
             gombasz.sporaSzoras(tartozkodas, gt);
         } catch (Exception e) {
-            throw new Exception("Nem sikerult sporat szorni");
+            //throw new Exception("Nem sikerult sporat szorni");
+            throw e;
         }
     }
 
