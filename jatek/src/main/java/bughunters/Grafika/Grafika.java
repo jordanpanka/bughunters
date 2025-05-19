@@ -117,7 +117,7 @@ public class Grafika extends JPanel {
                 int szomszedY = (int) (cY + R * Math.sin(szog));
 
                 Tekton szomszed = t.getSzomszedok().get(i);
-                System.out.println("Szomszéd tekton: " + szomszed);
+                //System.out.println("Szomszéd tekton: " + szomszed);
                 GTekton gSzomszed = tektonok.get(szomszed);
 
                 if (gSzomszed != null) {
@@ -178,7 +178,7 @@ public class Grafika extends JPanel {
         //gombatestek beállítása csak a középső
         gombatestek.forEach((gombatest,gg)->{
             if(gombatest.getTekton().equals(t)){
-                System.out.println("kozepso tekton: "+t + "\n");
+                //System.out.println("kozepso tekton: "+t + "\n");
                 gg.setX(cX);
                 gg.setY(cY);
                 gg.Draw(g);
@@ -347,10 +347,10 @@ public class Grafika extends JPanel {
                         int y_1 = y1+50;
                         int x_2 = (int)(x_1 + Math.cos(angle) * radius);
                         int y_2 = (int)(y_1 + Math.sin(angle) * radius);
-                        System.out.println("X1: "+x_1);
-                        System.out.println("Y1: "+y_1);
-                        System.out.println("X2: "+x_2);
-                        System.out.println("Y2: "+y_2);
+                        //System.out.println("X1: "+x_1);
+                        //System.out.println("Y1: "+y_1);
+                        //System.out.println("X2: "+x_2);
+                        //System.out.println("Y2: "+y_2);
                         gFonal.setX1(x_1);
                         gFonal.setY1(y_1);
                         gFonal.setX2(x_2);
@@ -372,10 +372,10 @@ public class Grafika extends JPanel {
                         int y_1 = y2+50;
                         int x_2 = (int)(x_1 + Math.cos(angle) * radius);
                         int y_2 = (int)(y_1 + Math.sin(angle) * radius);
-                        System.out.println("X1: "+x_1);
-                        System.out.println("Y1: "+y_1);
-                        System.out.println("X2: "+x_2);
-                        System.out.println("Y2: "+y_2);
+                        //System.out.println("X1: "+x_1);
+                        //System.out.println("Y1: "+y_1);
+                        //System.out.println("X2: "+x_2);
+                        //System.out.println("Y2: "+y_2);
                         gFonal.setX1(x_1);
                         gFonal.setY1(y_1);
                         gFonal.setX2(x_2);

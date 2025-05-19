@@ -83,8 +83,18 @@ public class Rovarasz extends Jatekos {
                 throw new Exception("Nincs elegendő akciópont.");
             }
 
-            r.vag(gf);
-            akciopontCsokkentes(1);
+            if(r.getTartozkodas().equals(gf.getVegpont1())){
+                r.vag(gf);
+                akciopontCsokkentes(1);
+            }
+            else if(r.getTartozkodas().equals(gf.getVegpont2())){
+                r.vag(gf);
+                akciopontCsokkentes(1);
+            }
+            else{
+                throw new Exception("A gombafonal nem a rovar tektonján tartózkodik.");
+            }
+            
         } catch (Exception e) {
             throw e;
         }

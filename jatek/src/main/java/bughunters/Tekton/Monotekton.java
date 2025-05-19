@@ -4,6 +4,7 @@ import java.util.List;
 
 import bughunters.Gombafaj.Gombafaj;
 import bughunters.Gombafaj.Gombafonal;
+import bughunters.Gombafaj.Gombatest;
 import bughunters.Gombafaj.Spora;
 
 public class Monotekton extends Tekton {
@@ -15,25 +16,75 @@ public class Monotekton extends Tekton {
      * @exception Exception akkor dobódik ha nem tud oda növeszteni fonalat
      */
     @Override
-    public Gombafonal gombafonalAdd(Gombafaj gf, Tekton honnan) throws Exception{
+    public Gombafonal gombafonalAdd(Gombafaj g, List<Gombafaj> erintofajok, Tekton honnan) throws Exception{
         //System.out.println("Meghívódik a Monotekton gombafonalAdd metódusa.");
-        
-        if(getFonalak().isEmpty()){
-            Gombafonal gf2 = new Gombafonal(gf,this,honnan);
-            addFonal(gf2);
-            return gf2;
+        //Különbség a tektontól: NEM nőhet fonal rá, hogyha rajta van már egy MÁSIK gombafaj gombafonala vagy teste
+       
+       // 1. Szomszédság ellenőrzése
+        if (!szomszedok.contains(honnan)) {
+            throw new Exception("A két tekton nem szomszédos.");
         }
-        else {
-            for (Gombafonal gombafonal : getFonalak()) {
-                if(gombafonal.getGombafaj() == gf && 
-                (gombafonal.getVegpont1() == this || gombafonal.getVegpont2() == this)){
-                    Gombafonal gf2 = new Gombafonal(gf,this,honnan);
-                    addFonal(gf2);
-                    return gf2;
-                }
+
+        // 2. Már létező fonal ellenőrzése
+        for (Gombafonal gfonal : gombafonalak) {
+            if ((gfonal.getVegpont1().equals(this) && gfonal.getVegpont2().equals(honnan)) ||
+                (gfonal.getVegpont1().equals(honnan) && gfonal.getVegpont2().equals(this))) {
+                throw new Exception("Már van ilyen fonal.");
             }
-            throw new Exception("Nem növeszthet ide gombafonalat.");
         }
+
+        // 3. Monotekton speciális szabályai:
+        //    - Csak ugyanaz a gombafaj lehet rajta (test vagy fonal formájában)
+        //    - Ha van rajta más gombafaj, akkor NEM lehet rá fonalat növeszteni.
+
+        // 3.1. Van-e már más gombafajhoz tartozó test vagy fonal a Monotektonon?
+        if (!gombafonalak.isEmpty()) {
+            Gombafonal existingFonal = gombafonalak.get(0);
+            if (!existingFonal.getGombafaj().equals(g)) {
+                throw new Exception("Nem lehet fonalat növeszteni, mert más gombafaj van rajta.");
+            }
+        }
+
+        // 3.2. Ha van érintett faj (pl. másik gombafaj próbál ráfonalat növeszteni)
+        if (erintofajok != null && !erintofajok.isEmpty()) {
+            Gombafaj existingFaj = erintofajok.get(0);
+            if (!existingFaj.equals(g)) {
+                throw new Exception("Nem lehet fonalat növeszteni, mert más gombafaj van rajta.");
+            }
+        }
+
+        // 4. Általános feltételek (test vagy fonal alapján növeszthető-e)
+        boolean noveszthetTestMiatt = false;
+        boolean noveszthetFonalMiatt = false;
+
+        // 4.1. Van-e a saját gombafajból test valamelyik tektonon?
+        for (Gombatest test : g.getGombaTestekList()) {
+            if (test.getTekton().equals(honnan) || test.getTekton().equals(this)) {
+                noveszthetTestMiatt = true;
+                break;
+            }
+        }
+
+        // 4.2. Van-e a saját gombafajból fonal valamelyik tektonon?
+        for (Gombafonal gfonal : gombafonalak) {
+            if (gfonal.getGombafaj().equals(g)) {
+                noveszthetFonalMiatt = true;
+                break;
+            }
+        }
+        for (Gombafonal gfonal : honnan.getFonalak()) {
+            if (gfonal.getGombafaj().equals(g)) {
+                noveszthetFonalMiatt = true;
+                break;
+            }
+        }
+
+        if (noveszthetTestMiatt || noveszthetFonalMiatt) {
+            return new Gombafonal(g, this, honnan);
+        } else {
+            throw new Exception("Nem lehet fonalat növeszteni.");
+        }
+       
     }
 
     @Override

@@ -1,6 +1,7 @@
 package bughunters.Egyeb;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import bughunters.Gombafaj.Gombafaj;
 import bughunters.Gombafaj.Gombafonal;
@@ -55,13 +56,13 @@ public class Gombasz extends Jatekos{
      * @param t2 A második tekton
      * @throws Exception Ha nincs elég akciópont
      */
-    public void fonalNov(Tekton t1, Tekton t2) throws Exception{
+    public void fonalNov(Tekton t1, List<Gombafaj> t1fajok, Tekton t2, List<Gombafaj> t2fajok) throws Exception{
         try {
             if (getakcioSzama() < 1) {
                 throw new Exception("Nincs elegendő akciópont.");
             }
 
-            gombafaj.fonalNov(t1, t2);
+            gombafaj.fonalNov(t1, t1fajok, t2, t2fajok);
             
             akciopontCsokkentes(1);
         } catch (Exception e) {
