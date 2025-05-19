@@ -225,6 +225,7 @@ public class JatekAblak  extends JFrame{
                         try{
                             game.gtNov(t);
                             jatek.korEllenorzes(JatekAblak.this);
+                            //akcioVege();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
@@ -236,13 +237,14 @@ public class JatekAblak  extends JFrame{
                     Gombatest gt=grafika.gombatestKeres(e.getX(), e.getY());
                     
                     try{
-                            System.out.println("Gomb sporaraktár: "+gt.getSporaRaktar());
                             game.sporaszor(gt);
                             jatek.korEllenorzes(JatekAblak.this);
+                            //akcioVege();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
                     mouse.put("Sporaszor",false);
+
                 }
                 else if(Boolean.TRUE.equals(mouse.get("FonalNov"))){
                     if(!elsokattintas){
@@ -256,11 +258,13 @@ public class JatekAblak  extends JFrame{
                         try{
                            game.gfnov(elsoTekton,t2);
                             jatek.korEllenorzes(JatekAblak.this);
+                            //akcioVege();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
                        mouse.put("FonalNov",false);
                     }
+
                 }
                 else if(Boolean.TRUE.equals( mouse.get("Rovareves"))){
                     Rovar r=grafika.rovarKeres(e.getX(),e.getY());
@@ -268,10 +272,12 @@ public class JatekAblak  extends JFrame{
                     try{
                            game.rovart_eszik(r);
                             jatek.korEllenorzes(JatekAblak.this);
+                            //akcioVege();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
                     mouse.put("Rovareves", false);
+
                 }
                 else if(Boolean.TRUE.equals(mouse.get("Maszik"))){
                     if(!elsokattintas){
@@ -285,12 +291,14 @@ public class JatekAblak  extends JFrame{
                         try{
                            game.maszik(rovarKiv, t);
                             jatek.korEllenorzes(JatekAblak.this);
+                            //akcioVege();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
                         rovarKiv=null;
                         mouse.put("Maszik",false);
                     }
+
                 }
                 else if(Boolean.TRUE.equals(mouse.get("Vag"))){
                     if(!elsokattintas){
@@ -306,12 +314,14 @@ public class JatekAblak  extends JFrame{
                         try{
                            game.vag(rovarKiv, gf);
                             jatek.korEllenorzes(JatekAblak.this);
+                            //akcioVege();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
                         rovarKiv=null;
                         mouse.put("Vag",false);
                     }
+
                 }
                 else if(Boolean.TRUE.equals(mouse.get("Eszik"))){
                     if(!elsokattintas){
@@ -321,19 +331,22 @@ public class JatekAblak  extends JFrame{
                     else{
                         elsokattintas=false;
                         Spora sp=grafika.sporaKeres(e.getX(),e.getY());
-                        System.out.println("Mennyiség:"+sp.getMennyiseg());
                         try{
                             game.eszik(rovarKiv,sp);
                              jatek.korEllenorzes(JatekAblak.this);
+                             //akcioVege();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
                         }
                         rovarKiv=null;
                          mouse.put("Eszik",false);
                     }
+
                 }
 
                 jatekosAdatFrissit(jatekosInfo);
+                //akcioVege();
+                
                 grafika.Draw((Tekton)kiv,grafika.getGraphics());
 
             };
