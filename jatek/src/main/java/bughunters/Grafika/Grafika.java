@@ -251,6 +251,7 @@ public class Grafika extends JPanel {
                 gSpora.setX(sporaX+44);
                 gSpora.setY(sporaY+44);
                 gSpora.Draw(g);  // Kirajzolás
+                gSpora.szamKiir(g, spora.getMennyiseg());
                 //System.out.println("Spóra rajzolva X=" + sporaX + ", Y=" + sporaY);
             }
         }
