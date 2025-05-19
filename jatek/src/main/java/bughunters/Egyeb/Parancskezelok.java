@@ -463,7 +463,7 @@ public class Parancskezelok {
 
             Gombasz gombasz = (Gombasz)aktivJatekos;
 
-            if(r.getAllapot() != rovarAllapot.Benitott){
+            if(r.getAllapot() != rovarAllapot.Benitott){ 
                 throw new Exception("A rovar nincs lebenitva");
             }
             try {

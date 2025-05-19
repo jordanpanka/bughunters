@@ -260,7 +260,7 @@ public class Grafika extends JPanel {
     
             
     public void fonalrajzol(Tekton t, Graphics g) {
-        // Tektonok listája a vizsgált és szomszédos elemekkel
+        // Tektonok listája a vizsgált és szomszédos elemekkel 
         List<Tekton> tektonok2 = new ArrayList<>(t.getSzomszedok());
         tektonok2.add(t);
 
