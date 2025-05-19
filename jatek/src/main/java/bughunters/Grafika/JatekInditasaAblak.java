@@ -15,10 +15,25 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+/***
+ * @brief Játék indításához használt ablak
+ * 
+ * Ez az ablak tartalmazza az üdvözlő üzenetet és az "Új játék" gombot,
+ * amely segítségével a felhasználó elindíthatja a játékot. A háttér
+ * pasztell lila színátmenettel van kialakítva.
+ */
 public class JatekInditasaAblak extends JFrame {
     public JButton UjJatek;
     private Parancskezelok game;
 
+    /***
+     * @brief Inicializálja a játék indító ablakot
+     * 
+     * Beállítja az ablak címét, méretét, és létrehozza a felhasználói felület
+     * elemeket, beleértve a színátmenetes háttérpanelt, az üdvözlő szöveget,
+     * valamint az "Új játék" gombot. A gomb eseménykezelője a koviAblak()
+     * metódust hívja meg.
+     */
     public JatekInditasaAblak() {
         setTitle("Játék Indítása");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,6 +84,13 @@ public class JatekInditasaAblak extends JFrame {
         setLocationRelativeTo(null);
     }
 
+    /***
+     * @brief Átvált a következő ablakra
+     * 
+     * Bezárja az aktuális ablakot, létrehoz egy új Parancskezelok példányt,
+     * és megnyitja a játékosok számának megadására szolgáló ablakot.
+     * Ezt a metódust az "Új játék" gomb aktiválja.
+     */
     private void koviAblak() {
         SwingUtilities.invokeLater(() -> {
             dispose();

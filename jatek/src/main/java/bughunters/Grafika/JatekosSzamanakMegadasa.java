@@ -7,8 +7,15 @@ import bughunters.Egyeb.Parancskezelok;
 import java.awt.*;
 import javax.swing.*;
 
+
+/***
+ * @brief Játékosok számának megadására szolgáló ablak
+ * 
+ * Ez az ablak lehetővé teszi a felhasználó számára, hogy kiválassza a
+ * Gombász és Rovarász játékosok számát. A háttér pasztell lila színátmenettel
+ * rendelkezik, és tartalmaz egy "Következő" gombot a továbblépéshez.
+ */
 public class JatekosSzamanakMegadasa extends JFrame {
-    
     private JComboBox<Integer> gombaszokSzama;
     private JComboBox<Integer> rovaraszokSzama;
     private Parancskezelok game;
@@ -17,7 +24,15 @@ public class JatekosSzamanakMegadasa extends JFrame {
     private JPanel rovaraszMegad;
     private JButton kovetkezo;
 
-     public JatekosSzamanakMegadasa(Parancskezelok g) { 
+    /***
+     * @brief Inicializálja a játékos számának megadó ablakot
+     * @param g A játék parancskezelője, ami továbbadódik a következő ablaknak
+     * 
+     * Beállítja az ablak címét és méretét, létrehozza a színátmenetes háttért,
+     * a legördülő listákat a játékosok számának kiválasztásához, valamint
+     * a "Következő" gombot. A gomb eseménykezelője a handleKovetkezo() metódust hívja.
+     */
+    public JatekosSzamanakMegadasa(Parancskezelok g) { 
         game = g;
         
         setTitle("Játékosok száma");
@@ -99,6 +114,13 @@ public class JatekosSzamanakMegadasa extends JFrame {
         panel.add(kovetkezo, gbc);
     }
 
+    /***
+     * @brief Stílust alkalmaz a gombokra
+     * @param button A stílusozandó gomb
+     * 
+     * Beállítja a gomb szövegének színét, háttérszínét, betűtípusát,
+     * és eltávolítja a fókusz keretet.
+     */
     private void styleButton(JButton button) {
         button.setForeground(Color.WHITE);
         button.setBackground(new Color(135, 206, 250)); // Világoskék
@@ -106,6 +128,13 @@ public class JatekosSzamanakMegadasa extends JFrame {
         button.setFocusPainted(false);
     }
 
+    /***
+     * @brief Feldolgozza a "Következő" gomb nyomását
+     * 
+     * Lekéri a kiválasztott játékosok számát, inicializálja a játékteret,
+     * bezárja az aktuális ablakot, és megnyitja a következő ablakot
+     * (NevFajSzin) a játékosok nevének, fajának és színének megadásához.
+     */
     private void handleKovetkezo() {
         SwingUtilities.invokeLater(() -> {
             int gombaszok = (int) gombaszokSzama.getSelectedItem();

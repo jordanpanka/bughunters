@@ -13,9 +13,25 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
+
+/***
+ * @brief Gombafajok tulajdonságait megjelenítő táblázatos ablak
+ * 
+ * Ez az ablak egy részletes táblázatban mutatja be a különböző gombafajok
+ * játékbeli tulajdonságait. A táblázat fejlécei és tartalma középre igazítottak,
+ * és a sorok magassága illetve oszlopok szélessége optimalizálva van a tartalomra.
+ */
 public class GombaInfo extends JFrame {
     private JTable adatok;
 
+    /***
+     * @brief Inicializálja a gombainformációs ablakot
+     * 
+     * Beállítja az ablak címét és méretét, létrehozza a középre igazított táblázatot,
+     * feltölti a gombafajok adataival, és beállítja az optimális megjelenítést
+     * görgethető panelen belül. Az oszlopok szélességét manuálisan állítja be
+     * a tartalomhoz igazodóan.
+     */
     public GombaInfo() {
         setTitle("Gombafajok tulajdonságai");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -95,7 +111,12 @@ public class GombaInfo extends JFrame {
         setVisible(true);
     }
 
-     // Fejléc középre igazító osztály
+    /***
+     * @brief Egyéni fejlécrenderer középre igazításhoz
+     * 
+     * A DefaultTableCellRenderer leszármazottja, amely biztosítja,
+     * hogy a táblázat fejlécei középre legyenek igazítva vízszintesen és függőlegesen.
+     */
     private static class CenterHeaderRenderer extends DefaultTableCellRenderer {
         public CenterHeaderRenderer() {
             setHorizontalAlignment(SwingConstants.CENTER);
