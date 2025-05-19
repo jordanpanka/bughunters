@@ -467,10 +467,27 @@ public class Parancskezelok {
                 throw new Exception("A rovar nincs lebenitva");
             }
             try {
-                gombasz.rovarEves(r);
+                Boolean testnovesztessel = true;
+                if(getTestekTartozkodas().contains(r.getTartozkodas())){
+                    testnovesztessel = false;
+                }
+
+                gombasz.rovarEves(r, testnovesztessel);
             } catch (Exception e) {
                 throw new Exception("Nem sikerult megenni a rovart");
             }
+    }
+
+    public List<Tekton> getTestekTartozkodas(){
+            List<Tekton> testek = new ArrayList<>();
+
+            for (Gombasz gombasz : gombaszok) {
+                List<Gombatest> gombatestek = gombasz.getGombafaj().getGombaTestekList();
+                for (Gombatest test : gombatestek) {
+                    testek.add(test.getTekton());
+                }
+            }
+            return testek;
     }
 
     public void gfnov(Tekton t1, Tekton t2) throws Exception {
@@ -485,7 +502,8 @@ public class Parancskezelok {
            
             try {
                 Gombasz gombasz = (Gombasz)aktivJatekos;
-                gombasz.fonalNov(t1, t2);
+                System.out.println("megkapott tektonok: t1: "+t1+" t2: "+t2 ); //!!!!!!!
+                gombasz.fonalNov(t1, t2); 
             } catch (Exception e) {
                 throw new Exception("Nem sikerult gombafonalat noveszteni");
             }
@@ -773,8 +791,11 @@ public class Parancskezelok {
                             output.println("A rovar nincs lebenitva");
                             return;
                         }
-
-                        gombasz.rovarEves(rovar);
+                        Boolean testnovesztessel = true;
+                        if(getTestekTartozkodas().contains(rovar.getTartozkodas())){
+                            testnovesztessel = false;
+                        }
+                        gombasz.rovarEves(rovar,testnovesztessel);
 
                         output.println("Megszunt " + rovarStr);
                         output.println("Hozzaadva " + ujGombatestNev());
@@ -1265,7 +1286,11 @@ public class Parancskezelok {
                             return;
                         }
 
-                        gombasz.rovarEves(rovar);
+                        Boolean testnovesztessel = true;
+                        if(getTestekTartozkodas().contains(rovar.getTartozkodas())){
+                            testnovesztessel = false;
+                        }
+                        gombasz.rovarEves(rovar,testnovesztessel);
 
                         output.println("Megszunt " + rovarStr);
                         output.println("Hozzaadva " + ujGombatestNev());

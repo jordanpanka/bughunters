@@ -1,7 +1,6 @@
 package bughunters.Grafika;
 
 import java.awt.Graphics;
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -77,6 +76,10 @@ public class Grafika extends JPanel {
         gombafonalak.forEach((tek,gtek)->{
             gtek.setX(-1);
             gtek.setY(-1);
+            gtek.setX1(-1);
+            gtek.setY1(-1);
+            gtek.setX2(-1);
+            gtek.setY2(-1);
         });
         rovarok.forEach((tek,gtek)->{
             gtek.setX(-1);
@@ -114,6 +117,7 @@ public class Grafika extends JPanel {
                 int szomszedY = (int) (cY + R * Math.sin(szog));
 
                 Tekton szomszed = t.getSzomszedok().get(i);
+                System.out.println("Szomszéd tekton: " + szomszed);
                 GTekton gSzomszed = tektonok.get(szomszed);
 
                 if (gSzomszed != null) {
@@ -174,6 +178,7 @@ public class Grafika extends JPanel {
         //gombatestek beállítása csak a középső
         gombatestek.forEach((gombatest,gg)->{
             if(gombatest.getTekton().equals(t)){
+                System.out.println("kozepso tekton: "+t + "\n");
                 gg.setX(cX);
                 gg.setY(cY);
                 gg.Draw(g);

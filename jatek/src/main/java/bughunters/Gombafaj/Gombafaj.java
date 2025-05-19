@@ -244,11 +244,8 @@ public class Gombafaj implements FonalKezeles{
         //System.out.println("Meghívódik a Gombafaj sporaSzoras metodusa.");
         try
         {
-            System.out.println("---------------------------------\nsporaSzoras urit() ELKELZDŐDIK");
             g.urit();
-            System.out.println("sporaSzoras urit() megtortent\n--------------------------------");
             t.sporaSzor(this);
-            System.out.println("sporaSzoras sporaszor() megtortent\n--------------------------------");
 
             boolean valasz=false;
             if(g.getKor()==gombatestEletSzama)
@@ -318,10 +315,12 @@ public class Gombafaj implements FonalKezeles{
     }
     
     //VÁLTOZTATAS: r.torolRovar(), kitörli a rovart a rovarasz listából
-    public void rovarEves(Rovar r)throws Exception{
+    public void rovarEves(Rovar r, Boolean testnovesztessel)throws Exception{
         try{
             if(r.getAllapot() == rovarAllapot.Benitott){
-                testNovesztes(r.getTartozkodas(), false);
+                if (testnovesztessel) {
+                    testNovesztes(r.getTartozkodas(), false);
+                }
                 r.torolRovar();
             }
             else
