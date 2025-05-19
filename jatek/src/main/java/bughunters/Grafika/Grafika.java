@@ -187,6 +187,7 @@ public class Grafika extends JPanel {
                 GRovar gg = entry.getValue();
 
                 if (rovar.getTartozkodas().equals(tekton)) {
+                    System.out.println("Rovar rajzolva X=" + baseX + ", Y=" + baseY+"tekton: "+rovar.getTartozkodas());
                     double angle = i * angleStep;
                     int x = (int)(baseX + radius * Math.cos(angle));
                     int y = (int)(baseY + radius * Math.sin(angle));
