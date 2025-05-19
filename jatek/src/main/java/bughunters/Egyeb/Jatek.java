@@ -48,7 +48,11 @@ public class Jatek {
         this.korSzam = korSzam;
     }
 
-
+    /***
+     * @brief A körökért felelős metódus. Játékos akciópontjainak ellenőrzését, és következő aktív játékos beállításáért felel. Emellett köt végi akciókat is meghívja amikor szükséges.
+     * @param jatekAblak A játék ablak, amelyet frissíteni kell
+     * @return Történt-e aktív játékos változás, vagy sem.
+     */
     public Boolean korEllenorzes(JatekAblak jatekAblak) {
         Boolean jatekosvaltas = false;
         if (korSzam >=60) {
