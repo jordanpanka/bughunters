@@ -361,10 +361,10 @@ public class Grafika extends JPanel {
     public Spora sporaKeres(int x, int y){
         y=y-230;
          for (Map.Entry<Spora, GSpora> entry : sporak.entrySet()) {
-            double xC = (double)entry.getValue().getX()+3;
-            double yC = (double)entry.getValue().getY()+3;
+            double xC = (double)entry.getValue().getX()+12;
+            double yC = (double)entry.getValue().getY()+12;
             double d = Math.sqrt(Math.pow(x - xC, 2) + Math.pow(y - yC, 2));
-            if (d <=3) {
+            if (d <=12) {
                 return entry.getKey(); // megtaláltuk
             }
         }
