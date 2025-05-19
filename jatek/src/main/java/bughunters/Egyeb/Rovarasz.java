@@ -172,7 +172,7 @@ public class Rovarasz extends Jatekos {
      */
     public void rovarokAlapallapotbaHelyezese(){
         for (Rovar rovar : rovarok) {
-            if(rovar.getAllapotIdeje()>=1){
+            if(rovar.getAllapotIdeje()>=2){
                 rovar.alapAllapot();
             }
         }
