@@ -224,7 +224,9 @@ public class JatekAblak  extends JFrame{
                     Tekton t =grafika.tektonKeres(e.getX(), e.getY());
                         try{
                             game.gtNov(t);
-                            jatek.korEllenorzes(JatekAblak.this);
+                            if(jatek.korEllenorzes(JatekAblak.this)){
+                                frissitPanel();
+                            }
                             //akcioVege();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
@@ -238,7 +240,9 @@ public class JatekAblak  extends JFrame{
                     
                     try{
                             game.sporaszor(gt);
-                            jatek.korEllenorzes(JatekAblak.this);
+                           if(jatek.korEllenorzes(JatekAblak.this)){
+                                frissitPanel();
+                            }
                             //akcioVege();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
@@ -257,7 +261,9 @@ public class JatekAblak  extends JFrame{
                         
                         try{
                            game.gfnov(elsoTekton,t2);
-                            jatek.korEllenorzes(JatekAblak.this);
+                           if(jatek.korEllenorzes(JatekAblak.this)){
+                                frissitPanel();
+                            }
                             //akcioVege();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
@@ -271,7 +277,9 @@ public class JatekAblak  extends JFrame{
                     
                     try{
                            game.rovart_eszik(r);
-                            jatek.korEllenorzes(JatekAblak.this);
+                           if(jatek.korEllenorzes(JatekAblak.this)){
+                                frissitPanel();
+                            }
                             //akcioVege();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
@@ -290,7 +298,9 @@ public class JatekAblak  extends JFrame{
                         
                         try{
                            game.maszik(rovarKiv, t);
-                            jatek.korEllenorzes(JatekAblak.this);
+                            if(jatek.korEllenorzes(JatekAblak.this)){
+                                frissitPanel();
+                            }
                             //akcioVege();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
@@ -313,7 +323,9 @@ public class JatekAblak  extends JFrame{
                         System.out.println("masodik kett.");
                         try{
                            game.vag(rovarKiv, gf);
-                            jatek.korEllenorzes(JatekAblak.this);
+                            if(jatek.korEllenorzes(JatekAblak.this)){
+                                frissitPanel();
+                            }
                             //akcioVege();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
@@ -333,7 +345,9 @@ public class JatekAblak  extends JFrame{
                         Spora sp=grafika.sporaKeres(e.getX(),e.getY());
                         try{
                             game.eszik(rovarKiv,sp);
-                             jatek.korEllenorzes(JatekAblak.this);
+                            if(jatek.korEllenorzes(JatekAblak.this)){
+                                frissitPanel();
+                            }
                              //akcioVege();
                         }catch(Exception ex){
                             HibaAblak hb=new HibaAblak(ex.getMessage());
@@ -345,6 +359,7 @@ public class JatekAblak  extends JFrame{
                 }
 
                 jatekosAdatFrissit(jatekosInfo);
+               // frissitPanel();
                 //akcioVege();
                 
                 grafika.Draw((Tekton)kiv,grafika.getGraphics());
