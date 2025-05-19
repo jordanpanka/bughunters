@@ -61,7 +61,7 @@ public class Gombasz extends Jatekos{
                 throw new Exception("Nincs elegendő akciópont.");
             }
 
-            gombafaj.fonalNov(t1, t2);
+            gombafaj.fonalNov(t1, t2); 
             
             akciopontCsokkentes(1);
         } catch (Exception e) {
