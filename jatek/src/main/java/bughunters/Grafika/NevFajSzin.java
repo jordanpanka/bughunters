@@ -129,7 +129,7 @@ public class NevFajSzin extends JFrame{
                 try{
                    
                 switch ((String)gombafajKiv.getSelectedItem()) {
-                    case "Lényölő galóca":
+                    case "Légyölő galóca":
                         Gombafaj g=game.createGombafajBySpora('b');
                         game.gombaszFelvetel(jatekosNev.getText(),g);
                         break;
