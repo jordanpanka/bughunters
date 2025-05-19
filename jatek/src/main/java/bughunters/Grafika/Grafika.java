@@ -243,7 +243,8 @@ public class Grafika extends JPanel {
         gombafajok.add(fon.getGombafaj());
     });
     HashMap<Gombafaj,Integer> fajok=new HashMap<>();
-    fajok.put(gombafajLista.get(0),50);
+    if(gombafajLista!=null) fajok.put(gombafajLista.get(0),50);
+   
     for(int i=1; i<gombafajok.size(); i++){
         if(i%2==0)fajok.put(gombafajLista.get(i),50-i*5);
         else fajok.put(gombafajLista.get(i),50+i*5);
