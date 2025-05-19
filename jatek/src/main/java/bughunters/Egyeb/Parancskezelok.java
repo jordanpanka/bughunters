@@ -189,6 +189,48 @@ public class Parancskezelok {
         return img;
     }
 
+    public String getColorStringByJatekos(Jatekos jatekos){
+        String szin = null;
+        try {
+            Gombasz gombasz = (Gombasz) jatekos;;
+            switch(gombasz.getGombafaj().getNev()) {
+            case "Csiperke gomba":
+                szin =  "sarga";
+                break;
+            case "Foltos püffeteg":
+                szin =  "rozsaszin";
+                break;
+            case "Vargánya gomba":
+                szin = "kek";
+                break;
+            case "Légyölő galóca":
+                szin = "piros";
+                break;
+            case "Szegfűgomba":
+                szin = "lila";
+                break;
+            default:
+        }
+        } catch (Exception e) {
+            try {
+                Rovarasz rovarasz = (Rovarasz) jatekos;
+                if(rovarasz.getSzin().equals(Color.RED)) {
+                    szin = "piros";
+                } else if(rovarasz.getSzin().equals(Color.ORANGE)) {
+                    szin = "narancs";
+                } else if(rovarasz.getSzin().equals(Color.MAGENTA)) {
+                    szin = "magenta";
+                } else if(rovarasz.getSzin().equals(new Color(121, 87, 53))) {
+                    szin = "barna";
+                } else if(rovarasz.getSzin().equals(new Color(172, 86, 0))) {
+                    szin = "vilagosbarna";
+                }
+            } catch (ClassCastException e1) {
+            }
+        } 
+
+        return szin;
+    }
 
     public Color getColorKepByFaj(Gombafaj gf){
         Color szin = null;
@@ -1542,7 +1584,7 @@ public class Parancskezelok {
      * @param c A spóra típusa (b, g, l, v, o)
      * @return Az új spóra neve, vagy null hibás típus esetén
      */
-    public String ujSporaNev(char c) {
+    public String  ujSporaNev(char c) {
         switch (c) {
             case 'b':
                 int maxSzamB = 0;
@@ -1587,7 +1629,7 @@ public class Parancskezelok {
                 int maxSzamV = 0;
                 for (String kulcs : objektumok.keySet()) {
                     if (kulcs.matches("vagaskeptelenito\\d+")) {
-                        String szamResz = kulcs.substring(15); // levágjuk az "tekton"-t
+                        String szamResz = kulcs.substring(16); // levágjuk az "tekton"-t
                         int szam = Integer.parseInt(szamResz);
                         if (szam > maxSzamV) {
                             maxSzamV = szam;
