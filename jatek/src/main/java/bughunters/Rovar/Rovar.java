@@ -133,7 +133,12 @@ public class Rovar {
         try {
             if (this.allapot == rovarAllapot.Benitott) {
             throw new Exception("Benitott allapotban van a rovar.");
-            }else{
+            }
+            else if(tartozkodas==hova)
+            {
+                throw new Exception("A rovar mar ott tartozkodik.");
+            }
+            else{
 
                 if(tartozkodas.vanUt(hova)){
                 setTartozkodas(hova);
@@ -142,6 +147,7 @@ public class Rovar {
                 }
 
             }
+            
         } catch (Exception e) {
             throw e;
         }
