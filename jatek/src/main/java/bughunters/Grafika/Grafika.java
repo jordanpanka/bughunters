@@ -257,27 +257,35 @@ public class Grafika extends JPanel {
             gombafonalak.get(fonalak2.get(i)).setY2(y2);
             gombafonalak.get(fonalak2.get(i)).Draw(g);
         }
-    }*/public void fonalrajzol(Tekton t, Graphics g) {
+    }*/
+    public void fonalrajzol(Tekton t, Graphics g) {
     System.out.println("fonalrajzol");
 
     List<Tekton> tektonok2 = new ArrayList<>(t.getSzomszedok());
     tektonok2.add(t);
 
     List<Gombafonal> fonalak2 = t.getFonalak();
+    for(int i=0; i<t.getSzomszedok().size();i++){
+        Tekton t1=t.getSzomszedok().get(i);
+        for(int j=0; j<t1.getFonalak().size();j++){
+            fonalak2.add(t1.getFonalak().get(j));
+        }
+    }
     System.out.println("grafika: " + gombafonalak.size());
 
     for (Gombafonal fonal : fonalak2) {
         Tekton t1 = fonal.getVegpont1();
         Tekton t2 = fonal.getVegpont2();
-        if(tektonok2.contains(t1) && tektonok2.contains(t2))System.out.println("Benne van");
+        if(tektonok2.contains(t1) && tektonok2.contains(t2)){System.out.println("Benne van");
+        //else{System.out.println("Az élet szép");}
         GTekton g1 = tektonok.get(t2);
         GTekton g2 = tektonok.get(t1);
 
         if(t2.equals(t))System.out.println("JAj");
 
-        if (g1 == null || g2 == null) {
+       /*  if (g1 == null || g2 == null) {
             continue; // Nincs grafikai információ az egyik végpontról, kihagyjuk
-        }
+        }*/
 
         int x1 = g1.getX();
         System.out.println(g1.getX());
@@ -298,7 +306,7 @@ public class Grafika extends JPanel {
             
             gFonal.Draw(g);
         }
-    }
+    }}
 }
 
     // Kirajzolja a gombafonalakat a tektonok között
