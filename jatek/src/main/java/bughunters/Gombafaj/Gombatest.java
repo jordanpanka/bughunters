@@ -1,6 +1,6 @@
 package bughunters.Gombafaj;
 
-import bughunters.Tekton.*;
+import bughunters.Tekton.Tekton;
 
 
 public class Gombatest {
@@ -78,6 +78,9 @@ public class Gombatest {
     public void urit() throws Exception{
         //System.out.println("Meghívódik a Gombatest urit metodusa.");
         //mikor tud spórát szórni?
+
+        System.out.println("URIT MEGHIVODIK !!!!! sporaRaktar: "+sporaRaktar);
+
         if(sporaRaktar>=gombafaj.getTermelesIdeje()){
             //szórás után növeljük a korát
             kor++;

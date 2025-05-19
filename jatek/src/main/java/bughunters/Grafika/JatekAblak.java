@@ -387,10 +387,12 @@ public class JatekAblak  extends JFrame{
         tektonok.setPreferredSize(new Dimension(130,50));
         tektonok.setMaximumSize(new Dimension(50, 30));
 
+        
         tekton.forEach((String s)->{
-            System.out.println(s);
+            //System.out.println(s);
             tektonok.addItem(s);
         });
+        
     }
     
     public void frissitPanel(){
