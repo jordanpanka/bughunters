@@ -31,6 +31,6 @@ public class GSpora extends Rajz {
     @Override
     public void Draw(Graphics g) {
         g.setColor(szin);
-        g.fillOval(x, y, 6, 6);   
+        g.fillOval(x, y,12, 12);   
     }
 }
