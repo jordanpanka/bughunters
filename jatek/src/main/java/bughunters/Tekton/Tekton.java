@@ -232,42 +232,37 @@ public class Tekton implements FonalKezeles {
             List<Gombatest> szurtLista = gf.getGombaTestek().stream().filter(gt -> gt.getTekton().equals(this)).collect(Collectors.toList());
 
             //fejlett
-            if(gf.getGombatestFejlettsegIdo() <= szurtLista.get(0).getKor())
+            if(gf.getGombatestFejlettsegIdo() < szurtLista.get(0).getKor())
             {
                 for (Tekton tekton : szomszedok) {
 
                     if(gf.getNev().equalsIgnoreCase("Légyölő galóca")){
                         Benito b2 = new Benito();
                         b2.setGombafaj(gf);
-                        b2.szorasTortent();
                         tekton.addSpora(b2);
                     }
                     else if(gf.getNev().equalsIgnoreCase("Vargánya gomba")){
                         //spora = (Lassito)spora;
                         Lassito l = new Lassito();
                         l.setGombafaj(gf);
-                        l.szorasTortent();
                         tekton.addSpora(l);
                     }
                     else if(gf.getNev().equalsIgnoreCase("Foltos püffeteg")){
                         Osztodo o = new Osztodo();
                         //spora = (Osztodo)spora;
                         o.setGombafaj(gf);
-                        o.szorasTortent();
                         tekton.addSpora(o);
                     }
                     else if(gf.getNev().equalsIgnoreCase("Szegfűgomba")){
                         VagasKeptelenito v = new VagasKeptelenito();
                         //spora = (VagasKeptelenito)spora;
                         v.setGombafaj(gf);
-                        v.szorasTortent();
                         tekton.addSpora(v);
                     }
                     else if(gf.getNev().equalsIgnoreCase("Csiperke gomba")){
                         Gyorsito gy = new Gyorsito();
                         //spora = (Gyorsito)spora;
                         gy.setGombafaj(gf);
-                        gy.szorasTortent();
                         tekton.addSpora(gy);
                     }
                     
@@ -276,35 +271,30 @@ public class Tekton implements FonalKezeles {
                             if(gf.getNev().equalsIgnoreCase("Légyölő galóca")){
                                 Benito b2 = new Benito();
                                 b2.setGombafaj(gf);
-                                b2.szorasTortent();
                                 tektonszomszed.addSpora(b2);
                             }
                             else if(gf.getNev().equalsIgnoreCase("Vargánya gomba")){
                                 //spora = (Lassito)spora;
                                 Lassito l = new Lassito();
                                 l.setGombafaj(gf);
-                                l.szorasTortent();
                                 tektonszomszed.addSpora(l);
                             }
                             else if(gf.getNev().equalsIgnoreCase("Foltos püffeteg")){
                                 Osztodo o = new Osztodo();
                                 //spora = (Osztodo)spora;
                                 o.setGombafaj(gf);
-                                o.szorasTortent();
                                 tektonszomszed.addSpora(o);
                             }
                             else if(gf.getNev().equalsIgnoreCase("Szegfűgomba")){
                                 VagasKeptelenito v = new VagasKeptelenito();
                                 //spora = (VagasKeptelenito)spora;
                                 v.setGombafaj(gf);
-                                v.szorasTortent();
                                 tektonszomszed.addSpora(v);
                             }
                             else if(gf.getNev().equalsIgnoreCase("Csiperke gomba")){
                                 Gyorsito gy = new Gyorsito();
                                 //spora = (Gyorsito)spora;
                                 gy.setGombafaj(gf);
-                                gy.szorasTortent();
                                 tektonszomszed.addSpora(gy);
                             }
                         }
