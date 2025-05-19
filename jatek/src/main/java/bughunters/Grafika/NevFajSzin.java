@@ -111,7 +111,7 @@ public class NevFajSzin extends JFrame{
 
         JLabel gombafaj = new JLabel("Gombafaj: ");
 
-        String[] gombafajoks=new String[]{"Lényölő galóca","Vargánya gomba", "Csiperke gomba","Szegfűgomba", "Foltos püffeteg"};
+        String[] gombafajoks=new String[]{"Légyölő galóca","Vargánya gomba", "Csiperke gomba","Szegfűgomba", "Foltos püffeteg"};
         
         gombafajKiv=new JComboBox<>(gombafajoks);
 
@@ -129,7 +129,7 @@ public class NevFajSzin extends JFrame{
                 try{
                    
                 switch ((String)gombafajKiv.getSelectedItem()) {
-                    case "Lényölő galóca":
+                    case "Légyölő galóca":
                         Gombafaj g=game.createGombafajBySpora('b');
                         game.gombaszFelvetel(jatekosNev.getText(),g);
                         break;
