@@ -97,20 +97,31 @@ public class Tekton implements FonalKezeles {
         //System.out.println("Meghívódik a Tekton gombafonalAdd metódusa.");
         //ellenőrizni hogy létezik e már ilyen gombafonal
         if(getSzomszedok().contains(honnan)){
-                List<Tekton> gombatestekHelye=new ArrayList<Tekton>();
+            List<Tekton> gombatestekHelye = new ArrayList<Tekton>();
+
+            // tektonok ahol gombatestek vannak
             if (g.getGombaTestek() != null) {
                 for (Gombatest gt : g.getGombaTestek()) {
                     gombatestekHelye.add(gt.getTekton());
                 }
             }
             
+            // tektonok ahol fonalak vannak
             for(Gombafonal gfonal : honnan.getFonalak())
             {
+<<<<<<< HEAD
                 
                 gombatestekHelye.add(gfonal.getVegpont1());
                 gombatestekHelye.add(gfonal.getVegpont2());
+=======
+                if(gfonal.getGombafaj().equals(g)) {
+                    gombatestekHelye.add(gfonal.getVegpont1());
+                    gombatestekHelye.add(gfonal.getVegpont2());
+                }
+>>>>>>> 746cb886fffea0918b1c9ca9690b6d02dbad993b
             }
             //debuggolás
+
             if(gombatestekHelye.contains(honnan)){ 
                 //System.out.println("Van odavezető fonal.");  
                 
