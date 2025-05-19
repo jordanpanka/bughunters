@@ -79,8 +79,6 @@ public class Gombatest {
         //System.out.println("Meghívódik a Gombatest urit metodusa.");
         //mikor tud spórát szórni?
 
-        System.out.println("URIT MEGHIVODIK !!!!! sporaRaktar: "+sporaRaktar);
-
         if(sporaRaktar>=gombafaj.getTermelesIdeje()){
             //szórás után növeljük a korát
             kor++;
@@ -109,7 +107,6 @@ public class Gombatest {
      * @brief A gombatest a körök végén spórát gyűjt.
      */
     public void sporaGyujtes(){
-        System.out.println("Meghívódik sporaGyujtes. Gombafaj: "+gombafaj.getNev()+ " sporaRaktar: "+sporaRaktar);
         sporaRaktar++;
     }
     

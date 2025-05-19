@@ -117,7 +117,7 @@ public class Grafika extends JPanel {
                 int szomszedY = (int) (cY + R * Math.sin(szog));
 
                 Tekton szomszed = t.getSzomszedok().get(i);
-                System.out.println("Szomszéd tekton: " + szomszed);
+                //System.out.println("Szomszéd tekton: " + szomszed);
                 GTekton gSzomszed = tektonok.get(szomszed);
 
                 if (gSzomszed != null) {
@@ -178,7 +178,7 @@ public class Grafika extends JPanel {
         //gombatestek beállítása csak a középső
         gombatestek.forEach((gombatest,gg)->{
             if(gombatest.getTekton().equals(t)){
-                System.out.println("kozepso tekton: "+t + "\n");
+                //System.out.println("kozepso tekton: "+t + "\n");
                 gg.setX(cX);
                 gg.setY(cY);
                 gg.Draw(g);

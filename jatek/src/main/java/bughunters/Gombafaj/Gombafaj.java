@@ -186,7 +186,8 @@ public class Gombafaj implements FonalKezeles{
             System.out.println("Fonal növesztés sikeres ------------------------");
         }catch(Exception e)
         {
-            throw new Exception("Nem nőhet fonal.------------------------");
+            throw e;
+            //throw new Exception("Nem nőhet fonal.------------------------");
         } 
     }
      /**
