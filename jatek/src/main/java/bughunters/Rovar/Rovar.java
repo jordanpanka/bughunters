@@ -31,12 +31,13 @@ public class Rovar {
         allapotIdeje = 0;
     }
 
+    /**
+     * @brief Törli a rovar objektumot
+     */
     public void torolRovar(){
         rs.removeRovar(this);
     }
     
-    
-
     /**
      *  @brief Visszaadja a Rovar tartózkodását.
      * @return A jelenlegi Tekton ahol a Rovar tartózkodik.
@@ -154,7 +155,7 @@ public class Rovar {
     }
 
     /**
-     *  @brief A Rovar eszik egy Sporaból
+     * @brief A Rovar eszik egy Sporaból
      * @param s Melyik Sporaból egyen
      * @throws Exception Ha a Rovar nem tud enni.
      */
@@ -173,6 +174,9 @@ public class Rovar {
 
     }
 
+    /**
+     * @brief Létrehoz egy újabb Rovar objektumot
+     */
     public void osztodik(){
         //System.out.println("Meghívódik a Rovar osztodik metódusa.");
 

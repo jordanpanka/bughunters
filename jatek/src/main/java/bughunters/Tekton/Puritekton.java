@@ -20,10 +20,19 @@ public class Puritekton extends Tekton {
         throw new Exception("Erre a tektonra nem lehet gombatestet növeszteni.");
     }
 
-     public Puritekton(List<Tekton> szomszed, List<Gombafonal> gombafonal, List<Spora> spora){
+    /**
+     * @brief Puritekton konstruktor
+     * @param szomszed Tekton szomszédok listája
+     * @param gombafonal Gombafonalak listája
+     * @param spora Spórák listája
+     */
+    public Puritekton(List<Tekton> szomszed, List<Gombafonal> gombafonal, List<Spora> spora){
         super(szomszed,gombafonal,spora);
     }
 
+    /**
+     * @brief Puritekton konstruktor
+     */
     public Puritekton(){}
 
     @Override

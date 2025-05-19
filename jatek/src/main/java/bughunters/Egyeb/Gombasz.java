@@ -90,6 +90,12 @@ public class Gombasz extends Jatekos{
         }
     }
 
+    /***
+     * @brief Gombatest növesztését kezdeményezi a játék kezdeti szakaszában
+     * @param t Tekton: A tekton, ahol a gombatest növesztése történik
+     * @param sporaval boolean: Igaz, ha spórával történik a növesztés, hamis egyébként
+     * @throws Exception Ha a növesztés nem hajtható végre (pl. érvénytelen helyzet vagy feltételek)
+     */
     public void JatekEleiTestNovesztes(Tekton t, boolean sporaval) throws Exception{
         try {
             gombafaj.testNovesztes(t, sporaval);

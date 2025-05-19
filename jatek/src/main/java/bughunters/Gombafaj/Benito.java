@@ -19,6 +19,9 @@ public class Benito extends Spora {
         
     }
 
+    /**
+     * @brief Benito osztály konstuktora
+     */
     public Benito()
     {
         super();

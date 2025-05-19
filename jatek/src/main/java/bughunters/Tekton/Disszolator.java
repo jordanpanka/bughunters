@@ -38,9 +38,18 @@ public class Disszolator extends Tekton {
         return ujTekton;
     }
 
+    /**
+     * @brief Disszolátor konstruktor
+     * @param szomszed Tektonszomszédok listája
+     * @param gombafonal Gombafonalak listája
+     * @param spora Spórák listája
+     */
     public Disszolator(List<Tekton> szomszed, List<Gombafonal> gombafonal, List<Spora> spora){
         super(szomszed,gombafonal,spora);
     }
 
+    /**
+     * @brief Disszolátor konstruktor
+     */
     public Disszolator(){}
 }
