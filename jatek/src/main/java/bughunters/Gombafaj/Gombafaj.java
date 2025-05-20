@@ -18,6 +18,7 @@ public class Gombafaj implements FonalKezeles{
     private int gombafonalEletSzama;
     private ArrayList<Gombatest> gombaTestek;
     private ArrayList<Gombafonal> gombafonalhalozat;
+    
     /**
      * @brief Alapértelmezett konstruktor a Gombafaj létrehozására.
      */
@@ -32,6 +33,7 @@ public class Gombafaj implements FonalKezeles{
      * @param gtfi  A gombatest fejlettségi ideje.
      * @param gtesz A gombatest életszáma.
      */
+
     public Gombafaj(String n, int tI, int ents, int gtfi,int gtesz, int gfesz){
         nev=n;
         termelesIdeje=tI;
@@ -103,6 +105,7 @@ public class Gombafaj implements FonalKezeles{
     public ArrayList<Gombatest> getGombaTestek() {
         return gombaTestek;
     }
+    
     /**
      * @brief Beállítja a gomba testeit tartalmazó listát.
      *
@@ -111,6 +114,7 @@ public class Gombafaj implements FonalKezeles{
     public void setGombaTestek(ArrayList<Gombatest> gombaTestek) {
         this.gombaTestek = gombaTestek;
     }
+    
     /**
      * @brief Visszaadja a gombafonalhálózatot tartalmazó listát.
      *
@@ -119,6 +123,7 @@ public class Gombafaj implements FonalKezeles{
     public ArrayList<Gombafonal> getGombafonalhalozat() {
         return gombafonalhalozat;
     }
+    
     /**
      * @brief Beállítja a gombafonalhálózatot tartalmazó listát.
      *
@@ -127,12 +132,11 @@ public class Gombafaj implements FonalKezeles{
     public void setGombafonalhalozat(ArrayList<Gombafonal> gombafonalhalozat) {
         this.gombafonalhalozat = gombafonalhalozat;
     }
+    
     /**
      * @brief A haldoklási folyamatot kezeli. Ellenőrzi, hogy a fonalak elérnek-e egy gombatesthez,
      * és ha nem, akkor változtatja az állapotukat.
      */
-    //meg kell nézni, hogy a gombafajhoz meddig marad életben a haldoklás után
-    //hogy kapcsolódik-e hozzá gombatest
     public void haldoklas(){
         //System.out.println("Meghívódik a Gombafaj haldoklas metódusa.(privát metódus)");
         ArrayList<Tekton> gombatestesTektonok=new ArrayList<>();
@@ -162,7 +166,8 @@ public class Gombafaj implements FonalKezeles{
             }
         }
     }
-     /**
+    
+    /**
      * @brief Új gombafonalat növeszt a megadott helyek között.
      *
      * @param hova    A cél Tekton.
@@ -190,7 +195,8 @@ public class Gombafaj implements FonalKezeles{
             //throw new Exception("Nem nőhet fonal.------------------------");
         } 
     }
-     /**
+     
+    /**
      * @brief Hozzáad egy új gombafonalat a hálózathoz.
      *
      * @param gf A hozzáadandó gombafonal.
@@ -202,6 +208,7 @@ public class Gombafaj implements FonalKezeles{
         }
         gombafonalhalozat.add(gf);
     }
+    
     /**
      * @brief Egy adott gombafonal megszakadását kezeli.
      *
@@ -212,12 +219,12 @@ public class Gombafaj implements FonalKezeles{
         gombafonalhalozat.remove(gf);
         haldoklas();
     }
+    
     /**
      * @brief Új gombatestet növeszt egy adott Tektonon.
      *
      * @param t A Tekton, amelyen a gombatest növekedni fog.
      */
-    
     public void testNovesztes(Tekton t, boolean sporaval)throws Exception{
         //System.out.println("Meghívódik a Gombafaj testNovesztes metodusa.");
         try{
@@ -277,10 +284,15 @@ public class Gombafaj implements FonalKezeles{
     
     }
 
+    /**
+     * @brief Törli a megadott gombatestet a gombaTestek listából
+     * @param gt Törlendő gombatest
+     */
     void torolGombatest(Gombatest gt){
         //System.out.println("Meghívódik a Gombafaj torolGombatest metódusa.");
         gombaTestek.remove(gt);
     }
+    
     /**
      * @brief Kezeli az utolsó esély állapotot a gombafonalhálózatban.
      */
@@ -329,6 +341,12 @@ public class Gombafaj implements FonalKezeles{
         }
     }
     
+    /**
+    * @brief Rovar elfogyasztását végzi a gombafaj által
+    * @param r Rovar: Az elfogyasztandó rovar objektum
+    * @param testnovesztessel boolean: Igaz, ha a fogyasztáshoz gombatest-növesztés is tartozik
+    * @throws Exception Ha a rovar nincs bénított állapotban, vagy a testnövesztés sikertelen
+    */
     //VÁLTOZTATAS: r.torolRovar(), kitörli a rovart a rovarasz listából
     public void rovarEves(Rovar r, Boolean testnovesztessel)throws Exception{
         try{
@@ -349,6 +367,10 @@ public class Gombafaj implements FonalKezeles{
        
     }
 
+
+    /***
+    * @brief Játékos köre végén végrehajtandó alapvető műveletek
+    */
     //A játékos köre végén a cselekedetek elvégézése
     public void korVegiCselekedetek(){
         haldoklas();

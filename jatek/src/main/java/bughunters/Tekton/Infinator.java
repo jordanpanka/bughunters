@@ -18,10 +18,19 @@ public class Infinator extends Tekton{
         }
     }
 
+    /**
+     * @brief Infinator konstruktor
+     * @param szomszed Tekton szomszédok listája
+     * @param gombafonal Gombafonalak listája
+     * @param spora Spórák listája
+     */
     public Infinator(List<Tekton> szomszed, List<Gombafonal> gombafonal, List<Spora> spora){
         super(szomszed,gombafonal,spora);
     }
 
+    /**
+     * @brief Infinator konstruktor
+     */
     public Infinator(){}
 
     @Override

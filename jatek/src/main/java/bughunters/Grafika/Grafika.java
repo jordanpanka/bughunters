@@ -17,119 +17,142 @@ import bughunters.Gombafaj.Spora;
 import bughunters.Rovar.Rovar;
 import bughunters.Tekton.Tekton;
 
-
+public class Grafika extends JPanel {
     
-   /**
- * A Grafika osztály felelős a játékbeli objektumok grafikus megjelenítéséért.
- * Tárolja a játék különböző entitásainak grafikus megfelelőit.
- */
-public class Grafika extends JPanel{
-
-    /** A tekton objektumokhoz tartozó grafikus elemek. */
+    /**
+     * @brief A Tekton és a hozzá tartozó grafikus reprezentáció (GTekton) párosításait tároló HashMap.
+     */
     private HashMap<Tekton, GTekton> tektonok;
 
-    /** 
-     * Visszaadja a tektonok és grafikus megfelelőik mapjét.
-     * @return a tektonok és GTekton objektumok map-je
+    /**
+     * @brief Visszaadja a Tekton és GTekton objektumok párosításait tartalmazó térképet.
+     *
+     * @return a Tekton–GTekton párosításokat tartalmazó HashMap
      */
     public HashMap<Tekton, GTekton> getTektonok() {
         return tektonok;
     }
 
     /**
-     * Beállítja a tektonokhoz tartozó grafikus objektumokat.
-     * @param tektonok a Tekton → GTekton hozzárendelések map-je
+     * @brief Beállítja a Tekton és GTekton objektumok párosításait.
+     *
+     * @param tektonok a Tekton–GTekton párosításokat tartalmazó HashMap
      */
     public void setTektonok(HashMap<Tekton, GTekton> tektonok) {
         this.tektonok = tektonok;
     }
-
-    /** A gombatestekhez tartozó grafikus objektumok. */
-    private HashMap<Gombatest, GGombatest> gombatestek;
+    /**
+     * @brief A Gombatest és a hozzá tartozó grafikus reprezentáció (GGombatest) párosításait tároló HashMap.
+     */
+    private HashMap<Gombatest,GGombatest> gombatestek;
 
     /**
-     * Visszaadja a gombatestek és grafikus megfelelőik mapjét.
-     * @return a Gombatest → GGombatest map
+     * @brief Visszaadja a Gombatest és GGombatest objektumok párosításait tartalmazó térképet.
+     *
+     * @return a Gombatest–GGombatest párosításokat tartalmazó HashMap
      */
     public HashMap<Gombatest, GGombatest> getGombatestek() {
         return gombatestek;
     }
 
     /**
-     * Beállítja a gombatestek grafikus megfelelőit.
-     * @param gombatestek a Gombatest → GGombatest hozzárendelések
+     * @brief Beállítja a Gombatest és GGombatest objektumok párosításait.
+     *
+     * @param gombatestek a Gombatest–GGombatest párosításokat tartalmazó HashMap
      */
     public void setGombatestek(HashMap<Gombatest, GGombatest> gombatestek) {
         this.gombatestek = gombatestek;
     }
 
-    /** A gombafonalakhoz tartozó grafikus objektumok. */
-    private HashMap<Gombafonal, GGombafonal> gombafonalak;
+    /**
+     * @brief A Gombafonal és a hozzá tartozó grafikus reprezentáció (GGombafonal) párosításait tároló HashMap.
+     */
+    private HashMap<Gombafonal,GGombafonal> gombafonalak;
 
     /**
-     * Visszaadja a gombafonalak és grafikus megfelelőik mapjét.
-     * @return a Gombafonal → GGombafonal map
+     * @brief Visszaadja a Gombafonal és GGombafonal objektumok párosításait tartalmazó térképet.
+     *
+     * @return a Gombafonal–GGombafonal párosításokat tartalmazó HashMap
      */
     public HashMap<Gombafonal, GGombafonal> getGombafonalak() {
         return gombafonalak;
     }
 
     /**
-     * Beállítja a gombafonalak grafikus objektumait.
-     * @param gombafonalak a Gombafonal → GGombafonal hozzárendelések
+     * @brief Beállítja a Gombafonal és GGombafonal objektumok párosításait.
+     *
+     * @param gombafonalak a Gombafonal–GGombafonal párosításokat tartalmazó HashMap
      */
     public void setGombafonalak(HashMap<Gombafonal, GGombafonal> gombafonalak) {
         this.gombafonalak = gombafonalak;
     }
 
-    /** A rovarokhoz tartozó grafikus objektumok. */
+    /**
+     * @brief A Rovar és a hozzá tartozó grafikus reprezentáció (GRovar) párosításait tároló HashMap.
+     */
     private HashMap<Rovar, GRovar> rovarok;
 
     /**
-     * Visszaadja a rovarok és grafikus megfelelőik mapjét.
-     * @return a Rovar → GRovar map
+     * @brief Visszaadja a Rovar és GRovar objektumok párosításait tartalmazó térképet.
+     *
+     * @return a Rovar–GRovar párosításokat tartalmazó HashMap
      */
     public HashMap<Rovar, GRovar> getRovarok() {
         return rovarok;
     }
 
     /**
-     * Beállítja a rovarok grafikus objektumait.
-     * @param rovarok a Rovar → GRovar hozzárendelések
+     * @brief Beállítja a Rovar és GRovar objektumok párosításait.
+     *
+     * @param rovarok a Rovar–GRovar párosításokat tartalmazó HashMap
      */
     public void setRovarok(HashMap<Rovar, GRovar> rovarok) {
         this.rovarok = rovarok;
     }
 
-    /** A spórákhoz tartozó grafikus objektumok. */
-    private HashMap<Spora, GSpora> sporak;
+    /**
+     * @brief A Spóra és a hozzá tartozó grafikus reprezentáció (GSpora) párosításait tároló HashMap.
+     */
+    private HashMap<Spora,GSpora> sporak;
 
     /**
-     * Visszaadja a spórák és grafikus megfelelőik mapjét.
-     * @return a Spora → GSpora map
+     * @brief Visszaadja a Spora és GSpora objektumok párosításait tartalmazó térképet.
+     *
+     * @return a Spora–GSpora párosításokat tartalmazó HashMap
      */
     public HashMap<Spora, GSpora> getSporak() {
         return sporak;
     }
 
     /**
-     * Beállítja a spórák grafikus objektumait.
-     * @param sporak a Spora → GSpora hozzárendelések
+     * @brief Beállítja a Spora és GSpora objektumok párosításait.
+     *
+     * @param sporak a Spora–GSpora párosításokat tartalmazó HashMap
      */
     public void setSporak(HashMap<Spora, GSpora> sporak) {
         this.sporak = sporak;
     }
+   
+    /**
+     * @brief Létrehozza a {@code Grafika} objektumot, és inicializálja az összes entitás grafikus reprezentációját
+     * tartalmazó HashMap-et üres példányokkal.
+     */
+    public Grafika(){
+        tektonok=new HashMap<>();
+        sporak=new HashMap<>();
+        rovarok=new HashMap<>();
+        gombafonalak=new HashMap<>();
+        gombatestek=new HashMap<>();
+    }
 
     /**
-     * Konstruktor. Inicializálja az összes grafikus objektumtérképet.
+     * @brief Visszaállítja az összes grafikus elem (Tekton, Gombatest, Gombafonal, Rovar, Spóra) koordinátáit (-1, -1) értékre.
+     * Ez a metódus egy adott Tekton objektum kirajzolásának előkészítéséhez használható, de jelenleg
+     * nem hajt végre tényleges kirajzolást.
+     *
+     * @param t a Tekton példány, amelyhez a kirajzolást készítjük elő
+     * @param g a Graphics objektum, amelyre a rajzolás történne
      */
-    public Grafika() {
-        tektonok = new HashMap<>();
-        sporak = new HashMap<>();
-        rovarok = new HashMap<>();
-        gombafonalak = new HashMap<>();
-        gombatestek = new HashMap<>();
-    }
     public void Draw(Tekton t, Graphics g){
         //minden grafikus objektum alapállapotba állítása
         tektonok.forEach((tek,gtek)->{
@@ -166,7 +189,7 @@ public class Grafika extends JPanel{
         // Középső tekton pozíció beállítása
         tektonok.get(t).setX(cX);
         tektonok.get(t).setY(cY);
-        
+
 
         // Szomszédok pozícióinak kiszámítása és beállítása
         if (szomszedokSzama != 0) {
@@ -179,7 +202,6 @@ public class Grafika extends JPanel{
                 int szomszedY = (int) (cY + R * Math.sin(szog));
 
                 Tekton szomszed = t.getSzomszedok().get(i);
-                //System.out.println("Szomszéd tekton: " + szomszed);
                 GTekton gSzomszed = tektonok.get(szomszed);
 
                 if (gSzomszed != null) {
@@ -197,20 +219,20 @@ public class Grafika extends JPanel{
 
             }
         }
-        
+
+
         // Végül a középső tekton kirajzolása
         //fonalak kirajzolása
         fonalrajzol(t,g);
         tektonok.get(t).Draw(g);
          if (szomszedokSzama != 0) {
-          
+
             for (int i = 0; i < szomszedokSzama; i++) {
 
                 Tekton szomszed = t.getSzomszedok().get(i);
                 GTekton gSzomszed = tektonok.get(szomszed);
 
                 if (gSzomszed != null) {
-                 
                     gSzomszed.Draw(g);  // Azonnal ki is rajzoljuk
                     gombatestek.forEach((gombatest, gg) -> {
                             if (gombatest.getTekton().equals(szomszed)) {
@@ -277,16 +299,14 @@ public class Grafika extends JPanel{
         
     }
 
+
     /**
-     * Egy adott {@link Tekton} középpontja köré helyezi el az ahhoz tartozó {@link Spora} objektumokat egyenletesen
-     * egy kör mentén, majd kirajzolja őket a megadott {@link Graphics} objektumra.
+     * @brief A megadott Tektonhoz tartozó spórákat egyenletesen elhelyezi egy képzeletbeli kör mentén,
+     * a Tekton középpontjától számított sugárral. Minden spóra grafikus reprezentációja (GSpora)
+     * kirajzolásra kerül, valamint megjelenik a spóra mennyisége is.
      *
-     * <p>Amennyiben a tektonhoz nem tartozik spóra, a függvény azonnal visszatér.</p>
-     * <p>A kirajzolás során minden spóra pozíciója kiszámításra kerül, eltolással (offset) kerül megjelenítésre,
-     * valamint a mennyiségük is megjelenik a {@code szamKiir()} hívás által.</p>
-     *
-     * @param t a {@link Tekton}, amelyhez a spórák tartoznak
-     * @param g a {@link Graphics} objektum, amire a spórák kirajzolása történik
+     * @param t a Tekton objektum, amelyhez tartozó spórákat kell kirajzolni
+     * @param g a Graphics objektum, amelyre a rajzolás történik
      */
     public void sporaElhelyezesKorben(Tekton t, Graphics g) {
         int sugar =45;
@@ -318,19 +338,21 @@ public class Grafika extends JPanel{
 
         
     }
+    
+    
     /**
-     * Kirajzolja a megadott {@link Tekton} és annak közvetlen szomszédai között húzódó {@link Gombafonal}
-     * kapcsolatokat, vizuálisan megjelenítve a fonalakat a megfelelő grafikai objektumokon keresztül.
+     * @brief A megadott Tekton-hoz tartozó gombafonalakat kirajzolja a képernyőre. A rajzolás során
+     * figyelembe veszi a szomszédos Tektonokat is, és minden gombafonalat a hozzá tartozó
+     * gombafaj szerint eltolt vonallal jelenít meg. Azok a fonalak, amelyek csak az egyik végpontban
+     * kapcsolódnak a vizsgált Tektonhoz vagy szomszédaihoz, kifelé mutató, körszerűen elhelyezett
+     * vonalakként kerülnek ábrázolásra.
      *
-     * <p>A metódus összegyűjti a tektonhoz és szomszédaihoz tartozó összes fonalat, csoportosítja őket
-     * a hozzájuk tartozó {@link Gombafaj} alapján, majd egyedi eltolásokkal (offset) pozicionálja őket,
-     * hogy vizuálisan elkülönüljenek egymástól. Azokat a fonalakat is megjeleníti, amelyek csak egyik
-     * végpontjukon kapcsolódnak a kirajzolt tektonokhoz — ezek egy félkörív vagy sugár irányába mutató
-     * vonalként jelennek meg.</p>
+     * A különböző gombafajokhoz tartozó fonalak eltérő offset értéket kapnak, hogy vizuálisan
+     * elkülöníthetők legyenek. A metódus csak az érintett Tektonok és fonalak kirajzolását végzi.
      *
-     * @param t a középső {@link Tekton}, amelyhez képest a fonalakat kirajzoljuk
-     * @*/
-            
+     * @param t a Tekton objektum, amelyhez tartozó fonalakat kell kirajzolni
+     * @param g a Graphics objektum, amelyre a rajzolás történik
+     */
     public void fonalrajzol(Tekton t, Graphics g) {
         // Tektonok listája a vizsgált és szomszédos elemekkel 
         List<Tekton> tektonok2 = new ArrayList<>(t.getSzomszedok());
@@ -374,10 +396,10 @@ public class Grafika extends JPanel{
             }
         }
 
+
         // Fonalak kirajzolása
         for (Gombafonal fonal : fonalak2) {
             double angle = 2 * Math.PI * index / totalLines;
-            //System.out.println("Szog: " + angle);
 
             Tekton t1 = fonal.getVegpont1();
             Tekton t2 = fonal.getVegpont2();
@@ -403,20 +425,18 @@ public class Grafika extends JPanel{
                 }
             }
             else{
-                //System.out.println("angle: "+angle + "radius: "+radius);
                 if(tektonok2.contains(t1)){
                     GTekton g1 = tektonok.get(t1);
                     int x1 = g1.getX();
-                    //System.out.println(g1.getX());
                     int y1 = g1.getY();
-                    //System.out.println(g1.getY());
                     GGombafonal gFonal = gombafonalak.get(fonal);
                     if (gFonal != null) {
                         int x_1 = x1+50;
                         int y_1 = y1+50;
                         int x_2 = (int)(x_1 + Math.cos(angle) * radius);
                         int y_2 = (int)(y_1 + Math.sin(angle) * radius);
-                        
+ 
+                        gFonal.setX1(x_1);
                         gFonal.setY1(y_1);
                         gFonal.setX2(x_2);
                         gFonal.setY2(y_2);
@@ -428,16 +448,13 @@ public class Grafika extends JPanel{
                 else{
                     GTekton g2 = tektonok.get(t2);
                     int x2 = g2.getX();
-                    //System.out.println(g1.getX());
                     int y2 = g2.getY();
-                    //System.out.println(g1.getY());
                     GGombafonal gFonal = gombafonalak.get(fonal);
                     if (gFonal != null) {
                         int x_1 = x2+50;
                         int y_1 = y2+50;
                         int x_2 = (int)(x_1 + Math.cos(angle) * radius);
                         int y_2 = (int)(y_1 + Math.sin(angle) * radius);
-                        
                         gFonal.setX1(x_1);
                         gFonal.setY1(y_1);
                         gFonal.setX2(x_2);
@@ -450,21 +467,23 @@ public class Grafika extends JPanel{
             }
         }
     }
+
+
     /**
-     * Megkeresi, hogy az egérkattintás (x, y) pozíciója közel esik-e valamelyik kirajzolt
-     * {@link Gombafonal} vonalhoz, és ha igen, visszaadja az ahhoz tartozó {@link Gombafonal} objektumot.
+     * @brief Megkeresi és visszaadja azt a Gombafonal objektumot, amelyikhez tartozó grafikus vonal
+     * közel van a megadott (x, y) koordinátához. A keresés során a függvény figyelembe veszi,
+     * hogy a koordináta y értékéből 230 egységet levon, valószínűleg az eltolás miatt a
+     * megjelenítés vagy konténer miatt.
      *
-     * <p>A keresés során minden grafikus fonalvonalat (GGombafonal) vizsgál a {@code gombafonalak}
-     * térképből, és ellenőrzi, hogy a megadott pont közel van-e a vonalhoz a 
-     * {@code isPointNearLine()} segédfüggvény alapján.</p>
+     * A keresés a tárolt GGombafonal objektumok vonalaihoz hasonlítja a megadott pontot,
+     * és az isPointNearLine segédfüggvénnyel dönti el, hogy a pont elég közel van-e egy vonalhoz.
+     * Amint talál ilyen vonalat, azonnal visszatér a hozzá tartozó Gombafonal objektummal.
+     * Ha nincs találat, null értéket ad vissza.
      *
-     * <p>A y koordináta 230 pixellel csökkentésre kerül, hogy illeszkedjen a grafikai eltoláshoz
-     * (valószínűleg UI eltolás miatt).</p>
-     *
-     * @param x az egérkattintás X koordinátája
-     * @param y az egérkattintás Y koordinátája (módosítva lesz -230 pixellel)
-     * @return a megtalált {@link Gombafonal} objektum, ha a pont közel esik valamelyik fonalhoz; különben {@code null}
-     * */
+     * @param x a keresett pont vízszintes koordinátája (pixel)
+     * @param y a keresett pont függőleges koordinátája (pixel)
+     * @return a hozzá tartozó Gombafonal, ha van, egyébként null
+     */
     public Gombafonal fonalKeres(int x, int y){
         y=y-230;
         //System.out.println("fonalkeres");
@@ -473,7 +492,6 @@ public class Grafika extends JPanel{
             double X2=(double)entry.getValue().getX2();
             double Y1=(double)entry.getValue().getY1();
             double Y2=(double)entry.getValue().getY2();
-           
             boolean kozelVan = isPointNearLine(x, y, X1, Y1, X2, Y2);
             if(kozelVan){
                 return entry.getKey();
@@ -481,41 +499,38 @@ public class Grafika extends JPanel{
         }
         return null; // nem találtuk meg
     }
-   /**
-     * Eldönti, hogy egy adott pont (px, py) a megadott szakaszhoz (x1, y1) - (x2, y2)
-     * elég közel van-e egy előre meghatározott küszöbtávolság alapján.
+
+
+    /**
+     * @brief Ellenőrzi, hogy a megadott pont (px, py) elég közel van-e az (x1, y1)-(x2, y2) vonalszakaszhoz.
+     * A közeliség egy előre definiált küszöbértéken (jelen esetben 10 pixel) alapul.
      *
-     * <p>A távolságot a {@code distanceToLine} segédfüggvény számítja ki, majd
-     * összeveti egy fix, 10 pixeles küszöbértékkel.</p>
-     * 
-     * @param px a vizsgált pont X koordinátája (pl. egér pozíció)
-     * @param py a vizsgált pont Y koordinátája
-     * @param x1 a vonalszakasz kezdőpontjának X koordinátája
-     * @param y1 a vonalszakasz kezdőpontjának Y koordinátája
-     * @param x2 a vonalszakasz végpontjának X koordinátája
-     * @param y2 a vonalszakasz végpontjának Y koordinátája
-     * @return {@code true}, ha a pont a vonalhoz 10 pixelnél közelebb van; különben {@code false}
- */
+     * @param px a pont x koordinátája
+     * @param py a pont y koordinátája
+     * @param x1 a vonal kezdőpontjának x koordinátája
+     * @param y1 a vonal kezdőpontjának y koordinátája
+     * @param x2 a vonal végpontjának x koordinátája
+     * @param y2 a vonal végpontjának y koordinátája
+     * @return true, ha a pont 10 pixelen belül van a vonaltól, különben false
+     */
     boolean isPointNearLine(double px, double py, double x1, double y1, double x2, double y2) {
         double distance = distanceToLine(px, py, x1, y1, x2, y2);
         //System.out.println("Táv: "+distance);
         return distance < 10; // Küszöb távolság: ha elég közel van, akkor igaz
     }
+
+
     /**
-     * Kiszámítja egy pont (px, py) és egy vonalszakasz (x1, y1) - (x2, y2) közötti 
-     * legrövidebb távolságot. A távolság mindig a szakaszra vetített merőleges
-     * vagy a végpontokhoz mért távolság (ha a vetület a szakaszon kívül esik).
+     * @brief Kiszámítja a pont (px, py) és az (x1, y1)-(x2, y2) vonalszakasz közötti legkisebb távolságot.
+     * Ha a vonalszakasz hossza 0 (pont), akkor a pont és a vonal kezdőpontja közti távolságot adja vissza.
      *
-     * <p>Hasznos például grafikus felületeken, ahol azt szeretnénk eldönteni,
-     * hogy a felhasználó egy vonalszakaszra "kattintott"-e.</p>
-     *
-     * @param px a vizsgált pont X koordinátája
-     * @param py a vizsgált pont Y koordinátája
-     * @param x1 a szakasz kezdőpontjának X koordinátája
-     * @param y1 a szakasz kezdőpontjának Y koordinátája
-     * @param x2 a szakasz végpontjának X koordinátája
-     * @param y2 a szakasz végpontjának Y koordinátája
-     * @return a pont és a vonalszakasz közötti legrövidebb távolság
+     * @param px a pont x koordinátája
+     * @param py a pont y koordinátája
+     * @param x1 a vonal kezdőpontjának x koordinátája
+     * @param y1 a vonal kezdőpontjának y koordinátája
+     * @param x2 a vonal végpontjának x koordinátája
+     * @param y2 a vonal végpontjának y koordinátája
+     * @return a pont és a vonalszakasz közötti legkisebb távolság
      */
     double distanceToLine(double px, double py, double x1, double y1, double x2, double y2) {
         double dx = x2 - x1;
@@ -529,8 +544,10 @@ public class Grafika extends JPanel{
             return Math.sqrt(dxp * dxp + dyp * dyp);
         }
 
+        // Projekciós arány a vonalon belül
         double t = ((px - x1) * dx + (py - y1) * dy) / lengthSquared;
 
+        // A legközelebbi pont a vonalon (ha t < 0 vagy > 1, akkor a végpontokhoz legközelebbi)
         double closestX = x1 + t * dx;
         double closestY = y1 + t * dy;
 
@@ -539,17 +556,19 @@ public class Grafika extends JPanel{
 
         return Math.sqrt(dxp * dxp + dyp * dyp);
     }
+
+
     /**
-     * Megkeresi, hogy az egérkattintás (x, y) koordinátái alapján melyik {@link Gombatest}
-     * objektumra kattintott a felhasználó. Ha van olyan gombatest, amelyhez a pont 35 pixelen
-     * belül esik (kör alakú területen belül), akkor visszatér azzal.
+     * @brief Keres egy Gombatest objektumot a megadott (x, y) koordináta közelében.
+     * A keresésnél a y koordinátát 230 pixellel csökkenti (valószínűleg az eltolás miatt).
+     * 
+     * A keresés úgy történik, hogy minden Gombatesthez tartozó GGombatest középpontját
+     * kiszámolja (az X és Y koordinátákhoz hozzáad 50-et), majd megnézi,
+     * hogy a megadott pont legfeljebb 35 pixel távolságra van-e ettől a középponttól.
      *
-     * <p>A keresés során a grafikus Gombatestek (GGombatest) pozícióját is figyelembe veszi, 
-     * és egy 230 pixeles függőleges eltolással kompenzálja az UI eltolását .</p>
-     *
-     * @param x az egér X koordinátája (képernyőpozíció)
-     * @param y az egér Y koordinátája (képernyőpozíció, 230 pixellel csökkentve)
-     * @return a megtalált {@link Gombatest} objektum, ha van a közelben; különben {@code null}
+     * @param x A vizsgált pont x koordinátája
+     * @param y A vizsgált pont y koordinátája
+     * @return A megtalált Gombatest, ha van 35 pixel távolságon belül, egyébként null
      */
     public Gombatest gombatestKeres(int x, int y) {
         y=y-230;
@@ -566,17 +585,18 @@ public class Grafika extends JPanel{
         }
         return null; // nem találtuk meg
     }
+
     /**
-     * Megkeresi, hogy az adott (x, y) koordinátájú pont (pl. egérkattintás) melyik 
-     * {@link Tekton} objektum grafikus reprezentációjához (GTekton) van elég közel.
-     *
-     * <p>Ez akkor hasznos, ha például az egérrel rá akarunk kattintani egy tektonra
-     * a játékfelületen. A pozíció-eltolás (y - 230) valószínűleg a GUI felső paneljei
-     * (pl. menüsáv) miatt szükséges.</p>
-     *
-     * @param x az egér X koordinátája
-     * @param y az egér Y koordinátája (módosításra kerül -230 pixellel)
-     * @return a megtalált {@link Tekton} objektum, ha van 50 pixelen belül; különben {@code null}
+     * @brief Keres egy Tekton objektumot a megadott (x, y) koordináta közelében.
+     * A y koordinátát 230 pixellel csökkenti (eltolás miatt).
+     * 
+     * Minden Tektonhoz tartozó GTekton pozíciójához hozzáad 50-et (offset),
+     * majd kiszámolja a távolságot a megadott pont és a GTekton középpontja között.
+     * Ha a távolság legfeljebb 50 pixel, akkor megtaláltnak tekinti.
+     * 
+     * @param x A vizsgált pont x koordinátája
+     * @param y A vizsgált pont y koordinátája
+     * @return A megtalált Tekton, vagy null ha nincs elég közel
      */
     public Tekton tektonKeres(int x, int y){
         y=y-230;
@@ -592,6 +612,19 @@ public class Grafika extends JPanel{
         }
         return null; // nem találtuk meg
     }
+
+
+    /**
+     * @brief Keres egy Rovar objektumot a megadott (x, y) koordináta környékén.
+     * A y koordinátát 230 pixellel eltolja (pl. GUI elhelyezkedés miatt).
+     * A Rovar pozíciójához 45 pixeles offsetet ad hozzá mindkét koordinátára.
+     * Ha a távolság a pont és a Rovar középpontja között kisebb, mint 22 pixel,
+     * akkor megtaláltnak tekinti.
+     * 
+     * @param x A vizsgált pont x koordinátája
+     * @param y A vizsgált pont y koordinátája
+     * @return A megtalált Rovar, vagy null ha nincs elég közel
+     */
     public Rovar rovarKeres(int x, int y){
         //lehet nem jó
         y=y-230;
@@ -607,6 +640,20 @@ public class Grafika extends JPanel{
         }
         return null; // nem találtuk meg
     }
+
+
+    /**
+     * @brief Keres egy Spóra objektumot a megadott (x, y) koordináta közelében.
+     * A y koordinátát 230 pixellel csökkenti (eltolás miatt).
+     * 
+     * Minden Spóra pozíciójához hozzáad 12-et (offset),
+     * majd kiszámolja a távolságot a megadott pont és a GSpora középpontja között.
+     * Ha a távolság legfeljebb 12 pixel, akkor megtaláltnak tekinti.
+     * 
+     * @param x A vizsgált pont x koordinátája
+     * @param y A vizsgált pont y koordinátája
+     * @return A megtalált Spóra, vagy null ha nincs elég közel
+     */
     public Spora sporaKeres(int x, int y){
         y=y-230;
          for (Map.Entry<Spora, GSpora> entry : sporak.entrySet()) {

@@ -48,6 +48,10 @@ public class Rovarasz extends Jatekos {
         this.szin = szin;
     }
 
+    /***
+     * @brief Szín getter
+     * @return szin: visszaadja a Color-t
+     */
     public Color getSzin() {
         return szin;
     }

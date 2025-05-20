@@ -22,6 +22,9 @@ public class Tekton implements FonalKezeles {
     protected List<Gombafonal> gombafonalak; //megtalálható gombafonalak listája
     protected List<Spora> sporak; //megtalálható spórák listája
 
+    /**
+     * @brief Tekton konstruktor
+     */
     public Tekton() {
         szomszedok = new ArrayList<>();
         gombafonalak = new ArrayList<>();
