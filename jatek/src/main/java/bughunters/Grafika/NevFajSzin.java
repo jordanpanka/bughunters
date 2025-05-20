@@ -26,7 +26,18 @@ import bughunters.Egyeb.Jatek;
 import bughunters.Egyeb.Jatekos;
 import bughunters.Egyeb.Parancskezelok;
 import bughunters.Gombafaj.Gombafaj;
-
+/**
+ * A {@code NevFajSzin} osztály egy grafikus Swing ablak, amely lehetővé teszi
+ * a játékosok számára, hogy a játék elején megadják nevüket, valamint kiválasszák
+ * gombafajukat (gombászok) vagy színüket (rovarászok).
+ *
+ * <p>Az ablak egyenként kezeli a játékosok felvételét: ha van még gombász vagy rovarász
+ * hátra, automatikusan új példány nyílik meg a következő játékoshoz. Amint minden játékos
+ * létrejött, a játék a kezdőpozíciók kiválasztásához lép tovább.</p>
+ *
+ * <p>A háttér grafikus színátmenettel van megrajzolva (pasztell lila árnyalatokkal).</p>
+ *
+ */
 public class NevFajSzin extends JFrame{
     private JButton kovetkezo;
     private JLabel kiirjatekos;
@@ -123,7 +134,7 @@ public class NevFajSzin extends JFrame{
                 gombafaj.setText("Szín: ");
                 gombafajKiv.setModel(new DefaultComboBoxModel<>(szinek));
         } 
-
+        //gombok akcióinak hozzáadása
         kovetkezo.addActionListener(e->{
             if(gombaszokSzama!=0){
                 try{
@@ -203,8 +214,6 @@ public class NevFajSzin extends JFrame{
                 else{
                     game.setAktivJatekos(game.getGombaszok().get(0));
                     SwingUtilities.invokeLater(() -> {
-                    //Proba proba = new Proba(game,jatek); // példányosítás
-                    //proba.setVisible(true);            // megjelenítés
 
                         KezdoPozicioKivalaszt proba = new KezdoPozicioKivalaszt(game,jatek); // példányosítás
                         proba.setVisible(true);            // megjelenítés
@@ -279,7 +288,7 @@ public class NevFajSzin extends JFrame{
                 g2d.fillRect(0, 0, getWidth(), getHeight());
             }
         };
-        
+        //gombainfo gomb beállítása
         gombaInfo.setPreferredSize(meret);
         gombaInfo.setForeground(Color.WHITE);
         gombaInfo.setBackground(new Color(135, 206, 250)); // Világoskék
@@ -288,7 +297,8 @@ public class NevFajSzin extends JFrame{
 
         gombPanel.add(gombaInfo);
         gombPanel.add(Box.createHorizontalStrut(10));
-
+        
+        //következő gomb beaállítása
         kovetkezo.setPreferredSize(meret);
         kovetkezo.setForeground(Color.WHITE);
         kovetkezo.setBackground(new Color(135, 206, 250)); // Világoskék
@@ -299,6 +309,7 @@ public class NevFajSzin extends JFrame{
 
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
+        //panel elemeinek felvétele
         panel.add(Box.createVerticalStrut(30));
         kiirjatekos.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         panel.add(kiirjatekos);

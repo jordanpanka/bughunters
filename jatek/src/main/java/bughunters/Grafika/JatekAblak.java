@@ -55,6 +55,12 @@ public class JatekAblak  extends JFrame{
 
     Object kiv;
 
+    /**
+     * Ez az ablka felel a játéktábla megjelenítéséért, emelett megjeleníti a játékosok adatait, 
+     * az aktuális kör számot és játékost majd akciókhoz szükséges gombokat
+     * @param pk
+     * @param jatek
+     */
     public JatekAblak(Parancskezelok pk, Jatek jatek){
 
         game=pk;
@@ -134,14 +140,16 @@ public class JatekAblak  extends JFrame{
         
 
         //JFramehez panelek hozzáadása
-        //System.out.println("felso:"+felsoPanel.getHeight());
         add(felsoPanel,BorderLayout.NORTH);
         add(grafika, BorderLayout.CENTER);
         frissitPanel();
-       // egerKattintasok();
+       
         
     }
    
+    /**gombok létrehozása
+     * 
+     */
     public void gombokLetreHozasa(){
         korVegeGombasz=new JButton("Kör vége");
         korVegeRovarasz=new JButton("Kör vége");
@@ -156,6 +164,9 @@ public class JatekAblak  extends JFrame{
         megjelenitRovarasz=new JButton("Megjelenít");
 
     }
+    /** gombok Méretének beállítása
+     * 
+     */
     public void gombokMeretekBeallitas(){
         TestNov.setPreferredSize(new Dimension(130,50));
         Sporaszor.setPreferredSize(new Dimension(130,50));
@@ -169,6 +180,9 @@ public class JatekAblak  extends JFrame{
         korVegeRovarasz.setPreferredSize(new Dimension(100,50));
         megjelenitRovarasz.setPreferredSize(new Dimension(100,50));
     }
+    /**gombok lenyomásakor történő akciók
+     * 
+     */
     public void gombokLenyomasa(){
         korVegeGombasz.addActionListener(e->{
             game.endTurn();
@@ -212,6 +226,9 @@ public class JatekAblak  extends JFrame{
             grafika.Draw((Tekton)kiv,grafika.getGraphics());
         });
     }
+    /** egérkattintások kezelése
+     * 
+     */
     public void egerKattintasok(){
           this.addMouseListener(new MouseAdapter(){
            
@@ -368,6 +385,9 @@ public class JatekAblak  extends JFrame{
         }
         );
     }
+    /**gombász panel eleminek felvétele
+     * 
+     */
     public void gombaszPanelBeall(){
         
         gombaszGombok.add(TestNov);
@@ -393,6 +413,9 @@ public class JatekAblak  extends JFrame{
         gombaszGombok.setBorder(BorderFactory.createEmptyBorder(20, 0, 50, 0));
         gombaszGombok.setLayout(new FlowLayout(FlowLayout.CENTER));
     }
+    /**rovarász panel eleminek felvétele
+     * 
+     */
     public void rovaraszPanelBeall(){
         
         rovaraszGombok.add(Maszik);
@@ -415,6 +438,9 @@ public class JatekAblak  extends JFrame{
         rovaraszGombok.setBorder(BorderFactory.createEmptyBorder(20, 0, 50, 0));
         rovaraszGombok.setLayout(new FlowLayout(FlowLayout.CENTER));
     }
+    /**A Jcombobox eleminek kiválasztáa, tektonok neveinek hozzáadása
+     * @param tektonok
+     */
     public void tektonokJComboBox(JComboBox tektonok){
         tektonok.removeAllItems();
         List<String> tekton=game.getTektonNevList();
@@ -429,6 +455,9 @@ public class JatekAblak  extends JFrame{
         
     }
     
+    /**also panel frissítése az alapján ,hogy éppen gombász vagy rovarász játékos van
+     * 
+     */
     public void frissitPanel(){
         //még nem teljes
         if(game.getGombaszok().contains(game.getAktivJatekos())){
@@ -467,6 +496,9 @@ public class JatekAblak  extends JFrame{
                 frissitPanel();
             }
     }
+    /** játékosok adatainak frissítése
+     * @param jatekosInfo
+     */
     public void jatekosAdatFrissit(JPanel jatekosInfo){
         jatekosInfo.removeAll();
         for(int i=0; i<game.getJatekosok().size(); i++){

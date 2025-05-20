@@ -17,54 +17,121 @@ import bughunters.Gombafaj.Spora;
 import bughunters.Rovar.Rovar;
 import bughunters.Tekton.Tekton;
 
-public class Grafika extends JPanel {
+
     
+   /**
+ * A Grafika osztály felelős a játékbeli objektumok grafikus megjelenítéséért.
+ * Tárolja a játék különböző entitásainak grafikus megfelelőit.
+ */
+public class Grafika extends JPanel{
+
+    /** A tekton objektumokhoz tartozó grafikus elemek. */
     private HashMap<Tekton, GTekton> tektonok;
 
+    /** 
+     * Visszaadja a tektonok és grafikus megfelelőik mapjét.
+     * @return a tektonok és GTekton objektumok map-je
+     */
     public HashMap<Tekton, GTekton> getTektonok() {
         return tektonok;
     }
+
+    /**
+     * Beállítja a tektonokhoz tartozó grafikus objektumokat.
+     * @param tektonok a Tekton → GTekton hozzárendelések map-je
+     */
     public void setTektonok(HashMap<Tekton, GTekton> tektonok) {
         this.tektonok = tektonok;
     }
-    private HashMap<Gombatest,GGombatest> gombatestek;
+
+    /** A gombatestekhez tartozó grafikus objektumok. */
+    private HashMap<Gombatest, GGombatest> gombatestek;
+
+    /**
+     * Visszaadja a gombatestek és grafikus megfelelőik mapjét.
+     * @return a Gombatest → GGombatest map
+     */
     public HashMap<Gombatest, GGombatest> getGombatestek() {
         return gombatestek;
     }
+
+    /**
+     * Beállítja a gombatestek grafikus megfelelőit.
+     * @param gombatestek a Gombatest → GGombatest hozzárendelések
+     */
     public void setGombatestek(HashMap<Gombatest, GGombatest> gombatestek) {
         this.gombatestek = gombatestek;
     }
-    private HashMap<Gombafonal,GGombafonal> gombafonalak;
+
+    /** A gombafonalakhoz tartozó grafikus objektumok. */
+    private HashMap<Gombafonal, GGombafonal> gombafonalak;
+
+    /**
+     * Visszaadja a gombafonalak és grafikus megfelelőik mapjét.
+     * @return a Gombafonal → GGombafonal map
+     */
     public HashMap<Gombafonal, GGombafonal> getGombafonalak() {
         return gombafonalak;
     }
+
+    /**
+     * Beállítja a gombafonalak grafikus objektumait.
+     * @param gombafonalak a Gombafonal → GGombafonal hozzárendelések
+     */
     public void setGombafonalak(HashMap<Gombafonal, GGombafonal> gombafonalak) {
         this.gombafonalak = gombafonalak;
     }
+
+    /** A rovarokhoz tartozó grafikus objektumok. */
     private HashMap<Rovar, GRovar> rovarok;
+
+    /**
+     * Visszaadja a rovarok és grafikus megfelelőik mapjét.
+     * @return a Rovar → GRovar map
+     */
     public HashMap<Rovar, GRovar> getRovarok() {
         return rovarok;
     }
+
+    /**
+     * Beállítja a rovarok grafikus objektumait.
+     * @param rovarok a Rovar → GRovar hozzárendelések
+     */
     public void setRovarok(HashMap<Rovar, GRovar> rovarok) {
         this.rovarok = rovarok;
     }
-    private HashMap<Spora,GSpora> sporak;
 
+    /** A spórákhoz tartozó grafikus objektumok. */
+    private HashMap<Spora, GSpora> sporak;
+
+    /**
+     * Visszaadja a spórák és grafikus megfelelőik mapjét.
+     * @return a Spora → GSpora map
+     */
     public HashMap<Spora, GSpora> getSporak() {
         return sporak;
     }
+
+    /**
+     * Beállítja a spórák grafikus objektumait.
+     * @param sporak a Spora → GSpora hozzárendelések
+     */
     public void setSporak(HashMap<Spora, GSpora> sporak) {
         this.sporak = sporak;
     }
-   
-    public Grafika(){
-        tektonok=new HashMap<>();
-        sporak=new HashMap<>();
-        rovarok=new HashMap<>();
-        gombafonalak=new HashMap<>();
-        gombatestek=new HashMap<>();
+
+    /**
+     * Konstruktor. Inicializálja az összes grafikus objektumtérképet.
+     */
+    public Grafika() {
+        tektonok = new HashMap<>();
+        sporak = new HashMap<>();
+        rovarok = new HashMap<>();
+        gombafonalak = new HashMap<>();
+        gombatestek = new HashMap<>();
     }
     public void Draw(Tekton t, Graphics g){
+        //minden grafikus objektum alapállapotba állítása
         tektonok.forEach((tek,gtek)->{
             gtek.setX(-1);
             gtek.setY(-1);
@@ -91,7 +158,6 @@ public class Grafika extends JPanel {
         });
         super.paintComponent(g);
         int szomszedokSzama = t.getSzomszedok().size();
-        ////System.out.println("Szomszédok száma: " + szomszedokSzama);
 
         int R = 150;  // Kör sugara
         int cX = 680; // Középpont X koordinátája
@@ -101,12 +167,8 @@ public class Grafika extends JPanel {
         tektonok.get(t).setX(cX);
         tektonok.get(t).setY(cY);
         
-       // System.out.println("Tekton középen: X=" + cX + ", Y=" + cY);
 
         // Szomszédok pozícióinak kiszámítása és beállítása
-
-        //System.out.println("Gombateste száma: " + gombatestek.size());
-
         if (szomszedokSzama != 0) {
             //System.out.println("Vannak szomszédok.");
             double szogLepes = 2 * Math.PI / szomszedokSzama;  // Egyenlő elosztás a kör mentén
@@ -123,50 +185,40 @@ public class Grafika extends JPanel {
                 if (gSzomszed != null) {
                     gSzomszed.setX(szomszedX);
                     gSzomszed.setY(szomszedY);
-                    //gSzomszed.Draw(g);  // Azonnal ki is rajzoljuk
-                    //System.out.println("Szomszéd tekton rajzolva X=" + szomszedX + ", Y=" + szomszedY);
 
                     gombatestek.forEach((gombatest, gg) -> {
                             if (gombatest.getTekton().equals(szomszed)) {
                                 gg.setX(szomszedX);
                                 gg.setY(szomszedY);
-                               // gg.Draw(g);
                             }
                     });
                     
-                    //sporaElhelyezesKorben(szomszed,g);
                 }
 
             }
         }
-        //tektonok.forEach((tekton,gtekton)->{System.out.println(" X"+gtekton.getX());});
+        
         // Végül a középső tekton kirajzolása
+        //fonalak kirajzolása
         fonalrajzol(t,g);
         tektonok.get(t).Draw(g);
          if (szomszedokSzama != 0) {
-            //System.out.println("Vannak szomszédok.");
-            //double szogLepes = 2 * Math.PI / szomszedokSzama;  // Egyenlő elosztás a kör mentén
-
+          
             for (int i = 0; i < szomszedokSzama; i++) {
-                //double szog = i * szogLepes;  // Minden szomszédnál léptetjük a szöget
-                //int szomszedX = (int) (cX + R * Math.cos(szog));
-                //int szomszedY = (int) (cY + R * Math.sin(szog));
 
                 Tekton szomszed = t.getSzomszedok().get(i);
                 GTekton gSzomszed = tektonok.get(szomszed);
 
                 if (gSzomszed != null) {
-                   // gSzomszed.setX(szomszedX);
-                   // gSzomszed.setY(szomszedY);
+                 
                     gSzomszed.Draw(g);  // Azonnal ki is rajzoljuk
-                    //System.out.println("Szomszéd tekton rajzolva X=" + szomszedX + ", Y=" + szomszedY);
                     gombatestek.forEach((gombatest, gg) -> {
                             if (gombatest.getTekton().equals(szomszed)) {
                     
                                 gg.Draw(g);
                             }
                     });
-                    
+                    //spórák kirajzolása
                     sporaElhelyezesKorben(szomszed,g);
 
                 }
@@ -178,7 +230,7 @@ public class Grafika extends JPanel {
         //gombatestek beállítása csak a középső
         gombatestek.forEach((gombatest,gg)->{
             if(gombatest.getTekton().equals(t)){
-                //System.out.println("kozepso tekton: "+t + "\n");
+               
                 gg.setX(cX);
                 gg.setY(cY);
                 gg.Draw(g);
@@ -211,7 +263,7 @@ public class Grafika extends JPanel {
                 GRovar gg = entry.getValue();
 
                 if (rovar.getTartozkodas().equals(tekton)) {
-                    //System.out.println("Rovar rajzolva X=" + baseX + ", Y=" + baseY+"tekton: "+rovar.getTartozkodas());
+                   
                     double angle = i * angleStep;
                     int x = (int)(baseX + radius * Math.cos(angle));
                     int y = (int)(baseY + radius * Math.sin(angle));
@@ -225,15 +277,23 @@ public class Grafika extends JPanel {
         
     }
 
-
+    /**
+     * Egy adott {@link Tekton} középpontja köré helyezi el az ahhoz tartozó {@link Spora} objektumokat egyenletesen
+     * egy kör mentén, majd kirajzolja őket a megadott {@link Graphics} objektumra.
+     *
+     * <p>Amennyiben a tektonhoz nem tartozik spóra, a függvény azonnal visszatér.</p>
+     * <p>A kirajzolás során minden spóra pozíciója kiszámításra kerül, eltolással (offset) kerül megjelenítésre,
+     * valamint a mennyiségük is megjelenik a {@code szamKiir()} hívás által.</p>
+     *
+     * @param t a {@link Tekton}, amelyhez a spórák tartoznak
+     * @param g a {@link Graphics} objektum, amire a spórák kirajzolása történik
+     */
     public void sporaElhelyezesKorben(Tekton t, Graphics g) {
         int sugar =45;
         int cX=tektonok.get(t).getX();
         int cY=tektonok.get(t).getY();
         List<Spora> sporakList = t.getSporak();
         int sporaSzam = sporakList.size();
-
-       // System.out.println("Spórák száma: " + sporaSzam);
 
         if (sporaSzam == 0) return;  // Nincs mit elhelyezni
 
@@ -258,7 +318,18 @@ public class Grafika extends JPanel {
 
         
     }
-    
+    /**
+     * Kirajzolja a megadott {@link Tekton} és annak közvetlen szomszédai között húzódó {@link Gombafonal}
+     * kapcsolatokat, vizuálisan megjelenítve a fonalakat a megfelelő grafikai objektumokon keresztül.
+     *
+     * <p>A metódus összegyűjti a tektonhoz és szomszédaihoz tartozó összes fonalat, csoportosítja őket
+     * a hozzájuk tartozó {@link Gombafaj} alapján, majd egyedi eltolásokkal (offset) pozicionálja őket,
+     * hogy vizuálisan elkülönüljenek egymástól. Azokat a fonalakat is megjeleníti, amelyek csak egyik
+     * végpontjukon kapcsolódnak a kirajzolt tektonokhoz — ezek egy félkörív vagy sugár irányába mutató
+     * vonalként jelennek meg.</p>
+     *
+     * @param t a középső {@link Tekton}, amelyhez képest a fonalakat kirajzoljuk
+     * @*/
             
     public void fonalrajzol(Tekton t, Graphics g) {
         // Tektonok listája a vizsgált és szomszédos elemekkel 
@@ -291,8 +362,6 @@ public class Grafika extends JPanel {
                 fajok.put(gombafajLista.get(i), 50 + i * 16);
         }
 
-
-
         int totalLines = 0; // vagy ahány gombafonal van
         int index = 0; // az aktuális vonal indexe
         int radius = 60; // hossza a vonalaknak, mehet nagyobbra is
@@ -304,9 +373,6 @@ public class Grafika extends JPanel {
                 totalLines++;
             }
         }
-
-        //System.out.println("Fonalak száma: " + totalLines);
-
 
         // Fonalak kirajzolása
         for (Gombafonal fonal : fonalak2) {
@@ -350,11 +416,7 @@ public class Grafika extends JPanel {
                         int y_1 = y1+50;
                         int x_2 = (int)(x_1 + Math.cos(angle) * radius);
                         int y_2 = (int)(y_1 + Math.sin(angle) * radius);
-                        //System.out.println("X1: "+x_1);
-                        //System.out.println("Y1: "+y_1);
-                        //System.out.println("X2: "+x_2);
-                        //System.out.println("Y2: "+y_2);
-                        gFonal.setX1(x_1);
+                        
                         gFonal.setY1(y_1);
                         gFonal.setX2(x_2);
                         gFonal.setY2(y_2);
@@ -375,10 +437,7 @@ public class Grafika extends JPanel {
                         int y_1 = y2+50;
                         int x_2 = (int)(x_1 + Math.cos(angle) * radius);
                         int y_2 = (int)(y_1 + Math.sin(angle) * radius);
-                        //System.out.println("X1: "+x_1);
-                        //System.out.println("Y1: "+y_1);
-                        //System.out.println("X2: "+x_2);
-                        //System.out.println("Y2: "+y_2);
+                        
                         gFonal.setX1(x_1);
                         gFonal.setY1(y_1);
                         gFonal.setX2(x_2);
@@ -391,7 +450,21 @@ public class Grafika extends JPanel {
             }
         }
     }
-
+    /**
+     * Megkeresi, hogy az egérkattintás (x, y) pozíciója közel esik-e valamelyik kirajzolt
+     * {@link Gombafonal} vonalhoz, és ha igen, visszaadja az ahhoz tartozó {@link Gombafonal} objektumot.
+     *
+     * <p>A keresés során minden grafikus fonalvonalat (GGombafonal) vizsgál a {@code gombafonalak}
+     * térképből, és ellenőrzi, hogy a megadott pont közel van-e a vonalhoz a 
+     * {@code isPointNearLine()} segédfüggvény alapján.</p>
+     *
+     * <p>A y koordináta 230 pixellel csökkentésre kerül, hogy illeszkedjen a grafikai eltoláshoz
+     * (valószínűleg UI eltolás miatt).</p>
+     *
+     * @param x az egérkattintás X koordinátája
+     * @param y az egérkattintás Y koordinátája (módosítva lesz -230 pixellel)
+     * @return a megtalált {@link Gombafonal} objektum, ha a pont közel esik valamelyik fonalhoz; különben {@code null}
+     * */
     public Gombafonal fonalKeres(int x, int y){
         y=y-230;
         //System.out.println("fonalkeres");
@@ -400,14 +473,7 @@ public class Grafika extends JPanel {
             double X2=(double)entry.getValue().getX2();
             double Y1=(double)entry.getValue().getY1();
             double Y2=(double)entry.getValue().getY2();
-            /*
-            System.out.println("X1:"+X1);
-            System.out.println("X2:"+X2);
-            System.out.println("Y1:"+Y1);
-            System.out.println("Y2:"+Y2);
-            System.out.println("x:"+x);
-            System.out.println("y:"+y);
-            */
+           
             boolean kozelVan = isPointNearLine(x, y, X1, Y1, X2, Y2);
             if(kozelVan){
                 return entry.getKey();
@@ -415,13 +481,42 @@ public class Grafika extends JPanel {
         }
         return null; // nem találtuk meg
     }
-
+   /**
+     * Eldönti, hogy egy adott pont (px, py) a megadott szakaszhoz (x1, y1) - (x2, y2)
+     * elég közel van-e egy előre meghatározott küszöbtávolság alapján.
+     *
+     * <p>A távolságot a {@code distanceToLine} segédfüggvény számítja ki, majd
+     * összeveti egy fix, 10 pixeles küszöbértékkel.</p>
+     * 
+     * @param px a vizsgált pont X koordinátája (pl. egér pozíció)
+     * @param py a vizsgált pont Y koordinátája
+     * @param x1 a vonalszakasz kezdőpontjának X koordinátája
+     * @param y1 a vonalszakasz kezdőpontjának Y koordinátája
+     * @param x2 a vonalszakasz végpontjának X koordinátája
+     * @param y2 a vonalszakasz végpontjának Y koordinátája
+     * @return {@code true}, ha a pont a vonalhoz 10 pixelnél közelebb van; különben {@code false}
+ */
     boolean isPointNearLine(double px, double py, double x1, double y1, double x2, double y2) {
         double distance = distanceToLine(px, py, x1, y1, x2, y2);
         //System.out.println("Táv: "+distance);
         return distance < 10; // Küszöb távolság: ha elég közel van, akkor igaz
     }
-
+    /**
+     * Kiszámítja egy pont (px, py) és egy vonalszakasz (x1, y1) - (x2, y2) közötti 
+     * legrövidebb távolságot. A távolság mindig a szakaszra vetített merőleges
+     * vagy a végpontokhoz mért távolság (ha a vetület a szakaszon kívül esik).
+     *
+     * <p>Hasznos például grafikus felületeken, ahol azt szeretnénk eldönteni,
+     * hogy a felhasználó egy vonalszakaszra "kattintott"-e.</p>
+     *
+     * @param px a vizsgált pont X koordinátája
+     * @param py a vizsgált pont Y koordinátája
+     * @param x1 a szakasz kezdőpontjának X koordinátája
+     * @param y1 a szakasz kezdőpontjának Y koordinátája
+     * @param x2 a szakasz végpontjának X koordinátája
+     * @param y2 a szakasz végpontjának Y koordinátája
+     * @return a pont és a vonalszakasz közötti legrövidebb távolság
+     */
     double distanceToLine(double px, double py, double x1, double y1, double x2, double y2) {
         double dx = x2 - x1;
         double dy = y2 - y1;
@@ -444,7 +539,18 @@ public class Grafika extends JPanel {
 
         return Math.sqrt(dxp * dxp + dyp * dyp);
     }
-
+    /**
+     * Megkeresi, hogy az egérkattintás (x, y) koordinátái alapján melyik {@link Gombatest}
+     * objektumra kattintott a felhasználó. Ha van olyan gombatest, amelyhez a pont 35 pixelen
+     * belül esik (kör alakú területen belül), akkor visszatér azzal.
+     *
+     * <p>A keresés során a grafikus Gombatestek (GGombatest) pozícióját is figyelembe veszi, 
+     * és egy 230 pixeles függőleges eltolással kompenzálja az UI eltolását .</p>
+     *
+     * @param x az egér X koordinátája (képernyőpozíció)
+     * @param y az egér Y koordinátája (képernyőpozíció, 230 pixellel csökkentve)
+     * @return a megtalált {@link Gombatest} objektum, ha van a közelben; különben {@code null}
+     */
     public Gombatest gombatestKeres(int x, int y) {
         y=y-230;
         //System.out.println("Képernyő"+x+y);
@@ -460,6 +566,18 @@ public class Grafika extends JPanel {
         }
         return null; // nem találtuk meg
     }
+    /**
+     * Megkeresi, hogy az adott (x, y) koordinátájú pont (pl. egérkattintás) melyik 
+     * {@link Tekton} objektum grafikus reprezentációjához (GTekton) van elég közel.
+     *
+     * <p>Ez akkor hasznos, ha például az egérrel rá akarunk kattintani egy tektonra
+     * a játékfelületen. A pozíció-eltolás (y - 230) valószínűleg a GUI felső paneljei
+     * (pl. menüsáv) miatt szükséges.</p>
+     *
+     * @param x az egér X koordinátája
+     * @param y az egér Y koordinátája (módosításra kerül -230 pixellel)
+     * @return a megtalált {@link Tekton} objektum, ha van 50 pixelen belül; különben {@code null}
+     */
     public Tekton tektonKeres(int x, int y){
         y=y-230;
         for (Map.Entry<Tekton, GTekton> entry : tektonok.entrySet()) {
